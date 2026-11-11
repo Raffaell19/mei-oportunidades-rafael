@@ -415,6 +415,10 @@
             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
             Excluir Demanda
           </button>
+          <button id="modalBtnFavoritar" onclick="alternarFavoritoDoModal()" class="px-3 py-2 text-xs font-bold rounded-lg bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-300 transition-colors flex items-center gap-1.5">
+            <span>★</span>
+            <span id="txtModalFavoritar">Favoritar Demanda</span>
+          </button>
           <button id="modalBtnRegistrarEnvio" onclick="abrirModalRegistroProposta()" class="px-3 py-2 text-xs font-bold rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white transition-colors shadow-sm flex items-center gap-1.5">
             <span>📝</span>
             <span>Registrar Proposta Enviada</span>
@@ -1111,7 +1115,7 @@
     function getFavoritos() {
       try {
         const salvos = localStorage.getItem('rp_oportunidades_favoritas');
-        return salvos ? JSON.parse(salvos) : [];
+        return salvos ? JSON.parse(salvos).map(String) : [];
       } catch (e) {
         return [];
       }
@@ -1120,15 +1124,18 @@
     function alternarFavorito(id, event) {
       if (event) event.stopPropagation();
       try {
+        const strId = String(id);
         let favs = getFavoritos();
-        const index = favs.indexOf(id);
+        const index = favs.indexOf(strId);
         if (index > -1) {
           favs.splice(index, 1);
         } else {
-          favs.push(id);
+          favs.push(strId);
         }
         localStorage.setItem('rp_oportunidades_favoritas', JSON.stringify(favs));
         atualizarContadorFavoritas();
+        
+        // Atualiza a tela ativa imediatamente
         if (categoriaAtual === 'favoritas') {
           renderizarFavoritas();
         } else if (categoriaAtual === 'radar_pncp') {
@@ -1136,13 +1143,41 @@
         } else {
           atualizarInterface();
         }
-      } catch (e) {}
+      } catch (e) {
+        console.error("Erro ao favoritar:", e);
+      }
+    }
+
+    function alternarFavoritoDoModal() {
+      if (currentServico) {
+        alternarFavorito(currentServico.id);
+        atualizarBtnFavoritarModal();
+      }
+    }
+
+    function atualizarBtnFavoritarModal() {
+      if (!currentServico) return;
+      const favs = getFavoritos();
+      const isFav = favs.some(f => String(f) === String(currentServico.id));
+      const btn = document.getElementById('modalBtnFavoritar');
+      const txt = document.getElementById('txtModalFavoritar');
+      if (btn && txt) {
+        if (isFav) {
+          btn.className = "px-3 py-2 text-xs font-bold rounded-lg bg-amber-400 text-slate-950 ring-1 ring-amber-500 transition-colors shadow-sm flex items-center gap-1.5";
+          txt.innerText = "Na Pasta de Favoritas (★)";
+        } else {
+          btn.className = "px-3 py-2 text-xs font-bold rounded-lg bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-300 transition-colors flex items-center gap-1.5";
+          txt.innerText = "Favoritar Demanda";
+        }
+      }
     }
 
     function atualizarContadorFavoritas() {
       const favs = getFavoritos();
+      const excluidos = getExcluidos();
+      const favsValidos = favs.filter(id => !excluidos.some(ex => String(ex) === String(id)));
       const el = document.getElementById('badgeContadorFavoritas');
-      if (el) el.innerText = favs.length;
+      if (el) el.innerText = favsValidos.length;
     }
 
     // FUNÇÕES DE PERSISTÊNCIA PARA OPORTUNIDADES CLICADAS
@@ -1255,8 +1290,10 @@
       let volumeTotal = ativos.reduce((acc, s) => acc + s.propostaSugerida, 0);
       document.getElementById('headerVolumeTotal').innerText = formatBRL(volumeTotal);
 
-      // Renderiza conforme filtro
-      if (categoriaAtual === 'minhas_propostas') {
+      // Renderiza conforme filtro selecionado
+      if (categoriaAtual === 'favoritas') {
+        renderizarFavoritas();
+      } else if (categoriaAtual === 'minhas_propostas') {
         renderizarMinhasPropostas();
       } else if (categoriaAtual === 'radar_pncp') {
         renderizarRadarPNCP();
@@ -1304,7 +1341,16 @@
       let composicao = [];
       let tempoEstimado = '1 a 2 dias';
 
-      if (obj.includes('elétrica') || obj.includes('fiação') || obj.includes('disjuntor')) {
+      if (obj.includes('ar condicionado') || obj.includes('condicionador') || obj.includes('split') || obj.includes('climatiz')) {
+        tipo = 'Instalação e Manutenção de Ar-Condicionado';
+        proporcaoCusto = 0.35;
+        tempoEstimado = '2 a 3 dias';
+        composicao = [
+          'Tubulação de cobre flangeada, isolamento elastomérico e suportes reforçados',
+          'Gás ecológico R410A/R32, cabo de comando 4 vias e fita de acabamento vinílica',
+          'Mão de obra de vácuo, teste estanqueidade com nitrogênio e start-up elétrico'
+        ];
+      } else if (obj.includes('elétrica') || obj.includes('fiação') || obj.includes('disjuntor')) {
         tipo = 'Instalações & Manutenção Elétrica';
         proporcaoCusto = 0.42;
         tempoEstimado = '2 a 3 dias';
@@ -1389,15 +1435,15 @@
       const todosOriginais = [...servicosDB];
       const todosRadar = window.RADAR_PNCP_DATA || [];
 
-      // Une as duas fontes
+      // Une as duas fontes com comparação segura de IDs
       const listaFavoritas = [];
       const listaExcluidos = getExcluidos();
-      favIds.filter(id => !listaExcluidos.includes(id)).forEach(id => {
-        const itemDb = todosOriginais.find(s => s.id === id);
+      favIds.filter(id => !listaExcluidos.some(ex => String(ex) === String(id))).forEach(id => {
+        const itemDb = todosOriginais.find(s => String(s.id) === String(id));
         if (itemDb) {
           listaFavoritas.push({ ...itemDb, origem: 'banco_interno' });
         } else {
-          const itemRadar = todosRadar.find(r => r.id === id);
+          const itemRadar = todosRadar.find(r => String(r.id) === String(id));
           if (itemRadar) {
             listaFavoritas.push({ ...itemRadar, origem: 'radar' });
           }
@@ -1830,7 +1876,8 @@
       const dados = window.RADAR_PNCP_DATA || [];
       const excluidos = getExcluidos();
       const clicados = getClicados();
-      let itensAtivos = dados.filter(item => !excluidos.includes(item.id));
+      const favs = getFavoritos();
+      let itensAtivos = dados.filter(item => !excluidos.some(ex => String(ex) === String(item.id)));
 
       // ORDENAÇÃO CRESCENTE POR PRAZO DE ENCERRAMENTO (DO MAIS URGENTE AO MAIS DISTANTE)
       itensAtivos.sort((a, b) => {
@@ -1858,15 +1905,22 @@
       }
 
       itensAtivos.forEach((item, index) => {
-        const jaClicado = clicados.includes(item.id);
+        const strId = String(item.id);
+        const jaClicado = clicados.some(c => String(c) === strId);
+        const jaFavoritado = favs.some(f => String(f) === strId);
+
         const card = document.createElement('div');
-        card.id = 'card-radar-' + item.id;
+        card.id = 'card-radar-' + strId;
         
-        // Estilo condicional: se já foi clicado, destaca a caixa inteira com cor verde-esmeralda suave e anel de seleção
-        card.className = "service-item group rounded-2xl border-2 transition-all flex flex-col justify-between p-5 relative overflow-hidden card-shadow " + 
-          (jaClicado ? 
-            "border-emerald-500 bg-emerald-50/60 ring-2 ring-emerald-500/30" : 
-            "border-sky-200 bg-white hover:border-sky-500 card-hover");
+        // Estilo condicional: se já foi favoritado, destaca com borda dourada e fundo âmbar sutil
+        let estiloCard = "border-sky-200 bg-white hover:border-sky-500 card-hover";
+        if (jaFavoritado) {
+          estiloCard = "border-amber-400 bg-amber-50/30 ring-2 ring-amber-400/40 shadow-md";
+        } else if (jaClicado) {
+          estiloCard = "border-emerald-500 bg-emerald-50/60 ring-2 ring-emerald-500/30";
+        }
+
+        card.className = "service-item group rounded-2xl border-2 transition-all flex flex-col justify-between p-5 relative overflow-hidden card-shadow " + estiloCard;
         
         const tagsHtml = item.tags.map(t => `<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-sky-50 text-sky-700 border border-sky-200">${t}</span>`).join(' ');
 
@@ -1881,18 +1935,27 @@
               <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-sky-100 text-sky-800">
                 📍 ${item.cidade} • ${item.plataforma}
               </span>
-              <div class="flex items-center gap-1">
-                <button onclick="alternarFavorito('${item.id}', event)" class="w-6 h-6 rounded-md hover:bg-amber-50 text-slate-300 hover:text-amber-500 flex items-center justify-center text-xs font-bold transition-all" title="Favoritar oportunidade">
-                  ★
+              <div class="flex items-center gap-1.5">
+                <button onclick="alternarFavorito('${strId}', event)" class="px-2.5 py-1 rounded-lg text-xs font-bold transition-all flex items-center gap-1 ${jaFavoritado ? 'bg-amber-400 text-slate-950 font-black shadow-sm ring-1 ring-amber-500' : 'bg-slate-100 text-slate-500 hover:bg-amber-50 hover:text-amber-700 border border-slate-200'}" title="${jaFavoritado ? 'Remover dos Favoritos' : 'Salvar nas Melhores Oportunidades'}">
+                  <span class="text-sm leading-none ${jaFavoritado ? 'text-slate-950 font-black' : 'text-amber-500'}">★</span>
+                  <span class="text-[10px] uppercase tracking-wide font-extrabold">${jaFavoritado ? 'Favorita' : 'Favoritar'}</span>
                 </button>
-                <button onclick="event.stopPropagation(); excluirRadarItem('${item.id}');" class="w-6 h-6 rounded-md bg-slate-100 hover:bg-rose-100 text-slate-400 hover:text-rose-600 flex items-center justify-center text-xs font-bold transition-all" title="Ocultar do Radar">
+                <button onclick="event.stopPropagation(); excluirRadarItem('${strId}');" class="w-6 h-6 rounded-md bg-slate-100 hover:bg-rose-100 text-slate-400 hover:text-rose-600 flex items-center justify-center text-xs font-bold transition-all" title="Ocultar do Radar">
                   ✕
                 </button>
               </div>
             </div>
 
+            <!-- Faixa se Favoritada -->
+            ${jaFavoritado ? `
+              <div class="mb-2 flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-amber-100 text-amber-900 text-xs font-black border border-amber-300">
+                <span>★</span>
+                <span>SALVA NA SUA PASTA DE FAVORITAS</span>
+              </div>
+            ` : ''}
+
             <!-- Faixa de Sinalização se Já Clicado -->
-            <div id="badge-visto-${item.id}" class="${jaClicado ? '' : 'hidden'} mb-2.5 flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-emerald-100 text-emerald-800 text-xs font-extrabold border border-emerald-300">
+            <div id="badge-visto-${strId}" class="${jaClicado ? '' : 'hidden'} mb-2.5 flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-emerald-100 text-emerald-800 text-xs font-extrabold border border-emerald-300">
               <span>✓</span>
               <span>VOCÊ JÁ ACESSOU ESTA OPORTUNIDADE</span>
             </div>
@@ -2006,16 +2069,26 @@ Link: ${item.link}`;
         return;
       }
 
+      const favs = getFavoritos();
+
       lista.forEach(s => {
+        const strId = String(s.id);
+        const jaFavoritado = favs.some(f => String(f) === strId);
         let custoTotal = s.itensCompra.reduce((acc, it) => acc + it.total, 0) + s.equipe.total + s.logistica.total + (s.reserva || 0);
         let lucro = s.propostaSugerida - custoTotal;
 
         const card = document.createElement('div');
-        card.className = "service-item group bg-white rounded-2xl border-2 " + 
-          (s.id === 'eletrica_taquara' ? 'border-emerald-500 ring-2 ring-emerald-500/20' : 
+        
+        let borderClass = (s.id === 'eletrica_taquara' ? 'border-emerald-500 ring-2 ring-emerald-500/20' : 
            s.id === 'porta_seguranca_cpor' ? 'border-emerald-600 ring-2 ring-emerald-600/10' :
            s.id === 'coffeebreak_trt' ? 'border-amber-400' : 
-           s.id === 'feijao_conab' ? 'border-rose-400 opacity-90' : 'border-slate-200') + 
+           s.id === 'feijao_conab' ? 'border-rose-400 opacity-90' : 'border-slate-200');
+
+        if (jaFavoritado) {
+          borderClass = 'border-amber-400 bg-amber-50/20 ring-2 ring-amber-400/40 shadow-md';
+        }
+
+        card.className = "service-item group bg-white rounded-2xl border-2 " + borderClass + 
           " card-shadow card-hover transition-all cursor-pointer flex flex-col justify-between p-5 relative overflow-hidden";
         card.setAttribute('data-cat', s.categoria);
         card.onclick = () => abrirDetalhes(s.id);
@@ -2030,11 +2103,22 @@ Link: ${item.link}`;
                 <span class="text-[11px] font-bold text-slate-500">
                   📍 ${s.distanciaKm} km
                 </span>
+                <button onclick="alternarFavorito('${strId}', event)" class="px-2.5 py-1 rounded-lg text-xs font-bold transition-all flex items-center gap-1 ${jaFavoritado ? 'bg-amber-400 text-slate-950 font-black shadow-sm ring-1 ring-amber-500' : 'bg-slate-100 text-slate-500 hover:bg-amber-50 hover:text-amber-700 border border-slate-200'}" title="${jaFavoritado ? 'Remover dos Favoritos' : 'Salvar nas Melhores Oportunidades'}">
+                  <span class="text-sm leading-none ${jaFavoritado ? 'text-slate-950 font-black' : 'text-amber-500'}">★</span>
+                  <span class="text-[10px] uppercase tracking-wide font-extrabold">${jaFavoritado ? 'Favorita' : 'Favoritar'}</span>
+                </button>
                 <button onclick="event.stopPropagation(); excluirServico('${s.id}')" title="Excluir do painel" class="w-6 h-6 rounded-md bg-slate-100 hover:bg-rose-100 text-slate-400 hover:text-rose-600 transition-colors flex items-center justify-center text-xs">
                   ✕
                 </button>
               </div>
             </div>
+
+            ${jaFavoritado ? `
+              <div class="mb-2.5 flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-amber-100 text-amber-900 text-xs font-black border border-amber-300">
+                <span>★</span>
+                <span>SALVA NA SUA PASTA DE FAVORITAS</span>
+              </div>
+            ` : ''}
 
             <span class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider block">${s.orgao}</span>
             <h3 class="text-base font-extrabold text-slate-900 group-hover:text-sky-600 transition-colors mt-0.5 leading-snug">
@@ -2073,6 +2157,9 @@ Link: ${item.link}`;
       const s = servicosDB.find(item => item.id === id);
       if (!s) return;
       currentServico = s;
+
+      // Atualiza botão de favoritar do modal
+      atualizarBtnFavoritarModal();
 
       // Cabeçalho
       document.getElementById('modalBadge').innerText = s.badgeText;
@@ -2194,10 +2281,21 @@ Link: ${item.link}`;
       categoriaAtual = categoria;
       const buttons = document.querySelectorAll('.filter-btn');
       buttons.forEach(btn => {
-        if (btn.getAttribute('data-filter') === categoria) {
-          btn.className = "filter-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-slate-900 text-white shadow-sm";
+        const f = btn.getAttribute('data-filter');
+        if (f === categoria) {
+          btn.className = "filter-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-slate-900 text-white shadow-sm flex items-center gap-1.5 ring-2 ring-slate-900/30";
         } else {
-          btn.className = "filter-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-white hover:bg-slate-200 text-slate-700 border border-slate-300";
+          if (f === 'favoritas') {
+            btn.className = "filter-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-300 flex items-center gap-1.5 shadow-sm";
+          } else if (f === 'minhas_propostas') {
+            btn.className = "filter-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-300 flex items-center gap-1.5 shadow-sm";
+          } else if (f === 'radar_pncp') {
+            btn.className = "filter-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-sky-50 hover:bg-sky-100 text-sky-800 border border-sky-300 flex items-center gap-1.5";
+          } else if (f === 'alimentos') {
+            btn.className = "filter-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-300";
+          } else {
+            btn.className = "filter-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-white hover:bg-slate-200 text-slate-700 border border-slate-300";
+          }
         }
       });
 
