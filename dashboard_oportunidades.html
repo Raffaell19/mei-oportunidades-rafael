@@ -429,7 +429,17 @@
           <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
         </a>
       </div>
+    </div>
+  </div>
 
+  <!-- TOAST NOTIFICATION DE EXCLUSÃO COM DESFAZER -->
+  <div id="toastNotification" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 hidden transition-all duration-300 transform translate-y-4 opacity-0">
+    <div class="bg-slate-900 text-white px-4 py-3 rounded-2xl shadow-2xl border border-slate-700 flex items-center gap-3 text-xs sm:text-sm font-semibold max-w-md">
+      <span id="toastMsg" class="truncate"></span>
+      <button id="toastBtnDesfazer" class="px-2.5 py-1 rounded-lg bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-xs transition-all flex-shrink-0 shadow-sm">
+        Desfazer
+      </button>
+      <button onclick="esconderToast()" class="text-slate-400 hover:text-white text-xs ml-1 font-bold">✕</button>
     </div>
   </div>
 
@@ -1208,10 +1218,63 @@
       } catch (e) {}
     }
 
+    let toastTimeout = null;
+    let ultimoExcluidoId = null;
+
+    function mostrarNotificacaoExclusao(msg, idParaDesfazer) {
+      const toast = document.getElementById('toastNotification');
+      const toastMsg = document.getElementById('toastMsg');
+      const btnDesfazer = document.getElementById('toastBtnDesfazer');
+      if (!toast || !toastMsg) return;
+
+      toastMsg.innerText = msg;
+      ultimoExcluidoId = idParaDesfazer;
+
+      if (idParaDesfazer && btnDesfazer) {
+        btnDesfazer.style.display = 'inline-block';
+        btnDesfazer.onclick = function() {
+          desfazerExclusao(idParaDesfazer);
+          esconderToast();
+        };
+      } else if (btnDesfazer) {
+        btnDesfazer.style.display = 'none';
+      }
+
+      toast.classList.remove('hidden');
+      setTimeout(() => {
+        toast.classList.remove('translate-y-4', 'opacity-0');
+      }, 10);
+
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        esconderToast();
+      }, 5000);
+    }
+
+    function esconderToast() {
+      const toast = document.getElementById('toastNotification');
+      if (!toast) return;
+      toast.classList.add('translate-y-4', 'opacity-0');
+      setTimeout(() => {
+        toast.classList.add('hidden');
+      }, 300);
+    }
+
+    function desfazerExclusao(id) {
+      const strId = String(id);
+      let excluidos = getExcluidos();
+      excluidos = excluidos.filter(e => String(e) !== strId);
+      salvarExcluidos(excluidos);
+      atualizarInterface();
+      if (categoriaAtual === 'radar_pncp') {
+        renderizarRadarPNCP();
+      }
+    }
+
     function getExcluidos() {
       try {
         const salvos = localStorage.getItem('rp_oportunidades_excluidas');
-        return salvos ? JSON.parse(salvos) : [];
+        return salvos ? JSON.parse(salvos).map(String) : [];
       } catch (e) {
         return [];
       }
@@ -1219,37 +1282,46 @@
 
     function salvarExcluidos(lista) {
       try {
-        localStorage.setItem('rp_oportunidades_excluidas', JSON.stringify(lista));
+        localStorage.setItem('rp_oportunidades_excluidas', JSON.stringify(lista.map(String)));
       } catch (e) {}
     }
 
     // ADICIONAR UM ID À LISTA PERMANENTE DE EXCLUÍDOS
     function adicionarExcluido(id) {
       try {
+        const strId = String(id);
         let excluidos = getExcluidos();
-        if (!excluidos.includes(id)) {
-          excluidos.push(id);
+        if (!excluidos.some(e => String(e) === strId)) {
+          excluidos.push(strId);
           salvarExcluidos(excluidos);
         }
       } catch (e) {}
     }
 
     function excluirServico(id) {
-      const s = servicosDB.find(item => item.id === id);
-      if (!s) return;
+      const strId = String(id);
+      const s = servicosDB.find(item => String(item.id) === strId);
+      const titulo = s ? s.titulo : "Demanda";
 
-      const confirmou = confirm(`Tem certeza que deseja excluir "${s.titulo}" do seu painel? Você pode restaurá-lo a qualquer momento.`);
-      if (!confirmou) return;
+      adicionarExcluido(strId);
 
-      adicionarExcluido(id);
+      // Remove de favoritos se estiver lá
+      let favs = getFavoritos();
+      favs = favs.filter(f => String(f) !== strId);
+      localStorage.setItem('rp_oportunidades_favoritas', JSON.stringify(favs));
+      atualizarContadorFavoritas();
 
       fecharModal();
       atualizarInterface();
+
+      mostrarNotificacaoExclusao(`"${titulo}" excluída do painel.`, strId);
     }
 
     function excluirDoModal() {
       if (currentServico) {
         excluirServico(currentServico.id);
+      } else {
+        fecharModal();
       }
     }
 
@@ -1257,16 +1329,17 @@
       const excluidos = getExcluidos();
       if (excluidos.length === 0) return;
 
-      const confirmou = confirm(`Deseja restaurar as ${excluidos.length} oportunidades que foram excluídas?`);
-      if (!confirmou) return;
-
       localStorage.removeItem('rp_oportunidades_excluidas');
       atualizarInterface();
+      if (categoriaAtual === 'radar_pncp') {
+        renderizarRadarPNCP();
+      }
+      mostrarNotificacaoExclusao(`Todas as ${excluidos.length} oportunidades foram restauradas!`, null);
     }
 
     function obterServicosAtivos() {
       const excluidos = getExcluidos();
-      return servicosDB.filter(s => !excluidos.includes(s.id));
+      return servicosDB.filter(s => !excluidos.some(e => String(e) === String(s.id)));
     }
 
     // ATUALIZAR INTERFACE E CONTADORES
@@ -2047,11 +2120,19 @@
     }
 
     function excluirRadarItem(id) {
-      const confirmou = confirm("Deseja ocultar esta oportunidade do seu Radar definitivamente?");
-      if (!confirmou) return;
-      adicionarExcluido(id);
-      renderizarRadarPNCP();
+      const strId = String(id);
+      adicionarExcluido(strId);
+
+      // Remove de favoritos se estiver lá
+      let favs = getFavoritos();
+      favs = favs.filter(f => String(f) !== strId);
+      localStorage.setItem('rp_oportunidades_favoritas', JSON.stringify(favs));
       atualizarContadorFavoritas();
+
+      renderizarRadarPNCP();
+      atualizarInterface();
+
+      mostrarNotificacaoExclusao("Oportunidade ocultada do Radar.", strId);
     }
 
     function copiarDadosItem(id) {
