@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#1e293b" />
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f59e0b" />
+      <stop offset="100%" stop-color="#d97706" />
+    </linearGradient>
+    <linearGradient id="emeraldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981" />
+      <stop offset="100%" stop-color="#059669" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Base Shield -->
+  <path d="M256 32L80 96v144c0 141.4 75 220.8 176 240 101-19.2 176-98.6 176-240V96L256 32z" fill="url(#shieldGrad)" stroke="#334155" stroke-width="12" />
+  
+  <!-- Stylized Monogram RP & Balance Pillar -->
+  <!-- Pillar / Scale Stem -->
+  <rect x="246" y="110" width="20" height="260" rx="6" fill="#f8fafc" />
+  
+  <!-- Scale Crossbar -->
+  <path d="M140 170h232" stroke="#f8fafc" stroke-width="14" stroke-linecap="round" />
+  
+  <!-- Left Pan (Opportunities) -->
+  <path d="M140 170l-30 60h60z" fill="url(#goldGrad)" opacity="0.9" />
+  <line x1="140" y1="170" x2="110" y2="230" stroke="#f59e0b" stroke-width="4" />
+  <line x1="140" y1="170" x2="170" y2="230" stroke="#f59e0b" stroke-width="4" />
+  <path d="M95 230c0 20 45 20 45 0" stroke="#f59e0b" stroke-width="6" fill="none" stroke-linecap="round" />
+  
+  <!-- Right Pan (Contracts & Profit) -->
+  <path d="M372 170l-30 60h60z" fill="url(#emeraldGrad)" opacity="0.9" />
+  <line x1="372" y1="170" x2="342" y2="230" stroke="#10b981" stroke-width="4" />
+  <line x1="372" y1="170" x2="402" y2="230" stroke="#10b981" stroke-width="4" />
+  <path d="M327 230c0 20 45 20 45 0" stroke="#10b981" stroke-width="6" fill="none" stroke-linecap="round" />
+
+  <!-- Monogram RP Base -->
+  <circle cx="256" cy="380" r="32" fill="#0284c7" />
+  <text x="256" y="391" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="28" font-weight="900" fill="#ffffff" text-anchor="middle">RP</text>
+  
+  <!-- Star of Excellence at Top -->
+  <polygon points="256,65 264,82 282,82 268,93 273,110 256,99 239,110 244,93 230,82 248,82" fill="url(#goldGrad)" />
+</svg>
