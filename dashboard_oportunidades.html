@@ -1,0 +1,1823 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Central de Decisão MEI | Rafael Plácido - Nova Hartz/RS</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#f0f7ff',
+              100: '#e0effe',
+              500: '#0284c7',
+              600: '#0369a1',
+              700: '#075985',
+              800: '#0c4a6e',
+              900: '#082f49',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    .card-shadow { box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.06), 0 2px 6px -1px rgba(15, 23, 42, 0.04); }
+    .card-hover { transition: all 0.2s ease-in-out; }
+    .card-hover:hover { transform: translateY(-4px); box-shadow: 0 16px 32px -4px rgba(15, 23, 42, 0.12); }
+    .modal-backdrop { background-color: rgba(15, 23, 42, 0.75); backdrop-filter: blur(4px); }
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: #f1f5f9; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+  </style>
+  <script src="radar_pncp_data.js"></script>
+</head>
+<body class="bg-slate-100 text-slate-800 antialiased min-h-screen flex flex-col">
+
+  <!-- HEADER INSTITUCIONAL COMPACTO COM CONTADORES DINÂMICOS -->
+  <header class="bg-slate-900 text-white sticky top-0 z-40 border-b border-slate-800 shadow-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-wrap items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-sky-400 to-emerald-400 flex items-center justify-center font-black text-slate-950 text-xl shadow-md">
+          RP
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <h1 class="text-base sm:text-lg font-bold tracking-tight text-white">Painel de Oportunidades • Contrata+ Brasil</h1>
+            <span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-semibold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+              MEI Ativo
+            </span>
+          </div>
+          <p class="text-xs text-slate-400 flex items-center gap-2">
+            <span>Prestador: <strong>Rafael Plácido</strong> (35.810.080/0001-25)</span>
+            <span>•</span>
+            <span class="text-sky-400 font-medium">📍 Base: Nova Hartz / RS</span>
+          </p>
+        </div>
+      </div>
+
+      <!-- Resumo Rápido Dinâmico -->
+      <div class="flex items-center gap-3 text-right">
+        <div class="bg-slate-800 border border-slate-700 px-3 py-1.5 rounded-lg">
+          <p class="text-[10px] text-slate-400 uppercase tracking-wider font-semibold">Seu Capital de Giro</p>
+          <p class="text-sm sm:text-base font-extrabold text-emerald-400">R$ 5.000,00</p>
+        </div>
+        <div class="bg-slate-800 border border-slate-700 px-3 py-1.5 rounded-lg">
+          <p class="text-[10px] text-slate-400 uppercase tracking-wider font-semibold">Volume Ativo em Disputa</p>
+          <p id="headerVolumeTotal" class="text-sm sm:text-base font-extrabold text-sky-400">R$ 0,00</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- BANNER EXPLICATIVO -->
+  <div class="bg-gradient-to-r from-sky-900 via-slate-900 to-emerald-950 text-white py-3 px-4 border-b border-sky-800/40">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between text-xs gap-3">
+      <div class="flex items-center gap-2">
+        <span class="p-1.5 rounded-lg bg-sky-500/20 text-sky-300 font-bold">
+          💡 Painel Interativo com Gerenciamento
+        </span>
+        <span class="text-slate-200">
+          Clique em qualquer card para ver a discriminação completa. Use o botão <strong>🗑️ excluir</strong> para remover demandas que não deseja disputar!
+        </span>
+      </div>
+      <div class="flex items-center gap-2">
+        <button id="btnRestaurar" onclick="restaurarExcluidos()" class="hidden text-xs bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold px-3 py-1 rounded-lg transition-all shadow-sm flex items-center gap-1">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+          <span id="txtRestaurar">Restaurar Oportunidades</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTEÚDO PRINCIPAL -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow space-y-8">
+
+    <!-- BARRA DE FILTROS LIMPA -->
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-2 border-b border-slate-200">
+      <div>
+        <h2 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2">
+          <span>Oportunidades em Monitoramento</span>
+          <span id="badgeQtdAtivas" class="text-xs px-2.5 py-0.5 rounded-full bg-slate-200 text-slate-700 font-bold">0 ativas</span>
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-500 mt-0.5">Selecione para ver orçamentos detalhados ou exclua os que preferir descartar.</p>
+      </div>
+      <!-- Filtros Rápidos -->
+      <div class="flex flex-wrap items-center gap-1.5" id="filterContainer">
+        <button onclick="filterCards('todos')" class="filter-btn active px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-slate-900 text-white shadow-sm" data-filter="todos">
+          Todos
+        </button>
+        <button onclick="filterCards('recomendados')" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-white hover:bg-slate-200 text-slate-700 border border-slate-300" data-filter="recomendados">
+          ⭐ Top Escolhas
+        </button>
+        <button onclick="filterCards('taquara')" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-white hover:bg-slate-200 text-slate-700 border border-slate-300" data-filter="taquara">
+          ⚡ Taquara (17 km)
+        </button>
+        <button onclick="filterCards('exercito')" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-white hover:bg-slate-200 text-slate-700 border border-slate-300" data-filter="exercito">
+          Exército Brasileiro (5)
+        </button>
+        <button onclick="filterCards('gastronomia')" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-white hover:bg-slate-200 text-slate-700 border border-slate-300" data-filter="gastronomia">
+          ☕ Coffee Break
+        </button>
+                        <button onclick="filterCards('minhas_propostas')" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-300 flex items-center gap-1.5 shadow-sm" data-filter="minhas_propostas">
+          <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+          📨 Minhas Propostas Enviadas (4)
+        </button>
+        <button onclick="filterCards('radar_pncp')" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-sky-50 hover:bg-sky-100 text-sky-800 border border-sky-300 flex items-center gap-1.5" data-filter="radar_pncp">
+          <span class="w-2 h-2 rounded-full bg-sky-500 animate-pulse"></span>
+          📡 Radar PNCP / Região (Ao Vivo)
+        </button>
+<button onclick="filterCards('alimentos')" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-300" data-filter="alimentos">
+          🌾 CONAB
+        </button>
+      </div>
+    </div>
+
+    <!-- GRID DE CARDS PRINCIPAL -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5" id="servicesGrid">
+      <!-- Inserido dinamicamente pelo JavaScript -->
+    </div>
+
+  </main>
+
+  
+  <!-- MODAL DE REGISTRO MANUAL DE PROPOSTA ENVIADA -->
+  <div id="modalRegistroProposta" class="fixed inset-0 z-50 hidden overflow-y-auto modal-backdrop flex items-center justify-center p-3 sm:p-6 transition-all duration-200">
+    <div class="bg-white rounded-3xl max-w-lg w-full p-6 shadow-2xl border border-slate-200 space-y-5 animate-in">
+      <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+        <div>
+          <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded bg-emerald-100 text-emerald-800">Gravação Segura • Histórico</span>
+          <h3 class="text-lg font-black text-slate-900 mt-1">Registrar Proposta Enviada</h3>
+        </div>
+        <button onclick="fecharModalRegistroProposta()" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 font-bold flex items-center justify-center text-sm transition-all">
+          ✕
+        </button>
+      </div>
+
+      <p class="text-xs text-slate-500">
+        Registre os dados da proposta que você protocolou no portal do governo. Ela ficará gravada no seu painel na aba <strong>Minhas Propostas</strong> com cálculo de lucro e contagem de tempo regressiva!
+      </p>
+
+      <form id="formRegistroProposta" onsubmit="salvarNovaPropostaEnviada(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">Título / Oportunidade:*</label>
+          <input type="text" id="regTitulo" required class="w-full text-xs p-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 font-semibold text-slate-800">
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Órgão Demandante:*</label>
+            <input type="text" id="regOrgao" required class="w-full text-xs p-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-emerald-500 text-slate-800">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Cidade / Local:*</label>
+            <input type="text" id="regLocal" required class="w-full text-xs p-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-emerald-500 text-slate-800">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Valor do Seu Lance (R$):*</label>
+            <input type="number" step="0.01" id="regValorLance" required placeholder="Ex: 3500.00" class="w-full text-xs p-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-emerald-500 font-extrabold text-slate-900">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Custo Estimado de Execução (R$):*</label>
+            <input type="number" step="0.01" id="regCusto" required placeholder="Ex: 1450.00" class="w-full text-xs p-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-emerald-500 text-slate-800">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Data/Hora Encerramento:*</label>
+            <input type="datetime-local" id="regDataFim" required class="w-full text-xs p-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-emerald-500 text-slate-800">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Status Oficial da Demanda:*</label>
+            <select id="regStatus" class="w-full text-xs p-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-emerald-500 font-semibold text-slate-800">
+              <option value="classificado">✓ Classificado na Disputa</option>
+              <option value="enviada" selected>🔵 Aguardando Disputa</option>
+              <option value="sicaf_alerta">⚠️ Erro / Alerta na Validação</option>
+              <option value="vencedor">🏆 Proposta Vencedora / Homologada</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">Observações ou Número do Processo:</label>
+          <input type="text" id="regObs" placeholder="Ex: Proposta enviada pelo Compras.gov.br às 11:30" class="w-full text-xs p-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-emerald-500 text-slate-700">
+        </div>
+
+        <div class="pt-2 flex items-center justify-end gap-2 border-t border-slate-100">
+          <button type="button" onclick="fecharModalRegistroProposta()" class="px-4 py-2 text-xs font-bold rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 transition-all">
+            Cancelar
+          </button>
+          <button type="submit" class="px-5 py-2 text-xs font-bold rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white transition-all shadow-sm flex items-center gap-1.5">
+            <span>💾 Salvar no Histórico Permanente</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL DE DETALHAMENTO COMPLETO -->
+  <div id="detailModal" class="fixed inset-0 z-50 hidden overflow-y-auto modal-backdrop flex items-center justify-center p-3 sm:p-6 transition-all duration-200">
+    <div class="bg-white rounded-3xl max-w-4xl w-full max-h-[92vh] flex flex-col shadow-2xl border border-slate-200 overflow-hidden transform transition-all">
+      
+      <!-- Cabeçalho do Modal -->
+      <div id="modalHeader" class="bg-slate-900 text-white p-5 sm:p-6 flex items-start justify-between gap-4 border-b border-slate-800">
+        <div>
+          <div class="flex items-center gap-2">
+            <span id="modalBadge" class="px-2.5 py-0.5 rounded text-[11px] font-black uppercase tracking-wider bg-emerald-400 text-slate-950 shadow-sm">
+              Top 1 Escolha
+            </span>
+            <span id="modalOrgao" class="text-xs text-slate-300 font-semibold">Órgão</span>
+          </div>
+          <h3 id="modalTitulo" class="text-lg sm:text-2xl font-black text-white mt-1.5 leading-tight">
+            Título do Serviço
+          </h3>
+          <p id="modalLocal" class="text-xs text-slate-400 mt-1 flex items-center gap-1.5">
+            <svg class="w-3.5 h-3.5 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            <span id="modalLocalTxt">Localização e Distância</span>
+          </p>
+        </div>
+        <button onclick="fecharModal()" class="w-9 h-9 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white flex items-center justify-center text-lg font-bold transition-colors flex-shrink-0">
+          ✕
+        </button>
+      </div>
+
+      <!-- Corpo do Modal com Scroll Interno -->
+      <div class="p-5 sm:p-6 overflow-y-auto space-y-6 text-slate-800">
+
+        <!-- BANNER DE RESUMO FINANCEIRO (4 CARDS) -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
+          <div class="p-3 rounded-xl bg-slate-100 border border-slate-200">
+            <span class="text-[10px] uppercase font-bold text-slate-500 block">Valor da Demanda</span>
+            <span id="modalRef" class="text-base sm:text-lg font-extrabold text-slate-800 block mt-0.5">R$ 0,00</span>
+            <span class="text-[10px] text-slate-400">Preço do Órgão</span>
+          </div>
+          <div class="p-3 rounded-xl bg-sky-50 border border-sky-200">
+            <span class="text-[10px] uppercase font-bold text-sky-800 block">Proposta Sugerida</span>
+            <span id="modalProposta" class="text-base sm:text-lg font-black text-sky-700 block mt-0.5">R$ 0,00</span>
+            <span class="text-[10px] text-sky-600 font-semibold">Seu Faturamento</span>
+          </div>
+          <div class="p-3 rounded-xl bg-rose-50 border border-rose-200">
+            <span class="text-[10px] uppercase font-bold text-rose-800 block">Custo de Execução</span>
+            <span id="modalCusto" class="text-base sm:text-lg font-extrabold text-rose-700 block mt-0.5">R$ 0,00</span>
+            <span class="text-[10px] text-rose-600">Materiais + Frete</span>
+          </div>
+          <div class="p-3 rounded-xl bg-emerald-50 border border-emerald-300">
+            <span class="text-[10px] uppercase font-bold text-emerald-800 block">Seu Lucro Líquido</span>
+            <span id="modalLucro" class="text-base sm:text-lg font-black text-emerald-700 block mt-0.5">+ R$ 0,00</span>
+            <span id="modalMargem" class="text-[10px] text-emerald-700 font-bold block">Margem: 0%</span>
+          </div>
+        </div>
+
+        <!-- ALERTA / DESTAQUE ESTRATÉGICO -->
+        <div id="modalDestaqueBox" class="p-4 rounded-2xl bg-amber-50 border-l-4 border-amber-500 text-xs text-amber-950 space-y-1">
+          <!-- Preenchido dinamicamente -->
+        </div>
+
+        <!-- TABELA ITEMIZADA DE TUDO QUE SERÁ COMPRADO -->
+        <div>
+          <div class="flex items-center justify-between mb-2.5">
+            <h4 class="text-sm font-extrabold text-slate-900 uppercase tracking-wider flex items-center gap-1.5">
+              <span>🛒 Discriminação de Tudo que Será Comprado / Materiais</span>
+            </h4>
+            <span id="modalQtdItens" class="text-xs text-slate-500 font-semibold">0 itens</span>
+          </div>
+
+          <div class="overflow-x-auto border border-slate-200 rounded-xl">
+            <table class="w-full text-left text-xs border-collapse">
+              <thead>
+                <tr class="bg-slate-100 text-slate-600 uppercase text-[10px] font-bold border-b border-slate-200">
+                  <th class="py-2.5 px-3">Item a Ser Comprado</th>
+                  <th class="py-2.5 px-3">Especificação / Origem</th>
+                  <th class="py-2.5 px-3">Qtd.</th>
+                  <th class="py-2.5 px-3">Preço Unitário</th>
+                  <th class="py-2.5 px-3 text-right">Subtotal</th>
+                </tr>
+              </thead>
+              <tbody id="modalTbodyMateriais" class="divide-y divide-slate-100">
+                <!-- Preenchido dinamicamente -->
+              </tbody>
+              <tfoot>
+                <tr class="bg-slate-100/80 font-bold text-slate-900 text-xs border-t border-slate-200">
+                  <td colspan="4" class="py-2.5 px-3 uppercase">Total de Materiais e Insumos</td>
+                  <td id="modalTotalMateriais" class="py-2.5 px-3 text-right text-rose-700 font-black">R$ 0,00</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </div>
+
+        <!-- 2 BOXES: MÃO DE OBRA & LOGÍSTICA DE NOVA HARTZ -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+          <!-- Box Operação -->
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+            <span class="text-[11px] font-extrabold uppercase text-slate-700 block flex items-center gap-1.5">
+              <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+              Mão de Obra & Equipe de Apoio
+            </span>
+            <div id="modalEquipeDetalhes" class="space-y-1.5 text-slate-600">
+              <!-- Preenchido dinamicamente -->
+            </div>
+          </div>
+
+          <!-- Box Logística -->
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+            <span class="text-[11px] font-extrabold uppercase text-slate-700 block flex items-center gap-1.5">
+              <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0"/></svg>
+              Logística & Deslocamento de Nova Hartz
+            </span>
+            <div id="modalLogisticaDetalhes" class="space-y-1.5 text-slate-600">
+              <!-- Preenchido dinamicamente -->
+            </div>
+          </div>
+        </div>
+
+        <!-- SIMULADOR DINÂMICO EMBUTIDO NO PRÓPRIO MODAL -->
+        <div class="p-5 rounded-2xl bg-gradient-to-br from-slate-900 to-slate-950 text-white space-y-4 border border-slate-800">
+          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+            <div>
+              <span class="text-[10px] font-bold text-sky-400 uppercase tracking-widest block">Simulador de Lance</span>
+              <h5 class="text-sm sm:text-base font-extrabold text-white mt-0.5">Quer alterar o valor da sua proposta?</h5>
+              <p class="text-[11px] text-slate-400">Arraste a barra para alterar o valor do seu lance e ver o lucro recalculado na hora.</p>
+            </div>
+            <div class="text-right">
+              <span class="text-[10px] text-slate-400 uppercase font-bold block">Sua Proposta no Simulador</span>
+              <span id="modalSliderValor" class="text-xl font-black text-sky-400">R$ 0,00</span>
+            </div>
+          </div>
+
+          <input type="range" id="modalSliderInput" min="1000" max="30000" step="50" value="3900" oninput="recalcularModal()" class="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-sky-400">
+
+          <div class="flex justify-between text-[10px] text-slate-400">
+            <span id="modalSliderMin">R$ 0</span>
+            <span class="text-sky-300 font-semibold">Proposta Sugerida</span>
+            <span id="modalSliderMax">R$ 0</span>
+          </div>
+
+          <div class="pt-3 border-t border-slate-800 grid grid-cols-2 gap-3 text-center">
+            <div class="bg-slate-800/80 p-2.5 rounded-xl border border-slate-700">
+              <span class="text-[10px] text-slate-400 uppercase block font-semibold">Novo Lucro Líquido</span>
+              <span id="modalSimLucro" class="text-base font-black text-emerald-400 block">+ R$ 0,00</span>
+            </div>
+            <div class="bg-slate-800/80 p-2.5 rounded-xl border border-slate-700">
+              <span class="text-[10px] text-slate-400 uppercase block font-semibold">Nova Margem Líquida</span>
+              <span id="modalSimMargem" class="text-base font-black text-sky-400 block">0%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- REQUISITOS DE HABILITAÇÃO & CNAE -->
+        <div class="p-4 rounded-xl bg-slate-100 border border-slate-200 text-xs text-slate-700 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+          <div>
+            <span class="text-[10px] uppercase font-bold text-slate-500 block">CNAE / Serviço Necessário no MEI:</span>
+            <strong id="modalCNAE" class="text-slate-900 font-bold block mt-0.5">CNAE</strong>
+          </div>
+          <div class="text-right">
+            <span class="text-[10px] uppercase font-bold text-slate-500 block">Prazo de Recebimento:</span>
+            <strong id="modalPrazoPgto" class="text-slate-900 font-bold block mt-0.5">30 dias</strong>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Rodapé do Modal com Ações -->
+      <div class="bg-slate-100 p-4 border-t border-slate-200 flex flex-wrap items-center justify-between gap-3">
+        <div class="flex items-center gap-2">
+          <button onclick="fecharModal()" class="px-4 py-2 text-xs font-bold rounded-lg bg-slate-200 hover:bg-slate-300 text-slate-700 transition-colors">
+            ← Voltar
+          </button>
+          <button id="modalBtnExcluir" onclick="excluirDoModal()" class="px-3 py-2 text-xs font-bold rounded-lg bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 transition-colors flex items-center gap-1.5">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+            Excluir Demanda
+          </button>
+          <button id="modalBtnRegistrarEnvio" onclick="abrirModalRegistroProposta()" class="px-3 py-2 text-xs font-bold rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white transition-colors shadow-sm flex items-center gap-1.5">
+            <span>📝</span>
+            <span>Registrar Proposta Enviada</span>
+          </button>
+        </div>
+        <a id="modalBtnPortal" href="https://contratamaisbrasil.sistema.gov.br/" target="_blank" rel="noopener noreferrer" class="px-4 py-2 text-xs font-bold rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white transition-all shadow-sm flex items-center gap-1.5">
+          <span>Fazer Proposta no Contrata+ Brasil</span>
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- RODAPÉ COMPACTO -->
+  <footer class="bg-slate-900 border-t border-slate-800 text-slate-400 py-6 text-xs text-center">
+    <div class="max-w-7xl mx-auto px-4">
+      <p>Painel Estruturado • Rafael Plácido (Nova Hartz / RS)</p>
+      <p class="text-slate-600 mt-1">Dados integrados das demandas do Contrata+ Brasil (Prefeitura de Taquara, FGTAS/TRT, Exército Brasileiro CPOR e 3ª RM, PRF-RS e CONAB).</p>
+    </div>
+  </footer>
+
+  <!-- SCRIPT COM O BANCO DE DADOS COMPLETO E LÓGICA DE EXCLUSÃO/LOCALSTORAGE -->
+  <script>
+    // BANCO DE DADOS CONSOLIDADO DOS 10 SERVIÇOS COM DISCRIMINAÇÃO COMPLETA
+    
+    // BASE DE PROPOSTAS JÁ ENVIADAS PELO RAFAEL NO CONTRATA+ BRASIL
+    const propostasEnviadasDB = [
+      {
+        id: "prop_coffee_trt",
+        titulo: "Coffee Break – Seminário do Observatório do Trabalho do RS",
+        orgao: "FUNDACAO GAUCHA DO TRABALHO E ACAO SOCIAL - RS",
+        local: "Tribunal Regional do Trabalho (Auditório Ruy Cirne Lima - Porto Alegre/RS)",
+        categoriaTipo: "Ação Institucional e Evento",
+        iconeTipo: "F", // FGTAS
+        dataDisputaFim: "2026-11-12T11:00:00",
+        dataDisputaFimTexto: "12/11/2026",
+        dataEvento: "17 e 18 de Novembro de 2026",
+        valorLance: 14150.00,
+        custoEstimado: 6400.00,
+        lucroProjetado: 7750.00,
+        statusId: "enviada",
+        statusTexto: "Aguardando Disputa",
+        statusBadgeClass: "bg-sky-100 text-sky-800 border-sky-300",
+        observacao: "Demanda para 600 pessoas em 2 dias (4 turnos). Sua proposta de R$ 14.150,00 foi protocolada com sucesso.",
+        linkServico: "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/acompanhamento-compra",
+        detalheServicoId: "coffeebreak_trt"
+      },
+      {
+        id: "prop_drywall_3rm",
+        titulo: "Divisória Simples em Drywall (7,56 m²) com Isolamento",
+        orgao: "COMANDO DA 3ª REGIÃO MILITAR / RS (Exército Brasileiro)",
+        local: "Rua Corrêa Lima, Santa Teresa - Porto Alegre/RS",
+        categoriaTipo: "Obras e Reparos",
+        dataDisputaFim: "2026-11-11T14:00:00",
+        dataDisputaFimTexto: "11/11/2026",
+        valorLance: 2750.00,
+        custoEstimado: 950.00,
+        lucroProjetado: 1800.00,
+        statusId: "sicaf_alerta",
+        statusTexto: "Atenção: Erro na Validação SICAF",
+        statusBadgeClass: "bg-rose-100 text-rose-800 border-rose-300 animate-pulse font-extrabold",
+        observacao: "O Contrata+ Brasil sinalizou pendência cadastral no SICAF (geralmente certidão estadual ou nível de qualificação que precisa de atualização rápida no Gov.br).",
+        linkServico: "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/acompanhamento-compra",
+        detalheServicoId: "drywall_exercito"
+      },
+      {
+        id: "prop_pintura_3rm",
+        titulo: "Pintura de Paredes Internas (127 m²) - Pé-direito 4,50m",
+        orgao: "COMANDO DA 3ª REGIÃO MILITAR / RS (Exército Brasileiro)",
+        local: "Rua Corrêa Lima, Santa Teresa - Porto Alegre/RS",
+        categoriaTipo: "Serviços de Pintura",
+        dataDisputaFim: "2026-11-11T14:30:00",
+        dataDisputaFimTexto: "11/11/2026",
+        valorLance: 4100.00,
+        custoEstimado: 1550.00,
+        lucroProjetado: 2550.00,
+        statusId: "classificado",
+        statusTexto: "✓ Classificado na Disputa",
+        statusBadgeClass: "bg-emerald-100 text-emerald-800 border-emerald-300 font-bold",
+        observacao: "Sua proposta de R$ 4.100,00 foi validada com sucesso pelo sistema e está apta para a fase final de julgamento/lances.",
+        linkServico: "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/acompanhamento-compra",
+        detalheServicoId: "pintura_paredes"
+      },
+      {
+        id: "prop_grades_cpor",
+        titulo: "Fabricação e Instalação de 2 Grades em Metalon Estrutural",
+        orgao: "CENTRO DE PREPARAÇÃO DE OFICIAIS DA RESERVA (CPOR/PA / Exército)",
+        local: "Rua Corrêa Lima, Santa Teresa - Porto Alegre/RS",
+        categoriaTipo: "Serralheria e Estruturas",
+        dataDisputaFim: "2026-11-11T15:00:00",
+        dataDisputaFimTexto: "11/11/2026",
+        valorLance: 3200.00,
+        custoEstimado: 1150.00,
+        lucroProjetado: 2050.00,
+        statusId: "classificado",
+        statusTexto: "✓ Classificado na Disputa",
+        statusBadgeClass: "bg-emerald-100 text-emerald-800 border-emerald-300 font-bold",
+        observacao: "Proposta aceita para as 2 grades (198 cm x 119 cm). Posição de liderança no lote.",
+        linkServico: "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/acompanhamento-compra",
+        detalheServicoId: "grades_metalon"
+      }
+    ];
+
+    const servicosDB = [
+      {
+        id: "blackout_hotel_exercito",
+        titulo: "Revisão e Substituição de Blackouts dos Apartamentos (Hotel Militar)",
+        linkDireto: "https://contratamaisbrasil.sistema.gov.br/",
+        categoria: "exercito",
+        badgeText: "🏛️ Exército • Contrato de R$ 12,9k • Exclusivo MEI",
+        badgeClass: "bg-emerald-600 text-white",
+        orgao: "COMANDO DO COMANDO MILITAR DO SUL / RS (Exército Brasileiro)",
+        local: "Hotel de Trânsito da Guarnição de Porto Alegre (Rua Sete de Setembro, Centro Histórico)",
+        distanciaKm: 76,
+        distanciaTexto: "76 km de Nova Hartz (1h10min pela RS-239 e BR-116)",
+        valorReferencia: 12900.00,
+        propostaSugerida: 10450.00,
+        propostaMin: 8500.00,
+        propostaMax: 12900.00,
+        capitalNecessario: 4200.00,
+        prazoPagamento: "20 dias após emissão da NF (Empenho)",
+        formaPagamento: "Empenho",
+        diasObra: 3,
+        cnae: "Reparação e Instalação de Persianas e Cortinas (CNAE 4330-4/05)",
+        destaque: "🏨 <strong>Grande Oportunidade Exclusiva para MEI:</strong> Reforma e troca completa das cortinas tipo blackout rolô dos apartamentos do Hotel de Trânsito do Exército. Os tecidos atuais estão desgastados e os comandos quebrados pelos hóspedes. Fornecimento de tecidos blackout novos, comandos, correntes e instalação apartamento por apartamento!",
+        itensCompra: [
+          {
+            item: "Tecidos Blackout Rolo Sob Medida (100% Vedação)",
+            espec: "Tecido vinílico/poliéster blackout bege/areia padrão hotelaria com refilamento",
+            qtd: "Lote ~14 Janelas",
+            precoUnit: 210.00,
+            total: 2940.00,
+            fornecedor: "Distribuidora de Componentes de Persianas / Fábrica Rolo"
+          },
+          {
+            item: "Mecanismos de Comando e Roldanas para Tubo",
+            espec: "Comandos de redução de peso, ponteiras e travas para tubos de alumínio",
+            qtd: "14 Jogos",
+            precoUnit: 25.00,
+            total: 350.00,
+            fornecedor: "Distribuidora de Acessórios para Cortinas"
+          },
+          {
+            item: "Correntes de Comando Plásticas/Inox com Limitadores",
+            espec: "Correntes de bolinha contínua com fixadores de segurança de parede",
+            qtd: "14 Unidades",
+            precoUnit: 15.00,
+            total: 210.00,
+            fornecedor: "Distribuidora de Persianas"
+          },
+          {
+            item: "Suportes Laterais de Fixação + Buchas e Parafusos",
+            espec: "Suportes em aço pintado de branco com buchas especiais para alvenaria",
+            qtd: "14 Pares",
+            precoUnit: 12.00,
+            total: 168.00,
+            fornecedor: "Casa de Ferragens"
+          },
+          {
+            item: "Barras Inferiores de Peso e Acabamento",
+            espec: "Perfil de alumínio tubular para barra inferior com tampas laterais",
+            qtd: "14 Barras",
+            precoUnit: 22.00,
+            total: 308.00,
+            fornecedor: "Distribuidora de Persianas"
+          }
+        ],
+        equipe: {
+          descricao: "Equipe de instalação e manutenção (desmontagem, revisão, limpeza, troca de tecidos e regulagem nos quartos)",
+          diarias: 3,
+          valorDiaria: 350.00,
+          total: 1050.00
+        },
+        logistica: {
+          rota: "Nova Hartz ↔ Hotel Militar Centro Histórico (3 deslocamentos)",
+          kmTotal: "456 km totais (Combustível + Estacionamento Centro)",
+          total: 314.00
+        },
+        reserva: 200.00
+      },
+      {
+        id: "cortinas_hotel_exercito",
+        titulo: "Confecção e Instalação de Cortinas Prega Wave (Hotel Militar)",
+        linkDireto: "https://contratamaisbrasil.sistema.gov.br/",
+        categoria: "exercito",
+        badgeText: "🏛️ Exército • Centro Histórico POA",
+        badgeClass: "bg-emerald-700 text-white",
+        orgao: "COMANDO DO COMANDO MILITAR DO SUL / RS (Exército Brasileiro)",
+        local: "Hotel de Trânsito da Guarnição de Porto Alegre (Rua Sete de Setembro, Centro Histórico)",
+        distanciaKm: 76,
+        distanciaTexto: "76 km de Nova Hartz (1h10min pela RS-239 e BR-116)",
+        valorReferencia: 2900.00,
+        propostaSugerida: 2450.00,
+        propostaMin: 1950.00,
+        propostaMax: 2900.00,
+        capitalNecessario: 1300.00,
+        prazoPagamento: "20 dias após emissão da NF (Empenho)",
+        formaPagamento: "Empenho",
+        diasObra: 1,
+        cnae: "Reparação/Instalação de Persianas e Cortinas (CNAE 4330-4/05 ou 1351-1/00)",
+        destaque: "🏨 <strong>Oportunidade de Execução Rápida:</strong> Fornecimento de 3 cortinas em tecido linho bege com forro branco e prega wave para o Salão Nobre do Hotel Militar. Trabalho executado em oficina de costura/estofaria e instalado no local em apenas 1 manhã!",
+        itensCompra: [
+          {
+            item: "2 Cortinas Tecido Linho Bege (2,30m alt x 1,90m larg)",
+            espec: "Modelo Prega Wave com Forro 01 Branco e abertura lateral para janelas do salão",
+            qtd: "2 Peças (8,74 m²)",
+            precoUnit: 340.00,
+            total: 680.00,
+            fornecedor: "Ateliê de Cortinas / Fábrica Têxtil Local"
+          },
+          {
+            item: "1 Cortina Tecido Linho Bege (2,70m alt x 2,70m larg)",
+            espec: "Modelo Prega Wave com Forro 01 Branco para o vão central do salão",
+            qtd: "1 Peça (7,29 m²)",
+            precoUnit: 440.00,
+            total: 440.00,
+            fornecedor: "Ateliê de Cortinas / Fábrica Têxtil Local"
+          },
+          {
+            item: "Trilhos Suíços Novos de Alumínio + Suportes Reforçados",
+            espec: "Trilhos suíços simples em alumínio branco com rodízios wave e presilhas",
+            qtd: "3 Jogos",
+            precoUnit: 45.00,
+            total: 135.00,
+            fornecedor: "Casa de Ferragens / Persianas"
+          },
+          {
+            item: "Fixadores, Parafusos e Buchas para Alvenaria",
+            espec: "Buchas 6mm/8mm e parafusos Philips para fixação dos suportes",
+            qtd: "1 Kit",
+            precoUnit: 25.00,
+            total: 25.00,
+            fornecedor: "Loja de Ferragens"
+          }
+        ],
+        equipe: {
+          descricao: "Remoção dos trilhos antigos, furação e instalação dos trilhos suíços e colocação das cortinas",
+          diarias: 1,
+          valorDiaria: 200.00,
+          total: 200.00
+        },
+        logistica: {
+          rota: "Nova Hartz ↔ Hotel de Trânsito (Rua Sete de Setembro, Porto Alegre)",
+          kmTotal: "152 km ida e volta (Combustível + Estacionamento Centro)",
+          total: 110.00
+        },
+        reserva: 50.00
+      },
+      {
+        id: "eletrica_taquara",
+        titulo: "Adequação Elétrica & Aterramento (Necrotério)",
+        linkDireto: "https://contratamaisbrasil.sistema.gov.br/",
+        categoria: "taquara recomendados",
+        badgeText: "⭐ Top 1 • Demanda Urgente • 17 km",
+        badgeClass: "bg-emerald-500 text-white",
+        orgao: "Prefeitura Municipal de Taquara - RS",
+        local: "Necrotério Municipal (Rua 13 de Maio esq. Inocente F. do Amaral - Taquara/RS)",
+        distanciaKm: 17,
+        distanciaTexto: "17 km de Nova Hartz (18 min pela RS-239) • SEM PEDÁGIO",
+        valorReferencia: 6073.33,
+        propostaSugerida: 5500.00,
+        propostaMin: 4200.00,
+        propostaMax: 6073.33,
+        capitalNecessario: 1660.00,
+        prazoPagamento: "30 dias após NF (Empenho)",
+        formaPagamento: "Empenho",
+        diasObra: 3,
+        cnae: "ELETRICISTA PREDIAL INDEPENDENTE (CNAE 4321-5/00)",
+        destaque: "⚡ <strong>Vantagem Imbatível:</strong> Fica colado em Nova Hartz (apenas 17 km). Você não paga pedágio e gasta cerca de R$ 18,00 de combustível por dia. Demanda urgente da Prefeitura com grande chance de vitória!",
+        itensCompra: [
+          { item: "Hastes de Aterramento Cobreadas", espec: "5/8 pol x 2,40m alta camada cobreada", fornecedor: "Loja Elétrica Regional", qtd: "6 un", precoUnit: 42.00, total: 252.00 },
+          { item: "Caixas de Inspeção de Solo", espec: "PVC c/ tampa reforçada p/ aterramento", fornecedor: "Material de Construção", qtd: "6 un", precoUnit: 22.00, total: 132.00 },
+          { item: "Conectores Haste-Cabo", espec: "Grampo parafuso fendido (split-bolt)", fornecedor: "Loja Elétrica", qtd: "6 un", precoUnit: 9.00, total: 54.00 },
+          { item: "Cabo de Cobre Nu", espec: "16mm² para anel/malha de aterramento", fornecedor: "Distribuidora Elétrica", qtd: "25 metros", precoUnit: 7.60, total: 190.00 },
+          { item: "Cabos dos Ares-Condicionados", espec: "Cabo Flexível 4mm² antichama 750V (fase, N, terra)", fornecedor: "Loja Elétrica", qtd: "150 metros", precoUnit: 2.53, total: 380.00 },
+          { item: "Disjuntores DIN dos Ares", espec: "Curva C (16A / 20A) unipolares/bipolares", fornecedor: "Loja Elétrica", qtd: "4 un", precoUnit: 18.00, total: 72.00 },
+          { item: "Tomadas de Força Sobrepor", espec: "Caixas com tomada 20A reforçada p/ ar-condicionado", fornecedor: "Loja Elétrica", qtd: "4 un", precoUnit: 25.00, total: 100.00 },
+          { item: "Eletrodutos e Fixações", espec: "Eletrodutos rígidos PVC / canaletas + abraçadeiras", fornecedor: "Loja Elétrica", qtd: "1 Lote", precoUnit: 160.00, total: 160.00 },
+          { item: "Adequação do Quadro Geral", espec: "Disjuntor geral DIN + DPS surtos + barramentos pente", fornecedor: "Loja Elétrica", qtd: "1 Kit", precoUnit: 170.00, total: 170.00 },
+          { item: "Interruptores e Tomadas", espec: "Troca de conjuntos danificados do necrotério", fornecedor: "Loja Elétrica", qtd: "8 un", precoUnit: 15.00, total: 120.00 },
+          { item: "Insumos Miúdos", espec: "Fitas isolantes 3M, terminais ilhós, buchas e parafusos", fornecedor: "Ferragem Local", qtd: "1 Kit", precoUnit: 30.00, total: 30.00 }
+        ],
+        equipe: {
+          descricao: "1 Ajudante para auxiliar na abertura de valetas para as hastes e passagem de cabos",
+          diarias: 3,
+          valorDiaria: 150.00,
+          total: 450.00
+        },
+        logistica: {
+          rota: "Nova Hartz ↔ Taquara (RS-239 sem pedágio)",
+          kmTotal: "102 km totais (34 km/dia em 3 dias)",
+          combustivel: 54.00,
+          pedagio: 0.00,
+          total: 54.00
+        },
+        reserva: 100.00
+      },
+      {
+        id: "porta_seguranca_cpor",
+        titulo: "Porta de Segurança Aço Carbono (83x213 cm)",
+        categoria: "exercito recomendados",
+        badgeText: "⭐ 3º Serviço na Mesma Rua! (CPOR)",
+        badgeClass: "bg-emerald-600 text-white font-black",
+        orgao: "Exército Brasileiro • CPOR/PA",
+        local: "Rua Corrêa Lima, Bairro Santa Teresa - Porto Alegre/RS (Mesmo Quartel das Grades!)",
+        distanciaKm: 80,
+        distanciaTexto: "80 km de Nova Hartz (1h20 via RS-239 e BR-116)",
+        valorReferencia: 4900.00,
+        propostaSugerida: 3950.00,
+        propostaMin: 2900.00,
+        propostaMax: 5200.00,
+        capitalNecessario: 1100.00,
+        prazoPagamento: "30 dias após NF (Empenho)",
+        formaPagamento: "Empenho",
+        diasObra: 1,
+        cnae: "INSTALADOR DE TRANCAS E TRAVAS / SERRALHEIRO (2542-0/00)",
+        destaque: "🎯 <strong>Sinergia Total (3 Serviços na Mesma Rua!):</strong> O CPOR/PA e o 3º CGCFEx ficam todos na Rua Corrêa Lima. Você pode fabricar a porta de aço e as grades na sua oficina e fazer a instalação das duas juntas no mesmo dia, economizando frete e combustível!",
+        itensCompra: [
+          { item: "Chapa de Aço Carbono Estrutural", espec: "Chapa 14 (2,0mm) dobrada p/ folha de porta reforçada", fornecedor: "Distribuidora de Ferro/Aço", qtd: "1 chapa 1,2x2,5m", precoUnit: 380.00, total: 380.00 },
+          { item: "Tubos Metalon de Reforço", espec: "Metalon 30x30 e 40x20 chapa 16 p/ nervuras internas", fornecedor: "Distribuidora de Ferro", qtd: "2 barras", precoUnit: 80.00, total: 160.00 },
+          { item: "Batente Metálico Reforçado (Marco)", espec: "Perfil U chapa 14 dobrado sob medida (83x213cm)", fornecedor: "Calandra / Serralheria", qtd: "1 conjunto", precoUnit: 140.00, total: 140.00 },
+          { item: "Dobradiças Reforçadas c/ Rolamento", espec: "Dobradiça pesada de aço para solda c/ pino fixo", fornecedor: "Ferragem Industrial", qtd: "3 un", precoUnit: 21.67, total: 65.00 },
+          { item: "Fechadura Alta Segurança Tetra", espec: "Fechadura multiponto/tetra reforçada Papaiz/Stam", fornecedor: "Casa das Fechaduras", qtd: "1 kit", precoUnit: 180.00, total: 180.00 },
+          { item: "Insumos de Solda e Pintura", espec: "Eletrodos 6013, primer zarcão e esmalte sintético", fornecedor: "Loja de Tintas", qtd: "1 kit", precoUnit: 130.00, total: 130.00 },
+          { item: "Chumbadores Parabolt & Fixadores", espec: "Chumbadores 3/8 pol para alvenaria/concreto e PU", fornecedor: "Ferragem", qtd: "8 un", precoUnit: 5.62, total: 45.00 }
+        ],
+        equipe: {
+          descricao: "1 Ajudante de serralheiro para transporte, nivelamento e chumbamento",
+          diarias: 1,
+          valorDiaria: 150.00,
+          total: 150.00
+        },
+        logistica: {
+          rota: "Nova Hartz ↔ CPOR/PA (Rua Corrêa Lima, Santa Teresa)",
+          kmTotal: "160 km totais (1 viagem com porta pronta)",
+          combustivel: 140.00,
+          pedagio: 0.00,
+          total: 140.00
+        },
+        reserva: 60.00
+      },
+      {
+        id: "coffeebreak_trt",
+        titulo: "Coffee Break 600 Pessoas (Seminário FGTAS / TRT)",
+        linkDireto: "https://contratamaisbrasil.sistema.gov.br/",
+        categoria: "gastronomia recomendados",
+        badgeText: "⭐ Top Margem (57%) • 10 Dias Pgto",
+        badgeClass: "bg-amber-500 text-slate-950 font-black",
+        orgao: "FGTAS - RS • Tribunal Regional do Trabalho (4ª Região)",
+        local: "Auditório Ruy Cirne Lima - Av. Praia de Belas, Porto Alegre/RS",
+        distanciaKm: 78,
+        distanciaTexto: "78 km de Nova Hartz (1h15 via RS-239 e BR-116)",
+        valorReferencia: 16800.00,
+        propostaSugerida: 15000.00,
+        propostaMin: 11500.00,
+        propostaMax: 18000.00,
+        capitalNecessario: 1062.00,
+        prazoPagamento: "⚡ 10 dias após NF (Empenho)",
+        formaPagamento: "Empenho",
+        diasObra: 2,
+        cnae: "SALGADEIRO(A) INDEPENDENTE (CNAE 1096-1/00)",
+        destaque: "☕ <strong>Cotação Fechada Sallete Salgados (Sapiranga):</strong> Os 30 centos de salgados e 18 centos de doces custam R$ 3.540 na Sallete. O sinal de 30% é de apenas R$ 1.062,00. Retorno de mais de R$ 8,6 mil livres em 10 dias!",
+        itensCompra: [
+          { item: "Minicroissant Salgado Recheado", espec: "Assado recheado (pág 2 cardápio Sallete)", fornecedor: "Sallete Doces e Salgados", qtd: "6 centos", precoUnit: 75.00, total: 450.00 },
+          { item: "Minisanduíches Sem Alface", espec: "Sanduíche de frios/frango (Sallete)", fornecedor: "Sallete Doces e Salgados", qtd: "6 centos", precoUnit: 75.00, total: 450.00 },
+          { item: "Minipão de Queijo", espec: "Pão de queijo quentinho (Sallete)", fornecedor: "Sallete Doces e Salgados", qtd: "6 centos", precoUnit: 75.00, total: 450.00 },
+          { item: "Minipizza de Calabresa", espec: "Calabresa c/ muçarela (Sallete)", fornecedor: "Sallete Doces e Salgados", qtd: "6 centos", precoUnit: 75.00, total: 450.00 },
+          { item: "Minipastel de Carne s/ Lactose", espec: "Pastelina de carne frita (Sallete)", fornecedor: "Sallete Doces e Salgados", qtd: "6 centos", precoUnit: 65.00, total: 390.00 },
+          { item: "Folhado Doce de Goiabada", espec: "Folhado doce (pág 2 cardápio Sallete)", fornecedor: "Sallete Doces e Salgados", qtd: "6 centos", precoUnit: 70.00, total: 420.00 },
+          { item: "Bolo Cenoura c/ Chocolate", espec: "Porções individuais confeitadas (Sallete)", fornecedor: "Sallete Doces e Salgados", qtd: "6 centos", precoUnit: 80.00, total: 480.00 },
+          { item: "Bolo Confeitado de Laranja", espec: "Porções individuais artesanais", fornecedor: "Sallete / Padaria Local", qtd: "6 centos", precoUnit: 75.00, total: 450.00 },
+          { item: "Café Gourmet Quente (60 Litros)", espec: "6kg pó Melitta/Pilão + 4 térmicas + mexedores", fornecedor: "Fort / Desco Atacadista", qtd: "60 Litros", precoUnit: 4.83, total: 290.00 },
+          { item: "Sucos Uva e Laranja (120 Litros)", espec: "60 garrafas 2L integral/néctar + jarras", fornecedor: "Atacadista", qtd: "120 Litros", precoUnit: 6.00, total: 720.00 },
+          { item: "Água Mineral 500ml em Garrafa", espec: "Garrafas individuais lacradas sem gás", fornecedor: "Atacadista (50 fardos)", qtd: "600 garrafas", precoUnit: 1.20, total: 720.00 },
+          { item: "Descartáveis & Toalhas", espec: "Copos térmicos, guardanapos, toalhas e bandejas", fornecedor: "Distribuidora Descartáveis", qtd: "1 Kit 600p", precoUnit: 200.00, total: 200.00 }
+        ],
+        equipe: {
+          descricao: "1 Colaborador(a) uniformizado(a) para reposição contínua nos 4 momentos do evento",
+          diarias: 2,
+          valorDiaria: 180.00,
+          total: 360.00
+        },
+        logistica: {
+          rota: "Nova Hartz ↔ TRT Praia de Belas (2 dias de evento)",
+          kmTotal: "312 km totais (combustível + pedágio RS-239 + estacionamento TRT)",
+          combustivel: 260.00,
+          pedagio: 60.00,
+          total: 320.00
+        },
+        reserva: 250.00
+      },
+      {
+        id: "telhado_exercito",
+        titulo: "Telhado Termoacústico Sanduíche (38,50 m²)",
+        categoria: "exercito recomendados",
+        badgeText: "⭐ Material Fornecido • Risco Mínimo",
+        badgeClass: "bg-emerald-600 text-white",
+        orgao: "Exército Brasileiro • 3º CGCFEx",
+        local: "Rua Corrêa Lima, Bairro Santa Teresa - Porto Alegre/RS",
+        distanciaKm: 80,
+        distanciaTexto: "80 km de Nova Hartz (1h20 via RS-239 e BR-116)",
+        valorReferencia: 5500.00,
+        propostaSugerida: 3900.00,
+        propostaMin: 2800.00,
+        propostaMax: 5500.00,
+        capitalNecessario: 1350.00,
+        prazoPagamento: "⚡ 10 dias após NF (Empenho)",
+        formaPagamento: "Empenho",
+        diasObra: 4,
+        cnae: "TELHADOR(A) INDEPENDENTE (CNAE 4399-1/99)",
+        destaque: "🏠 <strong>O Exército fornece todo o material!</strong> Telhas sanduíche com EPS, rufos, calhas e parafusos já estão lá. Seu custo é somente a caçamba de entulho, ajudante e combustível. Risco financeiro mínimo!",
+        itensCompra: [
+          { item: "Locação de Caçamba de Entulho", espec: "Descarte de telhas e madeiras antigas removidas", fornecedor: "Tele-entulho POA", qtd: "1 caçamba", precoUnit: 380.00, total: 380.00 },
+          { item: "Parafusos e Vedações Extras", espec: "Brocas, parafusos sobressalentes, vedante PU", fornecedor: "Ferragem Local", qtd: "1 Kit", precoUnit: 170.00, total: 170.00 },
+          { item: "EPIs para Trabalho em Altura", espec: "Cinto paraquedista, talabarte, corda NR-35", fornecedor: "Casa do EPI", qtd: "1 Kit", precoUnit: 100.00, total: 100.00 },
+          { item: "Telhas Sanduíche Termoacústicas", espec: "Fornecidas 100% pelo Exército Brasileiro", fornecedor: "Exército (Almoxarifado)", qtd: "38,5 m²", precoUnit: 0.00, total: 0.00 }
+        ],
+        equipe: {
+          descricao: "1 Ajudante de telhadista para içamento de telhas e fixação segura",
+          diarias: 4,
+          valorDiaria: 140.00,
+          total: 560.00
+        },
+        logistica: {
+          rota: "Nova Hartz ↔ Rua Corrêa Lima, Santa Teresa (4 viagens bate-volta)",
+          kmTotal: "640 km totais (combustível R$ 90/dia)",
+          combustivel: 360.00,
+          pedagio: 0.00,
+          total: 360.00
+        },
+        reserva: 100.00
+      },
+      {
+        id: "grades_metalon",
+        titulo: "Duas Grades de Metalon / Barra Maciça",
+        categoria: "exercito",
+        badgeText: "Sinergia com Telhado (Mesma Rua)",
+        badgeClass: "bg-indigo-600 text-white",
+        orgao: "Exército Brasileiro • CPOR/PA",
+        local: "Rua Corrêa Lima, Bairro Santa Teresa - Porto Alegre/RS (Mesma Rua do Telhado!)",
+        distanciaKm: 80,
+        distanciaTexto: "80 km de Nova Hartz (1h20 via RS-239 e BR-116)",
+        valorReferencia: 4500.00,
+        propostaSugerida: 3200.00,
+        propostaMin: 2200.00,
+        propostaMax: 4800.00,
+        capitalNecessario: 1150.00,
+        prazoPagamento: "30 dias após NF (Empenho)",
+        formaPagamento: "Empenho",
+        diasObra: 2,
+        cnae: "SERRALHEIRO INDEPENDENTE (2542-0/00) / PEDREIRO",
+        destaque: "🔒 <strong>Mesma Rua do Telhado:</strong> Você pode fabricar as grades na oficina e chumbar no quartel do CPOR na mesma semana do telhado, economizando deslocamento!",
+        itensCompra: [
+          { item: "Barras de Aço / Metalon", espec: "Barras redondas 3/8 pol maciço ou metalon 30x30 chapa 16", fornecedor: "Distribuidora de Ferro", qtd: "6 barras", precoUnit: 80.00, total: 480.00 },
+          { item: "Eletrodos de Solda e Discos", espec: "Eletrodos 6013 2,5mm + discos de corte/desbaste", fornecedor: "Ferragem", qtd: "1 Kit", precoUnit: 90.00, total: 90.00 },
+          { item: "Pintura Anticorrosiva", espec: "Fundo zarcão + Esmalte sintético preto fosco/brilhante", fornecedor: "Loja de Tintas", qtd: "1 Galão", precoUnit: 110.00, total: 110.00 },
+          { item: "Chumbadores Parabolt", espec: "Chumbadores de ancoragem 3/8 pol em alvenaria", fornecedor: "Ferragem", qtd: "12 un", precoUnit: 5.83, total: 70.00 }
+        ],
+        equipe: {
+          descricao: "1 Ajudante de serralheiro para montagem e fixação",
+          diarias: 2,
+          valorDiaria: 120.00,
+          total: 240.00
+        },
+        logistica: {
+          rota: "Nova Hartz ↔ CPOR Porto Alegre (Transporte das grades prontas)",
+          kmTotal: "160 km totais de transporte",
+          combustivel: 160.00,
+          pedagio: 0.00,
+          total: 160.00
+        },
+        reserva: 50.00
+      },
+      {
+        id: "pintura_paredes",
+        titulo: "Pintura Paredes Internas e Teto (127 m²)",
+        categoria: "exercito",
+        badgeText: "Execução Simples",
+        badgeClass: "bg-sky-600 text-white",
+        orgao: "Exército Brasileiro • Comando da 3ª Região Militar",
+        local: "Rua dos Andradas, Centro Histórico - Porto Alegre/RS",
+        distanciaKm: 74,
+        distanciaTexto: "74 km de Nova Hartz (1h15 via RS-239 e BR-116)",
+        valorReferencia: 5000.00,
+        propostaSugerida: 4100.00,
+        propostaMin: 3000.00,
+        propostaMax: 5500.00,
+        capitalNecessario: 1550.00,
+        prazoPagamento: "30 dias após NF (Empenho)",
+        formaPagamento: "Empenho",
+        diasObra: 4,
+        cnae: "PINTOR(A) DE PAREDE INDEPENDENTE (CNAE 4330-4/04)",
+        destaque: "🎨 <strong>Serviço Clássico de Baixo Risco:</strong> Paredes internas e teto no Centro de Porto Alegre. Tintas e lixas tradicionais com margem de mais de 60%!",
+        itensCompra: [
+          { item: "Tinta Acrílica Premium Fosca", espec: "Lata 18L cor padrão militar branco gelo", fornecedor: "Loja de Tintas", qtd: "2 latas", precoUnit: 380.00, total: 760.00 },
+          { item: "Massa Corrida PVA e Lixas", espec: "Massa para correções + lixas 150/220", fornecedor: "Loja de Tintas", qtd: "1 Caixa", precoUnit: 210.00, total: 210.00 },
+          { item: "Rolos, Pincéis e Fitas", espec: "Rolos de lã antirespingo, fitas crepe e lonas", fornecedor: "Ferragem", qtd: "1 Kit", precoUnit: 130.00, total: 130.00 },
+          { item: "Locação de Andaime Tubular", espec: "Andaime leve para teto com pé-direito alto", fornecedor: "Locadora Equipamentos", qtd: "4 dias", precoUnit: 30.00, total: 120.00 }
+        ],
+        equipe: {
+          descricao: "1 Pintor ajudante para emassamento, lixamento e pintura",
+          diarias: 4,
+          valorDiaria: 130.00,
+          total: 520.00
+        },
+        logistica: {
+          rota: "Nova Hartz ↔ Rua dos Andradas (Centro de Porto Alegre)",
+          kmTotal: "592 km totais (4 dias de ida e volta)",
+          combustivel: 360.00,
+          pedagio: 0.00,
+          total: 360.00
+        },
+        reserva: 100.00
+      },
+      {
+        id: "drywall_exercito",
+        titulo: "Divisória em Drywall c/ Porta (7,56 m²)",
+        categoria: "exercito",
+        badgeText: "Rápida Execução (2 Dias)",
+        badgeClass: "bg-slate-700 text-white",
+        orgao: "Exército Brasileiro • Comando da 3ª Região Militar",
+        local: "Rua dos Andradas, Centro Histórico - Porto Alegre/RS (Mesmo Prédio da Pintura)",
+        distanciaKm: 74,
+        distanciaTexto: "74 km de Nova Hartz (1h15)",
+        valorReferencia: 3800.00,
+        propostaSugerida: 2750.00,
+        propostaMin: 1900.00,
+        propostaMax: 4000.00,
+        capitalNecessario: 950.00,
+        prazoPagamento: "30 dias após NF (Empenho)",
+        formaPagamento: "Empenho",
+        diasObra: 2,
+        cnae: "GESSEIRO(A) INDEPENDENTE (CNAE 4330-4/03)",
+        destaque: "🧱 <strong>Baixíssimo Custo de Material:</strong> Apenas R$ 950 de investimento inicial para faturar R$ 2.750 em apenas 2 dias de montagem!",
+        itensCompra: [
+          { item: "Chapas de Drywall ST 12,5mm", espec: "Chapa de gesso padrão 1,20x2,40m", fornecedor: "Distribuidora Drywall", qtd: "6 chapas", precoUnit: 48.00, total: 288.00 },
+          { item: "Perfis de Aço Galvanizado", espec: "Guias e montantes 70mm estruturais", fornecedor: "Distribuidora Drywall", qtd: "1 Lote", precoUnit: 190.00, total: 190.00 },
+          { item: "Lã Mineral Acústica", espec: "Manta acústica interna para isolamento sonoro", fornecedor: "Distribuidora Drywall", qtd: "1 Rolo", precoUnit: 110.00, total: 110.00 },
+          { item: "Porta Lisa Completa", espec: "Folha de porta de madeira + batentes e fechadura", fornecedor: "Madeireira", qtd: "1 kit", precoUnit: 280.00, total: 280.00 },
+          { item: "Massa e Fita p/ Juntas", espec: "Massa pronta drywall + fita microperfurada", fornecedor: "Distribuidora", qtd: "1 Balde", precoUnit: 80.00, total: 80.00 }
+        ],
+        equipe: {
+          descricao: "1 Ajudante de montador de drywall",
+          diarias: 2,
+          valorDiaria: 120.00,
+          total: 240.00
+        },
+        logistica: {
+          rota: "Nova Hartz ↔ Centro de Porto Alegre",
+          kmTotal: "296 km totais em 2 dias",
+          combustivel: 180.00,
+          pedagio: 0.00,
+          total: 180.00
+        },
+        reserva: 50.00
+      },
+      {
+        id: "epoxi_prf",
+        titulo: "Conserto de Piso & Pintura Epóxi (100 m²)",
+        categoria: "prf",
+        badgeText: "Médio Porte • PRF Aeroporto",
+        badgeClass: "bg-amber-600 text-white",
+        orgao: "Polícia Rodoviária Federal (PRF/RS)",
+        local: "Superintendência da PRF - Av. Severo Dullius (Aeroporto), Porto Alegre/RS",
+        distanciaKm: 66,
+        distanciaTexto: "66 km de Nova Hartz (55 min via RS-239 e BR-116)",
+        valorReferencia: 15500.00,
+        propostaSugerida: 12800.00,
+        propostaMin: 9500.00,
+        propostaMax: 17000.00,
+        capitalNecessario: 6900.00,
+        prazoPagamento: "30 dias após NF (Empenho)",
+        formaPagamento: "Empenho",
+        diasObra: 4,
+        cnae: "APLICADOR DE REVESTIMENTOS / PINTOR",
+        destaque: "🏢 <strong>Piso Industrial PRF:</strong> Conserto de trincas e aplicação de epóxi autonivelante no galpão da PRF. Retorno financeiro de quase R$ 6 mil!",
+        itensCompra: [
+          { item: "Tinta Epóxi Bicomponente", espec: "Tinta epóxi alta espessura + primer promotor", fornecedor: "Distribuidora Química", qtd: "1 Lote 100m²", precoUnit: 3800.00, total: 3800.00 },
+          { item: "Argamassa Epóxi Reparo", espec: "Argamassa tixotrópica para estucamento de fissuras", fornecedor: "Distribuidora Química", qtd: "2 Baldes", precoUnit: 275.00, total: 550.00 },
+          { item: "Locação de Politriz de Piso", espec: "Politriz c/ disco diamantado e aspirador industrial", fornecedor: "Locadora Equipamentos", qtd: "4 diárias", precoUnit: 150.00, total: 600.00 },
+          { item: "Rolos e Ferramentas Dentadas", espec: "Rolos especiais, espátulas e solventes", fornecedor: "Loja de Ferramentas", qtd: "1 Kit", precoUnit: 250.00, total: 250.00 }
+        ],
+        equipe: {
+          descricao: "1 Resinador profissional / aplicador de piso epóxi",
+          diarias: 4,
+          valorDiaria: 200.00,
+          total: 800.00
+        },
+        logistica: {
+          rota: "Nova Hartz ↔ Aeroporto Salgado Filho (PRF/RS)",
+          kmTotal: "528 km totais em 4 dias",
+          combustivel: 360.00,
+          pedagio: 0.00,
+          total: 360.00
+        },
+        reserva: 150.00
+      },
+      {
+        id: "cimenticia_prf",
+        titulo: "Placas Cimentícias Fachada PRF (86,4 m²)",
+        categoria: "prf",
+        badgeText: "Grande Porte • Exige Giro",
+        badgeClass: "bg-slate-800 text-white",
+        orgao: "Polícia Rodoviária Federal (PRF/RS)",
+        local: "Superintendência da PRF - Av. Severo Dullius (Aeroporto), Porto Alegre/RS",
+        distanciaKm: 66,
+        distanciaTexto: "66 km de Nova Hartz (55 min)",
+        valorReferencia: 24000.00,
+        propostaSugerida: 20500.00,
+        propostaMin: 15000.00,
+        propostaMax: 27000.00,
+        capitalNecessario: 12200.00,
+        prazoPagamento: "30 dias após NF (Empenho)",
+        formaPagamento: "Empenho",
+        diasObra: 8,
+        cnae: "PEDREIRO / GESSEIRO INDEPENDENTE",
+        destaque: "⚠️ <strong>Atenção ao Caixa:</strong> Este serviço exige mais de R$ 12 mil de materiais e andaimes. Como seu capital é de R$ 5 mil, deixe para quando já tiver rodado as primeiras dispensas!",
+        itensCompra: [
+          { item: "Placas Cimentícias 10mm", espec: "Placas estruturais impermeabilizadas", fornecedor: "Distribuidora Cimentícia", qtd: "30 placas", precoUnit: 140.00, total: 4200.00 },
+          { item: "Perfis Pesados Steel Frame", espec: "Estrutura em aço galvanizado pesado + manta", fornecedor: "Distribuidora Aço", qtd: "1 Lote", precoUnit: 2400.00, total: 2400.00 },
+          { item: "Argamassa Basecoat e Telas", espec: "Basecoat polimérico + tela de fibra resistente", fornecedor: "Distribuidora", qtd: "1 Lote", precoUnit: 1200.00, total: 1200.00 },
+          { item: "Tinta Elastomérica Azul PRF", espec: "Tinta padrão institucional resistente ao tempo", fornecedor: "Loja de Tintas", qtd: "3 Latas", precoUnit: 366.67, total: 1100.00 },
+          { item: "Locação de Andaimes Fachadeiros", espec: "Andaime tubular com sapatas e guarda-corpo", fornecedor: "Locadora Andaimes", qtd: "8 dias", precoUnit: 100.00, total: 800.00 }
+        ],
+        equipe: {
+          descricao: "1 Pedreiro Oficial + 1 Ajudante de obras",
+          diarias: 8,
+          valorDiaria: 262.50,
+          total: 2100.00
+        },
+        logistica: {
+          rota: "Nova Hartz ↔ PRF Aeroporto (Frete pesado + deslocamento)",
+          kmTotal: "Frete caminhão + 8 viagens de fiscalização",
+          combustivel: 950.00,
+          pedagio: 0.00,
+          total: 950.00
+        },
+        reserva: 300.00
+      },
+      {
+        id: "feijao_conab",
+        titulo: "Feijão Preto Comum (CONAB - Cota 12,5t)",
+        categoria: "alimentos",
+        badgeText: "⛔ Restrição: Exige DAP Rural",
+        badgeClass: "bg-rose-600 text-white",
+        orgao: "CONAB • Ministério do Desenvolvimento Social (MDS)",
+        local: "Unidade Armazenadora da CONAB (Rua Santo Antônio, 485, Mato Grande - Canoas/RS)",
+        distanciaKm: 60,
+        distanciaTexto: "60 km de Nova Hartz (50 min)",
+        valorReferencia: 80250.00,
+        propostaSugerida: 78125.00,
+        propostaMin: 65000.00,
+        propostaMax: 80250.00,
+        capitalNecessario: 64600.00,
+        prazoPagamento: "PIX",
+        formaPagamento: "PIX",
+        diasObra: 1,
+        cnae: "PRODUTOR RURAL FAMILIAR (EXIGE CAF / DAP VÁLIDOS)",
+        destaque: "⛔ <strong>INVIÁVEL PARA MEI URBANO:</strong> A CONAB confirmou oficialmente que este edital é exclusivo para cooperativas e agricultores com DAP/CAF rural (Lei 11.326/2006). MEI comum será inabilitado. Além disso, consumiria 99% do faturamento anual permitido (R$ 81k).",
+        itensCompra: [
+          { item: "Feijão Preto Tipo 1 Safra Nova", espec: "250 sacos de 50kg (12.500 kg) no cerealista", fornecedor: "Cerealista / Cooperativa RS", qtd: "12.500 kg", precoUnit: 4.80, total: 60000.00 },
+          { item: "Frete Pesado Carreta até Canoas", espec: "Transporte CIF com caminhão truck fechado", fornecedor: "Transportadora de Cargas", qtd: "1 Carga", precoUnit: 3800.00, total: 3800.00 },
+          { item: "Descarga e Paletes Padrão CONAB", espec: "Paletização e conferência de lote", fornecedor: "Equipe de Descarga", qtd: "1 Lote", precoUnit: 800.00, total: 800.00 }
+        ],
+        equipe: {
+          descricao: "Equipe de carga e descarga da transportadora inclusa",
+          diarias: 1,
+          valorDiaria: 0.00,
+          total: 0.00
+        },
+        logistica: {
+          rota: "Cerealista RS ↔ Armazém CONAB Canoas (Frete já incluso acima)",
+          kmTotal: "Frete contratado CIF",
+          combustivel: 0.00,
+          pedagio: 0.00,
+          total: 0.00
+        },
+        reserva: 500.00
+      }
+    ];
+
+    let currentServico = servicosDB[0];
+    let categoriaAtual = 'todos';
+
+    function formatBRL(valor) {
+      return valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    }
+
+    // GERENCIAMENTO DE EXCLUSÕES NO LOCALSTORAGE
+    
+    // FUNÇÕES DE PERSISTÊNCIA PARA OPORTUNIDADES CLICADAS
+    function getClicados() {
+      try {
+        const salvos = localStorage.getItem('rp_oportunidades_clicadas');
+        return salvos ? JSON.parse(salvos) : [];
+      } catch (e) {
+        return [];
+      }
+    }
+
+    function registrarClique(id) {
+      try {
+        let clicados = getClicados();
+        if (!clicados.includes(id)) {
+          clicados.push(id);
+          localStorage.setItem('rp_oportunidades_clicadas', JSON.stringify(clicados));
+        }
+        // Aplica o estilo visual de visualizado imediatamente no card
+        const card = document.getElementById('card-radar-' + id);
+        if (card) {
+          card.classList.remove('border-sky-200', 'bg-white');
+          card.classList.add('border-emerald-400', 'bg-emerald-50/50', 'ring-2', 'ring-emerald-500/30');
+          const badgeVisualizado = document.getElementById('badge-visto-' + id);
+          if (badgeVisualizado) badgeVisualizado.classList.remove('hidden');
+        }
+      } catch (e) {}
+    }
+
+    function getExcluidos() {
+      try {
+        const salvos = localStorage.getItem('rp_oportunidades_excluidas');
+        return salvos ? JSON.parse(salvos) : [];
+      } catch (e) {
+        return [];
+      }
+    }
+
+    function salvarExcluidos(lista) {
+      try {
+        localStorage.setItem('rp_oportunidades_excluidas', JSON.stringify(lista));
+      } catch (e) {}
+    }
+
+    function excluirServico(id) {
+      const s = servicosDB.find(item => item.id === id);
+      if (!s) return;
+
+      const confirmou = confirm(`Tem certeza que deseja excluir "${s.titulo}" do seu painel? Você pode restaurá-lo a qualquer momento.`);
+      if (!confirmou) return;
+
+      let excluidos = getExcluidos();
+      if (!excluidos.includes(id)) {
+        excluidos.push(id);
+        salvarExcluidos(excluidos);
+      }
+
+      fecharModal();
+      atualizarInterface();
+    }
+
+    function excluirDoModal() {
+      if (currentServico) {
+        excluirServico(currentServico.id);
+      }
+    }
+
+    function restaurarExcluidos() {
+      const excluidos = getExcluidos();
+      if (excluidos.length === 0) return;
+
+      const confirmou = confirm(`Deseja restaurar as ${excluidos.length} oportunidades que foram excluídas?`);
+      if (!confirmou) return;
+
+      localStorage.removeItem('rp_oportunidades_excluidas');
+      atualizarInterface();
+    }
+
+    function obterServicosAtivos() {
+      const excluidos = getExcluidos();
+      return servicosDB.filter(s => !excluidos.includes(s.id));
+    }
+
+    // ATUALIZAR INTERFACE E CONTADORES
+    function atualizarInterface() {
+      const ativos = obterServicosAtivos();
+      const excluidos = getExcluidos();
+
+      // Atualiza badge de ativas
+      document.getElementById('badgeQtdAtivas').innerText = `${ativos.length} ativas`;
+
+      // Atualiza botão de restaurar
+      const btnRestaurar = document.getElementById('btnRestaurar');
+      if (excluidos.length > 0) {
+        btnRestaurar.classList.remove('hidden');
+        document.getElementById('txtRestaurar').innerText = `Restaurar ${excluidos.length} Excluída(s)`;
+      } else {
+        btnRestaurar.classList.add('hidden');
+      }
+
+      // Calcula volume total ativo
+      let volumeTotal = ativos.reduce((acc, s) => acc + s.propostaSugerida, 0);
+      document.getElementById('headerVolumeTotal').innerText = formatBRL(volumeTotal);
+
+      // Renderiza conforme filtro
+      if (categoriaAtual === 'minhas_propostas') {
+        renderizarMinhasPropostas();
+      } else if (categoriaAtual === 'radar_pncp') {
+        renderizarRadarPNCP();
+      } else if (categoriaAtual === 'todos') {
+        renderizarCards(ativos);
+      } else {
+        const filtrados = ativos.filter(s => s.categoria.includes(categoriaAtual));
+        renderizarCards(filtrados);
+      }
+    }
+
+    // RENDERIZAR OS CARDS PRINCIPAIS LIMPOS
+    
+    
+    // FUNÇÃO PARA CALCULAR TEMPO RESTANTE
+    function calcularTempoRestante(dataIso) {
+      if (!dataIso) return { texto: "Sem prazo definido", classe: "text-slate-500 bg-slate-100" };
+      const agora = new Date();
+      const limite = new Date(dataIso);
+      const diffMs = limite - agora;
+      
+      if (diffMs <= 0) {
+        return { texto: "⚠️ Encerramento hoje / Em julgamento", classe: "text-amber-800 bg-amber-100 border border-amber-300 font-bold" };
+      }
+      
+      const horasTotais = Math.floor(diffMs / (1000 * 60 * 60));
+      const dias = Math.floor(horasTotais / 24);
+      const horas = horasTotais % 24;
+      
+      if (dias === 0) {
+        return { texto: `⏳ Falta(m) ${horas}h para encerrar lances!`, classe: "text-rose-700 bg-rose-50 border border-rose-300 font-extrabold animate-pulse" };
+      } else if (dias === 1) {
+        return { texto: `⏳ Falta 1 dia e ${horas}h para encerramento`, classe: "text-amber-800 bg-amber-50 border border-amber-300 font-bold" };
+      } else {
+        return { texto: `⏳ Faltam ${dias} dias para encerramento`, classe: "text-slate-700 bg-slate-100 border border-slate-300 font-semibold" };
+      }
+    }
+
+    // RENDERIZAR AS PROPOSTAS JÁ ENVIADAS PELO RAFAEL
+    
+    // SISTEMA DE GRAVAÇÃO PERMANENTE DE PROPOSTAS ENVIADAS (LOCALSTORAGE)
+    function obterPropostasGravadas() {
+      try {
+        const salvas = localStorage.getItem('rp_propostas_enviadas_personalizadas');
+        const personalizadas = salvas ? JSON.parse(salvas) : [];
+        return [...personalizadas, ...propostasEnviadasDB];
+      } catch (e) {
+        return propostasEnviadasDB;
+      }
+    }
+
+    function salvarPropostaNoStorage(novaProposta) {
+      try {
+        const salvas = localStorage.getItem('rp_propostas_enviadas_personalizadas');
+        let lista = salvas ? JSON.parse(salvas) : [];
+        lista.unshift(novaProposta);
+        localStorage.setItem('rp_propostas_enviadas_personalizadas', JSON.stringify(lista));
+      } catch (e) {}
+    }
+
+    function abrirModalRegistroProposta() {
+      if (currentServico) {
+        document.getElementById('regTitulo').value = currentServico.titulo;
+        document.getElementById('regOrgao').value = currentServico.orgao;
+        document.getElementById('regLocal').value = currentServico.local;
+        document.getElementById('regValorLance').value = currentServico.propostaSugerida;
+        const totalCusto = currentServico.itensCompra.reduce((acc, it) => acc + it.total, 0) + currentServico.equipe.total + currentServico.logistica.total + (currentServico.reserva || 0);
+        document.getElementById('regCusto').value = totalCusto;
+      }
+      document.getElementById('modalRegistroProposta').classList.remove('hidden');
+    }
+
+    function fecharModalRegistroProposta() {
+      document.getElementById('modalRegistroProposta').classList.add('hidden');
+    }
+
+    function salvarNovaPropostaEnviada(e) {
+      e.preventDefault();
+      const titulo = document.getElementById('regTitulo').value;
+      const orgao = document.getElementById('regOrgao').value;
+      const local = document.getElementById('regLocal').value;
+      const valorLance = parseFloat(document.getElementById('regValorLance').value) || 0;
+      const custo = parseFloat(document.getElementById('regCusto').value) || 0;
+      const dataFim = document.getElementById('regDataFim').value;
+      const statusId = document.getElementById('regStatus').value;
+      const obs = document.getElementById('regObs').value || "Proposta registrada manualmente pelo painel.";
+
+      let statusTexto = "Aguardando Disputa";
+      let statusBadgeClass = "bg-sky-100 text-sky-800 border-sky-300";
+
+      if (statusId === 'classificado') {
+        statusTexto = "✓ Classificado na Disputa";
+        statusBadgeClass = "bg-emerald-100 text-emerald-800 border-emerald-300 font-bold";
+      } else if (statusId === 'sicaf_alerta') {
+        statusTexto = "⚠️ Alerta / Pendência";
+        statusBadgeClass = "bg-rose-100 text-rose-800 border-rose-300 font-extrabold animate-pulse";
+      } else if (statusId === 'vencedor') {
+        statusTexto = "🏆 Proposta Vencedora / Homologada";
+        statusBadgeClass = "bg-emerald-600 text-white border-emerald-700 font-black";
+      }
+
+      const nova = {
+        id: "prop_custom_" + Date.now(),
+        titulo: titulo,
+        orgao: orgao,
+        local: local,
+        categoriaTipo: "Proposta Registrada",
+        dataDisputaFim: dataFim ? new Date(dataFim).toISOString() : "",
+        dataDisputaFimTexto: dataFim ? new Date(dataFim).toLocaleDateString('pt-BR') : "Em disputa",
+        valorLance: valorLance,
+        custoEstimado: custo,
+        lucroProjetado: (valorLance - custo),
+        statusId: statusId,
+        statusTexto: statusTexto,
+        statusBadgeClass: statusBadgeClass,
+        observacao: obs,
+        linkServico: "https://contratamaisbrasil.sistema.gov.br/",
+        detalheServicoId: currentServico ? currentServico.id : ""
+      };
+
+      salvarPropostaNoStorage(nova);
+      fecharModalRegistroProposta();
+      fecharModal();
+      alert("Proposta registrada e gravada com sucesso! Você pode visualizá-la na aba 'Minhas Propostas Enviadas'.");
+      filterCards('minhas_propostas');
+    }
+
+    function renderizarMinhasPropostas() {
+      const grid = document.getElementById('servicesGrid');
+      grid.innerHTML = '';
+
+      const todasPropostas = obterPropostasGravadas();
+      const totalLances = todasPropostas.reduce((acc, p) => acc + p.valorLance, 0);
+      const totalLucro = todasPropostas.reduce((acc, p) => acc + p.lucroProjetado, 0);
+
+      document.getElementById('badgeQtdAtivas').innerText = `${propostasEnviadasDB.length} propostas enviadas`;
+
+      // Barra de Resumo das Propostas Enviadas
+      const banner = document.createElement('div');
+      banner.className = "col-span-full bg-gradient-to-r from-slate-900 to-slate-800 text-white rounded-3xl p-6 shadow-md border border-slate-700 space-y-4";
+      banner.innerHTML = `
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-emerald-500 text-white">Gov.br • Contrata+ Brasil</span>
+              <span class="text-xs text-slate-300">Atualizado conforme sua tela oficial</span>
+            </div>
+            <h3 class="text-xl font-black text-white mt-1">Acompanhamento das Suas Propostas Enviadas</h3>
+            <p class="text-xs text-slate-300 mt-0.5">Você tem 4 propostas protocoladas disputando contratos públicos neste momento.</p>
+          </div>
+          <div class="flex items-center gap-4 bg-slate-800/80 p-3 rounded-2xl border border-slate-700">
+            <div>
+              <span class="text-[10px] text-slate-400 block uppercase font-bold">Total em Lances</span>
+              <span class="text-base sm:text-lg font-black text-white">${formatBRL(totalLances)}</span>
+            </div>
+            <div class="w-px h-8 bg-slate-700"></div>
+            <div>
+              <span class="text-[10px] text-emerald-400 block uppercase font-bold">Lucro Projetado Total</span>
+              <span class="text-base sm:text-lg font-black text-emerald-400">+ ${formatBRL(totalLucro)}</span>
+            </div>
+          </div>
+        </div>
+      `;
+      grid.appendChild(banner);
+
+      todasPropostas.forEach(prop => {
+        const prazo = calcularTempoRestante(prop.dataDisputaFim);
+
+        const card = document.createElement('div');
+        card.className = "service-item bg-white rounded-3xl border-2 " + 
+          (prop.statusId === 'sicaf_alerta' ? 'border-rose-400 shadow-rose-100 ring-2 ring-rose-300/30' : 
+           prop.statusId === 'classificado' ? 'border-emerald-500 shadow-emerald-50 ring-2 ring-emerald-500/20' : 
+           'border-sky-300') + 
+          " card-shadow transition-all flex flex-col justify-between p-6 relative overflow-hidden";
+
+        card.innerHTML = `
+          <div>
+            <!-- Status do Contrata+ Brasil -->
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="px-3 py-1 rounded-full text-xs font-bold border ${prop.statusBadgeClass}">
+                ${prop.statusTexto}
+              </span>
+              <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider bg-slate-100 px-2 py-0.5 rounded">
+                ${prop.categoriaTipo}
+              </span>
+            </div>
+
+            <!-- Título e Órgão -->
+            <h3 class="text-base sm:text-lg font-black text-slate-900 mb-1 leading-snug">
+              ${prop.titulo}
+            </h3>
+            <p class="text-xs font-semibold text-slate-600 mb-1">🏛️ ${prop.orgao}</p>
+            <p class="text-[11px] text-slate-400 mb-3 flex items-center gap-1">
+              📍 ${prop.local}
+            </p>
+
+            <!-- Observação / Alerta de Status -->
+            <div class="p-3 rounded-2xl ${prop.statusId === 'sicaf_alerta' ? 'bg-rose-50 border border-rose-200 text-rose-800' : 'bg-slate-50 border border-slate-200 text-slate-600'} text-xs mb-4">
+              <span class="font-bold block mb-0.5">${prop.statusId === 'sicaf_alerta' ? '⚠️ Ação Necessária:' : 'ℹ️ Situação:'}</span>
+              ${prop.observacao}
+            </div>
+          </div>
+
+          <!-- Dados do Lance, Prazo e Ações -->
+          <div class="pt-4 border-t border-slate-100 space-y-3">
+            <div class="grid grid-cols-2 gap-2 bg-slate-50 p-3 rounded-2xl border border-slate-200">
+              <div>
+                <span class="text-[10px] text-slate-500 font-bold block uppercase">Meu Lance Enviado</span>
+                <span class="text-base font-black text-slate-900">${formatBRL(prop.valorLance)}</span>
+              </div>
+              <div>
+                <span class="text-[10px] text-emerald-600 font-bold block uppercase">Lucro Estimado</span>
+                <span class="text-base font-black text-emerald-700">+ ${formatBRL(prop.lucroProjetado)}</span>
+              </div>
+            </div>
+
+            <!-- Contagem de Tempo Restante -->
+            <div class="p-2.5 rounded-xl text-center text-xs ${prazo.classe}">
+              ${prazo.texto}
+            </div>
+
+            <div class="flex items-center gap-2 pt-1">
+              <button onclick="abrirDetalhes('${prop.detalheServicoId}')" class="flex-1 py-2.5 px-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs text-center shadow-sm hover:shadow transition-all flex items-center justify-center gap-1.5">
+                <span>Ver Orçamento & Custos</span>
+                <span class="text-[10px]">🔎</span>
+              </button>
+              <a href="https://contratamaisbrasil.gestao.gov.br" target="_blank" class="py-2.5 px-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs transition-all flex items-center gap-1" title="Abrir Contrata+ Brasil">
+                <span>Gov.br</span>
+                <span class="text-[10px]">↗</span>
+              </a>
+            </div>
+          </div>
+        `;
+
+        grid.appendChild(card);
+      });
+    }
+
+    // RENDERIZAR O RADAR AO VIVO DO PNCP
+    function renderizarRadarPNCP() {
+      const grid = document.getElementById('servicesGrid');
+      grid.innerHTML = '';
+
+      const dados = window.RADAR_PNCP_DATA || [];
+      const excluidos = getExcluidos();
+      const clicados = getClicados();
+      let itensAtivos = dados.filter(item => !excluidos.includes(item.id));
+
+      // ORDENAÇÃO CRESCENTE POR PRAZO DE ENCERRAMENTO (DO MAIS URGENTE AO MAIS DISTANTE)
+      itensAtivos.sort((a, b) => {
+        // Se tiver data ISO exata do PNCP
+        const dataA = a.dataEncerramentoIso ? new Date(a.dataEncerramentoIso).getTime() : 
+                     (a.dataEncerramento ? converterDataPtBrParaTimestamp(a.dataEncerramento) : 9999999999999);
+        const dataB = b.dataEncerramentoIso ? new Date(b.dataEncerramentoIso).getTime() : 
+                     (b.dataEncerramento ? converterDataPtBrParaTimestamp(b.dataEncerramento) : 9999999999999);
+        return dataA - dataB;
+      });
+
+      document.getElementById('badgeQtdAtivas').innerText = `${itensAtivos.length} no Radar RS (Ordem Cronológica)`;
+
+      if (itensAtivos.length === 0) {
+        grid.innerHTML = `
+          <div class="col-span-full py-12 text-center bg-white rounded-3xl border border-dashed border-sky-300 p-8 space-y-3">
+            <div class="w-12 h-12 rounded-full bg-sky-50 text-sky-600 mx-auto flex items-center justify-center text-xl font-bold">
+              📡
+            </div>
+            <h4 class="text-base font-bold text-slate-800">Nenhuma oportunidade nova no Radar</h4>
+            <p class="text-xs text-slate-500">Execute o script <code>python rastreador_pncp_mei.py</code> no terminal para buscar novas dispensas.</p>
+          </div>
+        `;
+        return;
+      }
+
+      itensAtivos.forEach((item, index) => {
+        const jaClicado = clicados.includes(item.id);
+        const card = document.createElement('div');
+        card.id = 'card-radar-' + item.id;
+        
+        // Estilo condicional: se já foi clicado, destaca a caixa inteira com cor verde-esmeralda suave e anel de seleção
+        card.className = "service-item group rounded-2xl border-2 transition-all flex flex-col justify-between p-5 relative overflow-hidden card-shadow " + 
+          (jaClicado ? 
+            "border-emerald-500 bg-emerald-50/60 ring-2 ring-emerald-500/30" : 
+            "border-sky-200 bg-white hover:border-sky-500 card-hover");
+        
+        const tagsHtml = item.tags.map(t => `<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-sky-50 text-sky-700 border border-sky-200">${t}</span>`).join(' ');
+
+        // Indicador de urgência do calendário
+        const badgeCronologico = index < 5 ? 
+          `<span class="px-2 py-0.5 rounded text-[10px] font-extrabold bg-amber-100 text-amber-800 border border-amber-300">🔥 Próximas a Encerrar (#${index+1})</span>` : 
+          `<span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-slate-100 text-slate-600 border border-slate-200">#${index+1} Cronológico</span>`;
+
+        card.innerHTML = `
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-2">
+              <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-sky-100 text-sky-800">
+                📍 ${item.cidade} • ${item.plataforma}
+              </span>
+              <button onclick="event.stopPropagation(); excluirRadarItem('${item.id}');" class="w-6 h-6 rounded-full bg-slate-100 hover:bg-rose-100 text-slate-400 hover:text-rose-600 flex items-center justify-center text-xs font-bold transition-all" title="Ocultar do Radar">
+                ✕
+              </button>
+            </div>
+
+            <!-- Faixa de Sinalização se Já Clicado -->
+            <div id="badge-visto-${item.id}" class="${jaClicado ? '' : 'hidden'} mb-2.5 flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-emerald-100 text-emerald-800 text-xs font-extrabold border border-emerald-300">
+              <span>✓</span>
+              <span>VOCÊ JÁ ACESSOU ESTA OPORTUNIDADE</span>
+            </div>
+
+            <div class="mb-2">
+              ${badgeCronologico}
+            </div>
+
+            <h3 class="text-base font-bold text-slate-900 group-hover:text-sky-700 transition-colors line-clamp-2 mb-1">
+              ${item.objeto}
+            </h3>
+            <p class="text-xs text-slate-500 mb-3 line-clamp-1">🏛️ ${item.orgao}</p>
+            <div class="flex flex-wrap gap-1 mb-4">
+              ${tagsHtml}
+            </div>
+          </div>
+
+          <div class="pt-4 border-t border-slate-200/80 space-y-3">
+            <div class="flex items-center justify-between text-xs">
+              <span class="text-slate-500">Valor Estimado Máx:</span>
+              <span class="font-extrabold text-slate-900">${item.valorFormatado}</span>
+            </div>
+            <div class="flex items-center justify-between text-xs">
+              <span class="text-slate-500 font-medium">Encerramento Proposta:</span>
+              <span class="font-bold text-amber-900 bg-amber-50 px-2 py-0.5 rounded border border-amber-300">
+                ⏳ ${item.dataEncerramento || 'Em aberto'}
+              </span>
+            </div>
+            
+            <div class="space-y-1.5 pt-1">
+              <div class="flex items-center gap-2">
+                <a href="${item.link}" target="_blank" onclick="registrarClique('${item.id}'); event.stopPropagation()" class="flex-1 py-2 px-3 rounded-xl ${jaClicado ? 'bg-emerald-700 hover:bg-emerald-800' : 'bg-sky-600 hover:bg-sky-700'} text-white font-bold text-xs text-center shadow-sm hover:shadow transition-all flex items-center justify-center gap-1.5">
+                  <span>${jaClicado ? '✓ Acessar Novamente' : (item.tipoLink || 'Link Direto Oficial')}</span>
+                  <span class="text-[10px]">↗</span>
+                </a>
+                <button onclick="event.stopPropagation(); copiarDadosItem('${item.id}')" class="py-2 px-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs transition-all flex items-center gap-1" title="Copiar dados para orçar">
+                  <span>📋</span>
+                  <span class="text-[10px] hidden sm:inline">Copiar</span>
+                </button>
+              </div>
+              <div class="flex items-center justify-between px-1 text-[10px] text-slate-400">
+                <span>Controle: <strong class="text-slate-600">${item.numeroControle || item.id}</strong></span>
+                <a href="https://pncp.gov.br/app/editais?q=${encodeURIComponent(item.numeroControle || '')}" target="_blank" onclick="registrarClique('${item.id}'); event.stopPropagation()" class="text-sky-600 hover:underline font-semibold">
+                  Ver no PNCP ↗
+                </a>
+              </div>
+            </div>
+          </div>
+        `;
+
+        grid.appendChild(card);
+      });
+    }
+
+    // HELPER PARA CONVERSÃO DE DATA PT-BR
+    function converterDataPtBrParaTimestamp(dataStr) {
+      try {
+        // Exemplo: '11/11/2026 às 16:00' ou '11/11/2026'
+        const partes = dataStr.split(' às ');
+        const [dia, mes, ano] = partes[0].split('/').map(Number);
+        let hora = 23, min = 59;
+        if (partes[1]) {
+          const [h, m] = partes[1].split(':').map(Number);
+          hora = h; min = m;
+        }
+        return new Date(ano, mes - 1, dia, hora, min).getTime();
+      } catch (e) {
+        return 9999999999999;
+      }
+    }
+
+    function excluirRadarItem(id) {
+      salvarExcluido(id);
+      renderizarRadarPNCP();
+    }
+
+    function copiarDadosItem(id) {
+      const item = (window.RADAR_PNCP_DATA || []).find(x => x.id === id);
+      if (!item) return;
+      const texto = `OPORTUNIDADE PÚBLICA (MEI)
+Órgão: ${item.orgao}
+Cidade: ${item.cidade}
+Objeto: ${item.objeto}
+Valor Estimado: ${item.valorFormatado}
+Encerramento: ${item.dataEncerramento}
+Link: ${item.link}`;
+      navigator.clipboard.writeText(texto).then(() => {
+        alert("Dados da oportunidade copiados para a área de transferência! Você pode colar no chat para fazermos o orçamento de compra e lucro.");
+      }).catch(() => {
+        prompt("Copie os dados abaixo:", texto);
+      });
+    }
+
+    function renderizarCards(lista) {
+      const grid = document.getElementById('servicesGrid');
+      grid.innerHTML = '';
+
+      if (lista.length === 0) {
+        grid.innerHTML = `
+          <div class="col-span-full py-12 text-center bg-white rounded-3xl border border-dashed border-slate-300 p-8 space-y-3">
+            <div class="w-12 h-12 rounded-full bg-slate-100 text-slate-400 mx-auto flex items-center justify-center text-xl font-bold">
+              📂
+            </div>
+            <h4 class="text-base font-bold text-slate-800">Nenhuma oportunidade nesta categoria</h4>
+            <p class="text-xs text-slate-500">Você pode mudar o filtro acima ou restaurar as demandas que foram excluídas.</p>
+          </div>
+        `;
+        return;
+      }
+
+      lista.forEach(s => {
+        let custoTotal = s.itensCompra.reduce((acc, it) => acc + it.total, 0) + s.equipe.total + s.logistica.total + (s.reserva || 0);
+        let lucro = s.propostaSugerida - custoTotal;
+
+        const card = document.createElement('div');
+        card.className = "service-item group bg-white rounded-2xl border-2 " + 
+          (s.id === 'eletrica_taquara' ? 'border-emerald-500 ring-2 ring-emerald-500/20' : 
+           s.id === 'porta_seguranca_cpor' ? 'border-emerald-600 ring-2 ring-emerald-600/10' :
+           s.id === 'coffeebreak_trt' ? 'border-amber-400' : 
+           s.id === 'feijao_conab' ? 'border-rose-400 opacity-90' : 'border-slate-200') + 
+          " card-shadow card-hover transition-all cursor-pointer flex flex-col justify-between p-5 relative overflow-hidden";
+        card.setAttribute('data-cat', s.categoria);
+        card.onclick = () => abrirDetalhes(s.id);
+
+        card.innerHTML = `
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider ${s.badgeClass}">
+                ${s.badgeText}
+              </span>
+              <div class="flex items-center gap-1.5">
+                <span class="text-[11px] font-bold text-slate-500">
+                  📍 ${s.distanciaKm} km
+                </span>
+                <button onclick="event.stopPropagation(); excluirServico('${s.id}')" title="Excluir do painel" class="w-6 h-6 rounded-md bg-slate-100 hover:bg-rose-100 text-slate-400 hover:text-rose-600 transition-colors flex items-center justify-center text-xs">
+                  ✕
+                </button>
+              </div>
+            </div>
+
+            <span class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider block">${s.orgao}</span>
+            <h3 class="text-base font-extrabold text-slate-900 group-hover:text-sky-600 transition-colors mt-0.5 leading-snug">
+              ${s.titulo}
+            </h3>
+            <p class="text-xs text-slate-500 mt-1 line-clamp-1">
+              ${s.local}
+            </p>
+
+            <div class="mt-4 pt-3 border-t border-slate-100 grid grid-cols-2 gap-2 text-xs">
+              <div class="bg-slate-50 p-2 rounded-lg border border-slate-200/60">
+                <span class="text-[10px] font-bold text-slate-400 uppercase block">Proposta Sugerida</span>
+                <span class="text-sm font-black text-slate-900 block">${formatBRL(s.propostaSugerida)}</span>
+              </div>
+              <div class="bg-emerald-50/60 p-2 rounded-lg border border-emerald-200/60">
+                <span class="text-[10px] font-bold text-emerald-800 uppercase block">Lucro Líquido</span>
+                <span class="text-sm font-black text-emerald-700 block">+ ${formatBRL(lucro)}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
+            <span class="text-[11px] text-slate-400">Capital: <strong class="text-slate-700">${formatBRL(s.capitalNecessario)}</strong></span>
+            <button class="px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-900 group-hover:bg-sky-600 text-white transition-colors flex items-center gap-1 shadow-sm">
+              Ver Orçamento Detalhado →
+            </button>
+          </div>
+        `;
+
+        grid.appendChild(card);
+      });
+    }
+
+    // ABRIR MODAL COM TODA A DISCRIMINAÇÃO DO SERVIÇO
+    function abrirDetalhes(id) {
+      const s = servicosDB.find(item => item.id === id);
+      if (!s) return;
+      currentServico = s;
+
+      // Cabeçalho
+      document.getElementById('modalBadge').innerText = s.badgeText;
+      document.getElementById('modalBadge').className = "px-2.5 py-0.5 rounded text-[11px] font-black uppercase tracking-wider shadow-sm " + s.badgeClass;
+      document.getElementById('modalOrgao').innerText = s.orgao;
+      document.getElementById('modalTitulo').innerText = s.titulo;
+      document.getElementById('modalLocalTxt').innerText = s.local + " • " + s.distanciaTexto;
+
+      // Slider Inicial
+      const slider = document.getElementById('modalSliderInput');
+      slider.min = s.propostaMin;
+      slider.max = s.propostaMax;
+      slider.value = s.propostaSugerida;
+      document.getElementById('modalSliderMin').innerText = formatBRL(s.propostaMin);
+      document.getElementById('modalSliderMax').innerText = formatBRL(s.propostaMax);
+
+      // Destaque Box
+      document.getElementById('modalDestaqueBox').innerHTML = s.destaque;
+
+      // Tabela de Materiais
+      const tbody = document.getElementById('modalTbodyMateriais');
+      tbody.innerHTML = '';
+      let totalMateriais = 0;
+
+      s.itensCompra.forEach(it => {
+        totalMateriais += it.total;
+        const tr = document.createElement('tr');
+        tr.className = "hover:bg-slate-50 transition-colors";
+        tr.innerHTML = `
+          <td class="py-2.5 px-3 font-bold text-slate-900">${it.item}</td>
+          <td class="py-2.5 px-3 text-slate-500">${it.espec} <span class="text-[10px] text-sky-600 block">${it.fornecedor}</span></td>
+          <td class="py-2.5 px-3 font-semibold text-slate-700">${it.qtd}</td>
+          <td class="py-2.5 px-3 text-slate-600">${formatBRL(it.precoUnit)}</td>
+          <td class="py-2.5 px-3 text-right font-black text-slate-900">${formatBRL(it.total)}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+
+      document.getElementById('modalQtdItens').innerText = s.itensCompra.length + ' itens orçados';
+      document.getElementById('modalTotalMateriais').innerText = formatBRL(totalMateriais);
+
+      // Equipe
+      document.getElementById('modalEquipeDetalhes').innerHTML = `
+        <p><strong>Descrição:</strong> ${s.equipe.descricao}</p>
+        <p><strong>Diárias necessárias:</strong> ${s.equipe.diarias} dias × ${formatBRL(s.equipe.valorDiaria)}/dia</p>
+        <p class="font-bold text-slate-900 pt-1 border-t border-slate-200">Custo Total Mão de Obra: <span class="text-rose-600">${formatBRL(s.equipe.total)}</span></p>
+      `;
+
+      // Logística
+      document.getElementById('modalLogisticaDetalhes').innerHTML = `
+        <p><strong>Rota:</strong> ${s.logistica.rota}</p>
+        <p><strong>Distância total estimada:</strong> ${s.logistica.kmTotal}</p>
+        <p class="font-bold text-slate-900 pt-1 border-t border-slate-200">Custo Total Logística: <span class="text-rose-600">${formatBRL(s.logistica.total)}</span></p>
+      `;
+
+      // CNAE e Prazos
+      document.getElementById('modalCNAE').innerText = s.cnae;
+      document.getElementById('modalPrazoPgto').innerText = s.prazoPagamento;
+
+      // Atualiza o botão do Portal Oficial com o link funcional correto
+      const btnPortal = document.getElementById('modalBtnPortal');
+      if (btnPortal) {
+        if (s.linkDireto) {
+          btnPortal.href = s.linkDireto;
+        } else if (s.id.includes('taquara')) {
+          btnPortal.href = "https://contratamaisbrasil.sistema.gov.br/";
+        } else {
+          btnPortal.href = "https://contratamaisbrasil.sistema.gov.br/";
+        }
+      }
+
+      // Executa o cálculo da proposta
+      recalcularModal();
+
+      // Exibe o modal
+      document.getElementById('detailModal').classList.remove('hidden');
+      document.body.classList.add('overflow-hidden');
+    }
+
+    // FECHAR MODAL
+    function fecharModal() {
+      document.getElementById('detailModal').classList.add('hidden');
+      document.body.classList.remove('overflow-hidden');
+    }
+
+    // FECHAR AO PRESSIONAR ESC
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') fecharModal();
+    });
+
+    // RECALCULAR DADOS DO MODAL CONFORME O SLIDER
+    function recalcularModal() {
+      const s = currentServico;
+      const proposta = parseFloat(document.getElementById('modalSliderInput').value);
+
+      document.getElementById('modalSliderValor').innerText = formatBRL(proposta);
+      document.getElementById('modalProposta').innerText = formatBRL(proposta);
+      document.getElementById('modalRef').innerText = formatBRL(s.valorReferencia);
+
+      const totalMateriais = s.itensCompra.reduce((acc, it) => acc + it.total, 0);
+      const totalCustos = totalMateriais + s.equipe.total + s.logistica.total + (s.reserva || 0);
+      const lucro = proposta - totalCustos;
+      const margem = ((lucro / proposta) * 100).toFixed(1);
+
+      document.getElementById('modalCusto').innerText = formatBRL(totalCustos);
+
+      const elLucro = document.getElementById('modalLucro');
+      elLucro.innerText = (lucro >= 0 ? "+ " : "- ") + formatBRL(lucro);
+      elLucro.className = (lucro >= 0) ? "text-base sm:text-lg font-black text-emerald-700 block mt-0.5" : "text-base sm:text-lg font-black text-rose-700 block mt-0.5";
+
+      document.getElementById('modalMargem').innerText = `Margem: ${margem}%`;
+
+      document.getElementById('modalSimLucro').innerText = (lucro >= 0 ? "+ " : "- ") + formatBRL(lucro);
+      document.getElementById('modalSimMargem').innerText = `${margem}% sobre faturamento`;
+    }
+
+    // FILTRO DE CARDS
+    function filterCards(categoria) {
+      categoriaAtual = categoria;
+      const buttons = document.querySelectorAll('.filter-btn');
+      buttons.forEach(btn => {
+        if (btn.getAttribute('data-filter') === categoria) {
+          btn.className = "filter-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-slate-900 text-white shadow-sm";
+        } else {
+          btn.className = "filter-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-white hover:bg-slate-200 text-slate-700 border border-slate-300";
+        }
+      });
+
+      atualizarInterface();
+    }
+
+    // INICIALIZAÇÃO
+    window.onload = function() {
+      atualizarInterface();
+    };
+  </script>
+</body>
+</html>

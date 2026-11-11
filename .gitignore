@@ -1,0 +1,7 @@
+# Ignorar arquivos temporários e de configuração local
+.venv/
+__pycache__/
+*.pyc
+.env
+.DS_Store
+Thumbs.db
