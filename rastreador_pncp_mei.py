@@ -86,6 +86,11 @@ def resolver_link_dispensa(item):
     cidade = item.get("unidadeOrgao", {}).get("municipioNome") or ""
     orgao = item.get("orgaoEntidade", {}).get("razaoSocial") or ""
 
+    # Monta URL canônica direta no PNCP com CNPJ, Ano e Sequencial
+    cnpj = item.get("orgaoEntidade", {}).get("cnpj") or ""
+    ano = item.get("anoCompra") or ""
+    seq = item.get("sequencialCompra") or ""
+
     if link_origem and link_origem.startswith("http"):
         return link_origem, "Link Direto Oficial"
 
@@ -95,18 +100,21 @@ def resolver_link_dispensa(item):
     if "PORTAL DE COMPRAS PÚBLICAS" in objeto.upper():
         return "https://www.portaldecompraspublicas.com.br/processos", "Portal de Compras Públicas"
 
-    if "IPM Sistemas" in usuario_origem:
-        # Ex: Novo Hamburgo / Farroupilha IPM
-        q = urllib.parse.quote(f"IPM compras {cidade} dispensa")
-        return f"https://www.google.com/search?q={q}", "Portal IPM Atende.net"
+    # Sempre direciona diretamente para o edital oficial no PNCP
+    if cnpj and ano and seq:
+        return f"https://pncp.gov.br/app/editais/{cnpj}/{ano}/{seq}", "Edital Direto no PNCP"
 
-    # Fallback seguro: Busca direta pelo número de controle no PNCP
     if num_controle:
+        # Extrai CNPJ/ano/seq do numeroControlePNCP (ex: 09509569000151-1-000128/2026)
+        import re
+        m = re.match(r"(\d+)-1-(\d+)/(\d+)", num_controle)
+        if m:
+            c, s, a = m.groups()
+            return f"https://pncp.gov.br/app/editais/{c}/{a}/{int(s)}", "Edital Direto no PNCP"
         q_pncp = urllib.parse.quote(num_controle)
-        return f"https://pncp.gov.br/app/editais?q={q_pncp}", "Buscar Edital no PNCP"
+        return f"https://pncp.gov.br/app/editais?q={q_pncp}", "Edital Oficial no PNCP"
 
-    q_geral = urllib.parse.quote(f"{orgao} dispensa {cidade}")
-    return f"https://www.google.com/search?q={q_geral}", "Portal de Compras do Município"
+    return "https://pncp.gov.br/app/editais", "Portal PNCP"
 
 def classificar_oportunidade(item):
     objeto = (item.get("objetoCompra") or "").strip()

@@ -1652,8 +1652,8 @@
               </div>
 
               <div class="flex items-center gap-2">
-                <a href="${item.link}" target="_blank" onclick="registrarClique('${item.id}')" class="flex-1 py-2 px-3 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs text-center transition-all shadow-sm flex items-center justify-center gap-1.5">
-                  <span>${item.tipoLink || 'Enviar Proposta no Portal'}</span>
+                <a href="${formatarLinkDireto(item)}" target="_blank" onclick="registrarClique('${item.id}')" class="flex-1 py-2 px-3 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs text-center transition-all shadow-sm flex items-center justify-center gap-1.5">
+                  <span>${item.tipoLink && !item.tipoLink.includes('Google') ? item.tipoLink : 'Acessar Edital Oficial'}</span>
                   <span class="text-[10px]">↗</span>
                 </a>
                 <button onclick="copiarDadosItem('${item.id}')" class="py-2 px-3 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs transition-all flex items-center gap-1" title="Copiar Dados">
@@ -1868,6 +1868,25 @@
       });
     }
 
+    // RESOLVE O LINK DIRETO PARA O EDITAL (SEMPRE LINK OFICIAL OU PNCP, NUNCA GOOGLE)
+    function formatarLinkDireto(item) {
+      if (!item) return "https://pncp.gov.br/app/editais";
+      if (item.link && !item.link.includes('google.com')) {
+        return item.link;
+      }
+      if (item.numeroControle) {
+        const m = item.numeroControle.match(/(\d+)-1-(\d+)\/(\d+)/);
+        if (m) {
+          const cnpj = m[1];
+          const seq = parseInt(m[2], 10);
+          const ano = m[3];
+          return `https://pncp.gov.br/app/editais/${cnpj}/${ano}/${seq}`;
+        }
+        return `https://pncp.gov.br/app/editais?q=${encodeURIComponent(item.numeroControle)}`;
+      }
+      return "https://pncp.gov.br/app/editais";
+    }
+
     // RENDERIZAR O RADAR AO VIVO DO PNCP
     function renderizarRadarPNCP() {
       const grid = document.getElementById('servicesGrid');
@@ -1987,8 +2006,8 @@
             
             <div class="space-y-1.5 pt-1">
               <div class="flex items-center gap-2">
-                <a href="${item.link}" target="_blank" onclick="registrarClique('${item.id}'); event.stopPropagation()" class="flex-1 py-2 px-3 rounded-xl ${jaClicado ? 'bg-emerald-700 hover:bg-emerald-800' : 'bg-sky-600 hover:bg-sky-700'} text-white font-bold text-xs text-center shadow-sm hover:shadow transition-all flex items-center justify-center gap-1.5">
-                  <span>${jaClicado ? '✓ Acessar Novamente' : (item.tipoLink || 'Link Direto Oficial')}</span>
+                <a href="${formatarLinkDireto(item)}" target="_blank" onclick="registrarClique('${item.id}'); event.stopPropagation()" class="flex-1 py-2 px-3 rounded-xl ${jaClicado ? 'bg-emerald-700 hover:bg-emerald-800' : 'bg-sky-600 hover:bg-sky-700'} text-white font-bold text-xs text-center shadow-sm hover:shadow transition-all flex items-center justify-center gap-1.5">
+                  <span>${jaClicado ? '✓ Acessar Novamente' : (item.tipoLink && !item.tipoLink.includes('Google') ? item.tipoLink : 'Acessar Edital Oficial')}</span>
                   <span class="text-[10px]">↗</span>
                 </a>
                 <button onclick="event.stopPropagation(); copiarDadosItem('${item.id}')" class="py-2 px-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs transition-all flex items-center gap-1" title="Copiar dados para orçar">
@@ -1998,7 +2017,7 @@
               </div>
               <div class="flex items-center justify-between px-1 text-[10px] text-slate-400">
                 <span>Controle: <strong class="text-slate-600">${item.numeroControle || item.id}</strong></span>
-                <a href="https://pncp.gov.br/app/editais?q=${encodeURIComponent(item.numeroControle || '')}" target="_blank" onclick="registrarClique('${item.id}'); event.stopPropagation()" class="text-sky-600 hover:underline font-semibold">
+                <a href="${formatarLinkDireto(item)}" target="_blank" onclick="registrarClique('${item.id}'); event.stopPropagation()" class="text-sky-600 hover:underline font-semibold">
                   Ver no PNCP ↗
                 </a>
               </div>
