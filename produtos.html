@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manual do Fornecedor B2G MEI - Venda de Produtos Sem Estoque</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    .card-hover { transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1); }
+    .card-hover:hover { transform: translateY(-3px); box-shadow: 0 12px 24px -10px rgba(15, 23, 42, 0.15); }
+    .gradient-emerald { background: linear-gradient(135deg, #064e3b 0%, #065f46 50%, #047857 100%); }
+    .gradient-card { background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%); }
+  </style>
+</head>
+<body class="bg-slate-100 text-slate-800 antialiased min-h-screen flex flex-col selection:bg-emerald-500 selection:text-white">
+
+  <!-- TOPO / CABEÇALHO DA PÁGINA -->
+  <header class="bg-slate-900 text-white border-b border-slate-800 sticky top-0 z-40 shadow-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center gap-3">
+        <a href="index.html" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white text-xs font-bold transition-all border border-slate-700">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+          Voltar ao Radar de Oportunidades
+        </a>
+        <div class="h-4 w-px bg-slate-700 hidden sm:block"></div>
+        <div>
+          <span class="text-[10px] uppercase font-black tracking-wider px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+            Módulo Estratégico B2G
+          </span>
+          <h1 class="text-sm sm:text-base font-extrabold text-white flex items-center gap-2">
+            Catálogo & Manual de Venda Sem Estoque
+          </h1>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2 text-xs">
+        <span class="hidden md:inline text-slate-400">MEI: <strong>35.810.080 RAFAEL PLACIDO</strong> (Nova Hartz - RS)</span>
+        <button onclick="copiarTodosCnaes()" class="px-3 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-xs transition-all shadow-sm flex items-center gap-1.5">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
+          Copiar Lista de CNAEs
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- BANNER HERO PRINCIPAL -->
+  <section class="gradient-emerald text-white py-10 px-4 sm:px-6 lg:px-8 shadow-inner relative overflow-hidden">
+    <div class="max-w-7xl mx-auto space-y-6 relative z-10">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-400/20 text-emerald-300 text-xs font-bold border border-emerald-400/30">
+        <span>📦</span>
+        <span>Operação 100% Legal • Compra Casada (Cross-Docking B2G)</span>
+      </div>
+
+      <div class="max-w-3xl space-y-2">
+        <h2 class="text-2xl sm:text-4xl font-black tracking-tight leading-tight">
+          Como Fornecer Produtos para o Governo com seu MEI Sem Precisar de Estoque
+        </h2>
+        <p class="text-sm sm:text-base text-emerald-100 font-normal leading-relaxed">
+          Você não precisa de galpão, nem de dinheiro parado em mercadoria. A legislação pública permite que você 
+          vença a cotação/dispensa, receba a <strong>Nota de Empenho</strong> (garantia de pagamento estatal) e só então compre do fornecedor atacadista para entregar no órgão.
+        </p>
+      </div>
+
+      <!-- 4 CARDS DE INDICADORES CHAVE -->
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 pt-2">
+        <div class="bg-slate-900/40 backdrop-blur-md rounded-2xl p-4 border border-emerald-500/30">
+          <p class="text-[11px] font-bold text-emerald-300 uppercase tracking-wider">Custo de Estoque</p>
+          <p class="text-2xl font-black text-white mt-1">R$ 0,00</p>
+          <p class="text-[11px] text-emerald-200/80 mt-0.5">Compra 100% sob demanda após empenho</p>
+        </div>
+        <div class="bg-slate-900/40 backdrop-blur-md rounded-2xl p-4 border border-emerald-500/30">
+          <p class="text-[11px] font-bold text-emerald-300 uppercase tracking-wider">CNAEs Permitidos</p>
+          <p class="text-2xl font-black text-white mt-1">1 + 15</p>
+          <p class="text-[11px] text-emerald-200/80 mt-0.5">Até 16 atividades no mesmo CNPJ MEI</p>
+        </div>
+        <div class="bg-slate-900/40 backdrop-blur-md rounded-2xl p-4 border border-emerald-500/30">
+          <p class="text-[11px] font-bold text-emerald-300 uppercase tracking-wider">Margem Líquida Média</p>
+          <p class="text-2xl font-black text-white mt-1">25% a 50%</p>
+          <p class="text-[11px] text-emerald-200/80 mt-0.5">Giro rápido com baixo risco financeiro</p>
+        </div>
+        <div class="bg-slate-900/40 backdrop-blur-md rounded-2xl p-4 border border-emerald-500/30">
+          <p class="text-[11px] font-bold text-emerald-300 uppercase tracking-wider">Prazos de Entrega</p>
+          <p class="text-2xl font-black text-white mt-1">10 a 30 dias</p>
+          <p class="text-[11px] text-emerald-200/80 mt-0.5">Tempo hábil para frete e conferência</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTEÚDO PRINCIPAL -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-10 flex-grow">
+
+    <!-- SEÇÃO: O PASSO A PASSO BLINDADO DA OPERAÇÃO SEM ESTOQUE -->
+    <section class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-6">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 pb-4">
+        <div>
+          <span class="text-xs font-black text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md uppercase tracking-wider border border-emerald-200">
+            Regra Operacional
+          </span>
+          <h3 class="text-xl sm:text-2xl font-black text-slate-900 mt-1">
+            Os 5 Passos da Operação Sem Estoque (Para Nunca Tomar Multa)
+          </h3>
+        </div>
+        <p class="text-xs text-slate-500 max-w-md">
+          Siga rigorosamente este fluxo antes de dar qualquer lance em dispensas eletrônicas ou pregões.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
+        <!-- Passo 1 -->
+        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-2 relative">
+          <div class="w-8 h-8 rounded-full bg-emerald-600 text-white font-black flex items-center justify-center text-sm shadow-sm">
+            1
+          </div>
+          <h4 class="font-bold text-sm text-slate-900">Filtrar pelo Prazo</h4>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Abra o Termo de Referência da dispensa e verifique o prazo de entrega. <strong>Exija no mínimo 10 a 15 dias úteis</strong>. Nunca entre em editais com entrega de 24h a 48h sem ter o produto no atacadista vizinho.
+          </p>
+        </div>
+
+        <!-- Passo 2 -->
+        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-2 relative">
+          <div class="w-8 h-8 rounded-full bg-emerald-600 text-white font-black flex items-center justify-center text-sm shadow-sm">
+            2
+          </div>
+          <h4 class="font-bold text-sm text-slate-900">Travar o Fornecedor</h4>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Antes de dar o lance, localize o produto no site do atacadista/distribuidor. Confirme se há <strong>estoque real</strong>, qual o valor do frete para o RS e salve o link/orçamento direto.
+          </p>
+        </div>
+
+        <!-- Passo 3 -->
+        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-2 relative">
+          <div class="w-8 h-8 rounded-full bg-emerald-600 text-white font-black flex items-center justify-center text-sm shadow-sm">
+            3
+          </div>
+          <h4 class="font-bold text-sm text-slate-900">Disputar com Margem</h4>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Dê seus lances na disputa eletrônica até o seu preço limite de lucro. Se for convocado para anexar proposta e ficha técnica, baixe o PDF de especificação do produto no próprio site do fabricante.
+          </p>
+        </div>
+
+        <!-- Passo 4 -->
+        <div class="p-4 rounded-2xl bg-emerald-50 border border-emerald-300 space-y-2 relative">
+          <div class="w-8 h-8 rounded-full bg-emerald-700 text-white font-black flex items-center justify-center text-sm shadow-sm">
+            4
+          </div>
+          <h4 class="font-bold text-sm text-emerald-950">Aguardar o Empenho</h4>
+          <p class="text-xs text-emerald-800 leading-relaxed">
+            <strong>Regra de Ouro:</strong> Nunca compre nada do fornecedor antes da emissão da <em>Nota de Empenho</em>. Ela é a prova documental de que o dinheiro público já está reservado e bloqueado para você.
+          </p>
+        </div>
+
+        <!-- Passo 5 -->
+        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-2 relative">
+          <div class="w-8 h-8 rounded-full bg-emerald-600 text-white font-black flex items-center justify-center text-sm shadow-sm">
+            5
+          </div>
+          <h4 class="font-bold text-sm text-slate-900">Comprar & Entregar</h4>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Compre o item no fornecedor. Receba para conferir a embalagem e entregue no órgão acompanhado da sua <strong>Nota Fiscal Eletrônica de Venda (NF-e)</strong> emitida pela Sefaz/RS.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO: SIMULADOR DE LANCE E MARGEM LÍQUIDA INTERATIVO -->
+    <section class="bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900 text-white rounded-3xl p-6 sm:p-8 shadow-xl border border-slate-800 space-y-6">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800 pb-4">
+        <div>
+          <span class="text-xs font-black text-sky-400 bg-sky-950/80 px-2.5 py-1 rounded-md uppercase tracking-wider border border-sky-800">
+            Ferramenta Interativa
+          </span>
+          <h3 class="text-xl sm:text-2xl font-black text-white mt-1">
+            Calculadora de Lance & Lucro Líquido sem Estoque
+          </h3>
+        </div>
+        <p class="text-xs text-slate-400 max-w-md">
+          Simule o valor a ofertar no pregão ou dispensa para garantir seu lucro sem tomar prejuízo com frete ou embalagem.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+        <!-- Controles de Entrada -->
+        <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="space-y-1.5">
+            <label class="text-xs font-bold text-slate-300">Preço do Produto no Fornecedor (R$):</label>
+            <div class="relative">
+              <span class="absolute left-3 top-2.5 text-xs text-slate-500 font-bold">R$</span>
+              <input type="number" id="calcPrecoFornecedor" value="1200" oninput="calcularMargem()" step="10" min="0" class="w-full pl-9 pr-3 py-2 rounded-xl bg-slate-800 border border-slate-700 text-white text-sm font-bold focus:border-sky-500 focus:outline-none">
+            </div>
+            <p class="text-[11px] text-slate-500">Valor à vista/faturado no distribuidor</p>
+          </div>
+
+          <div class="space-y-1.5">
+            <label class="text-xs font-bold text-slate-300">Frete Total / Deslocamento (R$):</label>
+            <div class="relative">
+              <span class="absolute left-3 top-2.5 text-xs text-slate-500 font-bold">R$</span>
+              <input type="number" id="calcFrete" value="90" oninput="calcularMargem()" step="5" min="0" class="w-full pl-9 pr-3 py-2 rounded-xl bg-slate-800 border border-slate-700 text-white text-sm font-bold focus:border-sky-500 focus:outline-none">
+            </div>
+            <p class="text-[11px] text-slate-500">Frete do e-commerce ou gasolina até o órgão</p>
+          </div>
+
+          <div class="space-y-1.5">
+            <label class="text-xs font-bold text-slate-300">Custos Extras / Taxa Portal (R$):</label>
+            <div class="relative">
+              <span class="absolute left-3 top-2.5 text-xs text-slate-500 font-bold">R$</span>
+              <input type="number" id="calcCustosExtras" value="30" oninput="calcularMargem()" step="5" min="0" class="w-full pl-9 pr-3 py-2 rounded-xl bg-slate-800 border border-slate-700 text-white text-sm font-bold focus:border-sky-500 focus:outline-none">
+            </div>
+            <p class="text-[11px] text-slate-500">Fita adesiva, embalagem ou taxa de homologação</p>
+          </div>
+
+          <div class="space-y-1.5">
+            <label class="text-xs font-bold text-slate-300">Margem de Lucro Desejada (%):</label>
+            <div class="relative">
+              <input type="range" id="calcMargemSlider" value="35" min="10" max="80" oninput="sincronizarMargemSlider(this.value)" class="w-full accent-emerald-500 mt-2">
+              <div class="flex justify-between text-xs text-slate-400 mt-1">
+                <span>10%</span>
+                <span id="calcMargemPctLabel" class="text-emerald-400 font-black">35%</span>
+                <span>80%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Painel de Resultados Calculados -->
+        <div class="lg:col-span-5 bg-slate-800/80 rounded-2xl p-5 border border-slate-700 space-y-4">
+          <div class="flex items-center justify-between pb-3 border-b border-slate-700/60">
+            <span class="text-xs font-bold text-slate-400">Custo Total de Aquisição:</span>
+            <span id="calcResultadoCustoTotal" class="text-sm font-extrabold text-slate-200">R$ 1.320,00</span>
+          </div>
+
+          <div>
+            <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider block">Lance Mínimo Sugerido no Portal:</span>
+            <div class="flex items-baseline gap-2 mt-1">
+              <span id="calcResultadoLance" class="text-3xl font-black text-white">R$ 2.030,00</span>
+              <span class="text-xs text-slate-400">com margem aplicada</span>
+            </div>
+          </div>
+
+          <div class="p-3 rounded-xl bg-emerald-950/60 border border-emerald-500/30 flex items-center justify-between">
+            <div>
+              <p class="text-xs font-bold text-emerald-300">Seu Lucro Líquido no Bolso:</p>
+              <p id="calcResultadoLucro" class="text-xl font-black text-emerald-400 mt-0.5">+ R$ 710,00</p>
+            </div>
+            <span id="calcResultadoMargemEfetiva" class="text-xs font-black px-2.5 py-1 rounded bg-emerald-500 text-slate-950">
+              35.0% margem
+            </span>
+          </div>
+
+          <p class="text-[11px] text-slate-400 leading-tight">
+            💡 <em>Dica de Ouro:</em> No MEI, compras públicas de mercadorias até o teto anual pagam apenas a guia fixa mensal do DAS (~R$ 75,00/mês). Não há incidência de imposto progressivo sobre cada venda como no Simples Nacional tradicional!
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO: CATÁLOGO INTERATIVO DE PRODUTOS E CNAES -->
+    <section class="space-y-6">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div>
+          <span class="text-xs font-black text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md uppercase tracking-wider border border-emerald-200">
+            Catálogo Oficial
+          </span>
+          <h3 class="text-2xl font-black text-slate-900 mt-1">
+            Top 10 Categorias de Produtos Ideais para MEI Sem Estoque
+          </h3>
+          <p class="text-xs sm:text-sm text-slate-500 mt-1">
+            Filtre por categoria ou pesquise o produto para ver CNAEs oficiais, atacadistas recomendados e prazos de entrega.
+          </p>
+        </div>
+
+        <!-- Campo de Busca Rápida -->
+        <div class="w-full md:w-80 relative">
+          <input type="text" id="inputBusca" oninput="filtrarProdutos()" placeholder="Buscar: frigobar, papel, bota, cadeira..." class="w-full pl-9 pr-4 py-2.5 rounded-xl bg-white border border-slate-300 text-xs sm:text-sm font-medium focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 shadow-sm">
+          <svg class="w-4 h-4 text-slate-400 absolute left-3 top-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+        </div>
+      </div>
+
+      <!-- Pílulas de Filtro de Categorias -->
+      <div class="flex flex-wrap items-center gap-2" id="categoriaPills">
+        <button onclick="selecionarFiltro('todos')" class="pill-btn active px-3.5 py-1.5 rounded-xl text-xs font-bold bg-slate-900 text-white transition-all shadow-sm" data-cat="todos">
+          Todos os Produtos (10)
+        </button>
+        <button onclick="selecionarFiltro('eletro')" class="pill-btn px-3.5 py-1.5 rounded-xl text-xs font-bold bg-white hover:bg-slate-200 text-slate-700 border border-slate-300 transition-all" data-cat="eletro">
+          ⚡ Eletrodomésticos
+        </button>
+        <button onclick="selecionarFiltro('informatica')" class="pill-btn px-3.5 py-1.5 rounded-xl text-xs font-bold bg-white hover:bg-slate-200 text-slate-700 border border-slate-300 transition-all" data-cat="informatica">
+          💻 Informática
+        </button>
+        <button onclick="selecionarFiltro('papelaria')" class="pill-btn px-3.5 py-1.5 rounded-xl text-xs font-bold bg-white hover:bg-slate-200 text-slate-700 border border-slate-300 transition-all" data-cat="papelaria">
+          📄 Papelaria & Expediente
+        </button>
+        <button onclick="selecionarFiltro('moveis')" class="pill-btn px-3.5 py-1.5 rounded-xl text-xs font-bold bg-white hover:bg-slate-200 text-slate-700 border border-slate-300 transition-all" data-cat="moveis">
+          🪑 Móveis & Cadeiras
+        </button>
+        <button onclick="selecionarFiltro('ferramentas')" class="pill-btn px-3.5 py-1.5 rounded-xl text-xs font-bold bg-white hover:bg-slate-200 text-slate-700 border border-slate-300 transition-all" data-cat="ferramentas">
+          🔨 Ferramentas & Elétrica
+        </button>
+        <button onclick="selecionarFiltro('limpeza')" class="pill-btn px-3.5 py-1.5 rounded-xl text-xs font-bold bg-white hover:bg-slate-200 text-slate-700 border border-slate-300 transition-all" data-cat="limpeza">
+          🧹 Limpeza & Higiene
+        </button>
+        <button onclick="selecionarFiltro('epis')" class="pill-btn px-3.5 py-1.5 rounded-xl text-xs font-bold bg-white hover:bg-slate-200 text-slate-700 border border-slate-300 transition-all" data-cat="epis">
+          🦺 EPIs & Proteção
+        </button>
+        <button onclick="selecionarFiltro('copa')" class="pill-btn px-3.5 py-1.5 rounded-xl text-xs font-bold bg-white hover:bg-slate-200 text-slate-700 border border-slate-300 transition-all" data-cat="copa">
+          ☕ Copa & Alimentos
+        </button>
+        <button onclick="selecionarFiltro('esportes')" class="pill-btn px-3.5 py-1.5 rounded-xl text-xs font-bold bg-white hover:bg-slate-200 text-slate-700 border border-slate-300 transition-all" data-cat="esportes">
+          ⚽ Esportes & Brindes
+        </button>
+      </div>
+
+      <!-- GRID DOS PRODUTOS DINÂMICOS -->
+      <div id="gridProdutos" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Injetado via Javascript para permitir busca e cópia instantânea -->
+      </div>
+    </section>
+
+    <!-- SEÇÃO: CHECKLIST DE REGULARIZAÇÃO NO GOV.BR -->
+    <section class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-6">
+      <div class="flex items-center justify-between border-b border-slate-100 pb-4">
+        <div>
+          <span class="text-xs font-black text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md uppercase tracking-wider border border-emerald-200">
+            Regularização 100% Gratuita
+          </span>
+          <h3 class="text-xl sm:text-2xl font-black text-slate-900 mt-1">
+            Como Adicionar Esses CNAEs no seu MEI em 3 Minutos
+          </h3>
+        </div>
+        <a href="https://www.gov.br/empresas-e-negocios/pt-br/empreendedor" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold transition-all shadow-sm flex items-center gap-1.5">
+          <span>Abrir Portal do Empreendedor</span>
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5 text-xs text-slate-600">
+        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
+          <div class="font-bold text-sm text-slate-900 flex items-center gap-2">
+            <span class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center font-black">1</span>
+            Acesse o Portal Gov.br
+          </div>
+          <p>
+            Entre no site oficial do Portal do Empreendedor e clique no botão <strong>"Já sou MEI"</strong>, seguido de <strong>"Atualização Cadastral"</strong>.
+          </p>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
+          <div class="font-bold text-sm text-slate-900 flex items-center gap-2">
+            <span class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center font-black">2</span>
+            Marque as Atividades Secundárias
+          </div>
+          <p>
+            Na aba de atividades econômicas, selecione até 15 ocupações de comércio da lista (ex: comerciante de eletrodomésticos, papelaria, móveis, suprimentos de TI).
+          </p>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
+          <div class="font-bold text-sm text-slate-900 flex items-center gap-2">
+            <span class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center font-black">3</span>
+            Emita o Novo CCMEI Imediato
+          </div>
+          <p>
+            Ao salvar, o sistema gera o novo Certificado de Condição de MEI instantaneamente. Seus dados já sincronizam com a Receita Federal e os portais de compras públicas.
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- TOAST DE NOTIFICAÇÃO (COPIADO COM SUCESSO) -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300">
+    <div class="bg-slate-900 text-white px-4 py-3 rounded-2xl shadow-2xl border border-slate-700 flex items-center gap-3 text-xs font-bold">
+      <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
+      <span id="toastMsg">CNAE copiado para a área de transferência!</span>
+    </div>
+  </div>
+
+  <!-- RODAPÉ COMPACTO -->
+  <footer class="bg-slate-900 text-slate-400 py-6 border-t border-slate-800 text-center text-xs">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <p>Desenvolvido para <strong>Rafael Plácido (MEI)</strong> • Base Operacional: Nova Hartz / RS</p>
+      <div class="flex items-center gap-4 text-slate-300 font-semibold">
+        <a href="index.html" class="hover:text-emerald-400 transition-colors">Radar de Oportunidades</a>
+        <span>•</span>
+        <a href="https://pncp.gov.br/" target="_blank" class="hover:text-emerald-400 transition-colors">Portal PNCP</a>
+        <span>•</span>
+        <a href="https://compras.rs.gov.br/" target="_blank" class="hover:text-emerald-400 transition-colors">Compras RS</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPT DE INTERATIVIDADE, DADOS E BUSCA -->
+  <script>
+    const PRODUTOS_DATA = [
+      {
+        id: "eletro",
+        categoria: "eletro",
+        titulo: "Eletrodomésticos & Áudio/Vídeo",
+        subtitulo: "Frigobares, micro-ondas, bebedouros de coluna, cafeteiras elétricas e smart TVs",
+        cnae: "4753-9/00",
+        ocupacao: "Comerciante de eletrodomésticos e equipamentos de áudio e vídeo independente",
+        margem: "20% a 35%",
+        margemNum: 30,
+        prazo: "10 a 20 dias úteis",
+        risco: "Baixíssimo",
+        riscoCor: "text-emerald-700 bg-emerald-50 border-emerald-200",
+        porQueVender: "Órgãos públicos (secretarias, escolas e postos) compram constantemente unidades avulsas para reposição de aparelhos queimados. A garantia é 100% coberta pelo fabricante nacional em autorizadas locais.",
+        fornecedores: [
+          { nome: "Magazine Luiza Empresas", url: "https://www.magazineluiza.com.br" },
+          { nome: "Compra Certa B2B (Brastemp/Consul)", url: "https://www.compracerta.com.br" },
+          { nome: "Martins Atacadista", url: "https://www.martinsatacado.com.br" },
+          { nome: "Amazon Business", url: "https://www.amazon.com.br" }
+        ],
+        itensComuns: ["Frigobar 68L a 120L", "Micro-ondas 20L e 32L", "Bebedouro de Coluna Garrafão 20L", "Cafeteira Elétrica 30 xícaras", "Ventilador de Parede 60cm"]
+      },
+      {
+        id: "ti",
+        categoria: "informatica",
+        titulo: "Suprimentos e Acessórios de Informática",
+        subtitulo: "Teclados, mouses, no-breaks, filtros de linha, cabos de rede, pen drives e HDs externos",
+        cnae: "4751-2/01",
+        ocupacao: "Comerciante de equipamentos e suprimentos de informática independente",
+        margem: "25% a 40%",
+        margemNum: 35,
+        prazo: "10 a 15 dias úteis",
+        risco: "Baixo",
+        riscoCor: "text-emerald-700 bg-emerald-50 border-emerald-200",
+        porQueVender: "Alto valor agregado com frete levíssimo e barato. Cabem no porta-malas do carro ou chegam via transportadora expressa em até 3 dias. Risco quase nulo de devolução.",
+        fornecedores: [
+          { nome: "Kabum Empresas", url: "https://www.kabum.com.br" },
+          { nome: "Fujioka Distribuidor", url: "https://www.fujioka.com.br" },
+          { nome: "Terabyte Shop", url: "https://www.terabyteshop.com.br" },
+          { nome: "Kalunga Empresas", url: "https://www.kalunga.com.br" }
+        ],
+        itensComuns: ["Kit Teclado e Mouse ABNT2 USB", "No-break 600VA a 1200VA Bivolt", "Filtro de linha 5 a 8 tomadas Inmetro", "Patch Cord Cat5e/Cat6 1,5m e 2,5m", "SSD e Pen Drive 64GB/128GB"]
+      },
+      {
+        id: "papelaria",
+        categoria: "papelaria",
+        titulo: "Material de Escritório & Papelaria",
+        subtitulo: "Papel A4, toners compatíveis, pastas AZ, grampeadores metálicos e envelopes",
+        cnae: "4761-0/03",
+        ocupacao: "Comerciante de artigos de papelaria independente",
+        margem: "30% a 50%",
+        margemNum: 40,
+        prazo: "5 a 15 dias úteis",
+        risco: "Médio",
+        riscoCor: "text-amber-700 bg-amber-50 border-amber-200",
+        porQueVender: "Todo órgão consome toneladas de suprimentos mensais. Toners compatíveis e pastas têm margens gigantescas de mais de 45%. Papel A4 tem margem menor por caixa, mas volume previsível.",
+        fornecedores: [
+          { nome: "Gimba Suprimentos", url: "https://www.gimba.com.br" },
+          { nome: "Kalunga B2B", url: "https://www.kalunga.com.br" },
+          { nome: "Grafite Papelaria (RS)", url: "https://www.grafite.com.br" },
+          { nome: "Atacados Locais de Porto Alegre/NH", url: "https://www.google.com/search?q=distribuidora+papelaria+porto+alegre" }
+        ],
+        itensComuns: ["Caixa Papel A4 75g (5 ou 10 resmas)", "Toner Compatível HP/Brother", "Pasta Suspensa e Pasta AZ Larga", "Grampeador Metálico 26/6", "Quadro Branco Magnético 120x90cm"]
+      },
+      {
+        id: "moveis",
+        categoria: "moveis",
+        titulo: "Móveis Corporativos & Cadeiras NR-17",
+        subtitulo: "Cadeiras giratórias ergonômicas, cadeiras fixas de recepção, armários e arquivos de aço",
+        cnae: "4754-7/01",
+        ocupacao: "Comerciante de móveis independente",
+        margem: "30% a 45%",
+        margemNum: 38,
+        prazo: "15 a 30 dias úteis",
+        risco: "Baixo no RS",
+        riscoCor: "text-emerald-700 bg-emerald-50 border-emerald-200",
+        porQueVender: "O Rio Grande do Sul (Serra Gaúcha) concentra o maior polo moveleiro da América Latina. As fábricas de Bento Gonçalves e Caxias despacham rápido com custos direto da indústria.",
+        fornecedores: [
+          { nome: "Polo Moveleiro Serra Gaúcha (Fábricas)", url: "https://www.google.com/search?q=fabrica+cadeiras+escritorio+serra+gaucha" },
+          { nome: "Pandin Aço Corporativo", url: "https://www.pandin.com.br" },
+          { nome: "Frisokar Assentos", url: "https://www.frisokar.com.br" },
+          { nome: "Mobly Empresas", url: "https://www.mobly.com.br" }
+        ],
+        itensComuns: ["Cadeira Giratória Ergonômica NR-17", "Cadeira Fixa Estofada Recepção", "Armário de Aço 2 Portas 1,90m", "Arquivo de Aço 4 Gavetas para Pastas", "Mesa de Escritório Reta com Gaveteiro"]
+      },
+      {
+        id: "ferramentas",
+        categoria: "ferramentas",
+        titulo: "Ferramentas & Materiais Elétricos/Hidráulicos",
+        subtitulo: "Lâmpadas LED tubulares, disjuntores DIN, torneiras, furadeiras, parafusadeiras e trenas",
+        cnae: "4744-0/01 e 4744-0/99",
+        ocupacao: "Comerciante de ferragens/ferramentas e materiais de construção em geral",
+        margem: "25% a 45%",
+        margemNum: 35,
+        prazo: "10 a 20 dias úteis",
+        risco: "Baixo",
+        riscoCor: "text-emerald-700 bg-emerald-50 border-emerald-200",
+        porQueVender: "Secretarias municipais de obras e manutenção predial abrem dispensas pequenas toda semana para consertos emergenciais em escolas e unidades de saúde.",
+        fornecedores: [
+          { nome: "Loja do Mecânico", url: "https://www.lojadomecanico.com.br" },
+          { nome: "Cassol Centerlar (RS)", url: "https://www.cassol.com.br" },
+          { nome: "Tumelero Materiais (RS)", url: "https://www.tumelero.com.br" },
+          { nome: "Leroy Merlin Empresas", url: "https://www.leroymerlin.com.br" }
+        ],
+        itensComuns: ["Lâmpada LED Tubular T8 18W", "Disjuntor Bipolar DIN 20A a 40A", "Furadeira de Impacto 1/2 Pol 700W", "Torneira Metálica para Lavatório", "Kit Chaves de Fenda, Philips e Alicate"]
+      },
+      {
+        id: "limpeza",
+        categoria: "limpeza",
+        titulo: "Produtos de Limpeza & Saneantes",
+        subtitulo: "Sacos de lixo reforçados 100L, sabonete líquido 5L, papel toalha interfolhado e álcool 70%",
+        cnae: "4789-0/05",
+        ocupacao: "Comerciante de produtos saneantes domissanitários independente",
+        margem: "25% a 35%",
+        margemNum: 30,
+        prazo: "5 a 10 dias úteis",
+        risco: "Médio (Volume/Peso)",
+        riscoCor: "text-amber-700 bg-amber-50 border-amber-200",
+        porQueVender: "Necessidade ininterrupta. Pode ser comprado a pronta entrega no Atacadão ou Stok Center de Novo Hamburgo/Sapiranga no dia anterior à entrega.",
+        fornecedores: [
+          { nome: "Atacadão Novo Hamburgo", url: "https://www.atacadao.com.br" },
+          { nome: "Stok Center / Comercial Zaffari", url: "https://www.stokcenter.com.br" },
+          { nome: "Fort Atacadista", url: "https://www.fortatacadista.com.br" },
+          { nome: "Distribuidoras de Higiene Vale dos Sinos", url: "https://www.google.com/search?q=distribuidora+produtos+limpeza+novo+hamburgo" }
+        ],
+        itensComuns: ["Saco de Lixo Preto 100L Reforçado", "Papel Toalha Interfolhado 100% Celulose", "Sabonete Líquido Neutro Galão 5L", "Desinfetante Floral Concentrado 5L", "Álcool 70% Líquido e Gel 1L/5L"]
+      },
+      {
+        id: "epis",
+        categoria: "epis",
+        titulo: "EPIs e Vestuário de Proteção",
+        subtitulo: "Botas de segurança com bico PVC/aço, luvas nitrílicas, capas de chuva e protetores auriculares",
+        cnae: "4781-4/00 e 4782-2/02",
+        ocupacao: "Comerciante de artigos do vestuário e armarinho independente",
+        margem: "35% a 55%",
+        margemNum: 45,
+        prazo: "10 a 15 dias úteis",
+        risco: "Baixo",
+        riscoCor: "text-emerald-700 bg-emerald-50 border-emerald-200",
+        porQueVender: "Exigência legal do Ministério do Trabalho para garis, equipes de obras e cemitérios. O órgão só exige que o produto venha com o CA (Certificado de Aprovação) gravado na peça.",
+        fornecedores: [
+          { nome: "Marluvas Calçados", url: "https://www.marluvas.com.br" },
+          { nome: "Volk do Brasil EPI", url: "https://www.volkdobrasil.com.br" },
+          { nome: "Danny EPIs", url: "https://www.danny.com.br" },
+          { nome: "Lojão do EPI", url: "https://www.lojaodoepi.com.br" }
+        ],
+        itensComuns: ["Botina de Segurança Elástico Bico PVC", "Luva de Vaqueta e Nitrílica", "Capa de Chuva Amarela c/ Capuz", "Protetor Auricular Tipo Plug Silicone", "Óculos de Proteção Incolor Ampla Visão"]
+      },
+      {
+        id: "copa",
+        categoria: "copa",
+        titulo: "Alimentos Não Perecíveis & Copa",
+        subtitulo: "Café torrado e moído a vácuo, açúcar, copos descartáveis para água e café, guardanapos",
+        cnae: "4712-1/00 e 4789-0/99",
+        ocupacao: "Comerciante de mercadorias em geral (produtos alimentícios) e outros artigos",
+        margem: "20% a 30%",
+        margemNum: 25,
+        prazo: "5 a 10 dias úteis",
+        risco: "Baixo",
+        riscoCor: "text-emerald-700 bg-emerald-50 border-emerald-200",
+        porQueVender: "Demanda previsível em todas as prefeituras e câmaras de vereadores. Você pode carregar caixas fechadas compradas no atacarejo local diretamente no dia da entrega.",
+        fornecedores: [
+          { nome: "Atacadão / Sam's Club", url: "https://www.atacadao.com.br" },
+          { nome: "Maxxi Atacado RS", url: "https://www.google.com/search?q=atacado+alimentos+rio+grande+do+sul" },
+          { nome: "Stok Center", url: "https://www.stokcenter.com.br" }
+        ],
+        itensComuns: ["Café Torrado e Moído Vácuo 500g", "Açúcar Refinado Pacote 1kg/5kg", "Copos Descartáveis 200ml (Água)", "Copos Descartáveis 50ml (Café)", "Adoçante Líquido 100ml"]
+      },
+      {
+        id: "esportes",
+        categoria: "esportes",
+        titulo: "Artigos Esportivos & Jogos Escolares",
+        subtitulo: "Bolas oficiais de futsal e vôlei, redes esportivas, cones de treino, tatames e xadrez",
+        cnae: "4763-6/02",
+        ocupacao: "Comerciante de artigos esportivos independente",
+        margem: "30% a 50%",
+        margemNum: 40,
+        prazo: "15 a 20 dias úteis",
+        risco: "Baixíssimo",
+        riscoCor: "text-emerald-700 bg-emerald-50 border-emerald-200",
+        porQueVender: "As secretarias de educação e desporto abrem editais para kits escolares. Produtos leves, fáceis de conferir e sem complexidade técnica.",
+        fornecedores: [
+          { nome: "Penalty B2B", url: "https://www.penalty.com.br" },
+          { nome: "Decathlon Empresas", url: "https://www.decathlon.com.br" },
+          { nome: "Mercado Livre Atacado Esportivo", url: "https://www.mercadolivre.com.br" }
+        ],
+        itensComuns: ["Bola de Futsal Oficial Max 500", "Bola de Vôlei Oficial Inmetro", "Kit 20 Cones Demarcação 25cm", "Tatame EVA 100x100x2cm", "Jogos de Tabuleiro Xadrez Escolar"]
+      },
+      {
+        id: "brindes",
+        categoria: "esportes",
+        titulo: "Brindes, Troféus & Artigos de Comunicação",
+        subtitulo: "Troféus de acrílico/metal, medalhas gravadas, crachás em PVC com cordão personalizado",
+        cnae: "4789-0/01 e 4789-0/99",
+        ocupacao: "Comerciante de suvenires, bijuterias e outros produtos não especificados",
+        margem: "40% a 60%",
+        margemNum: 50,
+        prazo: "10 a 20 dias úteis",
+        risco: "Baixo",
+        riscoCor: "text-emerald-700 bg-emerald-50 border-emerald-200",
+        porQueVender: "As gráficas e fabricantes de medalhas do polo de Novo Hamburgo e Campo Bom produzem sob encomenda. Você só repassa o layout oficial enviado pelo órgão.",
+        fornecedores: [
+          { nome: "Fábricas de Troféus Vale dos Sinos", url: "https://www.google.com/search?q=fabrica+trofeus+medalhas+novo+hamburgo" },
+          { nome: "Gráficas de Campo Bom e Sapiranga", url: "https://www.google.com/search?q=grafica+crachas+brindes+sapiranga" }
+        ],
+        itensComuns: ["Troféus de Metal/Acrílico com Gravação", "Medalhas Fundidas 50mm e 60mm", "Crachás PVC com Cordão Personalizado", "Pastas para Seminários e Congressos"]
+      }
+    ];
+
+    let categoriaFiltroAtual = 'todos';
+
+    // RENDERIZAR CARDS DE PRODUTOS
+    function renderizarProdutos(lista) {
+      const grid = document.getElementById('gridProdutos');
+      grid.innerHTML = '';
+
+      if (lista.length === 0) {
+        grid.innerHTML = `
+          <div class="col-span-full py-12 text-center bg-white rounded-3xl border border-dashed border-slate-300 p-8 space-y-3">
+            <div class="w-12 h-12 rounded-full bg-slate-100 text-slate-500 mx-auto flex items-center justify-center text-xl font-bold">
+              🔍
+            </div>
+            <h4 class="text-base font-bold text-slate-800">Nenhum produto encontrado</h4>
+            <p class="text-xs text-slate-500">Tente buscar por termos como <em>frigobar, papel, bota, cadeira, toner</em> ou mude a categoria acima.</p>
+          </div>
+        `;
+        return;
+      }
+
+      lista.forEach(prod => {
+        const card = document.createElement('div');
+        card.className = "bg-white rounded-3xl p-6 shadow-sm border border-slate-200 card-hover flex flex-col justify-between space-y-5";
+        
+        const fornecedoresHtml = prod.fornecedores.map(f => `
+          <a href="${f.url}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-emerald-50 hover:text-emerald-800 text-slate-700 text-[11px] font-bold border border-slate-200 transition-colors">
+            <span>${f.nome}</span>
+            <svg class="w-2.5 h-2.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+          </a>
+        `).join(' ');
+
+        const itensHtml = prod.itensComuns.map(it => `
+          <li class="flex items-center gap-1.5 text-xs text-slate-600">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+            ${it}
+          </li>
+        `).join('');
+
+        card.innerHTML = `
+          <div class="space-y-4">
+            <!-- Cabeçalho do Card -->
+            <div class="flex items-start justify-between gap-2">
+              <div>
+                <span class="text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded ${prod.riscoCor} border">
+                  Risco: ${prod.risco}
+                </span>
+                <h4 class="text-lg font-black text-slate-900 mt-1 leading-snug">${prod.titulo}</h4>
+              </div>
+              <div class="text-right flex-shrink-0">
+                <span class="text-xs font-black px-2 py-1 rounded-lg bg-emerald-100 text-emerald-800 border border-emerald-300">
+                  Lucro: ${prod.margem}
+                </span>
+              </div>
+            </div>
+
+            <p class="text-xs text-slate-500 leading-relaxed">${prod.subtitulo}</p>
+
+            <!-- BOX DO CNAE COM BOTÃO DE COPIAR -->
+            <div class="p-3.5 rounded-2xl bg-slate-50 border border-slate-200 space-y-1.5">
+              <div class="flex items-center justify-between">
+                <span class="text-[10px] font-black text-slate-500 uppercase tracking-wider">CNAE Autorizado (MEI)</span>
+                <button onclick="copiarTexto('${prod.cnae}', 'CNAE ${prod.cnae} copiado!')" class="text-[11px] font-bold text-emerald-700 hover:text-emerald-900 bg-white hover:bg-emerald-50 px-2 py-0.5 rounded border border-slate-200 transition-colors flex items-center gap-1">
+                  <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
+                  Copiar Código
+                </button>
+              </div>
+              <p class="text-sm font-black text-slate-900">${prod.cnae}</p>
+              <p class="text-[11px] text-slate-600 leading-tight">${prod.ocupacao}</p>
+            </div>
+
+            <!-- Por que é ideal sem estoque -->
+            <div class="space-y-1">
+              <span class="text-[11px] font-bold text-slate-700">Por que funciona sem estoque?</span>
+              <p class="text-xs text-slate-600 leading-relaxed">${prod.porQueVender}</p>
+            </div>
+
+            <!-- Exemplos frequentes em editais -->
+            <div class="space-y-1 pt-1">
+              <span class="text-[11px] font-bold text-slate-700">Mais pedidos pelos órgãos:</span>
+              <ul class="space-y-1 pl-1">
+                ${itensHtml}
+              </ul>
+            </div>
+          </div>
+
+          <!-- Rodapé do Card: Fornecedores & Prazo -->
+          <div class="pt-4 border-t border-slate-100 space-y-3">
+            <div class="flex items-center justify-between text-xs text-slate-500">
+              <span>Prazo típico do edital:</span>
+              <strong class="text-slate-800">${prod.prazo}</strong>
+            </div>
+
+            <div class="space-y-1.5">
+              <span class="text-[11px] font-bold text-slate-700 block">Onde Comprar (Distribuidores):</span>
+              <div class="flex flex-wrap gap-1.5">
+                ${fornecedoresHtml}
+              </div>
+            </div>
+          </div>
+        `;
+
+        grid.appendChild(card);
+      });
+    }
+
+    // FILTROS
+    function selecionarFiltro(cat) {
+      categoriaFiltroAtual = cat;
+      document.querySelectorAll('.pill-btn').forEach(btn => {
+        if (btn.getAttribute('data-cat') === cat) {
+          btn.className = "pill-btn active px-3.5 py-1.5 rounded-xl text-xs font-bold bg-slate-900 text-white transition-all shadow-sm";
+        } else {
+          btn.className = "pill-btn px-3.5 py-1.5 rounded-xl text-xs font-bold bg-white hover:bg-slate-200 text-slate-700 border border-slate-300 transition-all";
+        }
+      });
+      filtrarProdutos();
+    }
+
+    function filtrarProdutos() {
+      const termo = document.getElementById('inputBusca').value.toLowerCase().trim();
+      let filtrados = PRODUTOS_DATA;
+
+      if (categoriaFiltroAtual !== 'todos') {
+        filtrados = filtrados.filter(p => p.categoria === categoriaFiltroAtual);
+      }
+
+      if (termo) {
+        filtrados = filtrados.filter(p => 
+          p.titulo.toLowerCase().includes(termo) ||
+          p.subtitulo.toLowerCase().includes(termo) ||
+          p.cnae.toLowerCase().includes(termo) ||
+          p.itensComuns.some(it => it.toLowerCase().includes(termo)) ||
+          p.fornecedores.some(f => f.nome.toLowerCase().includes(termo))
+        );
+      }
+
+      renderizarProdutos(filtrados);
+    }
+
+    // CALCULADORA DE MARGEM
+    function formatBRL(val) {
+      return val.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    }
+
+    function sincronizarMargemSlider(val) {
+      document.getElementById('calcMargemPctLabel').innerText = val + '%';
+      calcularMargem();
+    }
+
+    function calcularMargem() {
+      const precoFornecedor = parseFloat(document.getElementById('calcPrecoFornecedor').value) || 0;
+      const frete = parseFloat(document.getElementById('calcFrete').value) || 0;
+      const extras = parseFloat(document.getElementById('calcCustosExtras').value) || 0;
+      const margemPct = parseFloat(document.getElementById('calcMargemSlider').value) || 35;
+
+      const custoTotal = precoFornecedor + frete + extras;
+      const lanceSugerido = custoTotal * (1 + (margemPct / 100));
+      const lucroLiquido = lanceSugerido - custoTotal;
+
+      document.getElementById('calcResultadoCustoTotal').innerText = formatBRL(custoTotal);
+      document.getElementById('calcResultadoLance').innerText = formatBRL(lanceSugerido);
+      document.getElementById('calcResultadoLucro').innerText = '+ ' + formatBRL(lucroLiquido);
+      document.getElementById('calcResultadoMargemEfetiva').innerText = margemPct.toFixed(1) + '% margem';
+    }
+
+    // UTILITÁRIO DE COPIAR E TOAST
+    function copiarTexto(texto, mensagem) {
+      navigator.clipboard.writeText(texto).then(() => {
+        mostrarToast(mensagem);
+      }).catch(err => {
+        const textarea = document.createElement('textarea');
+        textarea.value = texto;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+        mostrarToast(mensagem);
+      });
+    }
+
+    function copiarTodosCnaes() {
+      const todos = `4753-9/00 - Comércio varejista de eletrodomésticos e equipamentos de áudio e vídeo
+4751-2/01 - Comércio varejista especializado de equipamentos e suprimentos de informática
+4761-0/03 - Comércio varejista de artigos de papelaria
+4754-7/01 - Comércio varejista de móveis
+4744-0/01 - Comércio varejista de ferragens e ferramentas
+4744-0/99 - Comércio varejista de materiais de construção em geral
+4789-0/05 - Comércio varejista de produtos saneantes domissanitários
+4781-4/00 - Comércio varejista de artigos do vestuário e acessórios
+4782-2/02 - Comércio varejista de artigos de armarinho
+4712-1/00 - Comércio varejista de mercadorias em geral (produtos alimentícios)
+4763-6/02 - Comércio varejista de artigos esportivos
+4789-0/01 - Comércio varejista de suvenires, bijuterias e artesanatos
+4789-0/99 - Comércio varejista de outros produtos não especificados anteriormente`;
+      copiarTexto(todos, "Todos os 13 CNAEs copiados com sucesso!");
+    }
+
+    let toastTimer = null;
+    function mostrarToast(msg) {
+      const toast = document.getElementById('toast');
+      const toastMsg = document.getElementById('toastMsg');
+      toastMsg.innerText = msg;
+      toast.classList.remove('translate-y-20', 'opacity-0');
+
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        toast.classList.add('translate-y-20', 'opacity-0');
+      }, 3500);
+    }
+
+    // INICIALIZAÇÃO
+    window.addEventListener('DOMContentLoaded', () => {
+      renderizarProdutos(PRODUTOS_DATA);
+      calcularMargem();
+    });
+  </script>
+</body>
+</html>
