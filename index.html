@@ -2121,6 +2121,7 @@
     // ATUALIZAR INTERFACE E CONTADORES
     function atualizarInterface() {
       atualizarContadorContrataMais();
+      atualizarContadorMarketing();
       const ativos = obterServicosAtivos();
       const excluidos = getExcluidos();
 
@@ -3626,11 +3627,12 @@
       const favs = getFavoritos();
       const propostasSalvas = obterPropostasGravadas();
 
-      // Pega todas as oportunidades do Contrata+ Brasil do banco de dados (excluindo apenas as deletadas manualmente)
+      // Pega todas as oportunidades do Contrata+ Brasil do banco de dados (excluindo itens de marketing para ficarem apenas no Painel de Marketing)
       const todasContrata = servicosDB.filter(s => {
         const portal = identificarPortalOportunidade(s).id;
         const strId = String(s.id);
-        return portal === 'contratamais' && !excluidos.includes(strId);
+        const ehMarketing = s.categoria && s.categoria.includes('marketing');
+        return portal === 'contratamais' && !ehMarketing && !excluidos.includes(strId);
       });
 
       // Separa entre abertas e com proposta enviada
@@ -4031,17 +4033,20 @@
       const favs = getFavoritos();
       const todosRadar = window.RADAR_PNCP_DATA || [];
 
-      // Filtra itens do banco interno e do radar que sejam do Compras RS ou Compras.gov e não tenham proposta enviada
+      // Filtra itens do banco interno e do radar que sejam do Compras RS ou Compras.gov (EXCLUINDO os de marketing para ficarem apenas no Painel de Marketing)
       const listaInterna = servicosDB.filter(s => {
         const portal = identificarPortalOportunidade(s).id;
         const strId = String(s.id);
-        return (portal === 'comprasrs' || portal === 'comprasgov') && !idsEnviados.includes(strId) && !excluidos.includes(strId);
+        const ehMarketing = s.categoria && s.categoria.includes('marketing');
+        return (portal === 'comprasrs' || portal === 'comprasgov') && !ehMarketing && !idsEnviados.includes(strId) && !excluidos.includes(strId);
       }).map(s => ({ ...s, origemPainel: 'interno' }));
 
       const listaRadar = todosRadar.filter(r => {
         const portal = identificarPortalOportunidade(r).id;
         const strId = String(r.id);
-        return (portal === 'comprasrs' || portal === 'comprasgov') && !idsEnviados.includes(strId) && !excluidos.includes(strId);
+        const objLower = (r.objeto || '').toLowerCase();
+        const ehMarketing = objLower.includes('marketing digital') || objLower.includes('redes sociais');
+        return (portal === 'comprasrs' || portal === 'comprasgov') && !ehMarketing && !idsEnviados.includes(strId) && !excluidos.includes(strId);
       }).map(r => ({ ...r, origemPainel: 'radar' }));
 
       const listaCompleta = [...listaInterna, ...listaRadar];
@@ -4720,6 +4725,7 @@ Link: ${item.link}`;
       atualizarContadorFavoritas();
       atualizarContadorOceanoAzul();
       atualizarContadorContrataMais();
+      atualizarContadorMarketing();
       atualizarInterface();
     };
   
@@ -4913,11 +4919,23 @@ Link: ${item.link}`;
     }
 
     // FUNÇÃO DINÂMICA PARA ATUALIZAR CONTADOR OCEANO AZUL
-        function atualizarContadorContrataMais() {
+    function atualizarContadorContrataMais() {
       const badge = document.getElementById('badgeContrataMais');
       if (!badge) return;
       const excluidos = typeof getExcluidos === 'function' ? getExcluidos() : [];
-      const count = servicosDB.filter(s => identificarPortalOportunidade(s).id === 'contratamais' && !excluidos.includes(String(s.id))).length;
+      const count = servicosDB.filter(s => {
+        const portal = identificarPortalOportunidade(s).id;
+        const ehMarketing = s.categoria && s.categoria.includes('marketing');
+        return portal === 'contratamais' && !ehMarketing && !excluidos.includes(String(s.id));
+      }).length;
+      badge.innerText = count;
+    }
+
+    function atualizarContadorMarketing() {
+      const badge = document.getElementById('badgeMarketingContador');
+      if (!badge) return;
+      const excluidos = typeof getExcluidos === 'function' ? getExcluidos() : [];
+      const count = servicosDB.filter(s => s.categoria && s.categoria.includes('marketing') && !excluidos.includes(String(s.id))).length;
       badge.innerText = count;
     }
 
