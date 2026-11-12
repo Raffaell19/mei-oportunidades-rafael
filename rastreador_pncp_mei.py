@@ -12,6 +12,14 @@ import urllib.parse
 import urllib.error
 
 # Cidades prioritárias no entorno de Nova Hartz / RS
+TERMOS_BLOQUEIO_SUBCONTRATACAO_MEI = [
+    "vigilancia", "vigilância", "seguranca armada", "segurança armada", "vigilante",
+    "dedicação exclusiva de mão de obra", "dedicacao exclusiva", "posto de trabalho",
+    "copeiragem", "copeira", "recepcionista presencial", "recepcao fixa",
+    "pavimentação asfáltica", "terraplanagem pesada", "dap rural", "caf rural", "pronaf",
+    "controle integrado de pragas", "desinsetização e desratização"
+]
+
 CIDADES_PRIORITARIAS = [
     "Nova Hartz", "Sapiranga", "Araricá", "Parobé", "Taquara",
     "Campo Bom", "Novo Hamburgo", "São Leopoldo", "Estância Velha",
@@ -201,7 +209,9 @@ def classificar_oportunidade(item):
         "tipoLink": tipo_link,
         "plataforma": plataforma,
         "ehComprasGov": eh_comprasgov,
-        "compativelMEI": compativel_porte and (score > 0 or eh_regiao_proxima),
+                "compativelMEI": compativel_porte and (score > 0 or eh_regiao_proxima) and not any(t in (objeto + " " + orgao).lower() for t in TERMOS_BLOQUEIO_SUBCONTRATACAO_MEI),
+        "permiteCompraFornecedor": True,
+        "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)", 
         "ehRegiaoProxima": eh_regiao_proxima,
         "tags": tags or ["Oportunidade MEI"],
         "scoreOceanoAzul": score_oceano,

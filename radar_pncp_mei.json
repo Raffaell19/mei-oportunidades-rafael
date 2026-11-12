@@ -19,7 +19,9 @@
       "Serviço",
       "Manutenção",
       "Higienização"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
     "id": "88150495000186_1_000465_2026",
@@ -40,7 +42,9 @@
     "tags": [
       "Porta",
       "Suporte"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
     "id": "88830609000139_1_000633_2026",
@@ -62,7 +66,9 @@
       "Instalação",
       "Fechadura",
       "Porta"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
     "id": "05110425000177_1_000051_2026",
@@ -82,7 +88,9 @@
     "ehRegiaoProxima": true,
     "tags": [
       "Oportunidade MEI"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
     "id": "87934675000196_1_000314_2026",
@@ -102,7 +110,9 @@
     "ehRegiaoProxima": true,
     "tags": [
       "Oportunidade MEI"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
     "id": "09509569000151_1_000128_2026",
@@ -124,7 +134,9 @@
       "Serviço",
       "Reparo",
       "Toldo"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
     "id": "17176399000169_1_000040_2026",
@@ -144,7 +156,9 @@
     "ehRegiaoProxima": true,
     "tags": [
       "Oportunidade MEI"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
     "id": "09509569000151_1_000129_2026",
@@ -164,7 +178,9 @@
     "ehRegiaoProxima": true,
     "tags": [
       "Serviço"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
     "id": "00058163000125_1_000161_2026",
@@ -185,7 +201,9 @@
     "tags": [
       "Serviço",
       "Chaveiro"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
     "id": "92854876000113_1_000078_2026",
@@ -205,7 +223,9 @@
     "ehRegiaoProxima": true,
     "tags": [
       "Oportunidade MEI"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
     "id": "92854876000113_1_000079_2026",
@@ -225,7 +245,9 @@
     "ehRegiaoProxima": true,
     "tags": [
       "Oportunidade MEI"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
     "id": "92969856000198_1_000321_2026",
@@ -247,7 +269,9 @@
       "Instalação",
       "Fechadura",
       "Porta"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
     "id": "88254883000107_1_000170_2026",
@@ -267,7 +291,9 @@
     "ehRegiaoProxima": true,
     "tags": [
       "Porta"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
     "id": "92963560000160_1_001420_2026",
@@ -288,7 +314,9 @@
     "tags": [
       "Serviço",
       "Porta"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
     "id": "01612918000154_1_000126_2026",
@@ -308,7 +336,9 @@
     "ehRegiaoProxima": true,
     "tags": [
       "Material"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
     "id": "10637926000146_1_000299_2026",
@@ -328,7 +358,9 @@
     "ehRegiaoProxima": true,
     "tags": [
       "Oportunidade MEI"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
     "id": "89522064000166_1_000242_2026",
@@ -348,7 +380,9 @@
     "ehRegiaoProxima": true,
     "tags": [
       "Oportunidade MEI"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
     "id": "17176399000169_1_000041_2026",
@@ -368,7 +402,9 @@
     "ehRegiaoProxima": true,
     "tags": [
       "Oportunidade MEI"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
     "id": "87958658000199_1_001160_2026",
@@ -388,7 +424,9 @@
     "ehRegiaoProxima": true,
     "tags": [
       "Oportunidade MEI"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
     "id": "13738204000176_1_000082_2026",
@@ -408,7 +446,9 @@
     "ehRegiaoProxima": true,
     "tags": [
       "Serviço"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
     "id": "00394452000103_1_023856_2026",
@@ -428,7 +468,9 @@
     "ehRegiaoProxima": true,
     "tags": [
       "Oportunidade MEI"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
     "id": "00348003000110_1_001539_2026",
@@ -448,7 +490,9 @@
     "ehRegiaoProxima": true,
     "tags": [
       "Oportunidade MEI"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
     "id": "00348003000110_1_001542_2026",
@@ -468,7 +512,9 @@
     "ehRegiaoProxima": true,
     "tags": [
       "Oportunidade MEI"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
     "id": "26994558000123_1_000182_2026",
@@ -489,7 +535,9 @@
     "tags": [
       "Serviço",
       "Instalação"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
     "id": "00058163000125_1_000164_2026",
@@ -511,7 +559,9 @@
       "Serviço",
       "Instalação",
       "Porta"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
     "id": "00058163000125_1_000165_2026",
@@ -531,7 +581,9 @@
     "ehRegiaoProxima": true,
     "tags": [
       "Oportunidade MEI"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
     "id": "28610005000155_1_000108_2026",
@@ -553,7 +605,9 @@
       "Serviço",
       "Instalação",
       "Elétrica"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
     "id": "87958658000199_1_001164_2026",
@@ -573,7 +627,9 @@
     "ehRegiaoProxima": true,
     "tags": [
       "Serviço"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
     "id": "92969856000198_1_000329_2026",
@@ -593,7 +649,9 @@
     "ehRegiaoProxima": true,
     "tags": [
       "Instalação"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
     "id": "89175541000164_1_000432_2026",
@@ -613,7 +671,9 @@
     "ehRegiaoProxima": true,
     "tags": [
       "Oportunidade MEI"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
     "id": "87958658000199_1_001165_2026",
@@ -633,7 +693,9 @@
     "ehRegiaoProxima": true,
     "tags": [
       "Oportunidade MEI"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
     "id": "90938143000131_1_000057_2026",
@@ -653,7 +715,9 @@
     "ehRegiaoProxima": true,
     "tags": [
       "Oportunidade MEI"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
     "id": "87934675000196_1_000315_2026",
@@ -673,7 +737,9 @@
     "ehRegiaoProxima": true,
     "tags": [
       "Oportunidade MEI"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
     "id": "87958658000199_1_001166_2026",
@@ -693,7 +759,9 @@
     "ehRegiaoProxima": true,
     "tags": [
       "Oportunidade MEI"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
     "id": "87934675000196_1_000316_2026",
@@ -713,7 +781,9 @@
     "ehRegiaoProxima": true,
     "tags": [
       "Oportunidade MEI"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
     "id": "00394452000103_1_023908_2026",
@@ -733,7 +803,9 @@
     "ehRegiaoProxima": true,
     "tags": [
       "Oportunidade MEI"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
     "id": "92963560000160_1_001431_2026",
@@ -753,7 +825,9 @@
     "ehRegiaoProxima": true,
     "tags": [
       "Porta"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
     "id": "94392164000155_1_000015_2026",
@@ -774,7 +848,9 @@
     "tags": [
       "Serviço",
       "Manutenção"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
     "id": "89522064000166_1_000244_2026",
@@ -794,7 +870,9 @@
     "ehRegiaoProxima": true,
     "tags": [
       "Serviço"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
     "id": "89175541000164_1_000433_2026",
@@ -816,7 +894,9 @@
       "Serviço",
       "Manutenção",
       "Instalação"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
     "id": "00394502000144_1_015632_2026",
@@ -836,7 +916,9 @@
     "ehRegiaoProxima": true,
     "tags": [
       "Oportunidade MEI"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
     "id": "92969856000198_1_000330_2026",
@@ -856,7 +938,9 @@
     "ehRegiaoProxima": true,
     "tags": [
       "Oportunidade MEI"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
     "id": "00394502000144_1_015634_2026",
@@ -876,7 +960,9 @@
     "ehRegiaoProxima": true,
     "tags": [
       "Oportunidade MEI"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
     "id": "00394502000144_1_015635_2026",
@@ -896,7 +982,9 @@
     "ehRegiaoProxima": true,
     "tags": [
       "Material"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
     "id": "32613632000117_1_000023_2026",
@@ -916,7 +1004,9 @@
     "ehRegiaoProxima": true,
     "tags": [
       "Coffee"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
     "id": "00489828000155_1_000697_2026",
@@ -936,7 +1026,9 @@
     "ehRegiaoProxima": true,
     "tags": [
       "Material"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
     "id": "00394452000103_1_023935_2026",
@@ -957,7 +1049,9 @@
     "tags": [
       "Serviço",
       "Limpeza"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
     "id": "92969856000198_1_000333_2026",
@@ -979,7 +1073,9 @@
       "Manutenção",
       "Limpeza",
       "Higienização"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
     "id": "05110425000177_1_000054_2026",
@@ -999,7 +1095,9 @@
     "ehRegiaoProxima": true,
     "tags": [
       "Instalação"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
     "id": "92969856000198_1_000334_2026",
@@ -1019,7 +1117,9 @@
     "ehRegiaoProxima": true,
     "tags": [
       "Oportunidade MEI"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
     "id": "87958658000199_1_001167_2026",
@@ -1039,7 +1139,9 @@
     "ehRegiaoProxima": true,
     "tags": [
       "Oportunidade MEI"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
     "id": "00058163000125_1_000166_2026",
@@ -1059,27 +1161,9 @@
     "ehRegiaoProxima": true,
     "tags": [
       "Oportunidade MEI"
-    ]
-  },
-  {
-    "id": "92969856000198_1_000335_2026",
-    "numeroControle": "92969856000198-1-000335/2026",
-    "orgao": "UFRS-UNIVERSIDADE FEDERAL DO RS/RS",
-    "cidade": "Porto Alegre",
-    "objeto": "Aquisição de minição para utilização de armamento para os servidores vigilantes do quadro efetivo da UFRGS atuarem durante suas jornadas de trabalho.",
-    "valorEstimado": 2193.0,
-    "valorFormatado": "R$ 2.193,00",
-    "dataEncerramento": "16/11/2026 às 08:00",
-    "dataEncerramentoIso": "2026-11-16T08:00:00",
-    "link": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/acompanhamento-compra?compra=15311406005002026",
-    "tipoLink": "Link Direto Oficial",
-    "plataforma": "Contrata+ Brasil / Compras.gov.br",
-    "ehComprasGov": true,
-    "compativelMEI": true,
-    "ehRegiaoProxima": true,
-    "tags": [
-      "Quadro"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
     "id": "00394502000144_1_015680_2026",
@@ -1099,7 +1183,9 @@
     "ehRegiaoProxima": true,
     "tags": [
       "Oportunidade MEI"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
     "id": "08838143000189_1_000038_2026",
@@ -1119,7 +1205,9 @@
     "ehRegiaoProxima": true,
     "tags": [
       "Oportunidade MEI"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
     "id": "89175541000164_1_000437_2026",
@@ -1139,7 +1227,9 @@
     "ehRegiaoProxima": true,
     "tags": [
       "Limpeza"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
     "id": "00394502000144_1_015716_2026",
@@ -1159,7 +1249,9 @@
     "ehRegiaoProxima": true,
     "tags": [
       "Oportunidade MEI"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
     "id": "92967595000177_1_000001_2027",
@@ -1179,7 +1271,9 @@
     "ehRegiaoProxima": true,
     "tags": [
       "Madeira"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
     "id": "00394452000103_1_023989_2026",
@@ -1199,7 +1293,9 @@
     "ehRegiaoProxima": true,
     "tags": [
       "Alimentação"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
     "id": "00394452000103_1_023998_2026",
@@ -1219,7 +1315,9 @@
     "ehRegiaoProxima": true,
     "tags": [
       "Oportunidade MEI"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
     "id": "89175541000164_1_000438_2026",
@@ -1239,7 +1337,9 @@
     "ehRegiaoProxima": true,
     "tags": [
       "Limpeza"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
     "id": "00394452000103_1_024004_2026",
@@ -1259,7 +1359,9 @@
     "ehRegiaoProxima": true,
     "tags": [
       "Oportunidade MEI"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
     "id": "32639070000180_1_000067_2026",
@@ -1280,7 +1382,9 @@
     "tags": [
       "Serviço",
       "Manutenção"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
     "id": "00509968000148_1_003898_2026",
@@ -1301,7 +1405,9 @@
     "tags": [
       "Serviço",
       "Instalação"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
     "id": "00394502000144_1_015779_2026",
@@ -1321,27 +1427,9 @@
     "ehRegiaoProxima": true,
     "tags": [
       "Oportunidade MEI"
-    ]
-  },
-  {
-    "id": "89175541000164_1_000439_2026",
-    "numeroControle": "89175541000164-1-000439/2026",
-    "orgao": "BRIGADA MILITAR - DEPARTAMENTO DE SAÚDE",
-    "cidade": "Porto Alegre",
-    "objeto": "Contratação emergencial de empresa especializada para prestação de serviços contínuos, sem dedicação exclusiva de mão de obra, de controle integrado de pragas urbanas, desinsetização e desratização nas áreas internas e externas do Hospital da Brigada Militar de Santa Maria (HBM/SM), abrangendo aproximadamente 4.800 m², com monitoramento e inspeção semanais e, no mínimo, quatro visitas mensais.",
-    "valorEstimado": 0.0,
-    "valorFormatado": "Valor Oculto / Sob Cotação",
-    "dataEncerramento": "13/11/2026 às 09:15",
-    "dataEncerramentoIso": "2026-11-13T09:15:00",
-    "link": "https://www.compras.rs.gov.br/editais/9036_2026/359234",
-    "tipoLink": "Link Direto Oficial",
-    "plataforma": "Compras RS (Governo Estadual)",
-    "ehComprasGov": false,
-    "compativelMEI": true,
-    "ehRegiaoProxima": true,
-    "tags": [
-      "Serviço"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
     "id": "92969856000198_1_000336_2026",
@@ -1361,7 +1449,9 @@
     "ehRegiaoProxima": true,
     "tags": [
       "Oportunidade MEI"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
     "id": "00394502000144_1_015834_2026",
@@ -1383,7 +1473,9 @@
       "Serviço",
       "Limpeza",
       "Higienização"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
     "id": "00394502000144_1_015842_2026",
@@ -1404,7 +1496,9 @@
     "tags": [
       "Serviço",
       "Instalação"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
     "id": "00394452000103_1_024084_2026",
@@ -1424,7 +1518,9 @@
     "ehRegiaoProxima": true,
     "tags": [
       "Oportunidade MEI"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
     "id": "93859817000109_1_000075_2026",
@@ -1444,7 +1540,9 @@
     "ehRegiaoProxima": true,
     "tags": [
       "Oportunidade MEI"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
     "id": "00394502000144_1_015862_2026",
@@ -1464,7 +1562,9 @@
     "ehRegiaoProxima": true,
     "tags": [
       "Oportunidade MEI"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
     "id": "00394452000103_1_024108_2026",
@@ -1484,7 +1584,9 @@
     "ehRegiaoProxima": true,
     "tags": [
       "Oportunidade MEI"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
     "id": "00394452000103_1_024122_2026",
@@ -1504,7 +1606,9 @@
     "ehRegiaoProxima": true,
     "tags": [
       "Serviço"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
     "id": "87934675000196_1_000317_2026",
@@ -1524,7 +1628,9 @@
     "ehRegiaoProxima": true,
     "tags": [
       "Oportunidade MEI"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
     "id": "87958658000199_1_001172_2026",
@@ -1544,7 +1650,9 @@
     "ehRegiaoProxima": true,
     "tags": [
       "Oportunidade MEI"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
     "id": "00394452000103_1_024124_2026",
@@ -1564,7 +1672,9 @@
     "ehRegiaoProxima": true,
     "tags": [
       "Serviço"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
     "id": "00394452000103_1_024128_2026",
@@ -1584,7 +1694,9 @@
     "ehRegiaoProxima": true,
     "tags": [
       "Serviço"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
     "id": "90601147000120_1_000042_2026",
@@ -1604,7 +1716,9 @@
     "ehRegiaoProxima": true,
     "tags": [
       "Material"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
     "id": "10637926000146_1_000311_2026",
@@ -1625,7 +1739,9 @@
     "tags": [
       "Serviço",
       "Suporte"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
     "id": "00394502000144_1_015921_2026",
@@ -1645,7 +1761,9 @@
     "ehRegiaoProxima": true,
     "tags": [
       "Oportunidade MEI"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
     "id": "89175541000164_1_000441_2026",
@@ -1665,7 +1783,9 @@
     "ehRegiaoProxima": true,
     "tags": [
       "Oportunidade MEI"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
     "id": "33787094000140_1_000595_2026",
@@ -1685,7 +1805,9 @@
     "ehRegiaoProxima": true,
     "tags": [
       "Oportunidade MEI"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
     "id": "92518737000119_1_000145_2026",
@@ -1705,7 +1827,9 @@
     "ehRegiaoProxima": true,
     "tags": [
       "Oportunidade MEI"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
     "id": "00394502000144_1_015950_2026",
@@ -1725,7 +1849,9 @@
     "ehRegiaoProxima": true,
     "tags": [
       "Oportunidade MEI"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
     "id": "28610005000155_1_000109_2026",
@@ -1746,7 +1872,9 @@
     "tags": [
       "Serviço",
       "Reparo"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
     "id": "89175541000164_1_000442_2026",
@@ -1767,7 +1895,9 @@
     "tags": [
       "Serviço",
       "Instalação"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
     "id": "94235330000100_1_000006_2026",
@@ -1788,6 +1918,8 @@
     "tags": [
       "Serviço",
       "Manutenção"
-    ]
+    ],
+    "permiteCompraFornecedor": true,
+    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   }
 ]
