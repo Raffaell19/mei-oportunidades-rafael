@@ -260,9 +260,10 @@
         </button>
 
         <!-- 2. Painel Contrata+ Brasil -->
-        <button onclick="filterCards('contratamais')" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-white hover:bg-slate-200 text-slate-700 border border-slate-300 flex items-center gap-1.5" data-filter="contratamais">
+        <button onclick="filterCards('contratamais')" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-black transition-all bg-emerald-950 hover:bg-emerald-900 text-emerald-200 border-2 border-emerald-400 flex items-center gap-1.5 shadow-md ring-2 ring-emerald-500/20" data-filter="contratamais">
           <span>🏛️</span>
           <span>Contrata+ Brasil</span>
+          <span id="badgeContrataMais" class="bg-emerald-400 text-slate-950 text-[10px] px-1.5 py-0.2 rounded-full font-black">11</span>
         </button>
 
         <!-- 3. Painel Compras Gov & Compras RS -->
@@ -1820,6 +1821,7 @@
 
     // ATUALIZAR INTERFACE E CONTADORES
     function atualizarInterface() {
+      atualizarContadorContrataMais();
       const ativos = obterServicosAtivos();
       const excluidos = getExcluidos();
 
@@ -3106,10 +3108,17 @@
 
     // RESOLVE O LINK DIRETO PARA O EDITAL (SEMPRE LINK OFICIAL OU PNCP, NUNCA GOOGLE)
     function formatarLinkDireto(item) {
-      if (!item) return "https://pncp.gov.br/app/editais";
-      if (item.linkDireto) return item.linkDireto;
-      if (item.link && !item.link.includes('google.com')) {
-        return item.link;
+      if (!item) return "https://contratamaisbrasil.sistema.gov.br/";
+      if (item.linkDireto && item.linkDireto.trim()) return item.linkDireto;
+      if (item.link && !item.link.includes('google.com')) return item.link;
+      if (item.linkServico && !item.linkServico.includes('google.com')) return item.linkServico;
+      
+      const portalInfo = identificarPortalOportunidade(item);
+      if (portalInfo.id === 'contratamais') {
+        return "https://contratamaisbrasil.sistema.gov.br/";
+      }
+      if (portalInfo.id === 'comprasrs') {
+        return "https://compras.rs.gov.br";
       }
       if (item.numeroControle) {
         const m = item.numeroControle.match(/(\d+)-1-(\d+)\/(\d+)/);
@@ -3121,7 +3130,7 @@
         }
         return `https://pncp.gov.br/app/editais?q=${encodeURIComponent(item.numeroControle)}`;
       }
-      return "https://pncp.gov.br/app/editais";
+      return "https://contratamaisbrasil.sistema.gov.br/";
     }
 
     // RENDERIZAR O RADAR AO VIVO DO PNCP
@@ -3130,6 +3139,13 @@
     // PAINÉIS SEPARADOS: CONTRATA+ BRASIL & COMPRAS GOV / COMPRAS RS
     // ==============================================================
 
+    let subFiltroContrataMais = 'todas';
+
+    function filtrarContrataMaisSub(filtro) {
+      subFiltroContrataMais = filtro;
+      renderizarPainelContrataMais();
+    }
+
     function renderizarPainelContrataMais() {
       const grid = document.getElementById('servicesGrid');
       grid.innerHTML = '';
@@ -3137,53 +3153,195 @@
       const idsEnviados = getIdsPropostasEnviadas();
       const excluidos = getExcluidos();
       const favs = getFavoritos();
+      const propostasSalvas = obterPropostasGravadas();
 
-      const lista = servicosDB.filter(s => {
+      // Pega todas as oportunidades do Contrata+ Brasil do banco de dados (excluindo apenas as deletadas manualmente)
+      const todasContrata = servicosDB.filter(s => {
         const portal = identificarPortalOportunidade(s).id;
         const strId = String(s.id);
-        return portal === 'contratamais' && !idsEnviados.includes(strId) && !excluidos.includes(strId);
+        return portal === 'contratamais' && !excluidos.includes(strId);
       });
 
-      document.getElementById('badgeQtdAtivas').innerText = `${lista.length} novas no Contrata+ Brasil`;
+      // Separa entre abertas e com proposta enviada
+      const listaAbertas = todasContrata.filter(s => !idsEnviados.includes(String(s.id)));
+      const listaEnviadas = todasContrata.filter(s => idsEnviados.includes(String(s.id)));
+
+      let listaExibicao = todasContrata;
+      if (subFiltroContrataMais === 'abertas') {
+        listaExibicao = listaAbertas;
+      } else if (subFiltroContrataMais === 'enviadas') {
+        listaExibicao = listaEnviadas;
+      }
+
+      document.getElementById('badgeQtdAtivas').innerText = `${todasContrata.length} oportunidades no Contrata+ Brasil`;
+      const badgeBtn = document.getElementById('badgeContrataMais');
+      if (badgeBtn) badgeBtn.innerText = todasContrata.length;
+
+      // Soma de valores
+      const somaTeto = todasContrata.reduce((acc, it) => acc + (it.valorReferencia || it.propostaSugerida || 0), 0);
+      const somaLucro = todasContrata.reduce((acc, it) => {
+        const custo = it.itensCompra ? (it.itensCompra.reduce((a, c) => a + c.total, 0) + (it.equipe ? it.equipe.total : 0) + (it.logistica ? it.logistica.total : 0) + (it.reserva || 0)) : 0;
+        return acc + (it.propostaSugerida - custo);
+      }, 0);
 
       const banner = document.createElement('div');
-      banner.className = "col-span-full bg-gradient-to-r from-slate-900 to-emerald-950 text-white rounded-3xl p-6 shadow-md border-2 border-emerald-500/30 space-y-3";
+      banner.className = "col-span-full bg-gradient-to-r from-slate-950 via-emerald-950 to-slate-900 text-white rounded-3xl p-6 shadow-xl border-2 border-emerald-400/50 space-y-4";
       banner.innerHTML = `
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
             <div class="flex items-center gap-2">
-              <span class="px-2.5 py-0.5 rounded-full text-xs font-black bg-emerald-400 text-slate-950">
-                🏛️ Portal Exclusivo: Contrata+ Brasil
+              <span class="px-2.5 py-0.5 rounded-full text-xs font-black bg-emerald-400 text-slate-950 flex items-center gap-1">
+                <span>🏛️</span> Pasta Oficial: Contrata+ Brasil
               </span>
-              <span class="text-xs text-emerald-300">Demandas Regionais Diretas</span>
+              <span class="text-xs text-emerald-300 font-bold">Portal Direto do Governo Federal & MEI</span>
             </div>
-            <h3 class="text-xl sm:text-2xl font-black text-white mt-1">Oportunidades no Contrata+ Brasil (Sem Proposta Enviada)</h3>
+            <h3 class="text-xl sm:text-2xl font-black text-white mt-1 flex items-center gap-2">
+              <span>🏛️</span>
+              <span>Todas as Oportunidades no Contrata+ Brasil</span>
+            </h3>
             <p class="text-xs text-slate-300 mt-0.5 max-w-2xl">
-              Demandas municipais e regionais abertas para cotação rápida. Ao cadastrar sua proposta, a oportunidade sai deste painel e vai para sua Dashboard de Gestão.
+              Todas as demandas municipais, estaduais e federais cadastradas no Contrata+ Brasil reunidas aqui com acesso direto, balanço de custos e gerenciamento completo para o seu MEI.
             </p>
           </div>
-          <div class="bg-slate-900/80 p-3 rounded-2xl border border-emerald-500/30 text-center">
-            <span class="text-[10px] text-slate-400 block uppercase font-bold">Disponíveis</span>
-            <span class="text-xl font-black text-white">${lista.length} demandas</span>
+          <div class="flex items-center gap-2">
+            <a href="https://contratamaisbrasil.sistema.gov.br/" target="_blank" rel="noopener noreferrer" class="px-4 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xs transition-all shadow-md flex items-center gap-1.5 shrink-0">
+              <span>Acessar Portal Contrata+</span>
+              <span>↗</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Sub-filtros e Resumo -->
+        <div class="pt-3 border-t border-emerald-800/60 flex flex-wrap items-center justify-between gap-3">
+          <div class="flex flex-wrap items-center gap-2">
+            <button onclick="filtrarContrataMaisSub('todas')" class="px-3 py-1.5 rounded-xl text-xs font-black transition-all ${subFiltroContrataMais === 'todas' ? 'bg-emerald-400 text-slate-950 shadow-md ring-2 ring-emerald-300' : 'bg-slate-900/80 hover:bg-slate-800 text-slate-200 border border-slate-700'}">
+              🏛️ Todas as Demandas (${todasContrata.length})
+            </button>
+            <button onclick="filtrarContrataMaisSub('abertas')" class="px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${subFiltroContrataMais === 'abertas' ? 'bg-emerald-400 text-slate-950 font-black shadow-md ring-2 ring-emerald-300' : 'bg-slate-900/80 hover:bg-slate-800 text-slate-200 border border-slate-700'}">
+              🟢 Abertas para Cotação (${listaAbertas.length})
+            </button>
+            <button onclick="filtrarContrataMaisSub('enviadas')" class="px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${subFiltroContrataMais === 'enviadas' ? 'bg-emerald-400 text-slate-950 font-black shadow-md ring-2 ring-emerald-300' : 'bg-slate-900/80 hover:bg-slate-800 text-slate-200 border border-slate-700'}">
+              📋 Propostas Enviadas (${listaEnviadas.length})
+            </button>
+          </div>
+
+          <div class="text-xs text-slate-300 flex items-center gap-3">
+            <span>Teto Total: <strong class="text-white">${formatBRL(somaTeto)}</strong></span>
+            <span>Lucro Projetado: <strong class="text-emerald-400">+ ${formatBRL(somaLucro)}</strong></span>
           </div>
         </div>
       `;
       grid.appendChild(banner);
 
-      if (lista.length === 0) {
-        grid.innerHTML += `
-          <div class="col-span-full bg-white rounded-3xl p-12 text-center border-2 border-dashed border-slate-300">
-            <h4 class="text-base font-bold text-slate-800">Todas as demandas do Contrata+ Brasil já possuem proposta enviada ou foram arquivadas.</h4>
-            <p class="text-xs text-slate-500 mt-1">Acompanhe as propostas já enviadas na sua Dashboard Inicial.</p>
-          </div>
+      if (listaExibicao.length === 0) {
+        const vazio = document.createElement('div');
+        vazio.className = "col-span-full bg-white rounded-3xl p-12 text-center border-2 border-dashed border-slate-300 space-y-2";
+        vazio.innerHTML = `
+          <div class="text-3xl">🏛️</div>
+          <h4 class="text-base font-bold text-slate-800">Nenhuma oportunidade nesta visualização do Contrata+ Brasil</h4>
+          <p class="text-xs text-slate-500">Alterne os botões acima para ver todas as demandas ou aquelas com proposta enviada.</p>
         `;
+        grid.appendChild(vazio);
         return;
       }
 
-      renderizarCards(lista);
+      listaExibicao.forEach(item => {
+        const strId = String(item.id);
+        const jaFavoritado = favs.some(f => String(f) === strId);
+        const jaEnviado = idsEnviados.includes(strId);
+        const propostaCadastrada = propostasSalvas.find(p => String(p.detalheServicoId) === strId || String(p.id) === strId);
+
+        let custoTotal = 0;
+        if (item.itensCompra && item.itensCompra.length > 0) {
+          custoTotal = item.itensCompra.reduce((acc, it) => acc + it.total, 0) + (item.equipe ? item.equipe.total : 0) + (item.logistica ? item.logistica.total : 0) + (item.reserva || 0);
+        } else {
+          custoTotal = Math.round(item.propostaSugerida * 0.55 * 100) / 100;
+        }
+        const lucro = item.propostaSugerida - custoTotal;
+        const dt = extrairDataEncerramentoItem(item);
+
+        const card = document.createElement('div');
+        card.className = "service-item bg-white rounded-2xl border-2 " + 
+          (jaEnviado ? "border-emerald-500/70 shadow-sm" : (jaFavoritado ? "border-amber-400 bg-amber-50/10 shadow-md" : "border-slate-200 hover:border-emerald-300")) + 
+          " transition-all p-5 shadow-sm flex flex-col justify-between relative";
+
+        card.innerHTML = `
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="px-2.5 py-0.5 rounded-full text-[11px] font-black border bg-emerald-100 text-emerald-900 border-emerald-300 flex items-center gap-1">
+                <span>🏛️</span>
+                <span>Contrata+ Brasil</span>
+              </span>
+              <div class="flex items-center gap-1.5">
+                <button onclick="alternarFavorito('${strId}', event)" class="px-2.5 py-1 rounded-lg text-xs font-bold ${jaFavoritado ? 'bg-amber-400 text-slate-950 font-black' : 'bg-slate-100 text-slate-600'}">
+                  ★ ${jaFavoritado ? 'Favorita' : 'Favoritar'}
+                </button>
+                <button onclick="event.stopPropagation(); excluirServico('${strId}')" title="Excluir" class="p-1 px-2 rounded-lg bg-slate-100 hover:bg-rose-100 text-slate-500 hover:text-rose-600 border border-slate-200">
+                  🗑️
+                </button>
+              </div>
+            </div>
+
+            <!-- Status do Envio -->
+            ${jaEnviado ? `
+              <div class="my-2 flex items-center justify-between px-2.5 py-1.5 rounded-xl bg-emerald-50 text-emerald-900 border border-emerald-300 text-xs font-black">
+                <div class="flex items-center gap-1.5">
+                  <span class="text-emerald-600 font-black text-sm">✓</span>
+                  <span>Proposta Protocolada no Contrata+ Brasil</span>
+                </div>
+                ${propostaCadastrada ? `<strong class="text-emerald-800">${formatBRL(propostaCadastrada.valorLance)}</strong>` : ''}
+              </div>
+            ` : `
+              <div class="my-2 flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-emerald-50 text-emerald-900 border border-emerald-200 text-[10px] font-bold">
+                <span class="text-emerald-600 font-black">✓</span>
+                <span>Exclusivo MEI • Oportunidade Aberta para Envio</span>
+              </div>
+            `}
+
+            <span class="text-xs font-semibold text-slate-400 block">${item.orgao}</span>
+            <h3 class="text-base sm:text-lg font-black text-slate-900 mt-1 leading-snug">
+              ${item.titulo}
+            </h3>
+            <p class="text-xs text-slate-500 mt-0.5">📍 ${item.local} ${item.distanciaKm ? `• ${item.distanciaKm} km de Nova Hartz` : ''}</p>
+
+            <!-- Prazo de Encerramento -->
+            <div class="mt-3 p-2.5 rounded-xl border flex items-center justify-between text-xs ${dt.classe}">
+              <div class="flex items-center gap-1.5 font-bold">
+                <span>⏳</span>
+                <span>Encerra em:</span>
+              </div>
+              <div class="text-right">
+                <strong class="font-black text-xs block">${dt.texto}</strong>
+                ${dt.badgeUrgencia ? `<span class="text-[10px] block font-extrabold uppercase tracking-tight">${dt.badgeUrgencia}</span>` : ''}
+              </div>
+            </div>
+
+            ${gerarBlocoPrecificacaoCard(item.valorReferencia, custoTotal, item.propostaSugerida, lucro)}
+          </div>
+
+          <div class="mt-4 pt-3 border-t border-slate-100 space-y-2">
+            <button onclick="event.stopPropagation(); abrirModalRegistroPropostaItem('${strId}', 'interno')" class="w-full py-2.5 px-3 rounded-xl ${jaEnviado ? 'bg-slate-800 hover:bg-slate-700' : 'bg-emerald-600 hover:bg-emerald-500'} text-white font-black text-xs text-center transition-all shadow-sm flex items-center justify-center gap-1.5 cursor-pointer">
+              <span>📝</span>
+              <span>${jaEnviado ? 'Atualizar Proposta Enviada' : 'Cadastrar Proposta Enviada'}</span>
+            </button>
+            ${gerarBotaoFornecedoresCard(strId)}
+            <div class="flex items-center gap-2">
+              <button onclick="abrirDetalhes('${strId}')" class="flex-1 py-2 px-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs text-center transition-all flex items-center justify-center gap-1 shadow-sm">
+                <span>Ver Orçamento</span>
+                <span>→</span>
+              </button>
+              <a href="${formatarLinkDireto(item)}" target="_blank" rel="noopener noreferrer" class="py-2 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition-all flex items-center gap-1.5 shadow-sm" title="Acessar página da oportunidade no Contrata+ Brasil">
+                <span>Acessar no Contrata+</span>
+                <span class="text-[10px]">↗</span>
+              </a>
+            </div>
+          </div>
+        `;
+
+        grid.appendChild(card);
+      });
     }
 
-    
     function renderizarPainelCompraFornecedor() {
       const grid = document.getElementById('servicesGrid');
       grid.innerHTML = '';
@@ -4059,7 +4217,7 @@ Link: ${item.link}`;
           } else if (f === 'compra_fornecedor') {
             btn.className = "filter-btn px-3 py-1.5 rounded-lg text-xs font-black transition-all bg-emerald-950 hover:bg-emerald-900 text-emerald-200 border-2 border-emerald-400 flex items-center gap-1.5 shadow-md ring-2 ring-emerald-500/20";
           } else if (f === 'contratamais') {
-            btn.className = "filter-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-white hover:bg-slate-200 text-slate-700 border border-slate-300 flex items-center gap-1.5";
+            btn.className = "filter-btn px-3 py-1.5 rounded-lg text-xs font-black transition-all bg-emerald-950 hover:bg-emerald-900 text-emerald-200 border-2 border-emerald-400 flex items-center gap-1.5 shadow-md ring-2 ring-emerald-500/20";
           } else if (f === 'compras_gov_rs') {
             btn.className = "filter-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-white hover:bg-slate-200 text-slate-700 border border-slate-300 flex items-center gap-1.5";
           } else if (f === 'radar_pncp') {
@@ -4079,6 +4237,7 @@ Link: ${item.link}`;
     window.onload = function() {
       atualizarContadorFavoritas();
       atualizarContadorOceanoAzul();
+      atualizarContadorContrataMais();
       atualizarInterface();
     };
   
@@ -4272,6 +4431,14 @@ Link: ${item.link}`;
     }
 
     // FUNÇÃO DINÂMICA PARA ATUALIZAR CONTADOR OCEANO AZUL
+        function atualizarContadorContrataMais() {
+      const badge = document.getElementById('badgeContrataMais');
+      if (!badge) return;
+      const excluidos = typeof getExcluidos === 'function' ? getExcluidos() : [];
+      const count = servicosDB.filter(s => identificarPortalOportunidade(s).id === 'contratamais' && !excluidos.includes(String(s.id))).length;
+      badge.innerText = count;
+    }
+
     function atualizarContadorOceanoAzul() {
       const badgeNav = document.getElementById('badgeOceanoAzul');
       if (!badgeNav) return;
