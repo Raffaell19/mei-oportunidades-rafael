@@ -1416,8 +1416,9 @@
       {
         id: "mkt_redes_sociais_gestao",
         titulo: "Gestão de Redes Sociais, Criação de Conteúdo e Identidade Visual Digital",
-        linkDireto: "https://contratamaisbrasil.sistema.gov.br/oportunidades/?type=all&busca=redes+sociais",
-        categoria: "marketing recomendados contratamais",
+        linkDireto: "edital_marketing_redes_sociais.html",
+        plataforma: "Dispensa Eletrônica / PNCP (Lei 14.133)",
+        categoria: "marketing recomendados",
         badgeText: "🚀 Marketing Digital • 100% Home Office • Alta Margem (83%)",
         badgeClass: "bg-emerald-600 text-white font-black",
         orgao: "Prefeitura Municipal / Secretaria de Comunicação Institucional",
@@ -3051,6 +3052,9 @@
       }
       if (texto.includes('compras.gov') || texto.includes('comprasnet') || texto.includes('uasg') || texto.includes('marinha') || texto.includes('fuzileiros') || (item.plataforma && item.plataforma.includes('Compras.gov'))) {
         return { id: 'comprasgov', nome: 'Compras.gov.br (Federal)', badgeClass: 'bg-sky-100 text-sky-900 border-sky-300', icone: '🌐' };
+      }
+      if (texto.includes('edital_marketing') || texto.includes('dispensa') || texto.includes('pncp') || (item.plataforma && item.plataforma.includes('PNCP'))) {
+        return { id: 'pncp', nome: 'Dispensa Eletrônica (Lei 14.133)', badgeClass: 'bg-teal-100 text-teal-900 border-teal-300', icone: '📜' };
       }
       return { id: 'contratamais', nome: 'Contrata+ Brasil', badgeClass: 'bg-emerald-100 text-emerald-900 border-emerald-300', icone: '🏛️' };
     }
