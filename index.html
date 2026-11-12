@@ -116,6 +116,121 @@
   <!-- CONTEÚDO PRINCIPAL -->
   <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow space-y-8">
 
+    <!-- CENTRAL DE ALERTAS DE PREGÕES & DISPUTAS AGENDADAS (AO VIVO) -->
+    <div id="centralAlertasPregoes" class="bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900 text-white rounded-3xl p-5 sm:p-6 shadow-xl border-2 border-amber-500/50 relative overflow-hidden">
+      <div class="absolute -right-10 -top-10 w-48 h-48 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-4 border-b border-slate-800">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-2xl bg-amber-500/20 text-amber-400 border border-amber-500/30 flex items-center justify-center text-xl font-black animate-pulse flex-shrink-0">
+            ⏰
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded bg-amber-400 text-slate-950">
+                Alerta de Calendário
+              </span>
+              <span class="text-xs text-amber-300 font-bold">2 Disputas Agendadas Próximas</span>
+            </div>
+            <h3 class="text-lg sm:text-xl font-black text-white mt-0.5">
+              Não Perca a Hora: Central de Pregões & Disputas de Lances
+            </h3>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-2 text-xs">
+          <button onclick="solicitarPermissaoNotificacoes()" id="btnAtivarNotificacao" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-bold transition-all flex items-center gap-1.5 shadow-sm">
+            <span>🔔</span>
+            <span id="txtBtnNotificacao">Ativar Alertas no Navegador</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- CARDS DAS DISPUTAS AGENDADAS COM CONTAGEM REGRESSIVA -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4">
+        
+        <!-- CARD PREGÃO 1: CASA CIVIL RS (HD EXTERNO 8TB) -->
+        <div class="p-4 rounded-2xl bg-slate-800/90 border border-amber-500/40 space-y-3 relative flex flex-col justify-between">
+          <div class="space-y-1.5">
+            <div class="flex items-center justify-between gap-2">
+              <span class="text-[10px] font-black uppercase px-2 py-0.5 rounded bg-amber-400 text-slate-950">
+                Disputa Rápida (10 min)
+              </span>
+              <span class="text-xs font-black text-amber-300 flex items-center gap-1">
+                <span>🗓️</span> 13/11 às 10:01
+              </span>
+            </div>
+            <h4 class="font-black text-base text-white">2 HDs Externos 8TB USB 3.0 (Palácio Piratini)</h4>
+            <p class="text-xs text-slate-300">🏛️ Casa Civil RS • Edital 1099/2026 • Portal Compras Eletrônicas RS</p>
+            <div class="flex items-center gap-2 text-xs text-slate-400">
+              <span>Sua Proposta: <strong class="text-white">R$ 3.700,00</strong></span>
+              <span>•</span>
+              <span class="text-emerald-400 font-bold">Lucro: + R$ 1.080,00</span>
+            </div>
+          </div>
+
+          <div class="pt-2 border-t border-slate-700/80 space-y-2">
+            <div id="cronometroDisputa1" class="text-center py-1.5 px-3 rounded-xl bg-amber-500/10 text-amber-300 border border-amber-500/30 text-xs font-black tracking-wide">
+              Carregando contagem...
+            </div>
+            <div class="flex items-center gap-2">
+              <button onclick="adicionarAoGoogleAgenda('🚨 PREGÃO AO VIVO: 2 HDs 8TB Casa Civil RS', '20261113T125000Z', '20261113T132000Z', 'Compras Eletrônicas RS', 'Disputa de 10 minutos na Casa Civil RS. Fazer login em compras.rs.gov.br às 09:50!')" class="flex-1 py-1.5 px-2.5 rounded-lg bg-slate-700 hover:bg-slate-600 text-white font-bold text-[11px] transition-all flex items-center justify-center gap-1">
+                <span>📅 Google Agenda</span>
+              </button>
+              <button onclick="baixarArquivoIcs('pregao_hd_casacivil', '🚨 PREGÃO AO VIVO: 2 HDs 8TB Casa Civil RS', '20261113T130100', '20261113T131500', 'Palácio Piratini / Compras RS', 'Disputa de 10 min. Login em compras.rs.gov.br')" class="py-1.5 px-2.5 rounded-lg bg-slate-700 hover:bg-slate-600 text-white font-bold text-[11px] transition-all flex items-center justify-center gap-1" title="Adicionar no Alarme do Celular (.ics)">
+                <span>📱 Alarme Celular</span>
+              </button>
+              <a href="https://compras.rs.gov.br" target="_blank" class="py-1.5 px-3 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-black text-[11px] transition-all flex items-center gap-1">
+                <span>Abrir Portal RS</span>
+                <span class="text-[9px]">↗</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD PREGÃO 2: FUZILEIROS NAVAIS / MARINHA (LÂMPADAS & LUMINÁRIAS) -->
+        <div class="p-4 rounded-2xl bg-slate-800/90 border border-sky-500/40 space-y-3 relative flex flex-col justify-between">
+          <div class="space-y-1.5">
+            <div class="flex items-center justify-between gap-2">
+              <span class="text-[10px] font-black uppercase px-2 py-0.5 rounded bg-sky-500 text-white">
+                Disputa Compras.gov.br
+              </span>
+              <span class="text-xs font-black text-sky-300 flex items-center gap-1">
+                <span>🗓️</span> 16/11 às 08:00
+              </span>
+            </div>
+            <h4 class="font-black text-base text-white">75 Lâmpadas LED T8 18W + 25 Luminárias</h4>
+            <p class="text-xs text-slate-300">⚓ Marinha do Brasil (Fuzileiros Navais) • UASG 785200 • Dispensa 159/2026</p>
+            <div class="flex items-center gap-2 text-xs text-slate-400">
+              <span>Sua Proposta: <strong class="text-white">R$ 2.690,00</strong></span>
+              <span>•</span>
+              <span class="text-emerald-400 font-bold">Lucro: + R$ 740,00</span>
+            </div>
+          </div>
+
+          <div class="pt-2 border-t border-slate-700/80 space-y-2">
+            <div id="cronometroDisputa2" class="text-center py-1.5 px-3 rounded-xl bg-sky-500/10 text-sky-300 border border-sky-500/30 text-xs font-black tracking-wide">
+              Carregando contagem...
+            </div>
+            <div class="flex items-center gap-2">
+              <button onclick="adicionarAoGoogleAgenda('🚨 PREGÃO AO VIVO: Marinha Fuzileiros Navais (UASG 785200)', '20261116T105000Z', '20261116T170000Z', 'Compras.gov.br', 'Disputa de lances da Marinha no Compras.gov.br. Lâmpadas e luminárias.')" class="flex-1 py-1.5 px-2.5 rounded-lg bg-slate-700 hover:bg-slate-600 text-white font-bold text-[11px] transition-all flex items-center justify-center gap-1">
+                <span>📅 Google Agenda</span>
+              </button>
+              <button onclick="baixarArquivoIcs('pregao_marinha_lampadas', '🚨 PREGÃO AO VIVO: Marinha Fuzileiros Navais', '20261116T080000', '20261116T140000', 'Compras.gov.br - UASG 785200', 'Disputa de lances da Marinha no Compras.gov.br.')" class="py-1.5 px-2.5 rounded-lg bg-slate-700 hover:bg-slate-600 text-white font-bold text-[11px] transition-all flex items-center justify-center gap-1" title="Adicionar no Alarme do Celular (.ics)">
+                <span>📱 Alarme Celular</span>
+              </button>
+              <a href="https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/login" target="_blank" class="py-1.5 px-3 rounded-lg bg-sky-600 hover:bg-sky-500 text-white font-black text-[11px] transition-all flex items-center gap-1">
+                <span>Abrir Compras.gov.br</span>
+                <span class="text-[9px]">↗</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
     <!-- BARRA DE FILTROS LIMPA -->
     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-2 border-b border-slate-200">
       <div>
@@ -148,7 +263,7 @@
         </button>
         <button onclick="filterCards('minhas_propostas')" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-300 flex items-center gap-1.5 shadow-sm" data-filter="minhas_propostas">
           <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-          📨 Minhas Propostas Enviadas (4)
+          📨 Minhas Propostas (<span id="btnContadorPropostas">6</span>)
         </button>
         <button onclick="filterCards('radar_pncp')" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-sky-50 hover:bg-sky-100 text-sky-800 border border-sky-300 flex items-center gap-1.5" data-filter="radar_pncp">
           <span class="w-2 h-2 rounded-full bg-sky-500 animate-pulse"></span>
@@ -467,6 +582,42 @@
     
     // BASE DE PROPOSTAS JÁ ENVIADAS PELO RAFAEL NO CONTRATA+ BRASIL
     const propostasEnviadasDB = [
+      {
+        id: "prop_lampadas_marinha",
+        titulo: "75 Lâmpadas LED Tubular T8 18W + 25 Luminárias de Calha",
+        orgao: "GRUPAMENTO DE FUZILEIROS NAVAIS DO RG/RS (Marinha do Brasil)",
+        local: "Rio Grande / RS (Entrega via transportadora / frete de Nova Hartz)",
+        categoriaTipo: "Material Elétrico / Iluminação",
+        dataDisputaFim: "2026-11-16T08:00:00",
+        dataDisputaFimTexto: "16/11/2026 às 08:00",
+        valorLance: 2690.00,
+        custoEstimado: 1950.00,
+        lucroProjetado: 740.00,
+        statusId: "classificado",
+        statusTexto: "✓ Proposta Salva no Compras.gov.br",
+        statusBadgeClass: "bg-emerald-100 text-emerald-800 border-emerald-300 font-extrabold",
+        observacao: "Proposta protocolada com sucesso no Compras.gov.br (Dispensa nº 159/2026 - UASG 785200). Lote 1: R$ 9,20 x 75 un e Lote 2: R$ 80,00 x 25 un. Disputa aberta em 16/11 às 08:00.",
+        linkServico: "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/login",
+        detalheServicoId: "lampadas_marinha"
+      },
+      {
+        id: "prop_hd_casacivil",
+        titulo: "2 Discos Rígidos - HDs Externos 8TB USB 3.0 (Palácio Piratini)",
+        orgao: "SECRETARIA DA CASA CIVIL / GOVERNO DO ESTADO DO RS",
+        local: "Praça Marechal Deodoro (Palácio Piratini) - Centro Histórico, Porto Alegre/RS",
+        categoriaTipo: "Informática / TI",
+        dataDisputaFim: "2026-11-13T10:01:00",
+        dataDisputaFimTexto: "13/11/2026 às 10:01",
+        valorLance: 3700.00,
+        custoEstimado: 2620.00,
+        lucroProjetado: 1080.00,
+        statusId: "classificado",
+        statusTexto: "⚡ Disputa em 13/11 às 10:01",
+        statusBadgeClass: "bg-amber-100 text-amber-900 border-amber-300 font-extrabold",
+        observacao: "Dispensa nº 1099/2026 no Compras Eletrônicas RS. 2 HDs Externos 8TB. Sessão de lances curta de 10 minutos no dia 13/11 às 10:01.",
+        linkServico: "https://compras.rs.gov.br",
+        detalheServicoId: "hd_casacivil"
+      },
       {
         id: "prop_coffee_trt",
         titulo: "Coffee Break – Seminário do Observatório do Trabalho do RS",
@@ -2474,6 +2625,122 @@ Link: ${item.link}`;
       atualizarContadorFavoritas();
       atualizarInterface();
     };
+  
+    // ==========================================
+    // CENTRAL DE ALERTAS E ALARMES DE PREGÃO
+    // ==========================================
+    function atualizarCronometrosDisputas() {
+      const agora = new Date();
+
+      // Disputa 1: Casa Civil RS (13/11/2026 às 10:01)
+      const dataD1 = new Date(2026, 10, 13, 10, 1, 0); // Mês 10 = Novembro
+      const diffD1 = dataD1 - agora;
+      const elD1 = document.getElementById('cronometroDisputa1');
+      if (elD1) {
+        if (diffD1 <= 0) {
+          elD1.innerHTML = '🚨 <strong>DISPUTA HOJE / EM ANDAMENTO!</strong> Faça login no Compras RS agora!';
+          elD1.className = 'text-center py-1.5 px-3 rounded-xl bg-rose-600 text-white text-xs font-black tracking-wide animate-bounce';
+        } else {
+          const horasD1 = Math.floor(diffD1 / (1000 * 60 * 60));
+          const minutosD1 = Math.floor((diffD1 % (1000 * 60 * 60)) / (1000 * 60));
+          const segundosD1 = Math.floor((diffD1 % (1000 * 60)) / 1000);
+          const diasD1 = Math.floor(horasD1 / 24);
+          const hRestD1 = horasD1 % 24;
+          elD1.innerHTML = `⏳ Faltam <strong>${diasD1 > 0 ? diasD1 + 'd ' : ''}${hRestD1}h ${minutosD1}m ${segundosD1}s</strong> para a disputa!`;
+        }
+      }
+
+      // Disputa 2: Fuzileiros Navais / Marinha (16/11/2026 às 08:00)
+      const dataD2 = new Date(2026, 10, 16, 8, 0, 0);
+      const diffD2 = dataD2 - agora;
+      const elD2 = document.getElementById('cronometroDisputa2');
+      if (elD2) {
+        if (diffD2 <= 0) {
+          elD2.innerHTML = '🚨 <strong>DISPUTA HOJE NO COMPRAS.GOV.BR!</strong> Entre na Sala de Disputa!';
+          elD2.className = 'text-center py-1.5 px-3 rounded-xl bg-rose-600 text-white text-xs font-black tracking-wide animate-bounce';
+        } else {
+          const horasD2 = Math.floor(diffD2 / (1000 * 60 * 60));
+          const minutosD2 = Math.floor((diffD2 % (1000 * 60 * 60)) / (1000 * 60));
+          const segundosD2 = Math.floor((diffD2 % (1000 * 60)) / 1000);
+          const diasD2 = Math.floor(horasD2 / 24);
+          const hRestD2 = horasD2 % 24;
+          elD2.innerHTML = `⏳ Faltam <strong>${diasD2 > 0 ? diasD2 + 'd ' : ''}${hRestD2}h ${minutosD2}m ${segundosD2}s</strong> para a disputa!`;
+        }
+      }
+    }
+
+    setInterval(atualizarCronometrosDisputas, 1000);
+
+    function adicionarAoGoogleAgenda(titulo, dataInicioUtc, dataFimUtc, local, descricao) {
+      const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(titulo)}&dates=${dataInicioUtc}/${dataFimUtc}&details=${encodeURIComponent(descricao)}&location=${encodeURIComponent(local)}`;
+      window.open(url, '_blank');
+    }
+
+    function baixarArquivoIcs(idArquivo, titulo, dataInicioStr, dataFimStr, local, descricao) {
+      const icsData = [
+        "BEGIN:VCALENDAR",
+        "VERSION:2.0",
+        "PRODID:-//Rafael Placido MEI//Gestor de Licitacoes//PT-BR",
+        "CALSCALE:GREGORIAN",
+        "METHOD:PUBLISH",
+        "BEGIN:VEVENT",
+        "UID:" + idArquivo + "-2026@licitacoes-rafael",
+        "DTSTAMP:20261111T220000Z",
+        "DTSTART:" + dataInicioStr,
+        "DTEND:" + dataFimStr,
+        "SUMMARY:" + titulo,
+        "DESCRIPTION:" + descricao,
+        "LOCATION:" + local,
+        "STATUS:CONFIRMED",
+        "BEGIN:VALARM",
+        "TRIGGER:-P1D",
+        "ACTION:DISPLAY",
+        "DESCRIPTION:Lembrete de Disputa de Licitação (Amanhã!)",
+        "END:VALARM",
+        "BEGIN:VALARM",
+        "TRIGGER:-PT15M",
+        "ACTION:DISPLAY",
+        "DESCRIPTION:Disputa em 15 minutos! Faça login no portal agora!",
+        "END:VALARM",
+        "END:VEVENT",
+        "END:VCALENDAR"
+      ].join("\r\n");
+
+      const blob = new Blob([icsData], { type: "text/calendar;charset=utf-8" });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.setAttribute("download", `${idArquivo}.ics`);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      mostrarNotificacaoExclusao("📅 Arquivo de alarme (.ics) baixado! Toque nele para adicionar ao seu celular.", null);
+    }
+
+    function solicitarPermissaoNotificacoes() {
+      if (!("Notification" in window)) {
+        alert("Seu navegador não suporta notificações de área de trabalho.");
+        return;
+      }
+      Notification.requestPermission().then(permission => {
+        if (permission === "granted") {
+          const btnTxt = document.getElementById('txtBtnNotificacao');
+          if (btnTxt) btnTxt.innerText = "✓ Alertas Ativados no Navegador";
+          new Notification("🔔 Alertas de Pregão Ativados!", {
+            body: "Você será avisado sobre as disputas da Casa Civil (13/11) e da Marinha (16/11) diretamente aqui.",
+            icon: "favicon.svg"
+          });
+          mostrarNotificacaoExclusao("🔔 Notificações ativadas com sucesso!", null);
+        } else {
+          alert("Permissão de notificações negada no navegador.");
+        }
+      });
+    }
+
+    // Inicializa os cronômetros ao carregar
+    window.addEventListener('DOMContentLoaded', () => {
+      atualizarCronometrosDisputas();
+    });
+
   </script>
 </body>
 </html>
