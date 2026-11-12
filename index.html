@@ -1417,7 +1417,16 @@
     function desfazerExclusao(id) {
       const strId = String(id);
       let excluidos = getExcluidos();
-      excluidos = excluidos.filter(e => String(e) !== strId);
+      let idsParaRemover = [strId];
+      if (strId.includes('drywall')) {
+        idsParaRemover.push('prop_drywall_3rm', 'drywall_exercito');
+      }
+      const prop = propostasEnviadasDB.find(p => String(p.id) === strId || String(p.detalheServicoId) === strId);
+      if (prop) {
+        if (prop.id) idsParaRemover.push(String(prop.id));
+        if (prop.detalheServicoId) idsParaRemover.push(String(prop.detalheServicoId));
+      }
+      excluidos = excluidos.filter(e => !idsParaRemover.some(r => String(r) === String(e)));
       salvarExcluidos(excluidos);
       atualizarInterface();
       if (categoriaAtual === 'radar_pncp') {
@@ -1460,6 +1469,19 @@
 
         adicionarExcluido(strId);
 
+        // Se for drywall, vincula exclusão da proposta correspondente
+        if (strId.includes('drywall')) {
+          adicionarExcluido('prop_drywall_3rm');
+          adicionarExcluido('drywall_exercito');
+        }
+
+        // Se houver proposta enviada vinculada a este serviço, exclui também
+        const prop = propostasEnviadasDB.find(p => String(p.detalheServicoId) === strId || String(p.id) === strId);
+        if (prop) {
+          if (prop.id) adicionarExcluido(String(prop.id));
+          if (prop.detalheServicoId) adicionarExcluido(String(prop.detalheServicoId));
+        }
+
         // Remove de favoritos se estiver lá
         let favs = getFavoritos();
         favs = favs.filter(f => String(f) !== strId);
@@ -1473,6 +1495,33 @@
       } catch (err) {
         console.error("Erro em excluirServico:", err);
         fecharModal();
+        atualizarInterface();
+      }
+    }
+
+    function excluirProposta(propId, detalheServicoId, titulo) {
+      try {
+        if (propId) adicionarExcluido(String(propId));
+        if (detalheServicoId) adicionarExcluido(String(detalheServicoId));
+
+        if (String(propId).includes('drywall') || String(detalheServicoId).includes('drywall')) {
+          adicionarExcluido('prop_drywall_3rm');
+          adicionarExcluido('drywall_exercito');
+        }
+
+        try {
+          const salvas = localStorage.getItem('rp_propostas_enviadas_personalizadas');
+          if (salvas) {
+            let lista = JSON.parse(salvas);
+            lista = lista.filter(p => String(p.id) !== String(propId) && String(p.detalheServicoId) !== String(detalheServicoId));
+            localStorage.setItem('rp_propostas_enviadas_personalizadas', JSON.stringify(lista));
+          }
+        } catch(e) {}
+
+        atualizarInterface();
+        mostrarNotificacaoExclusao(`"${titulo || 'Proposta'}" excluída do painel.`, propId);
+      } catch (err) {
+        console.error("Erro em excluirProposta:", err);
         atualizarInterface();
       }
     }
@@ -1502,6 +1551,15 @@
 
         if (idParaExcluir) {
           adicionarExcluido(idParaExcluir);
+          if (String(idParaExcluir).includes('drywall')) {
+            adicionarExcluido('prop_drywall_3rm');
+            adicionarExcluido('drywall_exercito');
+          }
+          const prop = propostasEnviadasDB.find(p => String(p.detalheServicoId) === String(idParaExcluir) || String(p.id) === String(idParaExcluir));
+          if (prop) {
+            if (prop.id) adicionarExcluido(String(prop.id));
+            if (prop.detalheServicoId) adicionarExcluido(String(prop.detalheServicoId));
+          }
 
           let favs = getFavoritos();
           favs = favs.filter(f => String(f) !== idParaExcluir);
@@ -1557,6 +1615,18 @@
       // Calcula volume total ativo
       let volumeTotal = ativos.reduce((acc, s) => acc + s.propostaSugerida, 0);
       document.getElementById('headerVolumeTotal').innerText = formatBRL(volumeTotal);
+
+      // Atualiza contador do botão Minhas Propostas
+      const propostasAtivas = obterPropostasGravadas().filter(prop => {
+        const idStr = String(prop.id || '');
+        const detalheStr = String(prop.detalheServicoId || '');
+        return !excluidos.some(e => {
+          const eStr = String(e);
+          return eStr === idStr || eStr === detalheStr || (eStr.includes('drywall') && (idStr.includes('drywall') || detalheStr.includes('drywall')));
+        });
+      });
+      const btnContador = document.getElementById('btnContadorPropostas');
+      if (btnContador) btnContador.innerText = propostasAtivas.length;
 
       // Renderiza conforme filtro selecionado
       if (categoriaAtual === 'favoritas') {
@@ -2039,11 +2109,37 @@
       const grid = document.getElementById('servicesGrid');
       grid.innerHTML = '';
 
-      const todasPropostas = obterPropostasGravadas();
+      const excluidos = getExcluidos();
+      const todasPropostas = obterPropostasGravadas().filter(prop => {
+        const idStr = String(prop.id || '');
+        const detalheStr = String(prop.detalheServicoId || '');
+        return !excluidos.some(e => {
+          const eStr = String(e);
+          return eStr === idStr || eStr === detalheStr || (eStr.includes('drywall') && (idStr.includes('drywall') || detalheStr.includes('drywall')));
+        });
+      });
+
       const totalLances = todasPropostas.reduce((acc, p) => acc + p.valorLance, 0);
       const totalLucro = todasPropostas.reduce((acc, p) => acc + p.lucroProjetado, 0);
 
-      document.getElementById('badgeQtdAtivas').innerText = `${propostasEnviadasDB.length} propostas enviadas`;
+      document.getElementById('badgeQtdAtivas').innerText = `${todasPropostas.length} propostas ativas`;
+      const btnContador = document.getElementById('btnContadorPropostas');
+      if (btnContador) btnContador.innerText = todasPropostas.length;
+
+      // Se todas as propostas foram excluídas ou não há nenhuma ativa
+      if (todasPropostas.length === 0) {
+        grid.innerHTML = `
+          <div class="col-span-full bg-white rounded-3xl p-12 text-center border-2 border-dashed border-slate-300">
+            <span class="text-4xl block mb-2">📨</span>
+            <h3 class="text-lg font-black text-slate-800">Nenhuma proposta ativa neste momento</h3>
+            <p class="text-xs text-slate-500 max-w-md mx-auto mt-1">As propostas anteriores foram excluídas do painel. Você pode restaurar qualquer oportunidade excluída clicando no botão abaixo.</p>
+            <button onclick="restaurarExcluidos()" class="mt-4 px-4 py-2 bg-slate-900 text-white font-bold text-xs rounded-xl hover:bg-slate-800 transition-all shadow-sm">
+              Restaurar Oportunidades Excluídas
+            </button>
+          </div>
+        `;
+        return;
+      }
 
       // Barra de Resumo das Propostas Enviadas
       const banner = document.createElement('div');
@@ -2056,7 +2152,7 @@
               <span class="text-xs text-slate-300">Atualizado conforme sua tela oficial</span>
             </div>
             <h3 class="text-xl font-black text-white mt-1">Acompanhamento das Suas Propostas Enviadas</h3>
-            <p class="text-xs text-slate-300 mt-0.5">Você tem 4 propostas protocoladas disputando contratos públicos neste momento.</p>
+            <p class="text-xs text-slate-300 mt-0.5">Você tem ${todasPropostas.length} proposta(s) protocolada(s) disputando contratos públicos neste momento.</p>
           </div>
           <div class="flex items-center gap-4 bg-slate-800/80 p-3 rounded-2xl border border-slate-700">
             <div>
@@ -2085,14 +2181,22 @@
 
         card.innerHTML = `
           <div>
-            <!-- Status do Contrata+ Brasil -->
+            <!-- Status do Contrata+ Brasil e Lixeira de Exclusão -->
             <div class="flex items-center justify-between gap-2 mb-3">
               <span class="px-3 py-1 rounded-full text-xs font-bold border ${prop.statusBadgeClass}">
                 ${prop.statusTexto}
               </span>
-              <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider bg-slate-100 px-2 py-0.5 rounded">
-                ${prop.categoriaTipo}
-              </span>
+              <div class="flex items-center gap-1.5">
+                <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider bg-slate-100 px-2 py-0.5 rounded">
+                  ${prop.categoriaTipo}
+                </span>
+                <button onclick="event.stopPropagation(); excluirProposta('${prop.id}', '${prop.detalheServicoId || ''}', '${(prop.titulo || '').replace(/'/g, "\\'")}')" 
+                        title="Excluir proposta deste painel" 
+                        class="p-1.5 px-2 rounded-xl bg-slate-100 hover:bg-rose-100 text-slate-500 hover:text-rose-600 border border-slate-200 hover:border-rose-300 transition-all flex items-center gap-1 text-xs font-bold cursor-pointer shadow-xs">
+                  <span>🗑️</span>
+                  <span class="text-[11px]">Excluir</span>
+                </button>
+              </div>
             </div>
 
             <!-- Título e Órgão -->
@@ -2237,8 +2341,9 @@
                   <span class="text-sm leading-none ${jaFavoritado ? 'text-slate-950 font-black' : 'text-amber-500'}">★</span>
                   <span class="text-[10px] uppercase tracking-wide font-extrabold">${jaFavoritado ? 'Favorita' : 'Favoritar'}</span>
                 </button>
-                <button onclick="event.stopPropagation(); excluirRadarItem('${strId}');" class="w-6 h-6 rounded-md bg-slate-100 hover:bg-rose-100 text-slate-400 hover:text-rose-600 flex items-center justify-center text-xs font-bold transition-all" title="Ocultar do Radar">
-                  ✕
+                <button onclick="event.stopPropagation(); excluirRadarItem('${strId}');" class="p-1 px-2 rounded-lg bg-slate-100 hover:bg-rose-100 text-slate-500 hover:text-rose-600 border border-slate-200 hover:border-rose-300 flex items-center gap-1 text-xs font-bold transition-all cursor-pointer shadow-xs" title="Excluir do Radar">
+                  <span>🗑️</span>
+                  <span class="text-[10px] hidden sm:inline">Excluir</span>
                 </button>
               </div>
             </div>
@@ -2412,8 +2517,9 @@ Link: ${item.link}`;
                   <span class="text-sm leading-none ${jaFavoritado ? 'text-slate-950 font-black' : 'text-amber-500'}">★</span>
                   <span class="text-[10px] uppercase tracking-wide font-extrabold">${jaFavoritado ? 'Favorita' : 'Favoritar'}</span>
                 </button>
-                <button onclick="event.stopPropagation(); excluirServico('${s.id}')" title="Excluir do painel" class="w-6 h-6 rounded-md bg-slate-100 hover:bg-rose-100 text-slate-400 hover:text-rose-600 transition-colors flex items-center justify-center text-xs">
-                  ✕
+                <button onclick="event.stopPropagation(); excluirServico('${s.id}')" title="Excluir oportunidade do painel" class="p-1 px-2 rounded-lg bg-slate-100 hover:bg-rose-100 text-slate-500 hover:text-rose-600 border border-slate-200 hover:border-rose-300 transition-all flex items-center gap-1 text-xs font-bold cursor-pointer shadow-xs">
+                  <span>🗑️</span>
+                  <span class="text-[10px] hidden sm:inline">Excluir</span>
                 </button>
               </div>
             </div>
@@ -2928,9 +3034,14 @@ Link: ${item.link}`;
                 <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded ${item.badgeClass}">
                   ${item.badgeText}
                 </span>
-                <button onclick="alternarFavorito('${strId}', event)" class="px-2 py-0.5 rounded-lg text-xs font-bold ${jaFavoritado ? 'bg-amber-400 text-slate-950 font-black' : 'bg-slate-100 text-slate-600'}">
-                  ★ ${jaFavoritado ? 'Favorita' : 'Favoritar'}
-                </button>
+                <div class="flex items-center gap-1.5">
+                  <button onclick="alternarFavorito('${strId}', event)" class="px-2 py-0.5 rounded-lg text-xs font-bold ${jaFavoritado ? 'bg-amber-400 text-slate-950 font-black' : 'bg-slate-100 text-slate-600'}">
+                    ★ ${jaFavoritado ? 'Favorita' : 'Favoritar'}
+                  </button>
+                  <button onclick="event.stopPropagation(); excluirServico('${strId}')" title="Excluir oportunidade" class="p-1 px-2 rounded-lg bg-slate-100 hover:bg-rose-100 text-slate-500 hover:text-rose-600 border border-slate-200 hover:border-rose-300 transition-all flex items-center gap-1 text-xs font-bold cursor-pointer shadow-xs">
+                    <span>🗑️</span>
+                  </button>
+                </div>
               </div>
 
               <span class="text-xs font-semibold text-slate-400 block">${item.orgao}</span>
@@ -2989,9 +3100,14 @@ Link: ${item.link}`;
                 <span class="text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded bg-sky-100 text-sky-800 border border-sky-300">
                   ${item.plataforma}
                 </span>
-                <button onclick="alternarFavorito('${strId}', event)" class="px-2 py-0.5 rounded-lg text-xs font-bold ${jaFavoritado ? 'bg-amber-400 text-slate-950 font-black' : 'bg-slate-100 text-slate-600'}">
-                  ★ ${jaFavoritado ? 'Favorita' : 'Favoritar'}
-                </button>
+                <div class="flex items-center gap-1.5">
+                  <button onclick="alternarFavorito('${strId}', event)" class="px-2 py-0.5 rounded-lg text-xs font-bold ${jaFavoritado ? 'bg-amber-400 text-slate-950 font-black' : 'bg-slate-100 text-slate-600'}">
+                    ★ ${jaFavoritado ? 'Favorita' : 'Favoritar'}
+                  </button>
+                  <button onclick="event.stopPropagation(); excluirRadarItem('${strId}')" title="Excluir oportunidade do Radar" class="p-1 px-2 rounded-lg bg-slate-100 hover:bg-rose-100 text-slate-500 hover:text-rose-600 border border-slate-200 hover:border-rose-300 transition-all flex items-center gap-1 text-xs font-bold cursor-pointer shadow-xs">
+                    <span>🗑️</span>
+                  </button>
+                </div>
               </div>
 
               <span class="text-xs font-semibold text-slate-400 block">${item.orgao}</span>
