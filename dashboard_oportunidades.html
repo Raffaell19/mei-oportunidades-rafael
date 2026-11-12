@@ -730,7 +730,7 @@
       {
         id: "blackout_hotel_exercito",
         titulo: "Revisão e Substituição de Blackouts dos Apartamentos (Hotel Militar)",
-        linkDireto: "https://contratamaisbrasil.sistema.gov.br/",
+        linkDireto: "https://contratamaisbrasil.sistema.gov.br/oportunidades/18328",
         categoria: "exercito",
         badgeText: "🏛️ Exército • Contrato de R$ 12,9k • Exclusivo MEI",
         badgeClass: "bg-emerald-600 text-white",
@@ -806,7 +806,7 @@
       {
         id: "cortinas_hotel_exercito",
         titulo: "Confecção e Instalação de Cortinas Prega Wave (Hotel Militar)",
-        linkDireto: "https://contratamaisbrasil.sistema.gov.br/",
+        linkDireto: "https://contratamaisbrasil.sistema.gov.br/oportunidades/18208",
         categoria: "exercito",
         badgeText: "🏛️ Exército • Centro Histórico POA",
         badgeClass: "bg-emerald-700 text-white",
@@ -874,7 +874,7 @@
       {
         id: "eletrica_taquara",
         titulo: "Adequação Elétrica & Aterramento (Necrotério)",
-        linkDireto: "https://contratamaisbrasil.sistema.gov.br/",
+        linkDireto: "https://contratamaisbrasil.sistema.gov.br/oportunidades/?type=all&busca=Taquara",
         categoria: "taquara recomendados",
         badgeText: "⭐ Top 1 • Demanda Urgente • 17 km",
         badgeClass: "bg-emerald-500 text-white",
@@ -923,6 +923,7 @@
       {
         id: "porta_seguranca_cpor",
         titulo: "Porta de Segurança Aço Carbono (83x213 cm)",
+        linkDireto: "https://contratamaisbrasil.sistema.gov.br/oportunidades/?type=all&busca=CPOR",
         categoria: "exercito recomendados",
         badgeText: "⭐ 3º Serviço na Mesma Rua! (CPOR)",
         badgeClass: "bg-emerald-600 text-white font-black",
@@ -1017,6 +1018,7 @@
       {
         id: "telhado_exercito",
         titulo: "Telhado Termoacústico Sanduíche (38,50 m²)",
+        linkDireto: "https://contratamaisbrasil.sistema.gov.br/oportunidades/?type=all&busca=Hotel",
         categoria: "exercito recomendados",
         badgeText: "⭐ Material Fornecido • Risco Mínimo",
         badgeClass: "bg-emerald-600 text-white",
@@ -1058,6 +1060,7 @@
       {
         id: "grades_metalon",
         titulo: "Duas Grades de Metalon / Barra Maciça",
+        linkDireto: "https://contratamaisbrasil.sistema.gov.br/oportunidades/?type=all&busca=Porto+Alegre",
         categoria: "exercito",
         badgeText: "Sinergia com Telhado (Mesma Rua)",
         badgeClass: "bg-indigo-600 text-white",
@@ -2153,8 +2156,8 @@
                   <button onclick="abrirDetalhes('${item.id}')" class="flex-1 py-2 px-3 rounded-lg bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs text-center transition-all shadow-sm">
                     Ver Orçamento Detalhado
                   </button>
-                  <a href="${item.linkDireto || 'https://contratamaisbrasil.sistema.gov.br/'}" target="_blank" class="py-2 px-3 rounded-lg bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs transition-all flex items-center gap-1 shadow-sm" title="Enviar Proposta Oficial">
-                    <span>Portal</span>
+                  <a href="${formatarLinkDireto(item)}" target="_blank" class="py-2 px-3 rounded-lg bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs transition-all flex items-center gap-1 shadow-sm" title="Acessar página direta da oportunidade">
+                    <span>Acessar Oportunidade</span>
                     <span class="text-[10px]">↗</span>
                   </a>
                 </div>
@@ -2663,6 +2666,7 @@
     // RESOLVE O LINK DIRETO PARA O EDITAL (SEMPRE LINK OFICIAL OU PNCP, NUNCA GOOGLE)
     function formatarLinkDireto(item) {
       if (!item) return "https://pncp.gov.br/app/editais";
+      if (item.linkDireto) return item.linkDireto;
       if (item.link && !item.link.includes('google.com')) {
         return item.link;
       }
@@ -2878,8 +2882,8 @@
                   <span>Ver Orçamento</span>
                   <span>→</span>
                 </button>
-                <a href="${item.linkDireto || '#'}" target="_blank" class="py-2 px-3 rounded-xl bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs transition-all flex items-center gap-1">
-                  <span>Portal</span>
+                <a href="${formatarLinkDireto(item)}" target="_blank" class="py-2 px-3 rounded-xl bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs transition-all flex items-center gap-1.5 shadow-sm" title="Acessar página direta da oportunidade">
+                  <span>Acessar Oportunidade</span>
                   <span class="text-[10px]">↗</span>
                 </a>
               </div>
@@ -3094,8 +3098,8 @@
                   <span>Ver Orçamento</span>
                   <span>→</span>
                 </button>
-                <a href="${item.linkDireto || '#'}" target="_blank" class="py-2 px-3 rounded-xl bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs transition-all flex items-center gap-1">
-                  <span>Portal</span>
+                <a href="${formatarLinkDireto(item)}" target="_blank" class="py-2 px-3 rounded-xl bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs transition-all flex items-center gap-1.5 shadow-sm" title="Acessar página direta da oportunidade">
+                  <span>Acessar Oportunidade</span>
                   <span class="text-[10px]">↗</span>
                 </a>
               </div>
@@ -4070,8 +4074,8 @@ Link: ${item.link}`;
                   <span>Ver Orçamento</span>
                   <span>→</span>
                 </button>
-                <a href="${item.linkDireto || '#'}" target="_blank" class="py-2 px-3 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-xs transition-all flex items-center gap-1">
-                  <span>Portal</span>
+                <a href="${formatarLinkDireto(item)}" target="_blank" class="py-2 px-3 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-xs transition-all flex items-center gap-1.5 shadow-sm" title="Acessar página direta da oportunidade">
+                  <span>Acessar Oportunidade</span>
                   <span class="text-[10px]">↗</span>
                 </a>
               </div>
