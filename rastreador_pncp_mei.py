@@ -31,7 +31,7 @@ CIDADES_PRIORITARIAS = [
     "Triunfo", "Charqueadas", "Eldorado do Sul"
 ]
 
-# Palavras-chave com alta aderência para MEI (serviços manuais e fornecimentos pontuais)
+# Palavras-chave com alta aderência para MEI (serviços manuais, fornecimentos pontuais e marketing digital)
 PALAVRAS_CHAVE_MEI = [
     "serviço", "manutenção", "reparo", "instalação", "elétrica", "eletrico",
     "chaveiro", "tranca", "fechadura", "porta", "janela", "grade",
@@ -39,7 +39,12 @@ PALAVRAS_CHAVE_MEI = [
     "coffee", "lanche", "alimentação", "salgado", "doce", "panificação",
     "material", "suporte", "quadro", "placa", "comunicação visual",
     "toldo", "cobertura", "calha", "vidro", "limpeza", "higienização",
-    "madeira", "marcenaria", "persiana", "cortina", "divisoria"
+    "madeira", "marcenaria", "persiana", "cortina", "divisoria",
+    # Módulo Marketing Digital, Audiovisual & Criação
+    "marketing", "design", "redes sociais", "rede social", "publicidade",
+    "diagramação", "diagramador", "audiovisual", "vídeo", "video",
+    "fotografia", "fotógrafo", "fotografo", "comunicação", "comunicacao",
+    "mídia", "midia", "gestão de tráfego", "website", "web design", "identidade visual"
 ]
 
 def buscar_todas_dispensas_rs(dias_frente=7):
