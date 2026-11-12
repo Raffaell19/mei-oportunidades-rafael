@@ -1,52 +1,5 @@
 window.RADAR_PNCP_DATA = [
   {
-    "id": "87958583000499_1_000137_2026",
-    "numeroControle": "87958583000499-1-000137/2026",
-    "orgao": "SUPERINTENDÊNCIA DOS SERVIÇOS PENITENCIÁRIOS",
-    "cidade": "Porto Alegre",
-    "objeto": "Contratação de empresa especializada para a prestação de serviços de manutenção preventiva e corretiva, higienização e conserto do sistema de exaustão da cozinha geral da Penitenciária Estadual Feminina de Guaíba – PEFG, abrangendo os exaustores existentes e as duas coifas, com fornecimento dos materiais, equipamentos e peças necessários à execução dos serviços.",
-    "valorEstimado": 13547.0,
-    "valorFormatado": "R$ 13.547,00",
-    "dataEncerramento": "12/11/2026 às 10:00",
-    "dataEncerramentoIso": "2026-11-12T10:00:00",
-    "link": "https://www.compras.rs.gov.br/editais/9281_2026/358479",
-    "tipoLink": "Link Direto Oficial",
-    "plataforma": "Compras RS (Governo Estadual)",
-    "ehComprasGov": false,
-    "compativelMEI": true,
-    "ehRegiaoProxima": true,
-    "tags": [
-      "Serviço",
-      "Manutenção",
-      "Higienização"
-    ],
-    "permiteCompraFornecedor": true,
-    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
-  },
-  {
-    "id": "88150495000186_1_000465_2026",
-    "numeroControle": "88150495000186-1-000465/2026",
-    "orgao": "Prefeitura Municipal de Esteio",
-    "cidade": "Esteio",
-    "objeto": "AQUISIÇÃO DE SUPORTE DE PAREDE PARA TELEVISOR DE 85 POLEGADAS E TELA DE PROJEÇÃO - SMSP -SEI.43.206012.000030/2026-11(PORTAL DE COMPRAS PÚBLICAS)",
-    "valorEstimado": 1629.5,
-    "valorFormatado": "R$ 1.629,50",
-    "dataEncerramento": "11/11/2026 às 16:00",
-    "dataEncerramentoIso": "2026-11-11T16:00:00",
-    "link": "https://www.portaldecompraspublicas.com.br/processos",
-    "tipoLink": "Portal de Compras Públicas",
-    "plataforma": "Portal de Compras Públicas",
-    "ehComprasGov": false,
-    "compativelMEI": true,
-    "ehRegiaoProxima": true,
-    "tags": [
-      "Porta",
-      "Suporte"
-    ],
-    "permiteCompraFornecedor": true,
-    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
-  },
-  {
     "id": "88830609000139_1_000633_2026",
     "numeroControle": "88830609000139-1-000633/2026",
     "orgao": "MRS-PREFEITURA MUNICIPAL DE CAXIAS DO SUL",
@@ -115,30 +68,6 @@ window.RADAR_PNCP_DATA = [
     "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
-    "id": "09509569000151_1_000128_2026",
-    "numeroControle": "09509569000151-1-000128/2026",
-    "orgao": "Diretoria Administrativo-Financeira",
-    "cidade": "Novo Hamburgo",
-    "objeto": "Contratação de empresa especializada em prestação de serviços comuns de reparo em estruturas metálicas e coberturas em lona (toldos), incluindo o fornecimento de mão de obra e materiais para substituição de lonas e componentes danificados por ciclone nas instalações do Prédio Administrativo e da Oficina da Eletromecânica da COMUSA.",
-    "valorEstimado": 7835.0,
-    "valorFormatado": "R$ 7.835,00",
-    "dataEncerramento": "12/11/2026 às 08:59",
-    "dataEncerramentoIso": "2026-11-12T08:59:00",
-    "link": "https://pncp.gov.br/app/editais/09509569000151/2026/128",
-    "tipoLink": "Edital Direto no PNCP",
-    "plataforma": "Portal IPM (Prefeitura/Autarquia)",
-    "ehComprasGov": false,
-    "compativelMEI": true,
-    "ehRegiaoProxima": true,
-    "tags": [
-      "Serviço",
-      "Reparo",
-      "Toldo"
-    ],
-    "permiteCompraFornecedor": true,
-    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
-  },
-  {
     "id": "17176399000169_1_000040_2026",
     "numeroControle": "17176399000169-1-000040/2026",
     "orgao": "POLÍCIA PENAL DO ESTADO DO RIO GRANDE DO SUL",
@@ -156,51 +85,6 @@ window.RADAR_PNCP_DATA = [
     "ehRegiaoProxima": true,
     "tags": [
       "Oportunidade MEI"
-    ],
-    "permiteCompraFornecedor": true,
-    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
-  },
-  {
-    "id": "09509569000151_1_000129_2026",
-    "numeroControle": "09509569000151-1-000129/2026",
-    "orgao": "Diretoria Técnica",
-    "cidade": "Novo Hamburgo",
-    "objeto": "O objeto desta dispensa de licitação é a aquisição de empilhadeira hidráulica manual para a COMUSA - Serviços de Água e Esgoto de Novo Hamburgo, conforme as quantidades, especificações e condições descritas no ANEXO I - Termo de Referência do Aviso.",
-    "valorEstimado": 9361.89,
-    "valorFormatado": "R$ 9.361,89",
-    "dataEncerramento": "12/11/2026 às 08:59",
-    "dataEncerramentoIso": "2026-11-12T08:59:00",
-    "link": "https://pncp.gov.br/app/editais/09509569000151/2026/129",
-    "tipoLink": "Edital Direto no PNCP",
-    "plataforma": "Portal IPM (Prefeitura/Autarquia)",
-    "ehComprasGov": false,
-    "compativelMEI": true,
-    "ehRegiaoProxima": true,
-    "tags": [
-      "Serviço"
-    ],
-    "permiteCompraFornecedor": true,
-    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
-  },
-  {
-    "id": "00058163000125_1_000161_2026",
-    "numeroControle": "00058163000125-1-000161/2026",
-    "orgao": "POLÍCIA CIVIL - DIVISÃO DE MATERIAL E PATRIMÔNIO/SERVIÇO DE PRONTO ATENDIMENTO",
-    "cidade": "Porto Alegre",
-    "objeto": "a contratação de empresa especializada para a\r\nprestação de serviços de chaveiros, por demanda, tais como cópias de chaves e\r\ntroca de segredos, sob demanda, em conformidade com as especificações e\r\nestimativas de consumo constantes no TR.",
-    "valorEstimado": 16550.0,
-    "valorFormatado": "R$ 16.550,00",
-    "dataEncerramento": "11/11/2026 às 15:03",
-    "dataEncerramentoIso": "2026-11-11T15:03:00",
-    "link": "https://www.compras.rs.gov.br/editais/9060_2026/359000",
-    "tipoLink": "Link Direto Oficial",
-    "plataforma": "Compras RS (Governo Estadual)",
-    "ehComprasGov": false,
-    "compativelMEI": true,
-    "ehRegiaoProxima": true,
-    "tags": [
-      "Serviço",
-      "Chaveiro"
     ],
     "permiteCompraFornecedor": true,
     "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
@@ -241,119 +125,6 @@ window.RADAR_PNCP_DATA = [
     "tipoLink": "Link Direto Oficial",
     "plataforma": "Compras RS (Governo Estadual)",
     "ehComprasGov": false,
-    "compativelMEI": true,
-    "ehRegiaoProxima": true,
-    "tags": [
-      "Oportunidade MEI"
-    ],
-    "permiteCompraFornecedor": true,
-    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
-  },
-  {
-    "id": "92969856000198_1_000321_2026",
-    "numeroControle": "92969856000198-1-000321/2026",
-    "orgao": "UFRS-UNIVERSIDADE FEDERAL DO RS/RS",
-    "cidade": "Porto Alegre",
-    "objeto": "Controlador Acesso Tipo: Display Tipo Touch-Screen, Padrão: Stand-Alone, Tipo Conexão: Rede Local,\nCaracterísticas Adicionais: Identificaçao Através De Biometria /Smart Card, Aplicação: Monitoramento E Controle De Portas De Acesso, Tipo Uso: Fechadura Do Tipo Eletroima Ou Eletromagnética\nFim: controle de acesso por reconhecimento facial\nO equipamento deverá atender aos requisitos aplicáveis da ABNT NBR IEC 60839-11-1:2019, referente a sistemas eletrônicos de controle de acesso, devendo a empresa apresentar documentação comprobatória de conformidade, quando aplicável. A comprovação deverá ser feita antes da homologação do resultado com apresentação do atendimento no catálogo/ficha técnica do produto.\nINSTALAÇÃO: Deverá estar inclusa no valor a instalação dos equipamentos.\nLocal: Porto Alegre (Casas do Estudante da UFRGS - Av. João Pessoa, 41 e Rua São Manoel, 573)\nEntrega: DME/PRAE, Av. Paulo Gama, 110. Aanexo 3 sala 215",
-    "valorEstimado": 6453.52,
-    "valorFormatado": "R$ 6.453,52",
-    "dataEncerramento": "12/11/2026 às 08:00",
-    "dataEncerramentoIso": "2026-11-12T08:00:00",
-    "link": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/acompanhamento-compra?compra=15311406004822026",
-    "tipoLink": "Link Direto Oficial",
-    "plataforma": "Contrata+ Brasil / Compras.gov.br",
-    "ehComprasGov": true,
-    "compativelMEI": true,
-    "ehRegiaoProxima": true,
-    "tags": [
-      "Instalação",
-      "Fechadura",
-      "Porta"
-    ],
-    "permiteCompraFornecedor": true,
-    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
-  },
-  {
-    "id": "88254883000107_1_000170_2026",
-    "numeroControle": "88254883000107-1-000170/2026",
-    "orgao": "Prefeitura Municipal de Estância Velha",
-    "cidade": "Estância Velha",
-    "objeto": "[Portal de Compras Públicas] - REQUISIÇÃO PARA EXECUÇÃO DE EMENDA IMPOSITIVA Nº 9, DO VEREADOR CLÓVIS DOS SANTOS, PARA RECONSTRUÇÃO DA ENTRADA DA SECRETARIA DE DESENVOLVIMENTO SOCIAL E TRABALHO, EM ESTILO GERMÂNICO, DE ACORDO COM AS ESPECIFICAÇÕES DA REFERIDA SECRETARIA.",
-    "valorEstimado": 17898.37,
-    "valorFormatado": "R$ 17.898,37",
-    "dataEncerramento": "12/11/2026 às 08:29",
-    "dataEncerramentoIso": "2026-11-12T08:29:00",
-    "link": "https://www.portaldecompraspublicas.com.br/processos/RS/Prefeitura-Municipal-de-Estancia-Velha-2394/DE-11-2026-2026-523245",
-    "tipoLink": "Link Direto Oficial",
-    "plataforma": "Portal de Compras Públicas",
-    "ehComprasGov": false,
-    "compativelMEI": true,
-    "ehRegiaoProxima": true,
-    "tags": [
-      "Porta"
-    ],
-    "permiteCompraFornecedor": true,
-    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
-  },
-  {
-    "id": "92963560000160_1_001420_2026",
-    "numeroControle": "92963560000160-1-001420/2026",
-    "orgao": "SMED - Secretaria Municipal de Educação",
-    "cidade": "Porto Alegre",
-    "objeto": "[Portal de Compras Públicas] - Contratação de empresa para execução dos serviços de confecção e entrega de 1350 camisetas personalizadas, para a Secretaria Municipal de Educação - SMED.",
-    "valorEstimado": 55701.0,
-    "valorFormatado": "R$ 55.701,00",
-    "dataEncerramento": "12/11/2026 às 08:59",
-    "dataEncerramentoIso": "2026-11-12T08:59:00",
-    "link": "https://www.portaldecompraspublicas.com.br/processos/RS/Prefeitura-Municipal-de-Porto-Alegre-206/DE-93-2026-2026-521603",
-    "tipoLink": "Link Direto Oficial",
-    "plataforma": "Portal de Compras Públicas",
-    "ehComprasGov": false,
-    "compativelMEI": true,
-    "ehRegiaoProxima": true,
-    "tags": [
-      "Serviço",
-      "Porta"
-    ],
-    "permiteCompraFornecedor": true,
-    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
-  },
-  {
-    "id": "01612918000154_1_000126_2026",
-    "numeroControle": "01612918000154-1-000126/2026",
-    "orgao": "Município de Araricá",
-    "cidade": "Araricá",
-    "objeto": "MATERIAL EDUCATIVO E ESPORTIVO",
-    "valorEstimado": 36327.11,
-    "valorFormatado": "R$ 36.327,11",
-    "dataEncerramento": "11/11/2026 às 13:00",
-    "dataEncerramentoIso": "2026-11-11T13:00:00",
-    "link": "https://pncp.gov.br/app/editais?q=01612918000154-1-000126/2026",
-    "tipoLink": "Buscar Edital no PNCP",
-    "plataforma": "Tecnosweb - Tecnologia de Gestão",
-    "ehComprasGov": false,
-    "compativelMEI": true,
-    "ehRegiaoProxima": true,
-    "tags": [
-      "Material"
-    ],
-    "permiteCompraFornecedor": true,
-    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
-  },
-  {
-    "id": "10637926000146_1_000299_2026",
-    "numeroControle": "10637926000146-1-000299/2026",
-    "orgao": "INST.FED.DE EDUC.,CIENC.E TEC.DO R GRANDE SUL",
-    "cidade": "Bento Gonçalves",
-    "objeto": "A presente contratação tem por objeto a aquisição de materiais eletroeletrônicos destinados aos laboratórios de Eletrônica e Eletrotécnica do IFRS – Campus Farroupilha, visando atender às atividades de ensino, aulas práticas, projetos acadêmicos e demais atividades laboratoriais desenvolvidas pela instituição.",
-    "valorEstimado": 20433.58,
-    "valorFormatado": "R$ 20.433,58",
-    "dataEncerramento": "12/11/2026 às 09:00",
-    "dataEncerramentoIso": "2026-11-12T09:00:00",
-    "link": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/acompanhamento-compra?compra=15814106004552026",
-    "tipoLink": "Link Direto Oficial",
-    "plataforma": "Contrata+ Brasil / Compras.gov.br",
-    "ehComprasGov": true,
     "compativelMEI": true,
     "ehRegiaoProxima": true,
     "tags": [
@@ -407,28 +178,6 @@ window.RADAR_PNCP_DATA = [
     "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
-    "id": "87958658000199_1_001160_2026",
-    "numeroControle": "87958658000199-1-001160/2026",
-    "orgao": "CELIC - SUBSECRETARIA DA ADMINISTRAÇÃO CENTRAL DE LICITAÇÕES",
-    "cidade": "Porto Alegre",
-    "objeto": "AQUISIÇÃO DE BENS DA(S) FAMÍLIA(S):\n0595-VEICULOS;",
-    "valorEstimado": 58881.0,
-    "valorFormatado": "R$ 58.881,00",
-    "dataEncerramento": "12/11/2026 às 09:00",
-    "dataEncerramentoIso": "2026-11-12T09:00:00",
-    "link": "https://www.compras.rs.gov.br/editais/1110_2026/359090",
-    "tipoLink": "Link Direto Oficial",
-    "plataforma": "Compras RS (Governo Estadual)",
-    "ehComprasGov": false,
-    "compativelMEI": true,
-    "ehRegiaoProxima": true,
-    "tags": [
-      "Oportunidade MEI"
-    ],
-    "permiteCompraFornecedor": true,
-    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
-  },
-  {
     "id": "13738204000176_1_000082_2026",
     "numeroControle": "13738204000176-1-000082/2026",
     "orgao": "CONSELHO REGIONAL DE BIOMEDICINA 5ª REGIAO",
@@ -446,141 +195,6 @@ window.RADAR_PNCP_DATA = [
     "ehRegiaoProxima": true,
     "tags": [
       "Serviço"
-    ],
-    "permiteCompraFornecedor": true,
-    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
-  },
-  {
-    "id": "00394452000103_1_023856_2026",
-    "numeroControle": "00394452000103-1-023856/2026",
-    "orgao": "POLICLINICA MILITAR DE PORTO ALEGRE/RS",
-    "cidade": "Porto Alegre",
-    "objeto": "Recarga de Extintores de Incêndio para Policlínica Militar de Porto Alegre (PMPA)",
-    "valorEstimado": 637.25,
-    "valorFormatado": "R$ 637,25",
-    "dataEncerramento": "12/11/2026 às 08:00",
-    "dataEncerramentoIso": "2026-11-12T08:00:00",
-    "link": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/acompanhamento-compra?compra=16040006001612026",
-    "tipoLink": "Link Direto Oficial",
-    "plataforma": "Contrata+ Brasil / Compras.gov.br",
-    "ehComprasGov": true,
-    "compativelMEI": true,
-    "ehRegiaoProxima": true,
-    "tags": [
-      "Oportunidade MEI"
-    ],
-    "permiteCompraFornecedor": true,
-    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
-  },
-  {
-    "id": "00348003000110_1_001539_2026",
-    "numeroControle": "00348003000110-1-001539/2026",
-    "orgao": "EMBRAPA UVA E VINHO/BENTO GONÇALVES/RS",
-    "cidade": "Bento Gonçalves",
-    "objeto": "Aquisição de uvas BRS das variedades Lorena, Margot, Carmem e Magna, para uso em vinificações experimentais, no âmbito do projeto 10.25.06.039.00.00 - Vinhos de uvas brasileiras: tecnologias associadas para sustentabilidade, saudabilidade, qualidade, viabilidade econômica, social e ambiental.",
-    "valorEstimado": 6240.82,
-    "valorFormatado": "R$ 6.240,82",
-    "dataEncerramento": "12/11/2026 às 08:00",
-    "dataEncerramentoIso": "2026-11-12T08:00:00",
-    "link": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/acompanhamento-compra?compra=13503306000582026",
-    "tipoLink": "Link Direto Oficial",
-    "plataforma": "Contrata+ Brasil / Compras.gov.br",
-    "ehComprasGov": true,
-    "compativelMEI": true,
-    "ehRegiaoProxima": true,
-    "tags": [
-      "Oportunidade MEI"
-    ],
-    "permiteCompraFornecedor": true,
-    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
-  },
-  {
-    "id": "00348003000110_1_001542_2026",
-    "numeroControle": "00348003000110-1-001542/2026",
-    "orgao": "EMBRAPA UVA E VINHO/BENTO GONÇALVES/RS",
-    "cidade": "Bento Gonçalves",
-    "objeto": "A presente demanda destina-se à aquisição de  Fogão doméstico a gás, Televisores com Tela LED, Purificador de Ar e Condicionador de Ar Split destinados a atender à infraestrutura da Embrapa Uva e Vinho, conforme as especificações e quantidades discriminadas no Termo de Referência.",
-    "valorEstimado": 30734.59,
-    "valorFormatado": "R$ 30.734,59",
-    "dataEncerramento": "12/11/2026 às 08:00",
-    "dataEncerramentoIso": "2026-11-12T08:00:00",
-    "link": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/acompanhamento-compra?compra=13503306000632026",
-    "tipoLink": "Link Direto Oficial",
-    "plataforma": "Contrata+ Brasil / Compras.gov.br",
-    "ehComprasGov": true,
-    "compativelMEI": true,
-    "ehRegiaoProxima": true,
-    "tags": [
-      "Oportunidade MEI"
-    ],
-    "permiteCompraFornecedor": true,
-    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
-  },
-  {
-    "id": "26994558000123_1_000182_2026",
-    "numeroControle": "26994558000123-1-000182/2026",
-    "orgao": "SUPERINT.DE ADMINIST.NO RIO GRANDE DO SUL",
-    "cidade": "Porto Alegre",
-    "objeto": "Contratação de serviços comuns de engenharia para certificação e instalação de pontos de\nancoragem, no prédio sede da Advocacia Geral da União da 4ª Região, em Porto Alegre,  conforme condições e exigências estabelecidas no Aviso de Contratação Direta e seus anexos.",
-    "valorEstimado": 27999.8,
-    "valorFormatado": "R$ 27.999,80",
-    "dataEncerramento": "12/11/2026 às 09:00",
-    "dataEncerramentoIso": "2026-11-12T09:00:00",
-    "link": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/acompanhamento-compra?compra=11009706000502026",
-    "tipoLink": "Link Direto Oficial",
-    "plataforma": "Contrata+ Brasil / Compras.gov.br",
-    "ehComprasGov": true,
-    "compativelMEI": true,
-    "ehRegiaoProxima": true,
-    "tags": [
-      "Serviço",
-      "Instalação"
-    ],
-    "permiteCompraFornecedor": true,
-    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
-  },
-  {
-    "id": "00058163000125_1_000164_2026",
-    "numeroControle": "00058163000125-1-000164/2026",
-    "orgao": "POLÍCIA CIVIL - DIVISÃO DE MATERIAL E PATRIMÔNIO/SERVIÇO DE PRONTO ATENDIMENTO",
-    "cidade": "Porto Alegre",
-    "objeto": "Contratação de empresa especializada para fornecimento e instalação de grades metálicas de proteção na nova sede da DAME, localizada no Palácio da Polícia, contemplando portas de grade, gradis em janelas e guichês, ferragens e serviços de acabamento, visando reforçar a segurança física, o controle de acesso e a proteção patrimonial do local.",
-    "valorEstimado": 26124.52,
-    "valorFormatado": "R$ 26.124,52",
-    "dataEncerramento": "12/11/2026 às 10:00",
-    "dataEncerramentoIso": "2026-11-12T10:00:00",
-    "link": "https://www.compras.rs.gov.br/editais/9062_2026/359106",
-    "tipoLink": "Link Direto Oficial",
-    "plataforma": "Compras RS (Governo Estadual)",
-    "ehComprasGov": false,
-    "compativelMEI": true,
-    "ehRegiaoProxima": true,
-    "tags": [
-      "Serviço",
-      "Instalação",
-      "Porta"
-    ],
-    "permiteCompraFornecedor": true,
-    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
-  },
-  {
-    "id": "00058163000125_1_000165_2026",
-    "numeroControle": "00058163000125-1-000165/2026",
-    "orgao": "POLÍCIA CIVIL - DIVISÃO DE MATERIAL E PATRIMÔNIO/SERVIÇO DE PRONTO ATENDIMENTO",
-    "cidade": "Porto Alegre",
-    "objeto": "AQUISIÇÃO DE BENS DA(S) FAMÍLIA(S):\n0035-EQUIPAMENTOS P/INFORMATICA;",
-    "valorEstimado": 7424.52,
-    "valorFormatado": "R$ 7.424,52",
-    "dataEncerramento": "11/11/2026 às 14:10",
-    "dataEncerramentoIso": "2026-11-11T14:10:00",
-    "link": "https://www.compras.rs.gov.br/editais/1111_2026/359112",
-    "tipoLink": "Link Direto Oficial",
-    "plataforma": "Compras RS (Governo Estadual)",
-    "ehComprasGov": false,
-    "compativelMEI": true,
-    "ehRegiaoProxima": true,
-    "tags": [
-      "Oportunidade MEI"
     ],
     "permiteCompraFornecedor": true,
     "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
@@ -605,28 +219,6 @@ window.RADAR_PNCP_DATA = [
       "Serviço",
       "Instalação",
       "Elétrica"
-    ],
-    "permiteCompraFornecedor": true,
-    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
-  },
-  {
-    "id": "87958658000199_1_001164_2026",
-    "numeroControle": "87958658000199-1-001164/2026",
-    "orgao": "CELIC - SUBSECRETARIA DA ADMINISTRAÇÃO CENTRAL DE LICITAÇÕES",
-    "cidade": "Porto Alegre",
-    "objeto": "Serviço de confecção de\r\n3.000 (três mil) livretos\r\npara colorir, para uso em\r\nprogramação especial\r\nreferente ao Dia Estadual\r\ndo Patrimônio",
-    "valorEstimado": 7525.05,
-    "valorFormatado": "R$ 7.525,05",
-    "dataEncerramento": "12/11/2026 às 09:00",
-    "dataEncerramentoIso": "2026-11-12T09:00:00",
-    "link": "https://www.compras.rs.gov.br/editais/9098_2026/359120",
-    "tipoLink": "Link Direto Oficial",
-    "plataforma": "Compras RS (Governo Estadual)",
-    "ehComprasGov": false,
-    "compativelMEI": true,
-    "ehRegiaoProxima": true,
-    "tags": [
-      "Serviço"
     ],
     "permiteCompraFornecedor": true,
     "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
@@ -676,28 +268,6 @@ window.RADAR_PNCP_DATA = [
     "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
-    "id": "87958658000199_1_001165_2026",
-    "numeroControle": "87958658000199-1-001165/2026",
-    "orgao": "CELIC - SUBSECRETARIA DA ADMINISTRAÇÃO CENTRAL DE LICITAÇÕES",
-    "cidade": "Porto Alegre",
-    "objeto": "AQUISIÇÃO DE BENS DA(S) FAMÍLIA(S):\n0515-EQUIPAMENTOS/MATERIAIS DE SEGURANCA E PROTECAO;",
-    "valorEstimado": 22014.85,
-    "valorFormatado": "R$ 22.014,85",
-    "dataEncerramento": "12/11/2026 às 09:00",
-    "dataEncerramentoIso": "2026-11-12T09:00:00",
-    "link": "https://www.compras.rs.gov.br/editais/1114_2026/359127",
-    "tipoLink": "Link Direto Oficial",
-    "plataforma": "Compras RS (Governo Estadual)",
-    "ehComprasGov": false,
-    "compativelMEI": true,
-    "ehRegiaoProxima": true,
-    "tags": [
-      "Oportunidade MEI"
-    ],
-    "permiteCompraFornecedor": true,
-    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
-  },
-  {
     "id": "90938143000131_1_000057_2026",
     "numeroControle": "90938143000131-1-000057/2026",
     "orgao": "UNIDADES SUBORDINADAS",
@@ -710,28 +280,6 @@ window.RADAR_PNCP_DATA = [
     "link": "https://pncp.gov.br/app/editais/90938143000131/2026/57",
     "tipoLink": "Edital Direto no PNCP",
     "plataforma": "Portal IPM (Prefeitura/Autarquia)",
-    "ehComprasGov": false,
-    "compativelMEI": true,
-    "ehRegiaoProxima": true,
-    "tags": [
-      "Oportunidade MEI"
-    ],
-    "permiteCompraFornecedor": true,
-    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
-  },
-  {
-    "id": "87934675000196_1_000315_2026",
-    "numeroControle": "87934675000196-1-000315/2026",
-    "orgao": "CS CASA CIVIL",
-    "cidade": "Porto Alegre",
-    "objeto": "AQUISIÇÃO DE BENS DA(S) FAMÍLIA(S):\n0285-ELETRODOMESTICOS;",
-    "valorEstimado": 1038.65,
-    "valorFormatado": "R$ 1.038,65",
-    "dataEncerramento": "12/11/2026 às 09:30",
-    "dataEncerramentoIso": "2026-11-12T09:30:00",
-    "link": "https://www.compras.rs.gov.br/editais/1115_2026/359134",
-    "tipoLink": "Link Direto Oficial",
-    "plataforma": "Compras RS (Governo Estadual)",
     "ehComprasGov": false,
     "compativelMEI": true,
     "ehRegiaoProxima": true,
@@ -786,73 +334,6 @@ window.RADAR_PNCP_DATA = [
     "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
-    "id": "00394452000103_1_023908_2026",
-    "numeroControle": "00394452000103-1-023908/2026",
-    "orgao": "18 BATALHAO DE INFANTARIA MOTORIZADO/RS",
-    "cidade": "Sapucaia do Sul",
-    "objeto": "Dispensa de Licitação para a aquisição de peças de Viatura em favor do 18° BIMtz",
-    "valorEstimado": 17090.0,
-    "valorFormatado": "R$ 17.090,00",
-    "dataEncerramento": "12/11/2026 às 08:00",
-    "dataEncerramentoIso": "2026-11-12T08:00:00",
-    "link": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/acompanhamento-compra?compra=16038406000912026",
-    "tipoLink": "Link Direto Oficial",
-    "plataforma": "Contrata+ Brasil / Compras.gov.br",
-    "ehComprasGov": true,
-    "compativelMEI": true,
-    "ehRegiaoProxima": true,
-    "tags": [
-      "Oportunidade MEI"
-    ],
-    "permiteCompraFornecedor": true,
-    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
-  },
-  {
-    "id": "92963560000160_1_001431_2026",
-    "numeroControle": "92963560000160-1-001431/2026",
-    "orgao": "SMOI - Secretaria Municipal De Obras e Infraestrutura",
-    "cidade": "Porto Alegre",
-    "objeto": "[Portal de Compras Públicas] - Contratação Direta para aquisição de 06 postes de concreto armado tipo duplo T, com resistência de 300/400 Dan, 9 metros de altura para a iluminação do campo do SESI, localizado na Praça do SESI, na Rua Bambas da Orgia, S/N, -Bairro Farrapos.",
-    "valorEstimado": 8535.6,
-    "valorFormatado": "R$ 8.535,60",
-    "dataEncerramento": "12/11/2026 às 08:59",
-    "dataEncerramentoIso": "2026-11-12T08:59:00",
-    "link": "https://www.portaldecompraspublicas.com.br/processos/RS/Prefeitura-Municipal-de-Porto-Alegre-206/DE-96-2026-2026-523243",
-    "tipoLink": "Link Direto Oficial",
-    "plataforma": "Portal de Compras Públicas",
-    "ehComprasGov": false,
-    "compativelMEI": true,
-    "ehRegiaoProxima": true,
-    "tags": [
-      "Porta"
-    ],
-    "permiteCompraFornecedor": true,
-    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
-  },
-  {
-    "id": "94392164000155_1_000015_2026",
-    "numeroControle": "94392164000155-1-000015/2026",
-    "orgao": "FUNDAÇÃO GAÚCHA DO TRABALHO E AÇÃO SOCIAL",
-    "cidade": "Porto Alegre",
-    "objeto": "Contratação emergencial\r\nde empresa para prestação de serviço contínuo de manutenção e conservação, com mão de obra especializada e fornecimento de equipamentos e ferramentas, para os seguintes postos de trabalho, na Fundação Gaúcha do Trabalho e Ação Social – FGTAS: eletricista (1), pedreiro (2), auxiliar de manutenção predial (2) e zelador (1), em Porto Alegre -RS",
-    "valorEstimado": 33734.6,
-    "valorFormatado": "R$ 33.734,60",
-    "dataEncerramento": "12/11/2026 às 09:30",
-    "dataEncerramentoIso": "2026-11-12T09:30:00",
-    "link": "https://www.compras.rs.gov.br/editais/9002_2026/358845",
-    "tipoLink": "Link Direto Oficial",
-    "plataforma": "Compras RS (Governo Estadual)",
-    "ehComprasGov": false,
-    "compativelMEI": true,
-    "ehRegiaoProxima": true,
-    "tags": [
-      "Serviço",
-      "Manutenção"
-    ],
-    "permiteCompraFornecedor": true,
-    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
-  },
-  {
     "id": "89522064000166_1_000244_2026",
     "numeroControle": "89522064000166-1-000244/2026",
     "orgao": "TRIBUNAL DE JUSTIÇA DO ESTADO DO RIO G.DO SUL",
@@ -870,52 +351,6 @@ window.RADAR_PNCP_DATA = [
     "ehRegiaoProxima": true,
     "tags": [
       "Serviço"
-    ],
-    "permiteCompraFornecedor": true,
-    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
-  },
-  {
-    "id": "89175541000164_1_000433_2026",
-    "numeroControle": "89175541000164-1-000433/2026",
-    "orgao": "BM - CPL BRIGADA MILITAR - COMANDO DE POLICIAMENTO LITORAL",
-    "cidade": "Osório",
-    "objeto": "O objeto da presente dispensa de licitação visa à contratação de empresa especializada na prestação de serviços de Instalação e manutenção preventiva e corretiva de aparelhos condicionadores do Comando Regional de Polícia Ostensiva do Litoral Osório/RS, devendo os serviços serem realizados nos municípios de Osório, Capão da Canoa, Torres e Tramandaí conforme descrição e condições especificadas no Anexo IV – Folha de Dados (CGDL 1.1) e de acordo com as condições contidas neste Termo de Referência.",
-    "valorEstimado": 8639.1,
-    "valorFormatado": "R$ 8.639,10",
-    "dataEncerramento": "11/11/2026 às 16:00",
-    "dataEncerramentoIso": "2026-11-11T16:00:00",
-    "link": "https://www.compras.rs.gov.br/editais/9011_2026/359159",
-    "tipoLink": "Link Direto Oficial",
-    "plataforma": "Compras RS (Governo Estadual)",
-    "ehComprasGov": false,
-    "compativelMEI": true,
-    "ehRegiaoProxima": true,
-    "tags": [
-      "Serviço",
-      "Manutenção",
-      "Instalação"
-    ],
-    "permiteCompraFornecedor": true,
-    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
-  },
-  {
-    "id": "00394502000144_1_015632_2026",
-    "numeroControle": "00394502000144-1-015632/2026",
-    "orgao": "SERVICO DE SINALIZACAO NAUTICA DO SUL/RS",
-    "cidade": "Porto Alegre",
-    "objeto": "Aquisição de jogo de panelas e conjunto de facas.",
-    "valorEstimado": 3446.92,
-    "valorFormatado": "R$ 3.446,92",
-    "dataEncerramento": "12/11/2026 às 08:00",
-    "dataEncerramentoIso": "2026-11-12T08:00:00",
-    "link": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/acompanhamento-compra?compra=78551006000622026",
-    "tipoLink": "Link Direto Oficial",
-    "plataforma": "Contrata+ Brasil / Compras.gov.br",
-    "ehComprasGov": true,
-    "compativelMEI": true,
-    "ehRegiaoProxima": true,
-    "tags": [
-      "Oportunidade MEI"
     ],
     "permiteCompraFornecedor": true,
     "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
@@ -1031,29 +466,6 @@ window.RADAR_PNCP_DATA = [
     "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
-    "id": "00394452000103_1_023935_2026",
-    "numeroControle": "00394452000103-1-023935/2026",
-    "orgao": "6 BATALHAO DE COMUNICACAO DIVISIONARIO/RS",
-    "cidade": "Bento Gonçalves",
-    "objeto": "Contratação de serviço de limpeza de caixa de gordura para o setor de aprovisionamento do 6° B Com",
-    "valorEstimado": 1200.0,
-    "valorFormatado": "R$ 1.200,00",
-    "dataEncerramento": "12/11/2026 às 09:00",
-    "dataEncerramentoIso": "2026-11-12T09:00:00",
-    "link": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/acompanhamento-compra?compra=16036006000372026",
-    "tipoLink": "Link Direto Oficial",
-    "plataforma": "Contrata+ Brasil / Compras.gov.br",
-    "ehComprasGov": true,
-    "compativelMEI": true,
-    "ehRegiaoProxima": true,
-    "tags": [
-      "Serviço",
-      "Limpeza"
-    ],
-    "permiteCompraFornecedor": true,
-    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
-  },
-  {
     "id": "92969856000198_1_000333_2026",
     "numeroControle": "92969856000198-1-000333/2026",
     "orgao": "UFRS-UNIVERSIDADE FEDERAL DO RS/RS",
@@ -1073,28 +485,6 @@ window.RADAR_PNCP_DATA = [
       "Manutenção",
       "Limpeza",
       "Higienização"
-    ],
-    "permiteCompraFornecedor": true,
-    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
-  },
-  {
-    "id": "05110425000177_1_000054_2026",
-    "numeroControle": "05110425000177-1-000054/2026",
-    "orgao": "FUNDAÇÃO DE PROTEÇÃO ESPECIAL DO RS",
-    "cidade": "Porto Alegre",
-    "objeto": "Contratação de empresa especializada para o fornecimento e instalação de 13 (treze) postes de concreto e para a implantação de sistema de iluminação pública com 15 (quinze) luminárias em tecnologia LED, incluindo mão de obra, materiais, equipamentos, ferramentas, transporte, montagem, conexões, aterramento, testes e todos os demais insumos necessários à perfeita execução do objeto, visando à melhoria da iluminação externa no entorno dos Abrigos Residenciais 05, 06, 07 e 08 do NAR Belém Novo, da Fundação de Proteção Especial do Estado do Rio Grande do Sul, conforme documentos técnicos integrantes nos ANEXOS I, II, III, IV, V e VI.",
-    "valorEstimado": 64885.49,
-    "valorFormatado": "R$ 64.885,49",
-    "dataEncerramento": "12/11/2026 às 08:30",
-    "dataEncerramentoIso": "2026-11-12T08:30:00",
-    "link": "https://www.compras.rs.gov.br/editais/9024_2026/359111",
-    "tipoLink": "Link Direto Oficial",
-    "plataforma": "Compras RS (Governo Estadual)",
-    "ehComprasGov": false,
-    "compativelMEI": true,
-    "ehRegiaoProxima": true,
-    "tags": [
-      "Instalação"
     ],
     "permiteCompraFornecedor": true,
     "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
@@ -1298,28 +688,6 @@ window.RADAR_PNCP_DATA = [
     "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
   },
   {
-    "id": "00394452000103_1_023998_2026",
-    "numeroControle": "00394452000103-1-023998/2026",
-    "orgao": "8 ESQUADRAO DE CAVALARIA MECANIZADO/RS",
-    "cidade": "Porto Alegre",
-    "objeto": "Aquisição de materias de expediente para operação passo da patria",
-    "valorEstimado": 880.0,
-    "valorFormatado": "R$ 880,00",
-    "dataEncerramento": "12/11/2026 às 08:00",
-    "dataEncerramentoIso": "2026-11-12T08:00:00",
-    "link": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/acompanhamento-compra?compra=16037706000992026",
-    "tipoLink": "Link Direto Oficial",
-    "plataforma": "Contrata+ Brasil / Compras.gov.br",
-    "ehComprasGov": true,
-    "compativelMEI": true,
-    "ehRegiaoProxima": true,
-    "tags": [
-      "Oportunidade MEI"
-    ],
-    "permiteCompraFornecedor": true,
-    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
-  },
-  {
     "id": "89175541000164_1_000438_2026",
     "numeroControle": "89175541000164-1-000438/2026",
     "orgao": "BRIGADA MILITAR - DEPARTAMENTO DE LOGÍSTICA E PATRIMÔNIO",
@@ -1337,28 +705,6 @@ window.RADAR_PNCP_DATA = [
     "ehRegiaoProxima": true,
     "tags": [
       "Limpeza"
-    ],
-    "permiteCompraFornecedor": true,
-    "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"
-  },
-  {
-    "id": "00394452000103_1_024004_2026",
-    "numeroControle": "00394452000103-1-024004/2026",
-    "orgao": "8 ESQUADRAO DE CAVALARIA MECANIZADO/RS",
-    "cidade": "Porto Alegre",
-    "objeto": "Aquisição de peças agrale",
-    "valorEstimado": 1336.0,
-    "valorFormatado": "R$ 1.336,00",
-    "dataEncerramento": "12/11/2026 às 08:00",
-    "dataEncerramentoIso": "2026-11-12T08:00:00",
-    "link": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/acompanhamento-compra?compra=16037706001002026",
-    "tipoLink": "Link Direto Oficial",
-    "plataforma": "Contrata+ Brasil / Compras.gov.br",
-    "ehComprasGov": true,
-    "compativelMEI": true,
-    "ehRegiaoProxima": true,
-    "tags": [
-      "Oportunidade MEI"
     ],
     "permiteCompraFornecedor": true,
     "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)"

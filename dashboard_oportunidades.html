@@ -1389,11 +1389,13 @@
 
         const itemDb = todosOriginais.find(s => String(s.id) === strId);
         if (itemDb) {
-          return typeof verificarElegibilidadeSubcontratacaoMEI === 'function' ? verificarElegibilidadeSubcontratacaoMEI(itemDb) : true;
+          const okMEI = typeof verificarElegibilidadeSubcontratacaoMEI === 'function' ? verificarElegibilidadeSubcontratacaoMEI(itemDb) : true;
+          return okMEI && oportunidadeEstaAberta(itemDb);
         }
         const itemRadar = todosRadar.find(r => String(r.id) === strId);
         if (itemRadar) {
-          return typeof verificarElegibilidadeSubcontratacaoMEI === 'function' ? verificarElegibilidadeSubcontratacaoMEI(itemRadar) : true;
+          const okMEI = typeof verificarElegibilidadeSubcontratacaoMEI === 'function' ? verificarElegibilidadeSubcontratacaoMEI(itemRadar) : true;
+          return okMEI && oportunidadeEstaAberta(itemRadar);
         }
         return false;
       });
@@ -1657,7 +1659,7 @@
         function obterServicosSemProposta() {
       const ativos = obterServicosAtivos();
       const idsEnviados = getIdsPropostasEnviadas();
-      return ativos.filter(s => !idsEnviados.includes(String(s.id)) && verificarElegibilidadeSubcontratacaoMEI(s));
+      return ativos.filter(s => !idsEnviados.includes(String(s.id)) && verificarElegibilidadeSubcontratacaoMEI(s) && oportunidadeEstaAberta(s));
     }
 
     function obterServicosAtivos() {
@@ -1757,7 +1759,7 @@
     }
 
     function extrairDataEncerramentoItem(item) {
-      if (!item) return { texto: "Em aberto / Conforme Edital", classe: "bg-slate-100 text-slate-700 border-slate-300", iso: null, badgeUrgencia: "" };
+      if (!item) return { texto: "Em aberto / Conforme Edital", classe: "bg-slate-100 text-slate-700 border-slate-300", iso: null, badgeUrgencia: "", ehVencida: false };
       
       let textoData = item.dataEncerramento || item.dataDisputaFimTexto || '';
       let iso = item.dataEncerramentoIso || item.dataDisputaFim || null;
@@ -1781,20 +1783,41 @@
         }
       }
 
+      let dataFim = null;
+      if (iso) {
+        try { dataFim = new Date(iso); } catch(e){}
+      } else if (textoData) {
+        const m = textoData.match(/(\d{2})\/(\d{2})\/(\d{4})(?:\s+(?:às\s+)?(\d{2}):(\d{2}))?/);
+        if (m) {
+          const dia = parseInt(m[1], 10);
+          const mes = parseInt(m[2], 10) - 1;
+          const ano = parseInt(m[3], 10);
+          const hora = m[4] ? parseInt(m[4], 10) : 23;
+          const min = m[5] ? parseInt(m[5], 10) : 59;
+          dataFim = new Date(ano, mes, dia, hora, min, 0);
+        }
+      }
+
       if (!textoData) {
         textoData = "17/11/2026 às 10:00";
-        iso = "2026-11-17T10:00:00";
+        dataFim = new Date(2026, 10, 17, 10, 0, 0);
       }
+
+      const agora = new Date();
+      let diffMs = dataFim ? (dataFim - agora) : 99999999;
+      let ehVencida = diffMs <= 0;
 
       let classe = "bg-amber-50 text-amber-900 border-amber-300";
       let badgeUrgencia = "";
 
-      if (iso) {
-        const diffMs = new Date(iso) - new Date();
+      if (ehVencida) {
+        classe = "bg-rose-100 text-rose-800 border-rose-300 font-extrabold";
+        badgeUrgencia = "⚠️ Prazo Encerrado";
+      } else {
         const horas = Math.floor(diffMs / (1000 * 60 * 60));
-        if (diffMs <= 0) {
-          classe = "bg-rose-100 text-rose-800 border-rose-300 font-extrabold";
-          badgeUrgencia = "⚠️ Encerramento hoje / Em julgamento";
+        if (horas <= 4) {
+          classe = "bg-rose-100 text-rose-900 border-rose-400 font-black animate-pulse";
+          badgeUrgencia = `🚨 Reta Final: ${horas}h para encerrar!`;
         } else if (horas <= 24) {
           classe = "bg-rose-50 text-rose-700 border-rose-300 font-black animate-pulse";
           badgeUrgencia = `🔥 Falta(m) ${horas}h para encerrar!`;
@@ -1804,7 +1827,23 @@
         }
       }
 
-      return { texto: textoData, classe, iso, badgeUrgencia };
+      return {
+        texto: textoData,
+        classe: classe,
+        iso: iso,
+        badgeUrgencia: badgeUrgencia,
+        ehVencida: ehVencida,
+        diffMs: diffMs
+      };
+    }
+
+    // ==============================================================
+    // VALIDADOR TEMPORAL: DESCARTA OPORTUNIDADES ENCERRADAS / VENCIDAS
+    // ==============================================================
+    function oportunidadeEstaAberta(item) {
+      if (!item) return false;
+      const dt = extrairDataEncerramentoItem(item);
+      return !dt.ehVencida;
     }
 
     function calcularTempoRestante(dataIso) {
@@ -2713,13 +2752,15 @@
       const listaInterna = servicosDB.filter(s => 
         !idsEnviados.includes(String(s.id)) && 
         !excluidos.includes(String(s.id)) && 
-        verificarElegibilidadeSubcontratacaoMEI(s)
+        verificarElegibilidadeSubcontratacaoMEI(s) &&
+        oportunidadeEstaAberta(s)
       ).map(s => ({ ...s, origemPainel: 'interno' }));
 
       const listaRadar = todosRadar.filter(r => 
         !idsEnviados.includes(String(r.id)) && 
         !excluidos.includes(String(r.id)) && 
-        verificarElegibilidadeSubcontratacaoMEI(r)
+        verificarElegibilidadeSubcontratacaoMEI(r) &&
+        oportunidadeEstaAberta(r)
       ).map(r => ({ ...r, origemPainel: 'radar' }));
 
       const lista = [...listaInterna, ...listaRadar];
@@ -3822,7 +3863,7 @@ Link: ${item.link}`;
       const enviados = getIdsPropostasEnviadas();
 
       let count = 0;
-      ativosDb.filter(s => !enviados.includes(String(s.id)) && verificarElegibilidadeSubcontratacaoMEI(s)).forEach(s => {
+      ativosDb.filter(s => !enviados.includes(String(s.id)) && verificarElegibilidadeSubcontratacaoMEI(s) && oportunidadeEstaAberta(s)).forEach(s => {
         const m = calcularMetricaOceanoAzul(s);
         if (m.score >= 70 || m.ehDesertaOuProrrogada) count++;
       });
@@ -3830,7 +3871,8 @@ Link: ${item.link}`;
       todosRadar.filter(r => 
         !excluidos.some(e => String(e) === String(r.id)) && 
         !enviados.includes(String(r.id)) &&
-        verificarElegibilidadeSubcontratacaoMEI(r)
+        verificarElegibilidadeSubcontratacaoMEI(r) &&
+        oportunidadeEstaAberta(r)
       ).forEach(r => {
         const m = calcularMetricaOceanoAzul(r);
         if (m.score >= 78 || m.ehDesertaOuProrrogada) count++;
@@ -3852,19 +3894,20 @@ Link: ${item.link}`;
 
       const listaOceano = [];
 
-      // 1. Analisa itens do banco interno (apenas elegíveis para MEI sem veto)
-      ativosDb.filter(s => !enviados.includes(String(s.id)) && verificarElegibilidadeSubcontratacaoMEI(s)).forEach(s => {
+      // 1. Analisa itens do banco interno (apenas abertos e elegíveis para MEI sem veto)
+      ativosDb.filter(s => !enviados.includes(String(s.id)) && verificarElegibilidadeSubcontratacaoMEI(s) && oportunidadeEstaAberta(s)).forEach(s => {
         const metrica = calcularMetricaOceanoAzul(s);
         if (metrica.score >= 70 || metrica.ehDesertaOuProrrogada) {
           listaOceano.push({ ...s, metrica, origemOceano: 'interno' });
         }
       });
 
-      // 2. Analisa itens do Radar PNCP RS (apenas elegíveis para MEI sem veto)
+      // 2. Analisa itens do Radar PNCP RS (apenas abertos e elegíveis para MEI sem veto)
       todosRadar.filter(r => 
         !excluidos.some(e => String(e) === String(r.id)) && 
         !enviados.includes(String(r.id)) &&
-        verificarElegibilidadeSubcontratacaoMEI(r)
+        verificarElegibilidadeSubcontratacaoMEI(r) &&
+        oportunidadeEstaAberta(r)
       ).forEach(r => {
         const metrica = calcularMetricaOceanoAzul(r);
         if (metrica.score >= 78 || metrica.ehDesertaOuProrrogada) {

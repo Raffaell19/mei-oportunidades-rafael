@@ -137,6 +137,15 @@ def classificar_oportunidade(item):
     compativel_porte = (valor_estimado <= 65000.0) if valor_estimado > 0 else True
     eh_regiao_proxima = any(c.lower() in cidade.lower() for c in CIDADES_PRIORITARIAS)
 
+    # Verificação de Prazo: Descarta sumariamente oportunidades com prazo já encerrado
+    if encerramento:
+        try:
+            dt_enc = datetime.datetime.fromisoformat(encerramento.replace("Z", ""))
+            if dt_enc <= datetime.datetime.now():
+                compativel_porte = False
+        except Exception:
+            pass
+
     objeto_lower = objeto.lower()
     tags = []
     score = 0
