@@ -161,6 +161,32 @@ def classificar_oportunidade(item):
     else:
         plataforma = usuario_origem or "Portal Governamental"
 
+    # Cálculo do Score Oceano Azul (Métrica de Baixa Concorrência)
+    texto_completo = f"{objeto} {unidade} {cidade} {plataforma}".lower()
+    score_oceano = 55
+    motivos_oceano = []
+    eh_deserta = any(t in texto_completo for t in [
+        "republica", "reabert", "prorroga", "deserta", "fracassad", "retifica", "segunda chamada", "2ª chamada"
+    ])
+    if eh_deserta:
+        score_oceano += 35
+        motivos_oceano.append("Prazo Estendido / Republicação após Deserta")
+
+    if "compras.rs" in link_final or "PROCERGS" in usuario_origem or "CASA CIVIL" in unidade.upper():
+        score_oceano += 20
+        motivos_oceano.append("Portal RS Exclusivo: Exige CFE Estadual")
+
+    if any(c.lower() in cidade.lower() for c in ["taquara", "parobé", "sapiranga", "araricá", "campo bom", "esteio", "montenegro", "rio grande"]):
+        score_oceano += 15
+        motivos_oceano.append(f"Demanda Regional ({cidade})")
+
+    if valor_estimado > 0 and valor_estimado <= 35000:
+        score_oceano += 10
+        motivos_oceano.append("Valor Ideal MEI")
+
+    score_oceano = min(score_oceano, 98)
+    nivel_concorrencia = "Quase Zero" if score_oceano >= 82 else ("Baixíssima" if score_oceano >= 68 else "Moderada")
+
     return {
         "id": num_controle.replace("/", "_").replace("-", "_"),
         "numeroControle": num_controle,
@@ -177,7 +203,11 @@ def classificar_oportunidade(item):
         "ehComprasGov": eh_comprasgov,
         "compativelMEI": compativel_porte and (score > 0 or eh_regiao_proxima),
         "ehRegiaoProxima": eh_regiao_proxima,
-        "tags": tags or ["Oportunidade MEI"]
+        "tags": tags or ["Oportunidade MEI"],
+        "scoreOceanoAzul": score_oceano,
+        "nivelConcorrencia": nivel_concorrencia,
+        "motivosConcorrencia": motivos_oceano,
+        "ehDesertaOuProrrogada": eh_deserta
     }
 
 def executar_rastreamento():

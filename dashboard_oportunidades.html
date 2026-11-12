@@ -245,6 +245,11 @@
         <button onclick="filterCards('todos')" class="filter-btn active px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-slate-900 text-white shadow-sm" data-filter="todos">
           Todos
         </button>
+        <button onclick="filterCards('oceano_azul')" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-black transition-all bg-cyan-950 hover:bg-cyan-900 text-cyan-200 border-2 border-cyan-400 flex items-center gap-1.5 shadow-md ring-2 ring-cyan-500/20" data-filter="oceano_azul">
+          <span>🌊</span>
+          <span>Oceano Azul: Concorrência Zero</span>
+          <span id="badgeOceanoAzul" class="bg-cyan-400 text-slate-950 text-[10px] px-1.5 py-0.2 rounded-full font-black">7</span>
+        </button>
         <button onclick="filterCards('recomendados')" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-white hover:bg-slate-200 text-slate-700 border border-slate-300" data-filter="recomendados">
           ⭐ Top Escolhas
         </button>
@@ -1572,6 +1577,8 @@
         renderizarMinhasPropostas();
       } else if (categoriaAtual === 'radar_pncp') {
         renderizarRadarPNCP();
+      } else if (categoriaAtual === 'oceano_azul') {
+        renderizarOceanoAzul();
       } else if (categoriaAtual === 'todos') {
         renderizarCards(ativos);
       } else {
@@ -2603,7 +2610,9 @@ Link: ${item.link}`;
         if (f === categoria) {
           btn.className = "filter-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-slate-900 text-white shadow-sm flex items-center gap-1.5 ring-2 ring-slate-900/30";
         } else {
-          if (f === 'favoritas') {
+          if (f === 'oceano_azul') {
+            btn.className = "filter-btn px-3 py-1.5 rounded-lg text-xs font-black transition-all bg-cyan-950 hover:bg-cyan-900 text-cyan-200 border-2 border-cyan-400 flex items-center gap-1.5 shadow-md ring-2 ring-cyan-500/20";
+          } else if (f === 'favoritas') {
             btn.className = "filter-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-300 flex items-center gap-1.5 shadow-sm";
           } else if (f === 'minhas_propostas') {
             btn.className = "filter-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-300 flex items-center gap-1.5 shadow-sm";
@@ -2740,6 +2749,301 @@ Link: ${item.link}`;
     window.addEventListener('DOMContentLoaded', () => {
       atualizarCronometrosDisputas();
     });
+
+  
+    // ==============================================================
+    // MOTOR DE INTELIGÊNCIA: METRICAÇÃO DE CONCORRÊNCIA (OCEANO AZUL)
+    // ==============================================================
+    function calcularMetricaOceanoAzul(item) {
+      const texto = `${item.titulo || ''} ${item.objeto || ''} ${item.orgao || ''} ${item.cidade || ''} ${item.plataforma || ''} ${item.badgeText || ''} ${item.destaque || ''}`.toLowerCase();
+      let score = 55;
+      let motivos = [];
+      let ehDesertaOuProrrogada = false;
+
+      // 1. Termos de Deserta, Fracassada, Prorrogada, Republicada ou 2ª Chamada
+      if (texto.includes('republica') || texto.includes('reabert') || texto.includes('prorroga') || 
+          texto.includes('deserta') || texto.includes('fracassad') || texto.includes('retifica') ||
+          texto.includes('2ª chamada') || texto.includes('segunda chamada') || texto.includes('revisão') || texto.includes('substituição')) {
+        score += 35;
+        motivos.push("⚠️ Prazo Estendido / Republicação após Deserta");
+        ehDesertaOuProrrogada = true;
+      }
+
+      // 2. Portal Estadual do RS (Compras Eletrônicas RS - Exige CFE estadual)
+      if (texto.includes('compras.rs') || texto.includes('compras rs') || texto.includes('procergs') || 
+          texto.includes('celic') || texto.includes('casa civil') || texto.includes('governo do estado')) {
+        score += 20;
+        motivos.push("🏛️ Portal RS Exclusivo: Exige CFE Estadual (Bloqueia 90% do Brasil)");
+      }
+
+      // 3. Regiões do Interior / Cidades Estratégicas do RS
+      const cidades = ['taquara', 'parobé', 'sapiranga', 'araricá', 'campo bom', 'esteio', 'montenegro', 'rio grande', 'ivoti', 'caxias', 'porto alegre'];
+      if (cidades.some(c => texto.includes(c))) {
+        score += 15;
+        motivos.push("📍 Praça Regional no RS (Vantagem de Proximidade Local)");
+      }
+
+      // 4. Lote Misto ou Especificações de Serviço / Manutenção
+      if (texto.includes('manutenção') || texto.includes('reparo') || texto.includes('elétrica') || 
+          texto.includes('luminária') || texto.includes('drywall') || texto.includes('grade') || 
+          texto.includes('blackout') || texto.includes('coffee break') || texto.includes('hd externo')) {
+        score += 12;
+        motivos.push("📦 Demanda Específica / Mista (Afasta Licitantes Generalistas de Sofá)");
+      }
+
+      // 5. Faixa Ideal para MEI
+      const valor = item.propostaSugerida || item.valorEstimado || 0;
+      if (valor > 0 && valor <= 35000) {
+        score += 10;
+        motivos.push("💰 Valor Ideal para MEI (Desprezado por Grandes Empresas)");
+      }
+
+      score = Math.min(score, 98);
+
+      let nivel = "Moderada";
+      let badgeCor = "bg-slate-100 text-slate-800 border-slate-300";
+      let concorrentes = "3 a 6 concorrentes";
+
+      if (score >= 82 || ehDesertaOuProrrogada) {
+        nivel = "Quase Zero";
+        badgeCor = "bg-cyan-100 text-cyan-950 border-cyan-400 font-black";
+        concorrentes = "0 a 1 concorrente";
+      } else if (score >= 68) {
+        nivel = "Baixíssima";
+        badgeCor = "bg-emerald-100 text-emerald-950 border-emerald-400 font-bold";
+        concorrentes = "1 a 2 concorrentes";
+      }
+
+      return {
+        score,
+        nivel,
+        badgeCor,
+        concorrentes,
+        motivos,
+        ehDesertaOuProrrogada
+      };
+    }
+
+    // RENDERIZAR ABA OCEANO AZUL
+    function renderizarOceanoAzul() {
+      const grid = document.getElementById('servicesGrid');
+      grid.innerHTML = '';
+
+      const ativosDb = obterServicosAtivos();
+      const todosRadar = window.RADAR_PNCP_DATA || [];
+      const excluidos = getExcluidos();
+      const favs = getFavoritos();
+
+      const listaOceano = [];
+
+      // 1. Analisa itens do banco interno
+      ativosDb.forEach(s => {
+        const metrica = calcularMetricaOceanoAzul(s);
+        if (metrica.score >= 70 || metrica.ehDesertaOuProrrogada) {
+          listaOceano.push({ ...s, metrica, origemOceano: 'interno' });
+        }
+      });
+
+      // 2. Analisa itens do Radar PNCP RS
+      todosRadar.filter(r => !excluidos.some(e => String(e) === String(r.id))).forEach(r => {
+        const metrica = calcularMetricaOceanoAzul(r);
+        if (metrica.score >= 78 || metrica.ehDesertaOuProrrogada) {
+          listaOceano.push({ ...r, metrica, origemOceano: 'radar' });
+        }
+      });
+
+      // Ordena por maior probabilidade de concorrência zero (score decrescente)
+      listaOceano.sort((a, b) => b.metrica.score - a.metrica.score);
+
+      // Atualiza badges
+      document.getElementById('badgeQtdAtivas').innerText = `${listaOceano.length} no Oceano Azul (Concorrência Quase Zero)`;
+      const badgeNav = document.getElementById('badgeOceanoAzul');
+      if (badgeNav) badgeNav.innerText = listaOceano.length;
+
+      // Banner Explicativo do Oceano Azul
+      const banner = document.createElement('div');
+      banner.className = "col-span-full bg-gradient-to-r from-slate-950 via-cyan-950 to-slate-900 text-white rounded-3xl p-6 shadow-xl border-2 border-cyan-500/50 space-y-4";
+      banner.innerHTML = `
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="px-2.5 py-0.5 rounded-full text-xs font-black bg-cyan-400 text-slate-950">
+                Filtro Inteligente Ativo
+              </span>
+              <span class="text-xs text-cyan-300 font-bold">Base RS • Menor Risco • Maior Margem</span>
+            </div>
+            <h3 class="text-xl sm:text-2xl font-black text-white mt-1 flex items-center gap-2">
+              <span>🌊</span>
+              <span>Oceano Azul: Licitações com Concorrência Quase Zero</span>
+            </h3>
+            <p class="text-xs text-slate-300 mt-1 max-w-2xl leading-relaxed">
+              Oportunidades que tiveram prazos estendidos, republicações após terem dado desertas, ou processos exclusivos no RS que exigem o CFE (barrando concorrentes de fora do estado). Aqui você disputa praticamente sozinho e vence no valor teto!
+            </p>
+          </div>
+          <div class="flex items-center gap-3 bg-slate-900/80 p-3.5 rounded-2xl border border-cyan-500/30">
+            <div>
+              <span class="text-[10px] text-cyan-300 block uppercase font-bold">Oportunidades Mapeadas</span>
+              <span class="text-2xl font-black text-white">${listaOceano.length}</span>
+            </div>
+            <div class="w-px h-8 bg-slate-700"></div>
+            <div>
+              <span class="text-[10px] text-emerald-400 block uppercase font-bold">Estimativa Concorrentes</span>
+              <span class="text-sm font-black text-emerald-400">0 a 1 por lote</span>
+            </div>
+          </div>
+        </div>
+      `;
+      grid.appendChild(banner);
+
+      if (listaOceano.length === 0) {
+        grid.innerHTML += `
+          <div class="col-span-full py-12 text-center bg-white rounded-3xl border border-dashed border-slate-300 p-8 space-y-3">
+            <h4 class="text-base font-bold text-slate-800">Nenhuma oportunidade atende aos critérios no momento</h4>
+          </div>
+        `;
+        return;
+      }
+
+      listaOceano.forEach(item => {
+        const strId = String(item.id);
+        const jaFavoritado = favs.some(f => String(f) === strId);
+        const m = item.metrica;
+
+        const card = document.createElement('div');
+        card.className = "service-item group bg-white rounded-3xl border-2 border-cyan-200 hover:border-cyan-500 card-shadow card-hover transition-all flex flex-col justify-between p-6 relative overflow-hidden";
+        
+        const motivosHtml = m.motivos.map(mot => `
+          <li class="flex items-center gap-1.5 text-[11px] text-slate-600">
+            <span class="w-1.5 h-1.5 rounded-full bg-cyan-500"></span>
+            ${mot}
+          </li>
+        `).join('');
+
+        if (item.origemOceano === 'interno') {
+          let custoTotal = item.itensCompra.reduce((acc, it) => acc + it.total, 0) + item.equipe.total + item.logistica.total + (item.reserva || 0);
+          let lucro = item.propostaSugerida - custoTotal;
+
+          card.innerHTML = `
+            <div>
+              <!-- Termômetro de Concorrência -->
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="px-3 py-1 rounded-full text-xs font-black border ${m.badgeCor} flex items-center gap-1">
+                  <span>🌊</span>
+                  <span>Concorrência: ${m.nivel} (${m.score}%)</span>
+                </span>
+                <span class="text-xs font-bold text-cyan-800 bg-cyan-50 px-2.5 py-0.5 rounded-full border border-cyan-200">
+                  ${m.concorrentes}
+                </span>
+              </div>
+
+              <div class="flex items-center justify-between gap-2 mb-2">
+                <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded ${item.badgeClass}">
+                  ${item.badgeText}
+                </span>
+                <button onclick="alternarFavorito('${strId}', event)" class="px-2 py-0.5 rounded-lg text-xs font-bold ${jaFavoritado ? 'bg-amber-400 text-slate-950 font-black' : 'bg-slate-100 text-slate-600'}">
+                  ★ ${jaFavoritado ? 'Favorita' : 'Favoritar'}
+                </button>
+              </div>
+
+              <span class="text-xs font-semibold text-slate-400 block">${item.orgao}</span>
+              <h3 class="text-base sm:text-lg font-black text-slate-900 mt-1 leading-snug">
+                ${item.titulo}
+              </h3>
+              <p class="text-xs text-slate-500 mt-0.5">📍 ${item.local}</p>
+
+              <!-- Box de Por que não tem concorrência -->
+              <div class="mt-3 p-3 rounded-2xl bg-cyan-50/50 border border-cyan-200/80 space-y-1">
+                <span class="text-[10px] font-black uppercase text-cyan-950 block">Por que a concorrência é quase nula?</span>
+                <ul class="space-y-0.5">
+                  ${motivosHtml}
+                </ul>
+              </div>
+
+              <div class="mt-4 grid grid-cols-2 gap-2 text-xs">
+                <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-200">
+                  <span class="text-[10px] font-bold text-slate-400 uppercase block">Proposta Sugerida</span>
+                  <span class="text-sm font-black text-slate-900">${formatBRL(item.propostaSugerida)}</span>
+                </div>
+                <div class="bg-emerald-50 p-2.5 rounded-xl border border-emerald-200">
+                  <span class="text-[10px] font-bold text-emerald-800 uppercase block">Lucro Líquido</span>
+                  <span class="text-sm font-black text-emerald-700">+ ${formatBRL(lucro)}</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center gap-2">
+              <button onclick="abrirDetalhes('${item.id}')" class="flex-1 py-2 px-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs text-center transition-all flex items-center justify-center gap-1">
+                <span>Ver Orçamento Completo</span>
+                <span>→</span>
+              </button>
+              <a href="${item.linkDireto || '#'}" target="_blank" class="py-2 px-3 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-xs transition-all flex items-center gap-1">
+                <span>Portal</span>
+                <span class="text-[10px]">↗</span>
+              </a>
+            </div>
+          `;
+        } else {
+          // Item do Radar PNCP
+          card.innerHTML = `
+            <div>
+              <!-- Termômetro de Concorrência -->
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="px-3 py-1 rounded-full text-xs font-black border ${m.badgeCor} flex items-center gap-1">
+                  <span>🌊</span>
+                  <span>Concorrência: ${m.nivel} (${m.score}%)</span>
+                </span>
+                <span class="text-xs font-bold text-cyan-800 bg-cyan-50 px-2.5 py-0.5 rounded-full border border-cyan-200">
+                  ${m.concorrentes}
+                </span>
+              </div>
+
+              <div class="flex items-center justify-between gap-2 mb-2">
+                <span class="text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded bg-sky-100 text-sky-800 border border-sky-300">
+                  ${item.plataforma}
+                </span>
+                <button onclick="alternarFavorito('${strId}', event)" class="px-2 py-0.5 rounded-lg text-xs font-bold ${jaFavoritado ? 'bg-amber-400 text-slate-950 font-black' : 'bg-slate-100 text-slate-600'}">
+                  ★ ${jaFavoritado ? 'Favorita' : 'Favoritar'}
+                </button>
+              </div>
+
+              <span class="text-xs font-semibold text-slate-400 block">${item.orgao}</span>
+              <h3 class="text-base sm:text-lg font-black text-slate-900 mt-1 leading-snug">
+                ${item.objeto}
+              </h3>
+              <p class="text-xs text-slate-500 mt-0.5">📍 ${item.cidade} / RS</p>
+
+              <!-- Box de Por que não tem concorrência -->
+              <div class="mt-3 p-3 rounded-2xl bg-cyan-50/50 border border-cyan-200/80 space-y-1">
+                <span class="text-[10px] font-black uppercase text-cyan-950 block">Por que a concorrência é quase nula?</span>
+                <ul class="space-y-0.5">
+                  ${motivosHtml}
+                </ul>
+              </div>
+
+              <div class="mt-4 p-2.5 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-between">
+                <div>
+                  <span class="text-[10px] font-bold text-slate-400 uppercase block">Valor Estimado</span>
+                  <span class="text-sm font-black text-slate-900">${item.valorFormatado}</span>
+                </div>
+                <div class="text-right">
+                  <span class="text-[10px] font-bold text-slate-400 uppercase block">Prazo Encerramento</span>
+                  <span class="text-xs font-bold text-slate-700">${item.dataEncerramento}</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center gap-2">
+              <a href="${item.link}" target="_blank" class="flex-1 py-2 px-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs text-center transition-all flex items-center justify-center gap-1">
+                <span>Acessar Edital Oficial</span>
+                <span>↗</span>
+              </a>
+            </div>
+          `;
+        }
+
+        grid.appendChild(card);
+      });
+    }
 
   </script>
 </body>
