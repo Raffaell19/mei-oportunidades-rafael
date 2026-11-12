@@ -1310,8 +1310,49 @@
     let currentServico = servicosDB[0];
     let categoriaAtual = 'minhas_propostas';
 
+        // ==============================================================
+    // BLOCO INTELIGENTE: TETO MÁXIMO DO ÓRGÃO vs CUSTO vs LUCRO
+    // ==============================================================
+    function gerarBlocoPrecificacaoCard(tetoOrgao, custoEstimado, propostaSugerida, lucroLiquido) {
+      return `
+        <div class="mt-3 p-3 rounded-2xl bg-slate-50 border-2 border-slate-200/90 text-xs space-y-2">
+          <!-- Teto Máximo que o Órgão Paga -->
+          <div class="flex items-center justify-between pb-2 border-b border-slate-200">
+            <div class="flex items-center gap-1.5">
+              <span class="text-base">🏛️</span>
+              <div>
+                <span class="text-[10px] font-black uppercase text-slate-700 block leading-tight">Valor Disposto a Pagar (Órgão)</span>
+                <span class="text-[9px] text-slate-500 font-bold block leading-none">Teto Máximo Admitido no Edital</span>
+              </div>
+            </div>
+            <div class="text-right">
+              <strong class="text-sm sm:text-base font-black text-slate-900 block leading-tight">${formatBRL(tetoOrgao)}</strong>
+              <span class="text-[9px] font-black text-sky-800 bg-sky-100 px-1.5 py-0.5 rounded border border-sky-300 uppercase">Teto Máximo</span>
+            </div>
+          </div>
+
+          <!-- Comparativo em 3 Colunas: Custo de Fornecimento vs Proposta vs Lucro -->
+          <div class="grid grid-cols-3 gap-1.5 text-center">
+            <div class="p-1.5 rounded-xl bg-white border border-slate-200 shadow-xs">
+              <span class="text-[9px] font-bold text-slate-500 block uppercase leading-tight">Custo Estimado</span>
+              <strong class="text-xs font-black text-rose-700 block leading-tight mt-0.5">${formatBRL(custoEstimado)}</strong>
+            </div>
+            <div class="p-1.5 rounded-xl bg-sky-50 border border-sky-200 shadow-xs">
+              <span class="text-[9px] font-bold text-sky-800 block uppercase leading-tight">Sua Proposta</span>
+              <strong class="text-xs font-black text-sky-950 block leading-tight mt-0.5">${formatBRL(propostaSugerida)}</strong>
+            </div>
+            <div class="p-1.5 rounded-xl bg-emerald-50 border border-emerald-200 shadow-xs">
+              <span class="text-[9px] font-bold text-emerald-800 block uppercase leading-tight">Lucro Líquido</span>
+              <strong class="text-xs font-black text-emerald-700 block leading-tight mt-0.5">+ ${formatBRL(lucroLiquido)}</strong>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
     function formatBRL(valor) {
-      return valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+      const num = typeof valor === 'number' ? valor : (Number(valor) || 0);
+      return num.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
     }
 
     // GERENCIAMENTO DE EXCLUSÕES NO LOCALSTORAGE
@@ -2136,16 +2177,7 @@
             </div>
 
             <div class="pt-3 border-t border-slate-100 space-y-3">
-              <div class="grid grid-cols-2 gap-2 text-xs">
-                <div class="p-2 rounded-lg bg-sky-50 border border-sky-100">
-                  <span class="text-[10px] text-sky-800 font-bold block uppercase">Proposta</span>
-                  <span class="text-sm font-black text-sky-900">${formatBRL(item.propostaSugerida)}</span>
-                </div>
-                <div class="p-2 rounded-lg bg-emerald-50 border border-emerald-100">
-                  <span class="text-[10px] text-emerald-800 font-bold block uppercase">Lucro Líquido</span>
-                  <span class="text-sm font-black text-emerald-700">+ ${formatBRL(lucro)} <span class="text-[10px] font-normal">(${margem}%)</span></span>
-                </div>
-              </div>
+              ${gerarBlocoPrecificacaoCard(item.valorReferencia, custo, item.propostaSugerida, lucro)}
 
               <div class="space-y-2">
                 <button onclick="event.stopPropagation(); abrirModalRegistroPropostaItem('${item.id}', 'banco_interno')" class="w-full py-2.5 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-black text-xs text-center transition-all shadow-sm flex items-center justify-center gap-1.5 cursor-pointer">
@@ -2214,17 +2246,8 @@
               </div>
             </div>
 
-            <div class="pt-3 border-t border-slate-100 space-y-3">
-              <div class="grid grid-cols-2 gap-2 text-xs">
-                <div class="p-2 rounded-lg bg-sky-50 border border-sky-100">
-                  <span class="text-[10px] text-sky-800 font-bold block uppercase">Proposta Sugerida</span>
-                  <span class="text-sm font-black text-sky-900">${formatBRL(balanco.propostaRecomendada)}</span>
-                </div>
-                <div class="p-2 rounded-lg bg-emerald-50 border border-emerald-100">
-                  <span class="text-[10px] text-emerald-800 font-bold block uppercase">Lucro Estimado</span>
-                  <span class="text-sm font-black text-emerald-700">+ ${formatBRL(balanco.lucroLiquido)} <span class="text-[10px] font-normal">(${balanco.margemPercentual}%)</span></span>
-                </div>
-              </div>
+            <div class="pt-2 border-t border-slate-100 space-y-2">
+              ${gerarBlocoPrecificacaoCard(balanco.valorReferencia, balanco.custoTotalEstimado, balanco.propostaRecomendada, balanco.lucroLiquido)}
 
               <button onclick="event.stopPropagation(); abrirModalRegistroPropostaItem('${item.id}', 'radar')" class="w-full py-2.5 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-black text-xs text-center transition-all shadow-sm flex items-center justify-center gap-1.5 cursor-pointer">
                 <span>📝</span>
@@ -2860,16 +2883,7 @@
                 </div>
               </div>
 
-              <div class="mt-3 grid grid-cols-2 gap-2 text-xs">
-                <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-200">
-                  <span class="text-[10px] font-bold text-slate-400 uppercase block">Proposta Sugerida</span>
-                  <span class="text-sm font-black text-slate-900">${formatBRL(item.propostaSugerida)}</span>
-                </div>
-                <div class="bg-emerald-50 p-2.5 rounded-xl border border-emerald-200">
-                  <span class="text-[10px] font-bold text-emerald-800 uppercase block">Lucro Líquido</span>
-                  <span class="text-sm font-black text-emerald-700">+ ${formatBRL(lucro)}</span>
-                </div>
-              </div>
+              ${gerarBlocoPrecificacaoCard(item.valorReferencia, custoTotal, item.propostaSugerida, lucro)}
             </div>
 
             <div class="mt-4 pt-3 border-t border-slate-100 space-y-2">
@@ -2934,16 +2948,7 @@
                 </div>
               </div>
 
-              <div class="mt-3 p-3 bg-slate-50 rounded-xl border border-slate-200 text-xs space-y-1">
-                <div class="flex items-center justify-between text-slate-500 text-[11px]">
-                  <span>Valor Estimado Órgão:</span>
-                  <strong class="text-slate-900 font-black">${item.valorFormatado}</strong>
-                </div>
-                <div class="flex items-center justify-between text-emerald-700 font-bold text-xs pt-1 border-t border-slate-200">
-                  <span>Lucro Projetado MEI:</span>
-                  <span>+ ${formatBRL(balanco.lucroLiquido)}</span>
-                </div>
-              </div>
+              ${gerarBlocoPrecificacaoCard(balanco.valorReferencia, balanco.custoTotalEstimado, balanco.propostaRecomendada, balanco.lucroLiquido)}
             </div>
 
             <div class="mt-4 pt-3 border-t border-slate-100 space-y-2">
@@ -3076,16 +3081,7 @@
                 </div>
               </div>
 
-              <div class="mt-3 grid grid-cols-2 gap-2 text-xs">
-                <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-200">
-                  <span class="text-[10px] font-bold text-slate-400 uppercase block">Proposta Sugerida</span>
-                  <span class="text-sm font-black text-slate-900">${formatBRL(item.propostaSugerida)}</span>
-                </div>
-                <div class="bg-emerald-50 p-2.5 rounded-xl border border-emerald-200">
-                  <span class="text-[10px] font-bold text-emerald-800 uppercase block">Lucro Líquido</span>
-                  <span class="text-sm font-black text-emerald-700">+ ${formatBRL(lucro)}</span>
-                </div>
-              </div>
+              ${gerarBlocoPrecificacaoCard(item.valorReferencia, custoTotal, item.propostaSugerida, lucro)}
             </div>
 
             <div class="mt-4 pt-3 border-t border-slate-100 space-y-2">
@@ -3133,16 +3129,7 @@
               </h3>
               <p class="text-xs text-slate-500 mt-0.5">📍 ${item.cidade} / RS</p>
 
-              <div class="mt-3 p-3 bg-slate-50 rounded-xl border border-slate-200 text-xs space-y-1">
-                <div class="flex items-center justify-between text-slate-500 text-[11px]">
-                  <span>Valor Estimado Órgão:</span>
-                  <strong class="text-slate-900 font-black">${item.valorFormatado}</strong>
-                </div>
-                <div class="flex items-center justify-between text-emerald-700 font-bold text-xs pt-1 border-t border-slate-200">
-                  <span>Lucro Projetado MEI:</span>
-                  <span>+ ${formatBRL(balanco.lucroLiquido)}</span>
-                </div>
-              </div>
+              ${gerarBlocoPrecificacaoCard(balanco.valorReferencia, balanco.custoTotalEstimado, balanco.propostaRecomendada, balanco.lucroLiquido)}
 
               <!-- Prazo de Encerramento -->
               <div class="mt-2.5 p-2.5 rounded-xl border flex items-center justify-between text-xs ${dt.classe}">
@@ -3239,6 +3226,9 @@
           `<span class="px-2 py-0.5 rounded text-[10px] font-extrabold bg-amber-100 text-amber-800 border border-amber-300">🔥 Próximas a Encerrar (#${index+1})</span>` : 
           `<span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-slate-100 text-slate-600 border border-slate-200">#${index+1} Cronológico</span>`;
 
+        const balanco = gerarBalancoEstimado(item.objeto, item.valorEstimado);
+        const dt = extrairDataEncerramentoItem(item);
+
         card.innerHTML = `
           <div>
             <div class="flex items-center justify-between gap-2 mb-2">
@@ -3284,18 +3274,21 @@
             </div>
           </div>
 
-          <div class="pt-4 border-t border-slate-200/80 space-y-3">
-            <div class="flex items-center justify-between text-xs">
-              <span class="text-slate-500">Valor Estimado Máx:</span>
-              <span class="font-extrabold text-slate-900">${item.valorFormatado}</span>
+          <div class="pt-2 border-t border-slate-200/80 space-y-2">
+            <!-- Prazo de Encerramento com Urgência -->
+            <div class="p-2.5 rounded-xl border flex items-center justify-between text-xs ${dt.classe}">
+              <div class="flex items-center gap-1.5 font-bold">
+                <span>⏳</span>
+                <span>Encerra em:</span>
+              </div>
+              <div class="text-right">
+                <strong class="font-black text-xs block">${dt.texto}</strong>
+                ${dt.badgeUrgencia ? `<span class="text-[10px] block font-extrabold uppercase tracking-tight">${dt.badgeUrgencia}</span>` : ''}
+              </div>
             </div>
-            <div class="flex items-center justify-between text-xs">
-              <span class="text-slate-500 font-medium">Encerramento Proposta:</span>
-              <span class="font-bold text-amber-900 bg-amber-50 px-2 py-0.5 rounded border border-amber-300">
-                ⏳ ${item.dataEncerramento || 'Em aberto'}
-              </span>
-            </div>
-            
+
+            ${gerarBlocoPrecificacaoCard(balanco.valorReferencia, balanco.custoTotalEstimado, balanco.propostaRecomendada, balanco.lucroLiquido)}
+
             <div class="space-y-2 pt-1">
               <button onclick="event.stopPropagation(); abrirModalRegistroPropostaItem('${item.id}', 'radar')" class="w-full py-2.5 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-black text-xs text-center transition-all shadow-sm flex items-center justify-center gap-1.5 cursor-pointer">
                 <span>📝</span>
@@ -3464,16 +3457,7 @@ Link: ${item.link}`;
               </div>
             </div>
 
-            <div class="mt-3 pt-3 border-t border-slate-100 grid grid-cols-2 gap-2 text-xs">
-              <div class="bg-slate-50 p-2 rounded-lg border border-slate-200/60">
-                <span class="text-[10px] font-bold text-slate-400 uppercase block">Proposta Sugerida</span>
-                <span class="text-sm font-black text-slate-900 block">${formatBRL(s.propostaSugerida)}</span>
-              </div>
-              <div class="bg-emerald-50/60 p-2 rounded-lg border border-emerald-200/60">
-                <span class="text-[10px] font-bold text-emerald-800 uppercase block">Lucro Líquido</span>
-                <span class="text-sm font-black text-emerald-700 block">+ ${formatBRL(lucro)}</span>
-              </div>
-            </div>
+            ${gerarBlocoPrecificacaoCard(s.valorReferencia, custo, s.propostaSugerida, lucro)}
           </div>
 
           <div class="mt-4 pt-3 border-t border-slate-100 space-y-2">
@@ -4052,16 +4036,7 @@ Link: ${item.link}`;
                 </div>
               </div>
 
-              <div class="mt-3 grid grid-cols-2 gap-2 text-xs">
-                <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-200">
-                  <span class="text-[10px] font-bold text-slate-400 uppercase block">Proposta Sugerida</span>
-                  <span class="text-sm font-black text-slate-900">${formatBRL(item.propostaSugerida)}</span>
-                </div>
-                <div class="bg-emerald-50 p-2.5 rounded-xl border border-emerald-200">
-                  <span class="text-[10px] font-bold text-emerald-800 uppercase block">Lucro Líquido</span>
-                  <span class="text-sm font-black text-emerald-700">+ ${formatBRL(lucro)}</span>
-                </div>
-              </div>
+              ${gerarBlocoPrecificacaoCard(item.valorReferencia, custoTotal, item.propostaSugerida, lucro)}
             </div>
 
             <div class="mt-4 pt-3 border-t border-slate-100 space-y-2">
@@ -4145,16 +4120,7 @@ Link: ${item.link}`;
                 </div>
               </div>
 
-              <div class="mt-3 p-3 bg-slate-50 rounded-xl border border-slate-200 text-xs space-y-1">
-                <div class="flex items-center justify-between text-slate-500 text-[11px]">
-                  <span>Valor Estimado Órgão:</span>
-                  <strong class="text-slate-900 font-black">${item.valorFormatado}</strong>
-                </div>
-                <div class="flex items-center justify-between text-emerald-700 font-bold text-xs pt-1 border-t border-slate-200">
-                  <span>Lucro Projetado MEI:</span>
-                  <span>+ ${formatBRL(balanco.lucroLiquido)}</span>
-                </div>
-              </div>
+              ${gerarBlocoPrecificacaoCard(balanco.valorReferencia, balanco.custoTotalEstimado, balanco.propostaRecomendada, balanco.lucroLiquido)}
             </div>
 
             <div class="mt-4 pt-3 border-t border-slate-100 space-y-2">
