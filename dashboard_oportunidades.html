@@ -398,6 +398,102 @@
     </div>
   </div>
 
+  <!-- MODAL DE GERENCIAMENTO DE LINKS DE FORNECEDORES -->
+  <div id="modalFornecedores" onclick="if(event.target === this) fecharModalFornecedores()" style="display: none;" class="fixed inset-0 z-50 hidden overflow-y-auto modal-backdrop flex items-center justify-center p-3 sm:p-6 transition-all duration-200">
+    <div class="bg-white rounded-3xl max-w-xl w-full max-h-[92vh] flex flex-col shadow-2xl border border-slate-200 overflow-hidden transform transition-all animate-in">
+      
+      <!-- Cabeçalho -->
+      <div class="bg-slate-900 text-white p-5 sm:p-6 border-b border-slate-800 flex items-start justify-between gap-4">
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="px-2.5 py-0.5 rounded-full text-[11px] font-black uppercase tracking-wider bg-sky-400 text-slate-950 flex items-center gap-1">
+              <span>🔗</span> Links de Fornecedores
+            </span>
+            <span id="modalFornOrgao" class="text-xs text-slate-300 font-semibold truncate max-w-[260px]">Órgão</span>
+          </div>
+          <h3 id="modalFornTitulo" class="text-base sm:text-lg font-black text-white mt-1.5 leading-snug">
+            Título da Demanda
+          </h3>
+          <div id="modalFornPrecos" class="mt-2.5 flex flex-wrap items-center gap-2 text-xs">
+            <!-- Teto Órgão e Custo Estimado para referência ao cotar -->
+          </div>
+        </div>
+        <button onclick="fecharModalFornecedores()" class="w-8 h-8 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold flex items-center justify-center text-sm transition-all shrink-0">
+          ✕
+        </button>
+      </div>
+
+      <!-- Corpo com rolagem -->
+      <div class="p-5 sm:p-6 overflow-y-auto space-y-6 flex-1">
+        
+        <!-- Formulário para Adicionar Novo Link -->
+        <div class="p-4 rounded-2xl bg-sky-50/70 border border-sky-100 space-y-3">
+          <div class="flex items-center justify-between">
+            <h4 class="text-xs font-black text-slate-900 uppercase tracking-wider flex items-center gap-1.5">
+              <span>➕</span> Adicionar Link de Fornecedor / Cotação
+            </h4>
+            <span class="text-[10px] text-sky-700 font-semibold">Pesquisa Antecipada</span>
+          </div>
+          
+          <form id="formNovoFornecedor" onsubmit="adicionarFornecedorAtual(event)" class="space-y-3">
+            <input type="hidden" id="fornItemId" value="">
+
+            <div>
+              <label class="block text-[11px] font-bold text-slate-700 mb-1">Nome do Fornecedor / Loja / Distribuidor:*</label>
+              <input type="text" id="fornNome" required placeholder="Ex: Mercado Livre (Vendedor Platinum), Atacadão Tintas, Leroy, Distribuidor RS" class="w-full text-xs p-2.5 rounded-xl border border-slate-300 bg-white focus:ring-2 focus:ring-sky-500 text-slate-800 font-medium">
+            </div>
+
+            <div>
+              <label class="block text-[11px] font-bold text-slate-700 mb-1">Link / URL do Produto ou Fornecedor:*</label>
+              <input type="url" id="fornUrl" required placeholder="https://..." class="w-full text-xs p-2.5 rounded-xl border border-slate-300 bg-white focus:ring-2 focus:ring-sky-500 text-sky-800 font-semibold">
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div>
+                <label class="block text-[11px] font-bold text-slate-700 mb-1">Preço Cotado (R$) (Opcional):</label>
+                <input type="text" id="fornPreco" placeholder="Ex: R$ 45,90 / un ou R$ 1.200 total" class="w-full text-xs p-2.5 rounded-xl border border-slate-300 bg-white focus:ring-2 focus:ring-sky-500 text-slate-800">
+              </div>
+              <div>
+                <label class="block text-[11px] font-bold text-slate-700 mb-1">Prazo / Contato / Obs (Opcional):</label>
+                <input type="text" id="fornObs" placeholder="Ex: Pronta entrega, frete grátis, Watts (51) 9999-9999" class="w-full text-xs p-2.5 rounded-xl border border-slate-300 bg-white focus:ring-2 focus:ring-sky-500 text-slate-800">
+              </div>
+            </div>
+
+            <div class="pt-1 flex justify-end">
+              <button type="submit" class="w-full sm:w-auto px-5 py-2.5 text-xs font-black rounded-xl bg-sky-600 hover:bg-sky-500 text-white transition-all shadow-sm flex items-center justify-center gap-1.5 cursor-pointer">
+                <span>💾 Salvar Link do Fornecedor</span>
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Lista de Fornecedores Salvos -->
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <h4 class="text-xs font-black text-slate-900 uppercase tracking-wider flex items-center gap-1.5">
+              <span>📦</span> Fornecedores Salvos para esta Demanda
+            </h4>
+            <span id="modalFornContador" class="text-xs font-black px-2 py-0.5 rounded-full bg-slate-100 text-slate-700">0 cadastrados</span>
+          </div>
+
+          <div id="modalFornLista" class="space-y-2.5">
+            <!-- Injetado dinamicamente via JS -->
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Rodapé -->
+      <div class="p-4 bg-slate-50 border-t border-slate-200 flex items-center justify-between text-xs">
+        <span class="text-slate-500 text-[11px]">💡 Seus links ficam salvos permanentemente no seu navegador.</span>
+        <button type="button" onclick="fecharModalFornecedores()" class="px-4 py-2 font-bold text-slate-700 bg-white hover:bg-slate-100 rounded-xl border border-slate-300 transition-all">
+          Fechar
+        </button>
+      </div>
+
+    </div>
+  </div>
+
   <!-- MODAL DE DETALHAMENTO COMPLETO -->
   <div id="detailModal" onclick="if(event.target === this) fecharModal()" style="display: none;" class="fixed inset-0 z-50 hidden overflow-y-auto modal-backdrop flex items-center justify-center p-3 sm:p-6 transition-all duration-200">
     <div class="bg-white rounded-3xl max-w-4xl w-full max-h-[92vh] flex flex-col shadow-2xl border border-slate-200 overflow-hidden transform transition-all">
@@ -575,6 +671,10 @@
           <button id="modalBtnFavoritar" onclick="alternarFavoritoDoModal()" class="px-3 py-2 text-xs font-bold rounded-lg bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-300 transition-colors flex items-center gap-1.5">
             <span>★</span>
             <span id="txtModalFavoritar">Favoritar Demanda</span>
+          </button>
+          <button id="modalBtnFornecedores" onclick="if(currentServico) abrirModalFornecedores(currentServico.id)" class="px-3 py-2 text-xs font-bold rounded-lg bg-sky-50 hover:bg-sky-100 text-sky-900 border border-sky-300 transition-colors flex items-center gap-1.5 cursor-pointer">
+            <span>📦</span>
+            <span>Links de Fornecedores</span>
           </button>
           <button id="modalBtnRegistrarEnvio" onclick="abrirModalRegistroProposta()" class="px-3 py-2 text-xs font-bold rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white transition-colors shadow-sm flex items-center gap-1.5">
             <span>📝</span>
@@ -1399,6 +1499,13 @@
       if (currentServico) {
         alternarFavorito(currentServico.id);
         atualizarBtnFavoritarModal();
+
+      // Atualiza botão de fornecedores do modal
+      const btnFornModal = document.getElementById('modalBtnFornecedores');
+      if (btnFornModal) {
+        const qtdForn = obterFornecedoresItem(s.id).length;
+        btnFornModal.innerHTML = `<span>📦</span><span>Links de Fornecedores (${qtdForn})</span>`;
+      }
       }
     }
 
@@ -1765,6 +1872,277 @@
         const filtrados = obterServicosSemProposta().filter(s => s.categoria.includes(categoriaAtual));
         renderizarCards(filtrados);
       }
+    }
+
+    // ==============================================================
+    // SISTEMA DE GRAVAÇÃO E GERENCIAMENTO DE LINKS DE FORNECEDORES
+    // ==============================================================
+    const STORAGE_FORNECEDORES_KEY = 'mei_fornecedores_links';
+
+    function obterTodosFornecedoresDB() {
+      try {
+        const raw = localStorage.getItem(STORAGE_FORNECEDORES_KEY);
+        return raw ? JSON.parse(raw) : {};
+      } catch (e) {
+        console.error('Erro ao ler fornecedores do localStorage:', e);
+        return {};
+      }
+    }
+
+    function salvarTodosFornecedoresDB(db) {
+      try {
+        localStorage.setItem(STORAGE_FORNECEDORES_KEY, JSON.stringify(db));
+      } catch (e) {
+        console.error('Erro ao salvar fornecedores no localStorage:', e);
+      }
+    }
+
+    function obterFornecedoresItem(itemId) {
+      const db = obterTodosFornecedoresDB();
+      const strId = String(itemId || '');
+      return Array.isArray(db[strId]) ? db[strId] : [];
+    }
+
+    function formatarUrlExterna(url) {
+      if (!url) return '#';
+      url = url.trim();
+      if (!url.startsWith('http://') && !url.startsWith('https://')) {
+        return 'https://' + url;
+      }
+      return url;
+    }
+
+    function escapeHtmlSeguro(str) {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    function copiarLinkFornecedor(url) {
+      if (!url) return;
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(() => {
+          alert('Link do fornecedor copiado para a área de transferência!');
+        }).catch(() => {
+          prompt('Copie o link do fornecedor:', url);
+        });
+      } else {
+        prompt('Copie o link do fornecedor:', url);
+      }
+    }
+
+    function gerarBotaoFornecedoresCard(itemId) {
+      const strId = String(itemId || '');
+      const lista = obterFornecedoresItem(strId);
+      const qtd = lista.length;
+      const temForn = qtd > 0;
+
+      return `
+        <button data-btn-forn="${strId}" onclick="event.stopPropagation(); abrirModalFornecedores('${strId}')" class="w-full py-2 px-3 rounded-xl ${temForn ? 'bg-sky-50 hover:bg-sky-100 text-sky-900 border border-sky-300 font-extrabold' : 'bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 font-bold'} text-xs text-center transition-all flex items-center justify-center gap-1.5 cursor-pointer shadow-sm" title="${temForn ? `${qtd} link(s) de fornecedor salvo(s)` : 'Adicionar links de fornecedores e cotações'}">
+          <span>📦</span>
+          <span>Links de Fornecedores</span>
+          <span class="px-1.5 py-0.5 rounded-full text-[10px] font-black ${temForn ? 'bg-sky-600 text-white' : 'bg-slate-300 text-slate-700'}">${qtd}</span>
+        </button>
+      `;
+    }
+
+    function atualizarBotoesFornecedoresNaTela(itemId) {
+      const strId = String(itemId || '');
+      const lista = obterFornecedoresItem(strId);
+      const qtd = lista.length;
+      const temForn = qtd > 0;
+
+      const botoes = document.querySelectorAll(`[data-btn-forn="${strId}"]`);
+      botoes.forEach(btn => {
+        btn.className = `w-full py-2 px-3 rounded-xl ${temForn ? 'bg-sky-50 hover:bg-sky-100 text-sky-900 border border-sky-300 font-extrabold' : 'bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 font-bold'} text-xs text-center transition-all flex items-center justify-center gap-1.5 cursor-pointer shadow-sm`;
+        btn.title = temForn ? `${qtd} link(s) de fornecedor salvo(s)` : 'Adicionar links de fornecedores e cotações';
+        btn.innerHTML = `
+          <span>📦</span>
+          <span>Links de Fornecedores</span>
+          <span class="px-1.5 py-0.5 rounded-full text-[10px] font-black ${temForn ? 'bg-sky-600 text-white' : 'bg-slate-300 text-slate-700'}">${qtd}</span>
+        `;
+      });
+    }
+
+    let currentFornecedorItemId = null;
+
+    function abrirModalFornecedores(itemId) {
+      currentFornecedorItemId = String(itemId || '');
+      const m = document.getElementById('modalFornecedores');
+      if (!m) return;
+
+      const item = buscarItemGlobalPorId(currentFornecedorItemId);
+
+      document.getElementById('fornItemId').value = currentFornecedorItemId;
+      document.getElementById('modalFornTitulo').innerText = item ? (item.titulo || item.objeto || 'Demanda Selecionada') : 'Demanda Selecionada';
+      document.getElementById('modalFornOrgao').innerText = item ? (item.orgao || 'Órgão Público') : 'Órgão Público';
+
+      // Preços de referência no topo do modal
+      const precosBox = document.getElementById('modalFornPrecos');
+      if (item && precosBox) {
+        let teto = 0;
+        let custo = 0;
+        if (item.itensCompra && item.itensCompra.length > 0) {
+          teto = item.valorReferencia || item.propostaSugerida || 0;
+          custo = item.itensCompra.reduce((acc, it) => acc + it.total, 0) + (item.equipe ? item.equipe.total : 0) + (item.logistica ? item.logistica.total : 0) + (item.reserva || 0);
+        } else if (typeof gerarBalancoEstimado === 'function') {
+          const b = gerarBalancoEstimado(item.objeto || item.titulo, item.valorEstimado || item.propostaSugerida || item.valorReferencia || 0);
+          teto = b.valorReferencia;
+          custo = b.custoTotalEstimado;
+        }
+        precosBox.innerHTML = `
+          <span class="px-2.5 py-1 rounded-lg bg-slate-800 text-[11px] font-bold text-slate-300 border border-slate-700 flex items-center gap-1">
+            <span>🏛️</span> Teto Órgão: <strong class="text-white">${formatBRL(teto)}</strong>
+          </span>
+          <span class="px-2.5 py-1 rounded-lg bg-slate-800 text-[11px] font-bold text-slate-300 border border-slate-700 flex items-center gap-1">
+            <span>💰</span> Custo Estimado: <strong class="text-rose-300">${formatBRL(custo)}</strong>
+          </span>
+        `;
+      } else if (precosBox) {
+        precosBox.innerHTML = '';
+      }
+
+      // Limpa formulário
+      const form = document.getElementById('formNovoFornecedor');
+      if (form) form.reset();
+
+      renderizarListaFornecedoresModal(currentFornecedorItemId);
+
+      m.classList.remove('hidden');
+      m.style.display = 'flex';
+    }
+
+    function fecharModalFornecedores() {
+      const m = document.getElementById('modalFornecedores');
+      if (m) {
+        m.classList.add('hidden');
+        m.style.display = 'none';
+      }
+      currentFornecedorItemId = null;
+    }
+
+    function renderizarListaFornecedoresModal(itemId) {
+      const container = document.getElementById('modalFornLista');
+      const contador = document.getElementById('modalFornContador');
+      if (!container) return;
+
+      const lista = obterFornecedoresItem(itemId);
+      if (contador) contador.innerText = `${lista.length} cadastrado(s)`;
+
+      if (lista.length === 0) {
+        container.innerHTML = `
+          <div class="text-center py-7 px-4 rounded-2xl border-2 border-dashed border-slate-200 bg-slate-50 space-y-2">
+            <div class="text-3xl">📦</div>
+            <h5 class="text-xs font-black text-slate-700">Nenhum fornecedor cadastrado ainda</h5>
+            <p class="text-[11px] text-slate-500 max-w-sm mx-auto leading-relaxed">
+              Pesquise produtos no Mercado Livre, Shopee, distribuidoras ou atacados e cole o link no formulário acima para não perder suas fontes de compra!
+            </p>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = lista.map(f => `
+        <div class="p-3.5 rounded-2xl bg-white border border-slate-200 hover:border-sky-300 transition-all shadow-sm space-y-2">
+          <div class="flex items-start justify-between gap-2">
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center gap-2 flex-wrap">
+                <strong class="text-sm font-extrabold text-slate-900 truncate">${escapeHtmlSeguro(f.nome)}</strong>
+                ${f.preco ? `<span class="px-2 py-0.5 rounded text-[11px] font-black bg-emerald-50 text-emerald-800 border border-emerald-200 shrink-0">💰 ${escapeHtmlSeguro(f.preco)}</span>` : ''}
+              </div>
+              <span class="text-[10px] text-slate-400 block mt-0.5">Salvo em: ${f.dataCadastro || ''}</span>
+            </div>
+            <button onclick="excluirFornecedorAtual('${f.id}')" title="Excluir este link" class="p-1.5 px-2 rounded-lg bg-slate-100 hover:bg-rose-100 text-slate-500 hover:text-rose-600 border border-slate-200 hover:border-rose-300 text-xs font-bold transition-all shrink-0">
+              🗑️
+            </button>
+          </div>
+
+          ${f.obs ? `
+            <p class="text-xs text-slate-600 bg-slate-50 p-2 rounded-xl border border-slate-100">
+              📝 ${escapeHtmlSeguro(f.obs)}
+            </p>
+          ` : ''}
+
+          <div class="flex items-center gap-2 pt-1">
+            <a href="${formatarUrlExterna(f.url)}" target="_blank" rel="noopener noreferrer" class="flex-1 py-1.5 px-3 rounded-xl bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs text-center transition-all flex items-center justify-center gap-1.5 shadow-sm">
+              <span>Acessar Fornecedor</span>
+              <span class="text-[10px]">↗</span>
+            </a>
+            <button onclick="copiarLinkFornecedor('${escapeHtmlSeguro(f.url)}')" class="py-1.5 px-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs transition-all flex items-center gap-1">
+              <span>📋 Copiar Link</span>
+            </button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function adicionarFornecedorAtual(event) {
+      event.preventDefault();
+      const itemId = document.getElementById('fornItemId').value;
+      const nome = document.getElementById('fornNome').value;
+      const url = document.getElementById('fornUrl').value;
+      const preco = document.getElementById('fornPreco').value;
+      const obs = document.getElementById('fornObs').value;
+
+      if (!itemId || !nome || !url) return;
+
+      const db = obterTodosFornecedoresDB();
+      const strId = String(itemId);
+      if (!Array.isArray(db[strId])) {
+        db[strId] = [];
+      }
+
+      const novo = {
+        id: 'forn_' + Date.now() + '_' + Math.random().toString(36).substr(2, 5),
+        nome: nome.trim(),
+        url: url.trim(),
+        preco: preco ? preco.trim() : '',
+        obs: obs ? obs.trim() : '',
+        dataCadastro: new Date().toLocaleDateString('pt-BR') + ' às ' + new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' })
+      };
+
+      db[strId].unshift(novo);
+      salvarTodosFornecedoresDB(db);
+
+      // Reseta inputs específicos
+      document.getElementById('fornNome').value = '';
+      document.getElementById('fornUrl').value = '';
+      document.getElementById('fornPreco').value = '';
+      document.getElementById('fornObs').value = '';
+
+      renderizarListaFornecedoresModal(strId);
+      atualizarBotoesFornecedoresNaTela(strId);
+    }
+
+    function excluirFornecedorAtual(fornecedorId) {
+      if (!currentFornecedorItemId) return;
+      if (!confirm('Deseja realmente remover este fornecedor/link salvo?')) return;
+
+      const db = obterTodosFornecedoresDB();
+      const strId = String(currentFornecedorItemId);
+      if (Array.isArray(db[strId])) {
+        db[strId] = db[strId].filter(f => f.id !== fornecedorId);
+        salvarTodosFornecedoresDB(db);
+        renderizarListaFornecedoresModal(strId);
+        atualizarBotoesFornecedoresNaTela(strId);
+      }
+    }
+
+    function buscarItemGlobalPorId(itemId) {
+      const strId = String(itemId || '');
+      let item = servicosDB.find(s => String(s.id) === strId);
+      if (!item && window.RADAR_PNCP_DATA) {
+        item = window.RADAR_PNCP_DATA.find(r => String(r.id) === strId);
+      }
+      if (!item) {
+        const props = obterPropostasGravadas();
+        item = props.find(p => String(p.id) === strId || String(p.detalheServicoId) === strId);
+      }
+      return item;
     }
 
     // RENDERIZAR OS CARDS PRINCIPAIS LIMPOS
@@ -2184,6 +2562,7 @@
                   <span>📝</span>
                   <span>Cadastrar Proposta Enviada</span>
                 </button>
+                ${gerarBotaoFornecedoresCard(item.id)}
                 <div class="flex items-center gap-2">
                   <button onclick="abrirDetalhes('${item.id}')" class="flex-1 py-2 px-3 rounded-lg bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs text-center transition-all shadow-sm">
                     Ver Orçamento Detalhado
@@ -2253,6 +2632,7 @@
                 <span>📝</span>
                 <span>Cadastrar Proposta Enviada</span>
               </button>
+              ${gerarBotaoFornecedoresCard(item.id)}
               <div class="flex items-center gap-2">
                 <a href="${formatarLinkDireto(item)}" target="_blank" onclick="registrarClique('${item.id}')" class="flex-1 py-2 px-3 rounded-lg bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs text-center transition-all shadow-sm flex items-center justify-center gap-1.5">
                   <span>${item.tipoLink && !item.tipoLink.includes('Google') ? item.tipoLink : 'Acessar Edital Oficial'}</span>
@@ -2663,7 +3043,9 @@
               ${prazo.texto}
             </div>
 
-            <div class="flex items-center gap-2 pt-1">
+            <div class="space-y-2 pt-1">
+              ${gerarBotaoFornecedoresCard(prop.detalheServicoId || prop.id)}
+              <div class="flex items-center gap-2">
               ${prop.detalheServicoId ? `
               <button onclick="abrirDetalhes('${prop.detalheServicoId}')" class="flex-1 py-2.5 px-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs text-center shadow-sm hover:shadow transition-all flex items-center justify-center gap-1.5">
                 <span>Ver Orçamento & Custos</span>
@@ -2678,6 +3060,7 @@
                 <span>Acessar Portal</span>
                 <span class="text-[10px]">↗</span>
               </a>
+              </div>
             </div>
           </div>
         `;
@@ -2891,6 +3274,7 @@
                 <span>📝</span>
                 <span>Cadastrar Proposta Enviada</span>
               </button>
+              ${gerarBotaoFornecedoresCard(strId)}
               <div class="flex items-center gap-2">
                 <button onclick="abrirDetalhes('${strId}')" class="flex-1 py-2 px-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs text-center transition-all flex items-center justify-center gap-1">
                   <span>Ver Orçamento</span>
@@ -2956,6 +3340,7 @@
                 <span>📝</span>
                 <span>Cadastrar Proposta Enviada</span>
               </button>
+              ${gerarBotaoFornecedoresCard(strId)}
               <div class="flex items-center gap-2">
                 <a href="${formatarLinkDireto(item)}" target="_blank" class="flex-1 py-2 px-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs text-center transition-all flex items-center justify-center gap-1">
                   <span>Acessar Edital Oficial</span>
@@ -3089,6 +3474,7 @@
                 <span>📝</span>
                 <span>Cadastrar Proposta Enviada</span>
               </button>
+              ${gerarBotaoFornecedoresCard(strId)}
               <div class="flex items-center gap-2">
                 <button onclick="abrirDetalhes('${strId}')" class="flex-1 py-2 px-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs text-center transition-all flex items-center justify-center gap-1">
                   <span>Ver Orçamento</span>
@@ -3149,6 +3535,7 @@
                 <span>📝</span>
                 <span>Cadastrar Proposta Enviada</span>
               </button>
+              ${gerarBotaoFornecedoresCard(strId)}
               <div class="flex items-center gap-2">
                 <a href="${formatarLinkDireto(item)}" target="_blank" class="flex-1 py-2 px-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs text-center transition-all flex items-center justify-center gap-1">
                   <span>Acessar Edital Oficial</span>
@@ -3294,6 +3681,7 @@
                 <span>📝</span>
                 <span>Cadastrar Proposta Enviada</span>
               </button>
+              ${gerarBotaoFornecedoresCard(item.id)}
               <div class="flex items-center gap-2">
                 <a href="${formatarLinkDireto(item)}" target="_blank" onclick="registrarClique('${item.id}'); event.stopPropagation()" class="flex-1 py-2 px-3 rounded-xl ${jaClicado ? 'bg-emerald-700 hover:bg-emerald-800' : 'bg-sky-600 hover:bg-sky-700'} text-white font-bold text-xs text-center shadow-sm hover:shadow transition-all flex items-center justify-center gap-1.5">
                   <span>${jaClicado ? '✓ Acessar Novamente' : (item.tipoLink && !item.tipoLink.includes('Google') ? item.tipoLink : 'Acessar Edital Oficial')}</span>
@@ -3465,6 +3853,7 @@ Link: ${item.link}`;
               <span>📝</span>
               <span>Cadastrar Proposta Enviada</span>
             </button>
+            ${gerarBotaoFornecedoresCard(s.id)}
             <div class="flex items-center justify-between text-xs">
               <span class="text-[11px] text-slate-400">Capital: <strong class="text-slate-700">${formatBRL(s.capitalNecessario)}</strong></span>
               <button class="px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-900 group-hover:bg-sky-600 text-white transition-colors flex items-center gap-1 shadow-sm">
@@ -3486,6 +3875,13 @@ Link: ${item.link}`;
 
       // Atualiza botão de favoritar do modal
       atualizarBtnFavoritarModal();
+
+      // Atualiza botão de fornecedores do modal
+      const btnFornModal = document.getElementById('modalBtnFornecedores');
+      if (btnFornModal) {
+        const qtdForn = obterFornecedoresItem(s.id).length;
+        btnFornModal.innerHTML = `<span>📦</span><span>Links de Fornecedores (${qtdForn})</span>`;
+      }
 
       // Cabeçalho
       document.getElementById('modalBadge').innerText = s.badgeText;
@@ -4044,6 +4440,7 @@ Link: ${item.link}`;
                 <span>📝</span>
                 <span>Cadastrar Proposta Enviada</span>
               </button>
+              ${gerarBotaoFornecedoresCard(strId)}
               <div class="flex items-center gap-2">
                 <button onclick="abrirDetalhes('${strId}')" class="flex-1 py-2 px-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs text-center transition-all flex items-center justify-center gap-1">
                   <span>Ver Orçamento</span>
@@ -4128,6 +4525,7 @@ Link: ${item.link}`;
                 <span>📝</span>
                 <span>Cadastrar Proposta Enviada</span>
               </button>
+              ${gerarBotaoFornecedoresCard(strId)}
               <div class="flex items-center gap-2">
                 <a href="${formatarLinkDireto(item)}" target="_blank" class="flex-1 py-2 px-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs text-center transition-all flex items-center justify-center gap-1">
                   <span>Acessar Edital Oficial</span>
