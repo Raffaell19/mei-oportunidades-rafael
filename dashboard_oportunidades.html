@@ -1375,10 +1375,35 @@
       }
     }
 
-    function atualizarContadorFavoritas() {
+    function obterFavoritosElegiveis() {
       const favs = getFavoritos();
       const excluidos = getExcluidos();
-      const favsValidos = favs.filter(id => !excluidos.some(ex => String(ex) === String(id)));
+      const enviados = getIdsPropostasEnviadas();
+      const todosOriginais = typeof servicosDB !== 'undefined' ? [...servicosDB] : [];
+      const todosRadar = window.RADAR_PNCP_DATA || [];
+
+      return favs.filter(id => {
+        const strId = String(id);
+        if (excluidos.some(ex => String(ex) === strId)) return false;
+        if (enviados.includes(strId)) return false;
+
+        const itemDb = todosOriginais.find(s => String(s.id) === strId);
+        if (itemDb) {
+          return typeof verificarElegibilidadeSubcontratacaoMEI === 'function' ? verificarElegibilidadeSubcontratacaoMEI(itemDb) : true;
+        }
+        const itemRadar = todosRadar.find(r => String(r.id) === strId);
+        if (itemRadar) {
+          return typeof verificarElegibilidadeSubcontratacaoMEI === 'function' ? verificarElegibilidadeSubcontratacaoMEI(itemRadar) : true;
+        }
+        return false;
+      });
+    }
+
+    function atualizarContadorFavoritas() {
+      const favsValidos = obterFavoritosElegiveis();
+      try {
+        localStorage.setItem('rp_oportunidades_favoritas', JSON.stringify(favsValidos));
+      } catch (e) {}
       const el = document.getElementById('badgeContadorFavoritas');
       if (el) el.innerText = favsValidos.length;
     }
@@ -1904,14 +1929,13 @@
       const grid = document.getElementById('servicesGrid');
       grid.innerHTML = '';
 
-      const favIds = getFavoritos();
+      const favIds = obterFavoritosElegiveis();
       const todosOriginais = [...servicosDB];
       const todosRadar = window.RADAR_PNCP_DATA || [];
 
       // Une as duas fontes com comparação segura de IDs
       const listaFavoritas = [];
-      const listaExcluidos = getExcluidos();
-      favIds.filter(id => !listaExcluidos.some(ex => String(ex) === String(id))).forEach(id => {
+      favIds.forEach(id => {
         const itemDb = todosOriginais.find(s => String(s.id) === String(id));
         if (itemDb) {
           listaFavoritas.push({ ...itemDb, origem: 'banco_interno' });
@@ -2027,6 +2051,10 @@
                 </button>
               </div>
 
+              <div class="my-1.5 flex items-center gap-1.5 px-2 py-0.5 rounded-lg bg-emerald-50 text-emerald-900 border border-emerald-200 text-[10px] font-bold">
+                <span class="text-emerald-600 font-black">✓</span>
+                <span>MEI Elegível: Fornecimento Autorizado</span>
+              </div>
               <h3 class="text-base font-bold text-slate-900 leading-snug mb-1">
                 ${item.titulo}
               </h3>
@@ -3590,6 +3618,7 @@ Link: ${item.link}`;
     // INICIALIZAÇÃO
     window.onload = function() {
       atualizarContadorFavoritas();
+      atualizarContadorOceanoAzul();
       atualizarInterface();
     };
   
@@ -3782,6 +3811,34 @@ Link: ${item.link}`;
       };
     }
 
+    // FUNÇÃO DINÂMICA PARA ATUALIZAR CONTADOR OCEANO AZUL
+    function atualizarContadorOceanoAzul() {
+      const badgeNav = document.getElementById('badgeOceanoAzul');
+      if (!badgeNav) return;
+
+      const ativosDb = typeof obterServicosAtivos === 'function' ? obterServicosAtivos() : [];
+      const todosRadar = window.RADAR_PNCP_DATA || [];
+      const excluidos = getExcluidos();
+      const enviados = getIdsPropostasEnviadas();
+
+      let count = 0;
+      ativosDb.filter(s => !enviados.includes(String(s.id)) && verificarElegibilidadeSubcontratacaoMEI(s)).forEach(s => {
+        const m = calcularMetricaOceanoAzul(s);
+        if (m.score >= 70 || m.ehDesertaOuProrrogada) count++;
+      });
+
+      todosRadar.filter(r => 
+        !excluidos.some(e => String(e) === String(r.id)) && 
+        !enviados.includes(String(r.id)) &&
+        verificarElegibilidadeSubcontratacaoMEI(r)
+      ).forEach(r => {
+        const m = calcularMetricaOceanoAzul(r);
+        if (m.score >= 78 || m.ehDesertaOuProrrogada) count++;
+      });
+
+      badgeNav.innerText = count;
+    }
+
     // RENDERIZAR ABA OCEANO AZUL
     function renderizarOceanoAzul() {
       const grid = document.getElementById('servicesGrid');
@@ -3791,19 +3848,24 @@ Link: ${item.link}`;
       const todosRadar = window.RADAR_PNCP_DATA || [];
       const excluidos = getExcluidos();
       const favs = getFavoritos();
+      const enviados = getIdsPropostasEnviadas();
 
       const listaOceano = [];
 
-      // 1. Analisa itens do banco interno
-      ativosDb.forEach(s => {
+      // 1. Analisa itens do banco interno (apenas elegíveis para MEI sem veto)
+      ativosDb.filter(s => !enviados.includes(String(s.id)) && verificarElegibilidadeSubcontratacaoMEI(s)).forEach(s => {
         const metrica = calcularMetricaOceanoAzul(s);
         if (metrica.score >= 70 || metrica.ehDesertaOuProrrogada) {
           listaOceano.push({ ...s, metrica, origemOceano: 'interno' });
         }
       });
 
-      // 2. Analisa itens do Radar PNCP RS
-      todosRadar.filter(r => !excluidos.some(e => String(e) === String(r.id)) && !getIdsPropostasEnviadas().includes(String(r.id))).forEach(r => {
+      // 2. Analisa itens do Radar PNCP RS (apenas elegíveis para MEI sem veto)
+      todosRadar.filter(r => 
+        !excluidos.some(e => String(e) === String(r.id)) && 
+        !enviados.includes(String(r.id)) &&
+        verificarElegibilidadeSubcontratacaoMEI(r)
+      ).forEach(r => {
         const metrica = calcularMetricaOceanoAzul(r);
         if (metrica.score >= 78 || metrica.ehDesertaOuProrrogada) {
           listaOceano.push({ ...r, metrica, origemOceano: 'radar' });
@@ -3828,7 +3890,7 @@ Link: ${item.link}`;
               <span class="px-2.5 py-0.5 rounded-full text-xs font-black bg-cyan-400 text-slate-950">
                 Filtro Inteligente Ativo
               </span>
-              <span class="text-xs text-cyan-300 font-bold">Base RS • Menor Risco • Maior Margem</span>
+              <span class="text-xs text-cyan-300 font-bold">Base RS • 100% MEI Apto • Menor Risco</span>
             </div>
             <h3 class="text-xl sm:text-2xl font-black text-white mt-1 flex items-center gap-2">
               <span>🌊</span>
@@ -3866,6 +3928,8 @@ Link: ${item.link}`;
         const strId = String(item.id);
         const jaFavoritado = favs.some(f => String(f) === strId);
         const m = item.metrica;
+        const dt = extrairDataEncerramentoItem(item);
+        const portalInfo = identificarPortalOportunidade(item);
 
         const card = document.createElement('div');
         card.className = "service-item group bg-white rounded-3xl border-2 border-cyan-200 hover:border-cyan-500 card-shadow card-hover transition-all flex flex-col justify-between p-6 relative overflow-hidden";
@@ -3895,17 +3959,24 @@ Link: ${item.link}`;
               </div>
 
               <div class="flex items-center justify-between gap-2 mb-2">
-                <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded ${item.badgeClass}">
-                  ${item.badgeText}
+                <span class="px-2.5 py-0.5 rounded-full text-[11px] font-black border ${portalInfo.badgeClass} flex items-center gap-1">
+                  <span>${portalInfo.icone}</span>
+                  <span>${portalInfo.nome}</span>
                 </span>
                 <div class="flex items-center gap-1.5">
-                  <button onclick="alternarFavorito('${strId}', event)" class="px-2 py-0.5 rounded-lg text-xs font-bold ${jaFavoritado ? 'bg-amber-400 text-slate-950 font-black' : 'bg-slate-100 text-slate-600'}">
+                  <button onclick="alternarFavorito('${strId}', event)" class="px-2.5 py-1 rounded-lg text-xs font-bold ${jaFavoritado ? 'bg-amber-400 text-slate-950 font-black' : 'bg-slate-100 text-slate-600'}">
                     ★ ${jaFavoritado ? 'Favorita' : 'Favoritar'}
                   </button>
-                  <button onclick="event.stopPropagation(); excluirServico('${strId}')" title="Excluir oportunidade" class="p-1 px-2 rounded-lg bg-slate-100 hover:bg-rose-100 text-slate-500 hover:text-rose-600 border border-slate-200 hover:border-rose-300 transition-all flex items-center gap-1 text-xs font-bold cursor-pointer shadow-xs">
-                    <span>🗑️</span>
+                  <button onclick="event.stopPropagation(); excluirServico('${strId}')" title="Excluir oportunidade" class="p-1 px-2 rounded-lg bg-slate-100 hover:bg-rose-100 text-slate-500 hover:text-rose-600 border border-slate-200">
+                    🗑️
                   </button>
                 </div>
+              </div>
+
+              <!-- Selo MEI Seguro -->
+              <div class="my-2 flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-emerald-50 text-emerald-900 border border-emerald-200 text-[10px] font-bold">
+                <span class="text-emerald-600 font-black">✓</span>
+                <span>Compra de Distribuidor / Revenda Autorizada (100% MEI)</span>
               </div>
 
               <span class="text-xs font-semibold text-slate-400 block">${item.orgao}</span>
@@ -3947,13 +4018,13 @@ Link: ${item.link}`;
             </div>
 
             <div class="mt-4 pt-3 border-t border-slate-100 space-y-2">
-              <button onclick="event.stopPropagation(); abrirModalRegistroPropostaItem('${item.id}', 'interno')" class="w-full py-2.5 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-black text-xs text-center transition-all shadow-sm flex items-center justify-center gap-1.5 cursor-pointer">
+              <button onclick="event.stopPropagation(); abrirModalRegistroPropostaItem('${strId}', 'interno')" class="w-full py-2.5 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-black text-xs text-center transition-all shadow-sm flex items-center justify-center gap-1.5 cursor-pointer">
                 <span>📝</span>
                 <span>Cadastrar Proposta Enviada</span>
               </button>
               <div class="flex items-center gap-2">
-                <button onclick="abrirDetalhes('${item.id}')" class="flex-1 py-2 px-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs text-center transition-all flex items-center justify-center gap-1">
-                  <span>Ver Orçamento Completo</span>
+                <button onclick="abrirDetalhes('${strId}')" class="flex-1 py-2 px-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs text-center transition-all flex items-center justify-center gap-1">
+                  <span>Ver Orçamento</span>
                   <span>→</span>
                 </button>
                 <a href="${item.linkDireto || '#'}" target="_blank" class="py-2 px-3 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-xs transition-all flex items-center gap-1">
@@ -3965,6 +4036,8 @@ Link: ${item.link}`;
           `;
         } else {
           // Item do Radar PNCP
+          const balanco = gerarBalancoEstimado(item.objeto, item.valorEstimado);
+
           card.innerHTML = `
             <div>
               <!-- Termômetro de Concorrência -->
@@ -3979,17 +4052,24 @@ Link: ${item.link}`;
               </div>
 
               <div class="flex items-center justify-between gap-2 mb-2">
-                <span class="text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded bg-sky-100 text-sky-800 border border-sky-300">
-                  ${item.plataforma}
+                <span class="px-2.5 py-0.5 rounded-full text-[11px] font-black border ${portalInfo.badgeClass} flex items-center gap-1">
+                  <span>${portalInfo.icone}</span>
+                  <span>${portalInfo.nome}</span>
                 </span>
                 <div class="flex items-center gap-1.5">
-                  <button onclick="alternarFavorito('${strId}', event)" class="px-2 py-0.5 rounded-lg text-xs font-bold ${jaFavoritado ? 'bg-amber-400 text-slate-950 font-black' : 'bg-slate-100 text-slate-600'}">
+                  <button onclick="alternarFavorito('${strId}', event)" class="px-2.5 py-1 rounded-lg text-xs font-bold ${jaFavoritado ? 'bg-amber-400 text-slate-950 font-black' : 'bg-slate-100 text-slate-600'}">
                     ★ ${jaFavoritado ? 'Favorita' : 'Favoritar'}
                   </button>
-                  <button onclick="event.stopPropagation(); excluirRadarItem('${strId}')" title="Excluir oportunidade do Radar" class="p-1 px-2 rounded-lg bg-slate-100 hover:bg-rose-100 text-slate-500 hover:text-rose-600 border border-slate-200 hover:border-rose-300 transition-all flex items-center gap-1 text-xs font-bold cursor-pointer shadow-xs">
-                    <span>🗑️</span>
+                  <button onclick="event.stopPropagation(); excluirRadarItem('${strId}')" title="Excluir oportunidade do Radar" class="p-1 px-2 rounded-lg bg-slate-100 hover:bg-rose-100 text-slate-500 hover:text-rose-600 border border-slate-200">
+                    🗑️
                   </button>
                 </div>
+              </div>
+
+              <!-- Selo MEI Seguro -->
+              <div class="my-2 flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-emerald-50 text-emerald-900 border border-emerald-200 text-[10px] font-bold">
+                <span class="text-emerald-600 font-black">✓</span>
+                <span>Compra de Distribuidor / Revenda Autorizada (100% MEI)</span>
               </div>
 
               <span class="text-xs font-semibold text-slate-400 block">${item.orgao}</span>
@@ -4006,14 +4086,26 @@ Link: ${item.link}`;
                 </ul>
               </div>
 
-              <div class="mt-4 p-2.5 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-between">
-                <div>
-                  <span class="text-[10px] font-bold text-slate-400 uppercase block">Valor Estimado</span>
-                  <span class="text-sm font-black text-slate-900">${item.valorFormatado}</span>
+              <!-- Prazo de Encerramento com Countdown -->
+              <div class="mt-3 p-2.5 rounded-xl border flex items-center justify-between text-xs ${dt.classe}">
+                <div class="flex items-center gap-1.5 font-bold">
+                  <span>⏳</span>
+                  <span>Encerra em:</span>
                 </div>
                 <div class="text-right">
-                  <span class="text-[10px] font-bold text-slate-400 uppercase block">Prazo Encerramento</span>
-                  <span class="text-xs font-bold text-slate-700">${item.dataEncerramento}</span>
+                  <strong class="font-black text-xs block">${dt.texto}</strong>
+                  ${dt.badgeUrgencia ? `<span class="text-[10px] block font-extrabold uppercase tracking-tight">${dt.badgeUrgencia}</span>` : ''}
+                </div>
+              </div>
+
+              <div class="mt-3 p-3 bg-slate-50 rounded-xl border border-slate-200 text-xs space-y-1">
+                <div class="flex items-center justify-between text-slate-500 text-[11px]">
+                  <span>Valor Estimado Órgão:</span>
+                  <strong class="text-slate-900 font-black">${item.valorFormatado}</strong>
+                </div>
+                <div class="flex items-center justify-between text-emerald-700 font-bold text-xs pt-1 border-t border-slate-200">
+                  <span>Lucro Projetado MEI:</span>
+                  <span>+ ${formatBRL(balanco.lucroLiquido)}</span>
                 </div>
               </div>
             </div>
@@ -4024,10 +4116,13 @@ Link: ${item.link}`;
                 <span>Cadastrar Proposta Enviada</span>
               </button>
               <div class="flex items-center gap-2">
-                <a href="${item.link}" target="_blank" class="flex-1 py-2 px-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs text-center transition-all flex items-center justify-center gap-1">
+                <a href="${formatarLinkDireto(item)}" target="_blank" class="flex-1 py-2 px-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs text-center transition-all flex items-center justify-center gap-1">
                   <span>Acessar Edital Oficial</span>
                   <span>↗</span>
                 </a>
+                <button onclick="copiarDadosItem('${strId}')" class="py-2 px-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs">
+                  📋
+                </button>
               </div>
             </div>
           `;
