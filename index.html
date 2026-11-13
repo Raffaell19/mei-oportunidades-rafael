@@ -2062,9 +2062,178 @@
       return ativos.filter(s => !idsEnviados.includes(String(s.id)) && verificarElegibilidadeSubcontratacaoMEI(s) && oportunidadeEstaAberta(s));
     }
 
+    
+    // ==============================================================
+    // MOTOR DE INTELIGÊNCIA UNIFICADO: OPORTUNIDADES INTERNAS + RADAR PNCP / RS
+    // ==============================================================
+    function calcularDistanciaEstimada(cidade) {
+      if (!cidade) return 45;
+      const c = String(cidade).toLowerCase();
+      if (c.includes('nova hartz')) return 0;
+      if (c.includes('araricá')) return 6;
+      if (c.includes('sapiranga')) return 12;
+      if (c.includes('parobé')) return 15;
+      if (c.includes('campo bom')) return 18;
+      if (c.includes('taquara')) return 22;
+      if (c.includes('dois irmãos')) return 24;
+      if (c.includes('novo hamburgo')) return 25;
+      if (c.includes('estância velha')) return 28;
+      if (c.includes('ivoti')) return 30;
+      if (c.includes('são leopoldo')) return 32;
+      if (c.includes('igrejinha')) return 35;
+      if (c.includes('sapucaia')) return 40;
+      if (c.includes('esteio')) return 44;
+      if (c.includes('três coroas')) return 45;
+      if (c.includes('canoas')) return 52;
+      if (c.includes('rolante')) return 55;
+      if (c.includes('gravataí') || c.includes('gravatai')) return 58;
+      if (c.includes('cachoeirinha')) return 60;
+      if (c.includes('gramado')) return 62;
+      if (c.includes('canela')) return 68;
+      if (c.includes('porto alegre')) return 70;
+      if (c.includes('alvorada') || c.includes('viamão')) return 75;
+      if (c.includes('caxias do sul')) return 92;
+      if (c.includes('bento gonçalves')) return 110;
+      if (c.includes('osório') || c.includes('osorio')) return 115;
+      if (c.includes('tramandaí') || c.includes('tramandai')) return 130;
+      if (c.includes('capão da canoa')) return 145;
+      return 65;
+    }
+
+    function normalizarOportunidadeRadar(r) {
+      const valorEst = r.valorEstimado || 0;
+      const ehServ = ehDemandaServico(r);
+      const txtCompleto = `${r.objeto || ''} ${(r.tags || []).join(' ')}`.toLowerCase();
+
+      const ehMkt = txtCompleto.includes('marketing') || 
+                    txtCompleto.includes('design') || 
+                    txtCompleto.includes('rede social') || 
+                    txtCompleto.includes('redes sociais') || 
+                    txtCompleto.includes('audiovisual') || 
+                    txtCompleto.includes('foto') || 
+                    txtCompleto.includes('vídeo') || 
+                    txtCompleto.includes('video') || 
+                    txtCompleto.includes('comunicação visual') || 
+                    txtCompleto.includes('placa') || 
+                    txtCompleto.includes('adesivo') ||
+                    txtCompleto.includes('faixa') ||
+                    txtCompleto.includes('banner');
+
+      const portalInfo = identificarPortalOportunidade(r);
+      const ehContrata = r.ehComprasGov || 
+                         (r.plataforma && (r.plataforma.includes('Compras.gov') || r.plataforma.includes('Contrata+'))) || 
+                         portalInfo.id === 'contratamais';
+
+      const margem = ehMkt ? 0.70 : (ehServ ? 0.45 : 0.30);
+      const propSug = valorEst > 0 ? Math.round(valorEst * 0.92) : 5000;
+      const custoInsumos = Math.round(propSug * (1 - margem - 0.05));
+      const custoLog = Math.round(propSug * 0.03);
+      const reserva = Math.round(propSug * 0.02);
+      const custoTotal = custoInsumos + custoLog + reserva;
+      const lucro = propSug - custoTotal;
+
+      let badgeTxt = '🏛️ Contrata+ Brasil';
+      let badgeCls = 'bg-emerald-100 text-emerald-800 border border-emerald-300';
+      if (!ehContrata) {
+        if (portalInfo.id === 'comprasrs') {
+          badgeTxt = '🌐 Compras RS';
+          badgeCls = 'bg-sky-100 text-sky-800 border border-sky-300';
+        } else {
+          badgeTxt = '📡 Dispensa Eletrônica';
+          badgeCls = 'bg-slate-100 text-slate-800 border border-slate-300';
+        }
+      }
+
+      const cidadeLimpa = r.cidade || 'RS';
+      const dist = calcularDistanciaEstimada(cidadeLimpa);
+
+      return {
+        id: String(r.id),
+        titulo: r.objeto ? (r.objeto.length > 85 ? r.objeto.substring(0, 82) + '...' : r.objeto) : 'Oportunidade Pública MEI',
+        objeto: r.objeto || '',
+        destaque: r.objeto || '',
+        orgao: r.orgao || 'Órgão Público RS',
+        local: cidadeLimpa,
+        cidade: cidadeLimpa,
+        distanciaKm: dist,
+        distanciaTexto: `${cidadeLimpa} • Aprox. ${dist} km de Nova Hartz`,
+        valorReferencia: valorEst,
+        propostaMin: Math.round(propSug * 0.75),
+        propostaMax: valorEst > 0 ? valorEst : Math.round(propSug * 1.1),
+        propostaSugerida: propSug,
+        custoOperacionalEstimado: custoTotal,
+        lucroProjetado: lucro,
+        categoria: ehMkt ? 'marketing' : (ehServ ? 'manutencao_servicos' : 'fornecimento_produtos'),
+        cnae: ehMkt ? 'Marketing, Redes Sociais & Design' : (ehServ ? 'Serviços MEI (Lei 14.133/21)' : 'Comércio Varejista / Revenda'),
+        prazo: r.dataEncerramento || 'Consultar Edital',
+        dataEncerramento: r.dataEncerramento || 'Consultar Edital',
+        dataEncerramentoIso: r.dataEncerramentoIso || null,
+        linkDireto: r.link || 'https://pncp.gov.br',
+        link: r.link || 'https://pncp.gov.br',
+        tipoEdital: 'Dispensa Eletrônica',
+        plataforma: r.plataforma || 'PNCP / Compras Públicas',
+        ehComprasGov: r.ehComprasGov || false,
+        ehContrataMais: ehContrata,
+        ehDemandaServico: ehServ,
+        ehMarketing: ehMkt,
+        badgeText: badgeTxt,
+        badgeClass: badgeCls,
+        tipoOrigem: 'radar',
+        itensCompra: [
+          { item: ehMkt ? 'Softwares, Criativos & Veiculação' : (ehServ ? 'Materiais e Insumos Operacionais' : 'Aquisição de Fornecedor / Fabricante'), qtd: '1 lote', unitario: custoInsumos, total: custoInsumos }
+        ],
+        equipe: { descricao: 'Operação MEI', total: 0 },
+        logistica: { descricao: 'Envio / Logística', total: custoLog },
+        reserva: reserva,
+        tags: r.tags || ['MEI Aprovado', 'Dispensa Eletrônica']
+      };
+    }
+
+    function obterTodasOportunidadesUnificadas() {
+      const excluidos = typeof getExcluidos === 'function' ? getExcluidos() : [];
+      const unificadas = [];
+      const idsVistos = new Set();
+
+      // 1. Oportunidades do Banco Interno Curadas
+      if (typeof servicosDB !== 'undefined' && Array.isArray(servicosDB)) {
+        servicosDB.forEach(s => {
+          const strId = String(s.id);
+          if (!excluidos.some(e => String(e) === strId)) {
+            idsVistos.add(strId);
+            const ehServ = ehDemandaServico(s);
+            const portalInfo = identificarPortalOportunidade(s);
+            const ehContrata = s.ehContrataMais || s.ehComprasGov || portalInfo.id === 'contratamais';
+            const ehMkt = s.categoria && s.categoria.includes('marketing');
+
+            unificadas.push({
+              ...s,
+              id: strId,
+              tipoOrigem: 'interno',
+              ehDemandaServico: ehServ,
+              ehContrataMais: ehContrata,
+              ehMarketing: ehMkt
+            });
+          }
+        });
+      }
+
+      // 2. Oportunidades do Radar Geral PNCP / Compras.gov / Compras RS
+      const radar = (typeof window !== 'undefined' && window.RADAR_PNCP_DATA) ? window.RADAR_PNCP_DATA : [];
+      if (Array.isArray(radar)) {
+        radar.forEach(r => {
+          const strId = String(r.id);
+          if (!excluidos.some(e => String(e) === strId) && !idsVistos.has(strId)) {
+            idsVistos.add(strId);
+            unificadas.push(normalizarOportunidadeRadar(r));
+          }
+        });
+      }
+
+      return unificadas;
+    }
+
     function obterServicosAtivos() {
-      const excluidos = getExcluidos();
-      return servicosDB.filter(s => !excluidos.some(e => String(e) === String(s.id)));
+      return obterTodasOportunidadesUnificadas();
     }
 
     // ATUALIZAR INTERFACE E CONTADORES
@@ -2095,8 +2264,7 @@
       grid.innerHTML = '';
       const excluidos = getExcluidos();
       const idsEnviados = getIdsPropostasEnviadas();
-
-      const lista = servicosDB.filter(s => {
+      const lista = obterTodasOportunidadesUnificadas().filter(s => {
         const strId = String(s.id);
         return !excluidos.includes(strId) && !idsEnviados.includes(strId) && ehDemandaServico(s);
       });
@@ -2132,8 +2300,7 @@
       grid.innerHTML = '';
       const excluidos = getExcluidos();
       const idsEnviados = getIdsPropostasEnviadas();
-
-      const lista = servicosDB.filter(s => {
+      const lista = obterTodasOportunidadesUnificadas().filter(s => {
         const strId = String(s.id);
         return !excluidos.includes(strId) && !idsEnviados.includes(strId) && !ehDemandaServico(s);
       });
@@ -2169,12 +2336,13 @@
     function atualizarContadoresPastas() {
       const excluidos = typeof getExcluidos === 'function' ? getExcluidos() : [];
       const idsEnviados = typeof getIdsPropostasEnviadas === 'function' ? getIdsPropostasEnviadas() : [];
+      const todas = obterTodasOportunidadesUnificadas();
 
-      const listaServicos = servicosDB.filter(s => !excluidos.includes(String(s.id)) && !idsEnviados.includes(String(s.id)) && ehDemandaServico(s));
+      const listaServicos = todas.filter(s => !excluidos.includes(String(s.id)) && !idsEnviados.includes(String(s.id)) && ehDemandaServico(s));
       const elServicos = document.getElementById('badgeServicosPrestados');
       if (elServicos) elServicos.innerText = listaServicos.length;
 
-      const listaProdutos = servicosDB.filter(s => !excluidos.includes(String(s.id)) && !idsEnviados.includes(String(s.id)) && !ehDemandaServico(s));
+      const listaProdutos = todas.filter(s => !excluidos.includes(String(s.id)) && !idsEnviados.includes(String(s.id)) && !ehDemandaServico(s));
       const elProdutos = document.getElementById('badgeProdutosFornecimento');
       if (elProdutos) elProdutos.innerText = listaProdutos.length;
     }
@@ -2817,9 +2985,17 @@
       const excluidos = getExcluidos();
       const favs = getFavoritos();
 
-      const itensMarketing = servicosDB.filter(s => {
+      const itensMarketing = obterTodasOportunidadesUnificadas().filter(s => {
         const strId = String(s.id);
-        return s.categoria && s.categoria.includes('marketing') && !excluidos.includes(strId);
+        const txt = `${s.titulo || ''} ${s.objeto || ''} ${s.categoria || ''} ${(s.tags || []).join(' ')}`.toLowerCase();
+        const ehMkt = s.ehMarketing || (s.categoria && s.categoria.includes('marketing')) ||
+                      txt.includes('marketing') || txt.includes('design') || 
+                      txt.includes('rede social') || txt.includes('redes sociais') || 
+                      txt.includes('audiovisual') || txt.includes('foto') || 
+                      txt.includes('vídeo') || txt.includes('video') || 
+                      txt.includes('comunicação visual') || txt.includes('placa') || 
+                      txt.includes('adesivo') || txt.includes('banner') || txt.includes('faixa');
+        return ehMkt && !excluidos.includes(strId);
       });
 
       document.getElementById('badgeQtdAtivas').innerText = `${itensMarketing.length} oportunidades em Marketing & Design`;
@@ -3710,11 +3886,12 @@
       const propostasSalvas = obterPropostasGravadas();
 
       // Pega todas as oportunidades do Contrata+ Brasil do banco de dados (excluindo itens de marketing para ficarem apenas no Painel de Marketing)
-      const todasContrata = servicosDB.filter(s => {
+      const todasContrata = obterTodasOportunidadesUnificadas().filter(s => {
         const portal = identificarPortalOportunidade(s).id;
         const strId = String(s.id);
-        const ehMarketing = s.categoria && s.categoria.includes('marketing');
-        return portal === 'contratamais' && !ehMarketing && !excluidos.includes(strId);
+        const ehMarketing = s.ehMarketing || (s.categoria && s.categoria.includes('marketing'));
+        const ehContrata = s.ehContrataMais || s.ehComprasGov || portal === 'contratamais';
+        return ehContrata && !ehMarketing && !excluidos.includes(strId);
       });
 
       // Separa entre abertas e com proposta enviada
@@ -4639,7 +4816,11 @@ Link: ${item.link}`;
 
     // ABRIR MODAL COM TODA A DISCRIMINAÇÃO DO SERVIÇO
     function abrirDetalhes(id) {
-      const s = servicosDB.find(item => item.id === id);
+      let s = servicosDB.find(item => String(item.id) === String(id));
+      if (!s) {
+        const todas = obterTodasOportunidadesUnificadas();
+        s = todas.find(item => String(item.id) === String(id));
+      }
       if (!s) return;
       currentServico = s;
 
@@ -5085,10 +5266,11 @@ Link: ${item.link}`;
       const badge = document.getElementById('badgeContrataMais');
       if (!badge) return;
       const excluidos = typeof getExcluidos === 'function' ? getExcluidos() : [];
-      const count = servicosDB.filter(s => {
+      const count = obterTodasOportunidadesUnificadas().filter(s => {
         const portal = identificarPortalOportunidade(s).id;
-        const ehMarketing = s.categoria && s.categoria.includes('marketing');
-        return portal === 'contratamais' && !ehMarketing && !excluidos.includes(String(s.id));
+        const ehMarketing = s.ehMarketing || (s.categoria && s.categoria.includes('marketing'));
+        const ehContrata = s.ehContrataMais || s.ehComprasGov || portal === 'contratamais';
+        return ehContrata && !ehMarketing && !excluidos.includes(String(s.id));
       }).length;
       badge.innerText = count;
     }
@@ -5097,7 +5279,18 @@ Link: ${item.link}`;
       const badge = document.getElementById('badgeMarketingContador');
       if (!badge) return;
       const excluidos = typeof getExcluidos === 'function' ? getExcluidos() : [];
-      const count = servicosDB.filter(s => s.categoria && s.categoria.includes('marketing') && !excluidos.includes(String(s.id))).length;
+      const count = obterTodasOportunidadesUnificadas().filter(s => {
+        const strId = String(s.id);
+        const txt = `${s.titulo || ''} ${s.objeto || ''} ${s.categoria || ''} ${(s.tags || []).join(' ')}`.toLowerCase();
+        const ehMkt = s.ehMarketing || (s.categoria && s.categoria.includes('marketing')) ||
+                      txt.includes('marketing') || txt.includes('design') || 
+                      txt.includes('rede social') || txt.includes('redes sociais') || 
+                      txt.includes('audiovisual') || txt.includes('foto') || 
+                      txt.includes('vídeo') || txt.includes('video') || 
+                      txt.includes('comunicação visual') || txt.includes('placa') || 
+                      txt.includes('adesivo') || txt.includes('banner') || txt.includes('faixa');
+        return ehMkt && !excluidos.includes(strId);
+      }).length;
       badge.innerText = count;
     }
 

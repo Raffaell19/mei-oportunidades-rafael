@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 Robô Rastreador de Oportunidades Públicas para MEI (PNCP & Compras.gov.br)
-Foco: Vale do Sinos, Grande Porto Alegre, Serra Gaúcha e Litoral Norte - RS.
+Foco: Rio Grande do Sul (Vale do Sinos, Grande Porto Alegre, Serra Gaúcha, Litoral e Entregas em todo o RS).
 """
 
 import os
@@ -10,8 +10,9 @@ import datetime
 import urllib.request
 import urllib.parse
 import urllib.error
+import time
 
-# Cidades prioritárias no entorno de Nova Hartz / RS
+# Termos que configuram cessão de mão de obra exclusiva ou obras pesadas (proibidas para MEI)
 TERMOS_BLOQUEIO_SUBCONTRATACAO_MEI = [
     "vigilancia", "vigilância", "seguranca armada", "segurança armada", "vigilante",
     "dedicação exclusiva de mão de obra", "dedicacao exclusiva", "posto de trabalho",
@@ -28,7 +29,8 @@ CIDADES_PRIORITARIAS = [
     "Viamão", "Guaíba", "Caxias do Sul", "Bento Gonçalves",
     "Farroupilha", "Gramado", "Canela", "Igrejinha", "Três Coroas",
     "Rolante", "Osório", "Tramandaí", "Capão da Canoa", "Montenegro",
-    "Triunfo", "Charqueadas", "Eldorado do Sul"
+    "Triunfo", "Charqueadas", "Eldorado do Sul", "Pelotas", "Santa Maria",
+    "Passo Fundo", "Santa Cruz do Sul", "Lajeado", "Erechim"
 ]
 
 # Palavras-chave com alta aderência para MEI (serviços manuais, fornecimentos pontuais e marketing digital)
@@ -40,6 +42,10 @@ PALAVRAS_CHAVE_MEI = [
     "material", "suporte", "quadro", "placa", "comunicação visual",
     "toldo", "cobertura", "calha", "vidro", "limpeza", "higienização",
     "madeira", "marcenaria", "persiana", "cortina", "divisoria",
+    "fornecimento", "aquisição", "aquisicao", "compra", "entrega",
+    "lâmpada", "lampada", "luminária", "luminaria", "cabo", "disco", "hd",
+    "toner", "tinta", "brinde", "troféu", "trofeu", "medalha", "crachá",
+    "acrílico", "acrilico", "display", "adesivo", "banner", "uniforme",
     # Módulo Marketing Digital, Audiovisual & Criação
     "marketing", "design", "redes sociais", "rede social", "publicidade",
     "diagramação", "diagramador", "audiovisual", "vídeo", "video",
@@ -47,8 +53,9 @@ PALAVRAS_CHAVE_MEI = [
     "mídia", "midia", "gestão de tráfego", "website", "web design", "identidade visual"
 ]
 
-def buscar_todas_dispensas_rs(dias_frente=7):
+def buscar_todas_dispensas_rs(dias_frente=15):
     hoje = datetime.date.today()
+    data_inicial_str = hoje.strftime("%Y%m%d")
     data_final = hoje + datetime.timedelta(days=dias_frente)
     data_final_str = data_final.strftime("%Y%m%d")
 
@@ -58,7 +65,7 @@ def buscar_todas_dispensas_rs(dias_frente=7):
     while True:
         url = (
             f"https://pncp.gov.br/api/consulta/v1/contratacoes/proposta"
-            f"?dataFinal={data_final_str}&codigoModalidadeContratacao=8&uf=RS&pagina={pagina}&tamanhoPagina=50"
+            f"?dataInicial={data_inicial_str}&dataFinal={data_final_str}&codigoModalidadeContratacao=8&uf=RS&pagina={pagina}&tamanhoPagina=50"
         )
         req = urllib.request.Request(
             url,
@@ -67,39 +74,38 @@ def buscar_todas_dispensas_rs(dias_frente=7):
                 "Accept": "application/json"
             }
         )
-        try:
-            with urllib.request.urlopen(req, timeout=15) as res:
-                data = json.loads(res.read().decode("utf-8"))
-                itens = data.get("data", [])
-                if not itens:
+        sucesso = False
+        for tentativa in range(3):
+            try:
+                with urllib.request.urlopen(req, timeout=25) as res:
+                    data = json.loads(res.read().decode("utf-8"))
+                    itens = data.get("data", [])
+                    if not itens:
+                        return todos_itens
+                    todos_itens.extend(itens)
+                    total_registros = data.get("totalRegistros", 0)
+                    if len(todos_itens) >= total_registros:
+                        return todos_itens
+                    pagina += 1
+                    sucesso = True
                     break
-                todos_itens.extend(itens)
-                total_registros = data.get("totalRegistros", 0)
-                if len(todos_itens) >= total_registros:
-                    break
-                pagina += 1
-        except Exception as e:
-            print(f"[!] Erro ao buscar página {pagina}: {e}")
+            except Exception as e:
+                print(f"[!] Tentativa {tentativa+1} falhou na página {pagina}: {e}")
+                time.sleep(2)
+
+        if not sucesso:
+            print(f"[!] Encerrando busca na página {pagina} devido a instabilidade do PNCP.")
             break
 
     return todos_itens
 
 def resolver_link_dispensa(item):
-    """
-    Determina o melhor link funcional para o usuário acessar a dispensa e enviar proposta:
-    1. Se o órgão informou o link do sistema de origem (Compras.gov.br, Compras RS, etc.), usa-o diretamente.
-    2. Se for detectado Portal de Compras Públicas no texto do objeto, direciona para o portal.
-    3. Se não houver link direto, gera link de busca exata no PNCP por termo + link de busca oficial no Google.
-    """
     link_origem = item.get("linkSistemaOrigem")
     link_processo = item.get("linkProcessoEletronico")
     usuario_origem = item.get("usuarioNome") or ""
     objeto = item.get("objetoCompra") or ""
     num_controle = item.get("numeroControlePNCP") or ""
-    cidade = item.get("unidadeOrgao", {}).get("municipioNome") or ""
-    orgao = item.get("orgaoEntidade", {}).get("razaoSocial") or ""
 
-    # Monta URL canônica direta no PNCP com CNPJ, Ano e Sequencial
     cnpj = item.get("orgaoEntidade", {}).get("cnpj") or ""
     ano = item.get("anoCompra") or ""
     seq = item.get("sequencialCompra") or ""
@@ -113,12 +119,10 @@ def resolver_link_dispensa(item):
     if "PORTAL DE COMPRAS PÚBLICAS" in objeto.upper():
         return "https://www.portaldecompraspublicas.com.br/processos", "Portal de Compras Públicas"
 
-    # Sempre direciona diretamente para o edital oficial no PNCP
     if cnpj and ano and seq:
         return f"https://pncp.gov.br/app/editais/{cnpj}/{ano}/{seq}", "Edital Direto no PNCP"
 
     if num_controle:
-        # Extrai CNPJ/ano/seq do numeroControlePNCP (ex: 09509569000151-1-000128/2026)
         import re
         m = re.match(r"(\d+)-1-(\d+)/(\d+)", num_controle)
         if m:
@@ -142,7 +146,6 @@ def classificar_oportunidade(item):
     compativel_porte = (valor_estimado <= 65000.0) if valor_estimado > 0 else True
     eh_regiao_proxima = any(c.lower() in cidade.lower() for c in CIDADES_PRIORITARIAS)
 
-    # Verificação de Prazo: Descarta sumariamente oportunidades com prazo já encerrado
     if encerramento:
         try:
             dt_enc = datetime.datetime.fromisoformat(encerramento.replace("Z", ""))
@@ -170,7 +173,6 @@ def classificar_oportunidade(item):
 
     link_final, tipo_link = resolver_link_dispensa(item)
 
-    # Identificar plataforma de disputa
     eh_comprasgov = "Compras.gov.br" in usuario_origem or "cnetmobile" in link_final
     if eh_comprasgov:
         plataforma = "Contrata+ Brasil / Compras.gov.br"
@@ -183,7 +185,6 @@ def classificar_oportunidade(item):
     else:
         plataforma = usuario_origem or "Portal Governamental"
 
-    # Cálculo do Score Oceano Azul (Métrica de Baixa Concorrência)
     texto_completo = f"{objeto} {unidade} {cidade} {plataforma}".lower()
     score_oceano = 55
     motivos_oceano = []
@@ -209,6 +210,9 @@ def classificar_oportunidade(item):
     score_oceano = min(score_oceano, 98)
     nivel_concorrencia = "Quase Zero" if score_oceano >= 82 else ("Baixíssima" if score_oceano >= 68 else "Moderada")
 
+    eh_bloqueado = any(t in (objeto + " " + orgao).lower() for t in TERMOS_BLOQUEIO_SUBCONTRATACAO_MEI)
+    compativel_mei = compativel_porte and not eh_bloqueado and (score > 0 or eh_regiao_proxima)
+
     return {
         "id": num_controle.replace("/", "_").replace("-", "_"),
         "numeroControle": num_controle,
@@ -223,7 +227,7 @@ def classificar_oportunidade(item):
         "tipoLink": tipo_link,
         "plataforma": plataforma,
         "ehComprasGov": eh_comprasgov,
-                "compativelMEI": compativel_porte and (score > 0 or eh_regiao_proxima) and not any(t in (objeto + " " + orgao).lower() for t in TERMOS_BLOQUEIO_SUBCONTRATACAO_MEI),
+        "compativelMEI": compativel_mei,
         "permiteCompraFornecedor": True,
         "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)", 
         "ehRegiaoProxima": eh_regiao_proxima,
@@ -236,16 +240,16 @@ def classificar_oportunidade(item):
 
 def executar_rastreamento():
     print("[*] Conectando ao Portal Nacional de Contratações Públicas (PNCP)...")
-    itens_brutos = buscar_todas_dispensas_rs(dias_frente=7)
+    itens_brutos = buscar_todas_dispensas_rs(dias_frente=15)
     print(f"[*] Total de dispensas em aberto localizadas no RS: {len(itens_brutos)}")
 
     oportunidades_selecionadas = []
     for item in itens_brutos:
         res = classificar_oportunidade(item)
-        if res["compativelMEI"] and res["ehRegiaoProxima"]:
+        if res["compativelMEI"]:
             oportunidades_selecionadas.append(res)
 
-    print(f"[✓] Oportunidades MEI filtradas na sua região: {len(oportunidades_selecionadas)}")
+    print(f"[✓] Oportunidades MEI filtradas no RS: {len(oportunidades_selecionadas)}")
 
     output_path = os.path.join(os.path.dirname(__file__), "radar_pncp_mei.json")
     with open(output_path, "w", encoding="utf-8") as f:
