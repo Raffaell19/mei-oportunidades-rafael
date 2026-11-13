@@ -132,8 +132,11 @@
     </div>
 
 
+    <!-- PAINEL DE ACOMPANHAMENTO DE PROPOSTAS (EM CIMA DA CENTRAL DE PASTAS) -->
+    <div id="painelAcompanhamentoPropostas" class="space-y-4 mb-2"></div>
+
     <!-- BARRA DE PASTAS E NAVEGAÇÃO REESTRUTURADA (CLEAN & MODERNA) -->
-    <div class="space-y-3 pb-3 border-b border-slate-200">
+    <div id="centralPastasContainer" class="space-y-3 pb-3 border-b border-slate-200">
       <div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
         <div>
           <div class="flex items-center gap-2">
@@ -2177,6 +2180,15 @@
     }
 
     function atualizarInterface() {
+      try {
+        const painelTop = document.getElementById('painelAcompanhamentoPropostas');
+        if (painelTop && categoriaAtual !== 'minhas_propostas') {
+          painelTop.innerHTML = '';
+          painelTop.className = 'hidden';
+        }
+      } catch (e) {
+        console.error('Erro ao limpar painelTop:', e);
+      }
       atualizarContadorContrataMais();
       atualizarContadorMarketing();
       const ativos = obterServicosAtivos();
@@ -3522,7 +3534,14 @@
           </button>
         </div>
       `;
-      grid.appendChild(banner);
+      const painelTop = document.getElementById('painelAcompanhamentoPropostas');
+      if (painelTop) {
+        painelTop.innerHTML = '';
+        painelTop.className = "space-y-4 mb-2";
+        painelTop.appendChild(banner);
+      } else {
+        grid.appendChild(banner);
+      }
 
       // Filtra de acordo com o sub-filtro selecionado
       let propostasExibidas = todasPropostas;
