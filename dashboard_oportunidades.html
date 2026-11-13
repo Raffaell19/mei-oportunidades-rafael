@@ -53,180 +53,81 @@
 <body class="bg-slate-100 text-slate-800 antialiased min-h-screen flex flex-col">
 
   <!-- HEADER INSTITUCIONAL COMPACTO COM CONTADORES DINÂMICOS -->
-  <header class="bg-slate-900 text-white sticky top-0 z-40 border-b border-slate-800 shadow-md">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-wrap items-center justify-between gap-4">
+  <!-- CABEÇALHO SUPER CLEAN & MINIMALISTA -->
+  <header class="bg-slate-900 text-white sticky top-0 z-40 border-b border-slate-800 shadow-sm py-2.5 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <!-- Logo + Título Solicitado -->
       <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-sky-400 to-emerald-400 flex items-center justify-center font-black text-slate-950 text-xl shadow-md">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-sky-400 to-emerald-400 flex items-center justify-center font-black text-slate-950 text-lg shadow-sm">
           RP
         </div>
-        <div>
-          <div class="flex items-center gap-2">
-            <h1 class="text-base sm:text-lg font-bold tracking-tight text-white">Painel de Oportunidades • Contrata+ Brasil</h1>
-            <span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-semibold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
-              MEI Ativo
-            </span>
-          </div>
-          <p class="text-xs text-slate-400 flex items-center gap-2">
-            <span>Prestador: <strong>Rafael Plácido</strong> (35.810.080/0001-25)</span>
-            <span>•</span>
-            <span class="text-sky-400 font-medium">📍 Base: Nova Hartz / RS</span>
-          </p>
-        </div>
+        <h1 class="text-base sm:text-lg font-black tracking-tight text-white">
+          Painel de Oportunidades
+        </h1>
       </div>
 
-      <!-- Resumo Rápido Dinâmico -->
-      <div class="flex items-center gap-3 text-right">
-        <a href="produtos.html" class="hidden md:inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition-all shadow-sm border border-emerald-500">
-          <span>📦</span>
-          <span>Catálogo Produtos Sem Estoque</span>
-          <span class="bg-emerald-800 text-[10px] px-1.5 py-0.5 rounded font-black text-emerald-200">NOVO</span>
-        </a>
-        <div class="bg-slate-800 border border-slate-700 px-3 py-1.5 rounded-lg">
-          <p class="text-[10px] text-slate-400 uppercase tracking-wider font-semibold">Seu Capital de Giro</p>
-          <p class="text-sm sm:text-base font-extrabold text-emerald-400">R$ 5.000,00</p>
-        </div>
-        <div class="bg-slate-800 border border-slate-700 px-3 py-1.5 rounded-lg">
-          <p class="text-[10px] text-slate-400 uppercase tracking-wider font-semibold">Volume Ativo em Disputa</p>
-          <p id="headerVolumeTotal" class="text-sm sm:text-base font-extrabold text-sky-400">R$ 0,00</p>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <!-- BANNER EXPLICATIVO -->
-  <div class="bg-gradient-to-r from-sky-900 via-slate-900 to-emerald-950 text-white py-3 px-4 border-b border-sky-800/40">
-    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between text-xs gap-3">
-      <div class="flex items-center gap-2">
-        <span class="p-1.5 rounded-lg bg-sky-500/20 text-sky-300 font-bold">
-          💡 Painel Interativo com Gerenciamento
-        </span>
-        <span class="text-slate-200">
-          Clique em qualquer card para ver a discriminação completa. Use o botão <strong>🗑️ excluir</strong> para remover demandas que não deseja disputar!
-        </span>
-      </div>
-      <div class="flex items-center gap-2">
-        <button id="btnRestaurar" onclick="restaurarExcluidos()" class="hidden text-xs bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold px-3 py-1 rounded-lg transition-all shadow-sm flex items-center gap-1">
-          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
-          <span id="txtRestaurar">Restaurar Oportunidades</span>
+      <!-- Informação discreta de apoio e botão restaurar se houver itens excluídos -->
+      <div class="flex items-center gap-3">
+        <span class="hidden md:inline text-xs text-slate-400 font-medium">Rafael Plácido • Nova Hartz/RS</span>
+        <span id="headerVolumeTotal" class="hidden">R$ 0,00</span>
+        <button id="btnRestaurar" onclick="restaurarExcluidos()" class="hidden text-xs bg-amber-400 hover:bg-amber-300 text-slate-950 font-black px-2.5 py-1 rounded-lg transition-all shadow-xs flex items-center gap-1">
+          <span>🔄</span>
+          <span id="txtRestaurar">Restaurar Excluídas</span>
         </button>
       </div>
     </div>
-  </div>
+  </header>
 
   <!-- CONTEÚDO PRINCIPAL -->
   <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow space-y-8">
 
     <!-- CENTRAL DE ALERTAS DE PREGÕES & DISPUTAS AGENDADAS (AO VIVO) -->
-    <div id="centralAlertasPregoes" class="bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900 text-white rounded-3xl p-5 sm:p-6 shadow-xl border-2 border-amber-500/50 relative overflow-hidden">
-      <div class="absolute -right-10 -top-10 w-48 h-48 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
-
-      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-4 border-b border-slate-800">
-        <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-2xl bg-amber-500/20 text-amber-400 border border-amber-500/30 flex items-center justify-center text-xl font-black animate-pulse flex-shrink-0">
-            ⏰
-          </div>
-          <div>
-            <div class="flex items-center gap-2">
-              <span class="text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded bg-amber-400 text-slate-950">
-                Alerta de Calendário
-              </span>
-              <span class="text-xs text-amber-300 font-bold">2 Disputas Agendadas Próximas</span>
-            </div>
-            <h3 class="text-lg sm:text-xl font-black text-white mt-0.5">
-              Não Perca a Hora: Central de Pregões & Disputas de Lances
-            </h3>
-          </div>
+    <div id="centralAlertasPregoes" class="bg-slate-900 text-white rounded-2xl p-3 sm:p-4 shadow-sm border border-slate-800 space-y-2.5">
+      <div class="flex items-center justify-between pb-2 border-b border-slate-800">
+        <div class="flex items-center gap-2">
+          <span class="text-sm">⏰</span>
+          <span class="text-xs font-black uppercase text-amber-400">Próximas Disputas de Lances:</span>
         </div>
-
-        <div class="flex flex-wrap items-center gap-2 text-xs">
-          <button onclick="solicitarPermissaoNotificacoes()" id="btnAtivarNotificacao" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-bold transition-all flex items-center gap-1.5 shadow-sm">
-            <span>🔔</span>
-            <span id="txtBtnNotificacao">Ativar Alertas no Navegador</span>
-          </button>
-        </div>
+        <button onclick="solicitarPermissaoNotificacoes()" class="text-[11px] text-slate-400 hover:text-slate-200 transition-colors flex items-center gap-1">
+          <span>🔔</span>
+          <span id="txtBtnNotificacao">Ativar Alertas</span>
+        </button>
       </div>
 
-      <!-- CARDS DAS DISPUTAS AGENDADAS COM CONTAGEM REGRESSIVA -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4">
-        
-        <!-- CARD PREGÃO 1: CASA CIVIL RS (HD EXTERNO 8TB) -->
-        <div class="p-4 rounded-2xl bg-slate-800/90 border border-amber-500/40 space-y-3 relative flex flex-col justify-between">
-          <div class="space-y-1.5">
-            <div class="flex items-center justify-between gap-2">
-              <span class="text-[10px] font-black uppercase px-2 py-0.5 rounded bg-amber-400 text-slate-950">
-                Disputa Rápida (10 min)
-              </span>
-              <span class="text-xs font-black text-amber-300 flex items-center gap-1">
-                <span>🗓️</span> 13/11 às 10:01
-              </span>
-            </div>
-            <h4 class="font-black text-base text-white">2 HDs Externos 8TB USB 3.0 (Palácio Piratini)</h4>
-            <p class="text-xs text-slate-300">🏛️ Casa Civil RS • Edital 1099/2026 • Portal Compras Eletrônicas RS</p>
-            <div class="flex items-center gap-2 text-xs text-slate-400">
-              <span>Sua Proposta: <strong class="text-white">R$ 3.700,00</strong></span>
-              <span>•</span>
-              <span class="text-emerald-400 font-bold">Lucro: + R$ 1.080,00</span>
-            </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-2.5 text-xs">
+        <!-- ITEM 1: CASA CIVIL RS -->
+        <div class="p-2.5 rounded-xl bg-slate-800/90 border border-slate-700 flex flex-col justify-between gap-1.5">
+          <div class="flex items-center justify-between gap-2">
+            <strong class="font-bold text-white truncate text-xs">2 HDs 8TB USB 3.0 (Palácio Piratini)</strong>
+            <span class="text-[10px] text-amber-300 font-mono font-bold whitespace-nowrap">13/11 às 10:01</span>
           </div>
-
-          <div class="pt-2 border-t border-slate-700/80 space-y-2">
-            <div id="cronometroDisputa1" class="text-center py-1.5 px-3 rounded-xl bg-amber-500/10 text-amber-300 border border-amber-500/30 text-xs font-black tracking-wide">
-              Carregando contagem...
-            </div>
-            <div class="flex items-center gap-2">
-              <button onclick="adicionarAoGoogleAgenda('🚨 PREGÃO AO VIVO: 2 HDs 8TB Casa Civil RS', '20261113T125000Z', '20261113T132000Z', 'Compras Eletrônicas RS', 'Disputa de 10 minutos na Casa Civil RS. Fazer login em compras.rs.gov.br às 09:50!')" class="flex-1 py-1.5 px-2.5 rounded-lg bg-slate-700 hover:bg-slate-600 text-white font-bold text-[11px] transition-all flex items-center justify-center gap-1">
-                <span>📅 Google Agenda</span>
-              </button>
-              <button onclick="baixarArquivoIcs('pregao_hd_casacivil', '🚨 PREGÃO AO VIVO: 2 HDs 8TB Casa Civil RS', '20261113T130100', '20261113T131500', 'Palácio Piratini / Compras RS', 'Disputa de 10 min. Login em compras.rs.gov.br')" class="py-1.5 px-2.5 rounded-lg bg-slate-700 hover:bg-slate-600 text-white font-bold text-[11px] transition-all flex items-center justify-center gap-1" title="Adicionar no Alarme do Celular (.ics)">
-                <span>📱 Alarme Celular</span>
-              </button>
-              <a href="https://compras.rs.gov.br" target="_blank" class="py-1.5 px-3 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-black text-[11px] transition-all flex items-center gap-1">
-                <span>Abrir Portal RS</span>
-                <span class="text-[9px]">↗</span>
-              </a>
-            </div>
+          <div id="cronometroDisputa1" class="text-[11px] text-amber-300 font-bold bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/20 text-center">
+            Acompanhar disputa
+          </div>
+          <div class="flex items-center justify-between pt-1 text-[11px]">
+            <span class="text-slate-400">Proposta: <strong class="text-white">R$ 3.700</strong></span>
+            <a href="https://compras.rs.gov.br" target="_blank" class="px-2.5 py-0.5 rounded bg-emerald-600 hover:bg-emerald-500 text-white font-black text-[10px]">
+              Abrir Portal RS ↗
+            </a>
           </div>
         </div>
 
-        <!-- CARD PREGÃO 2: FUZILEIROS NAVAIS / MARINHA (LÂMPADAS & LUMINÁRIAS) -->
-        <div class="p-4 rounded-2xl bg-slate-800/90 border border-sky-500/40 space-y-3 relative flex flex-col justify-between">
-          <div class="space-y-1.5">
-            <div class="flex items-center justify-between gap-2">
-              <span class="text-[10px] font-black uppercase px-2 py-0.5 rounded bg-sky-500 text-white">
-                Disputa Compras.gov.br
-              </span>
-              <span class="text-xs font-black text-sky-300 flex items-center gap-1">
-                <span>🗓️</span> 16/11 às 08:00
-              </span>
-            </div>
-            <h4 class="font-black text-base text-white">75 Lâmpadas LED T8 18W + 25 Luminárias</h4>
-            <p class="text-xs text-slate-300">⚓ Marinha do Brasil (Fuzileiros Navais) • UASG 785200 • Dispensa 159/2026</p>
-            <div class="flex items-center gap-2 text-xs text-slate-400">
-              <span>Sua Proposta: <strong class="text-white">R$ 2.690,00</strong></span>
-              <span>•</span>
-              <span class="text-emerald-400 font-bold">Lucro: + R$ 740,00</span>
-            </div>
+        <!-- ITEM 2: FUZILEIROS NAVAIS -->
+        <div class="p-2.5 rounded-xl bg-slate-800/90 border border-slate-700 flex flex-col justify-between gap-1.5">
+          <div class="flex items-center justify-between gap-2">
+            <strong class="font-bold text-white truncate text-xs">75 Lâmpadas LED + 25 Luminárias</strong>
+            <span class="text-[10px] text-sky-300 font-mono font-bold whitespace-nowrap">16/11 às 08:00</span>
           </div>
-
-          <div class="pt-2 border-t border-slate-700/80 space-y-2">
-            <div id="cronometroDisputa2" class="text-center py-1.5 px-3 rounded-xl bg-sky-500/10 text-sky-300 border border-sky-500/30 text-xs font-black tracking-wide">
-              Carregando contagem...
-            </div>
-            <div class="flex items-center gap-2">
-              <button onclick="adicionarAoGoogleAgenda('🚨 PREGÃO AO VIVO: Marinha Fuzileiros Navais (UASG 785200)', '20261116T105000Z', '20261116T170000Z', 'Compras.gov.br', 'Disputa de lances da Marinha no Compras.gov.br. Lâmpadas e luminárias.')" class="flex-1 py-1.5 px-2.5 rounded-lg bg-slate-700 hover:bg-slate-600 text-white font-bold text-[11px] transition-all flex items-center justify-center gap-1">
-                <span>📅 Google Agenda</span>
-              </button>
-              <button onclick="baixarArquivoIcs('pregao_marinha_lampadas', '🚨 PREGÃO AO VIVO: Marinha Fuzileiros Navais', '20261116T080000', '20261116T140000', 'Compras.gov.br - UASG 785200', 'Disputa de lances da Marinha no Compras.gov.br.')" class="py-1.5 px-2.5 rounded-lg bg-slate-700 hover:bg-slate-600 text-white font-bold text-[11px] transition-all flex items-center justify-center gap-1" title="Adicionar no Alarme do Celular (.ics)">
-                <span>📱 Alarme Celular</span>
-              </button>
-              <a href="https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/login" target="_blank" class="py-1.5 px-3 rounded-lg bg-sky-600 hover:bg-sky-500 text-white font-black text-[11px] transition-all flex items-center gap-1">
-                <span>Abrir Compras.gov.br</span>
-                <span class="text-[9px]">↗</span>
-              </a>
-            </div>
+          <div id="cronometroDisputa2" class="text-[11px] text-sky-300 font-bold bg-sky-500/10 px-2 py-0.5 rounded border border-sky-500/20 text-center">
+            Carregando contagem...
+          </div>
+          <div class="flex items-center justify-between pt-1 text-[11px]">
+            <span class="text-slate-400">Proposta: <strong class="text-white">R$ 2.690</strong></span>
+            <a href="https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/login" target="_blank" class="px-2.5 py-0.5 rounded bg-sky-600 hover:bg-sky-500 text-white font-black text-[10px]">
+              Abrir Compras.gov ↗
+            </a>
           </div>
         </div>
-
       </div>
     </div>
 
