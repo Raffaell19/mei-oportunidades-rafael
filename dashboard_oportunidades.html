@@ -169,7 +169,7 @@
           </div>
           <div>
             <strong class="text-xs font-black block text-slate-900 group-hover:text-emerald-700">Contrata+ Brasil</strong>
-            <span class="text-[10px] text-slate-500 block leading-tight">Exclusivo MEI Federal</span>
+            <span class="subtitulo-pasta text-[10px] text-slate-500 block leading-tight">Exclusivo MEI Federal</span>
           </div>
         </button>
 
@@ -181,7 +181,7 @@
           </div>
           <div>
             <strong class="text-xs font-black block text-slate-900 group-hover:text-emerald-700">Serviços Prestados</strong>
-            <span class="text-[10px] text-slate-500 block leading-tight">Mão de Obra e Manutenção</span>
+            <span class="subtitulo-pasta text-[10px] text-slate-500 block leading-tight">Mão de Obra e Manutenção</span>
           </div>
         </button>
 
@@ -193,7 +193,7 @@
           </div>
           <div>
             <strong class="text-xs font-black block text-slate-900 group-hover:text-emerald-700">Produtos a Entregar</strong>
-            <span class="text-[10px] text-slate-500 block leading-tight">Revenda & Fabricação</span>
+            <span class="subtitulo-pasta text-[10px] text-slate-500 block leading-tight">Revenda & Fabricação</span>
           </div>
         </button>
 
@@ -205,7 +205,7 @@
           </div>
           <div>
             <strong class="text-xs font-black block text-slate-900 group-hover:text-emerald-700">Marketing & Design</strong>
-            <span class="text-[10px] text-slate-500 block leading-tight">Social Media & Gráfica RS</span>
+            <span class="subtitulo-pasta text-[10px] text-slate-500 block leading-tight">Social Media & Gráfica RS</span>
           </div>
         </button>
 
@@ -217,7 +217,7 @@
           </div>
           <div>
             <strong class="text-xs font-black block text-slate-900 group-hover:text-emerald-700">Minhas Propostas</strong>
-            <span class="text-[10px] text-slate-500 block leading-tight">Disputas e Lances Ativos</span>
+            <span class="subtitulo-pasta text-[10px] text-slate-500 block leading-tight">Disputas e Lances Ativos</span>
           </div>
         </button>
       </div>
@@ -2121,7 +2121,7 @@
         </div>
       `;
       grid.appendChild(banner);
-      renderizarCards(lista);
+      renderizarCards(lista, true);
     }
 
     function renderizarPainelProdutosFornecimento() {
@@ -2160,7 +2160,7 @@
         </div>
       `;
       grid.appendChild(banner);
-      renderizarCards(lista);
+      renderizarCards(lista, true);
     }
 
     function atualizarContadoresPastas() {
@@ -4488,12 +4488,14 @@ Link: ${item.link}`;
       });
     }
 
-        function renderizarCards(lista) {
+        function renderizarCards(lista, manterBanner = false) {
       const grid = document.getElementById('servicesGrid');
-      grid.innerHTML = '';
+      if (!manterBanner) {
+        grid.innerHTML = '';
+      }
 
       if (lista.length === 0) {
-        grid.innerHTML = `
+        const msgVazio = `
           <div class="col-span-full py-12 text-center bg-white rounded-3xl border border-dashed border-slate-300 p-8 space-y-3">
             <div class="w-12 h-12 rounded-full bg-slate-100 text-slate-400 mx-auto flex items-center justify-center text-xl font-bold">
               📂
@@ -4502,6 +4504,14 @@ Link: ${item.link}`;
             <p class="text-xs text-slate-500">Você pode mudar o filtro acima ou restaurar as demandas que foram excluídas.</p>
           </div>
         `;
+        if (manterBanner) {
+          const divVazio = document.createElement('div');
+          divVazio.className = "col-span-full";
+          divVazio.innerHTML = msgVazio;
+          grid.appendChild(divVazio);
+        } else {
+          grid.innerHTML = msgVazio;
+        }
         return;
       }
 
@@ -4749,46 +4759,58 @@ Link: ${item.link}`;
 
     // FILTRO DE CARDS
     function filterCards(categoria) {
-      categoriaAtual = categoria;
-      const buttons = document.querySelectorAll('.filter-btn');
-      buttons.forEach(btn => {
-        const f = btn.getAttribute('data-filter');
-        const ehCardGrande = ['contratamais', 'servicos_prestados', 'produtos_fornecimento', 'marketing', 'minhas_propostas'].includes(f);
+      try {
+        categoriaAtual = categoria;
+        const buttons = document.querySelectorAll('.filter-btn');
+        buttons.forEach(btn => {
+          const f = btn.getAttribute('data-filter');
+          const ehCardGrande = ['contratamais', 'servicos_prestados', 'produtos_fornecimento', 'marketing', 'minhas_propostas'].includes(f);
 
-        if (ehCardGrande) {
-          if (f === categoria) {
-            btn.className = "filter-btn p-3 rounded-2xl text-left border-2 transition-all flex flex-col justify-between gap-1 shadow-md cursor-pointer bg-slate-900 text-white border-slate-900 ring-2 ring-emerald-500/50";
+          if (ehCardGrande) {
             const strong = btn.querySelector('strong');
-            if (strong) strong.className = "text-xs font-black block text-white";
-            const spanSub = btn.querySelector('span.text-\[10px\]');
-            if (spanSub) spanSub.className = "text-[10px] text-slate-300 block leading-tight";
-          } else {
-            btn.className = "filter-btn p-3 rounded-2xl text-left border-2 transition-all flex flex-col justify-between gap-1 shadow-sm hover:shadow-md cursor-pointer bg-white text-slate-900 border-slate-200 hover:border-slate-300";
-            const strong = btn.querySelector('strong');
-            if (strong) strong.className = "text-xs font-black block text-slate-900";
-            const spanSub = btn.querySelector('span.text-\[10px\]');
-            if (spanSub) spanSub.className = "text-[10px] text-slate-500 block leading-tight";
-          }
-        } else {
-          if (f === categoria) {
-            btn.className = "filter-btn px-2.5 py-1 rounded-lg text-xs font-black transition-all bg-slate-900 text-white border border-slate-900 shadow-sm ring-1 ring-slate-900/30";
-          } else {
-            if (f === 'oceano_azul') {
-              btn.className = "filter-btn px-2.5 py-1 rounded-lg text-xs font-bold transition-all bg-cyan-50 hover:bg-cyan-100 text-cyan-900 border border-cyan-300 flex items-center gap-1 shadow-xs";
-            } else if (f === 'favoritas') {
-              btn.className = "filter-btn px-2.5 py-1 rounded-lg text-xs font-bold transition-all bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-300 flex items-center gap-1 shadow-xs";
-            } else if (f === 'compras_gov_rs') {
-              btn.className = "filter-btn px-2.5 py-1 rounded-lg text-xs font-bold transition-all bg-white hover:bg-slate-100 text-slate-700 border border-slate-300 flex items-center gap-1 shadow-xs";
-            } else if (f === 'radar_pncp') {
-              btn.className = "filter-btn px-2.5 py-1 rounded-lg text-xs font-bold transition-all bg-sky-50 hover:bg-sky-100 text-sky-900 border border-sky-300 flex items-center gap-1 shadow-xs";
+            const spanSub = btn.querySelector('.subtitulo-pasta') || btn.querySelector('span:last-child');
+
+            if (f === categoria) {
+              btn.className = "filter-btn active p-3 rounded-2xl text-left border-2 transition-all flex flex-col justify-between gap-1 shadow-md cursor-pointer bg-slate-900 text-white border-slate-900 ring-2 ring-emerald-500/50";
+              if (strong) strong.className = "text-xs font-black block text-white";
+              if (spanSub) spanSub.className = "subtitulo-pasta text-[10px] text-slate-300 block leading-tight";
             } else {
-              btn.className = "filter-btn px-2.5 py-1 rounded-lg text-xs font-bold transition-all bg-white hover:bg-slate-100 text-slate-700 border border-slate-300 shadow-xs";
+              btn.className = "filter-btn p-3 rounded-2xl text-left border-2 transition-all flex flex-col justify-between gap-1 shadow-sm hover:shadow-md cursor-pointer bg-white text-slate-900 border-slate-200 hover:border-slate-300";
+              if (strong) strong.className = "text-xs font-black block text-slate-900 group-hover:text-emerald-700";
+              if (spanSub) spanSub.className = "subtitulo-pasta text-[10px] text-slate-500 block leading-tight";
+            }
+          } else {
+            if (f === categoria) {
+              btn.className = "filter-btn active px-2.5 py-1 rounded-lg text-xs font-black transition-all bg-slate-900 text-white border border-slate-900 shadow-sm ring-1 ring-slate-900/30";
+            } else {
+              if (f === 'oceano_azul') {
+                btn.className = "filter-btn px-2.5 py-1 rounded-lg text-xs font-bold transition-all bg-cyan-50 hover:bg-cyan-100 text-cyan-900 border border-cyan-300 flex items-center gap-1 shadow-xs";
+              } else if (f === 'favoritas') {
+                btn.className = "filter-btn px-2.5 py-1 rounded-lg text-xs font-bold transition-all bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-300 flex items-center gap-1 shadow-xs";
+              } else if (f === 'compras_gov_rs') {
+                btn.className = "filter-btn px-2.5 py-1 rounded-lg text-xs font-bold transition-all bg-white hover:bg-slate-100 text-slate-700 border border-slate-300 flex items-center gap-1 shadow-xs";
+              } else if (f === 'radar_pncp') {
+                btn.className = "filter-btn px-2.5 py-1 rounded-lg text-xs font-bold transition-all bg-sky-50 hover:bg-sky-100 text-sky-900 border border-sky-300 flex items-center gap-1 shadow-xs";
+              } else {
+                btn.className = "filter-btn px-2.5 py-1 rounded-lg text-xs font-bold transition-all bg-white hover:bg-slate-100 text-slate-700 border border-slate-300 shadow-xs";
+              }
             }
           }
-        }
-      });
+        });
 
-      atualizarInterface();
+        atualizarInterface();
+
+        // Rola suavemente até o grid de oportunidades para dar direcionamento visual imediato
+        const grid = document.getElementById('servicesGrid');
+        if (grid) {
+          const rect = grid.getBoundingClientRect();
+          if (rect.top < 0 || rect.top > window.innerHeight) {
+            grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }
+      } catch (err) {
+        console.error('Erro ao filtrar cards:', err);
+      }
     }
 
     // INICIALIZAÇÃO
