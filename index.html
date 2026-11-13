@@ -231,78 +231,122 @@
     </div>
 
 
-    <!-- BARRA DE FILTROS LIMPA -->
-    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-2 border-b border-slate-200">
-      <div>
-        <h2 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2">
-          <span>Oportunidades em Monitoramento</span>
-          <span id="badgeQtdAtivas" class="text-xs px-2.5 py-0.5 rounded-full bg-slate-200 text-slate-700 font-bold">0 ativas</span>
-        </h2>
-        <p class="text-xs sm:text-sm text-slate-500 mt-0.5">Selecione para ver orçamentos detalhados ou exclua os que preferir descartar.</p>
+    <!-- BARRA DE PASTAS E NAVEGAÇÃO REESTRUTURADA (CLEAN & MODERNA) -->
+    <div class="space-y-3 pb-3 border-b border-slate-200">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
+        <div>
+          <div class="flex items-center gap-2">
+            <h2 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2">
+              <span>Central de Oportunidades & Pastas</span>
+              <span id="badgeQtdAtivas" class="text-xs px-2.5 py-0.5 rounded-full bg-slate-200 text-slate-700 font-bold">0 ativas</span>
+            </h2>
+          </div>
+          <p class="text-xs sm:text-sm text-slate-500 mt-0.5">Navegue pelas pastas organizadas por tipo de demanda: Contrata+ Brasil, Serviços e Fornecimento de Produtos.</p>
+        </div>
+        
+        <!-- Indicador de Atualização ao Vivo a Cada 1 Minuto -->
+        <div class="flex items-center gap-2 self-start md:self-auto">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-50 border border-emerald-300 text-emerald-900 text-xs font-bold shadow-xs">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span id="txtLiveUpdate">Atualizando a cada 1 min</span>
+            <span id="txtSegundosLive" class="text-[10px] text-emerald-700 font-mono">(60s)</span>
+          </span>
+          <button onclick="forcarAtualizacaoAoVivo()" title="Forçar atualização agora" class="p-1.5 px-2 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-300 text-slate-700 text-xs font-bold transition-all">
+            🔄
+          </button>
+        </div>
       </div>
-      <!-- Filtros Rápidos -->
-      <div class="flex flex-wrap items-center gap-2" id="filterContainer">
-        <!-- 1. Tela Inicial: Dashboard de Gestão -->
-        <button onclick="filterCards('minhas_propostas')" class="filter-btn active px-3.5 py-1.5 rounded-lg text-xs font-black transition-all bg-emerald-700 text-white border border-emerald-600 flex items-center gap-1.5 shadow-md ring-2 ring-emerald-500/20" data-filter="minhas_propostas">
-          <span>📊</span>
-          <span>Dashboard: Minhas Propostas Enviadas</span>
-          <span id="btnContadorPropostas" class="bg-emerald-950 text-emerald-200 text-[10px] px-1.5 py-0.2 rounded-full font-black">6</span>
+
+      <!-- PASTAS PRINCIPAIS (Abas Grandes e Limpas) -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2" id="filterContainer">
+        
+        <!-- PASTA 1: CONTRATA+ BRASIL -->
+        <button onclick="filterCards('contratamais')" class="filter-btn p-3 rounded-2xl text-left border-2 transition-all flex flex-col justify-between gap-1 shadow-sm hover:shadow-md cursor-pointer group" data-filter="contratamais">
+          <div class="flex items-center justify-between">
+            <span class="text-lg">🏛️</span>
+            <span id="badgeContrataMais" class="px-2 py-0.5 rounded-full text-[11px] font-black bg-emerald-600 text-white">11</span>
+          </div>
+          <div>
+            <strong class="text-xs font-black block text-slate-900 group-hover:text-emerald-700">Contrata+ Brasil</strong>
+            <span class="text-[10px] text-slate-500 block leading-tight">Exclusivo MEI Federal</span>
+          </div>
         </button>
 
-        <span class="text-slate-300 font-light mx-1 hidden sm:inline">|</span>
-        <span class="text-[10px] uppercase font-bold text-slate-400 hidden sm:inline">Novas Oportunidades:</span>
-
-        <!-- Filtro Especial: Revenda & Fornecedor Permitido -->
-        <button onclick="filterCards('compra_fornecedor')" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-black transition-all bg-emerald-950 hover:bg-emerald-900 text-emerald-200 border-2 border-emerald-400 flex items-center gap-1.5 shadow-md ring-2 ring-emerald-500/20" data-filter="compra_fornecedor" title="Somente oportunidades onde o MEI pode comprar de distribuidores ou fabricantes sem veto de subcontratação">
-          <span>🛒</span>
-          <span>Revenda / Fornecimento Permitido</span>
-          <span class="bg-emerald-400 text-slate-950 text-[10px] px-1.5 py-0.2 rounded-full font-black">100% MEI</span>
+        <!-- PASTA 2: SERVIÇOS PRESTADOS -->
+        <button onclick="filterCards('servicos_prestados')" class="filter-btn p-3 rounded-2xl text-left border-2 transition-all flex flex-col justify-between gap-1 shadow-sm hover:shadow-md cursor-pointer group" data-filter="servicos_prestados">
+          <div class="flex items-center justify-between">
+            <span class="text-lg">🛠️</span>
+            <span id="badgeServicosPrestados" class="px-2 py-0.5 rounded-full text-[11px] font-black bg-slate-200 text-slate-800">8</span>
+          </div>
+          <div>
+            <strong class="text-xs font-black block text-slate-900 group-hover:text-emerald-700">Serviços Prestados</strong>
+            <span class="text-[10px] text-slate-500 block leading-tight">Mão de Obra e Manutenção</span>
+          </div>
         </button>
 
-        <!-- 2. Painel Contrata+ Brasil -->
-        <button onclick="filterCards('contratamais')" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-black transition-all bg-emerald-950 hover:bg-emerald-900 text-emerald-200 border-2 border-emerald-400 flex items-center gap-1.5 shadow-md ring-2 ring-emerald-500/20" data-filter="contratamais">
-          <span>🏛️</span>
-          <span>Contrata+ Brasil</span>
-          <span id="badgeContrataMais" class="bg-emerald-400 text-slate-950 text-[10px] px-1.5 py-0.2 rounded-full font-black">11</span>
+        <!-- PASTA 3: PRODUTOS / FORNECIMENTO -->
+        <button onclick="filterCards('produtos_fornecimento')" class="filter-btn p-3 rounded-2xl text-left border-2 transition-all flex flex-col justify-between gap-1 shadow-sm hover:shadow-md cursor-pointer group" data-filter="produtos_fornecimento">
+          <div class="flex items-center justify-between">
+            <span class="text-lg">📦</span>
+            <span id="badgeProdutosFornecimento" class="px-2 py-0.5 rounded-full text-[11px] font-black bg-slate-200 text-slate-800">11</span>
+          </div>
+          <div>
+            <strong class="text-xs font-black block text-slate-900 group-hover:text-emerald-700">Produtos a Entregar</strong>
+            <span class="text-[10px] text-slate-500 block leading-tight">Revenda & Fabricação</span>
+          </div>
         </button>
 
-        <!-- 3. Painel Compras Gov & Compras RS -->
-        <button onclick="filterCards('compras_gov_rs')" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-white hover:bg-slate-200 text-slate-700 border border-slate-300 flex items-center gap-1.5" data-filter="compras_gov_rs">
-          <span>🌐</span>
-          <span>Compras Gov & Compras RS (CFE)</span>
+        <!-- PASTA 4: MARKETING & DESIGN DIGITAL -->
+        <button onclick="filterCards('marketing')" class="filter-btn p-3 rounded-2xl text-left border-2 transition-all flex flex-col justify-between gap-1 shadow-sm hover:shadow-md cursor-pointer group" data-filter="marketing">
+          <div class="flex items-center justify-between">
+            <span class="text-lg">📱</span>
+            <span id="badgeMarketingContador" class="px-2 py-0.5 rounded-full text-[11px] font-black bg-emerald-600 text-white">4</span>
+          </div>
+          <div>
+            <strong class="text-xs font-black block text-slate-900 group-hover:text-emerald-700">Marketing & Design</strong>
+            <span class="text-[10px] text-slate-500 block leading-tight">Social Media & Gráfica RS</span>
+          </div>
         </button>
 
-        <!-- NOVO: Filtro Especial Marketing Digital & Audiovisual -->
-        <button onclick="filterCards('marketing')" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-black transition-all bg-emerald-950 hover:bg-emerald-900 text-emerald-200 border-2 border-emerald-400 flex items-center gap-1.5 shadow-md ring-2 ring-emerald-500/20" data-filter="marketing" title="Oportunidades em Marketing Digital, Redes Sociais, Design Gráfico e Audiovisual">
-          <span>📱</span>
-          <span>Marketing & Design</span>
-          <span id="badgeMarketingContador" class="bg-emerald-400 text-slate-950 text-[10px] px-1.5 py-0.2 rounded-full font-black">3</span>
+        <!-- PASTA 5: MINHAS PROPOSTAS ENVIADAS -->
+        <button onclick="filterCards('minhas_propostas')" class="filter-btn active p-3 rounded-2xl text-left border-2 transition-all flex flex-col justify-between gap-1 shadow-sm hover:shadow-md cursor-pointer group" data-filter="minhas_propostas">
+          <div class="flex items-center justify-between">
+            <span class="text-lg">📊</span>
+            <span id="btnContadorPropostas" class="px-2 py-0.5 rounded-full text-[11px] font-black bg-emerald-700 text-white">6</span>
+          </div>
+          <div>
+            <strong class="text-xs font-black block text-slate-900 group-hover:text-emerald-700">Minhas Propostas</strong>
+            <span class="text-[10px] text-slate-500 block leading-tight">Disputas e Lances Ativos</span>
+          </div>
         </button>
+      </div>
 
-        <!-- 4. Oceano Azul -->
-        <button onclick="filterCards('oceano_azul')" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-black transition-all bg-cyan-950 hover:bg-cyan-900 text-cyan-200 border-2 border-cyan-400 flex items-center gap-1.5 shadow-md ring-2 ring-cyan-500/20" data-filter="oceano_azul">
-          <span>🌊</span>
-          <span>Oceano Azul: Concorrência Zero</span>
-          <span id="badgeOceanoAzul" class="bg-cyan-400 text-slate-950 text-[10px] px-1.5 py-0.2 rounded-full font-black">7</span>
-        </button>
+      <!-- SUB-FILTROS E ATALHOS RÁPIDOS (Barrinha Secundária Discreta) -->
+      <div class="flex flex-wrap items-center justify-between gap-2 pt-1 text-xs">
+        <div class="flex flex-wrap items-center gap-1.5">
+          <span class="text-[11px] uppercase font-bold text-slate-400 mr-1">Radares Auxiliares:</span>
+          
+          <button onclick="filterCards('compras_gov_rs')" class="filter-btn px-2.5 py-1 rounded-lg text-xs font-bold transition-all bg-white hover:bg-slate-100 text-slate-700 border border-slate-300 flex items-center gap-1 shadow-xs" data-filter="compras_gov_rs">
+            <span>🌐</span> Compras Gov & Compras RS
+          </button>
 
-        <!-- 5. Pasta de Favoritas -->
-        <button onclick="filterCards('favoritas')" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-300 flex items-center gap-1.5 shadow-sm" data-filter="favoritas">
-          <span class="text-amber-500">★</span>
-          <span>Pasta de Favoritas (<span id="badgeContadorFavoritas">0</span>)</span>
-        </button>
+          <button onclick="filterCards('oceano_azul')" class="filter-btn px-2.5 py-1 rounded-lg text-xs font-bold transition-all bg-cyan-50 hover:bg-cyan-100 text-cyan-900 border border-cyan-300 flex items-center gap-1 shadow-xs" data-filter="oceano_azul">
+            <span>🌊</span> Oceano Azul (<span id="badgeOceanoAzul">7</span>)
+          </button>
 
-        <!-- 6. Radar Geral PNCP -->
-        <button onclick="filterCards('radar_pncp')" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-sky-50 hover:bg-sky-100 text-sky-800 border border-sky-300 flex items-center gap-1.5" data-filter="radar_pncp">
-          <span class="w-2 h-2 rounded-full bg-sky-500 animate-pulse"></span>
-          <span>📡 Radar Geral PNCP</span>
-        </button>
+          <button onclick="filterCards('radar_pncp')" class="filter-btn px-2.5 py-1 rounded-lg text-xs font-bold transition-all bg-sky-50 hover:bg-sky-100 text-sky-900 border border-sky-300 flex items-center gap-1 shadow-xs" data-filter="radar_pncp">
+            <span class="w-1.5 h-1.5 rounded-full bg-sky-500 animate-pulse"></span> Radar Geral PNCP
+          </button>
 
-        <!-- 7. Catálogo -->
-        <a href="produtos.html" class="px-3.5 py-1.5 rounded-lg text-xs font-black transition-all bg-emerald-600 hover:bg-emerald-500 text-white border border-emerald-500 flex items-center gap-1.5 shadow-sm">
+          <button onclick="filterCards('favoritas')" class="filter-btn px-2.5 py-1 rounded-lg text-xs font-bold transition-all bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-300 flex items-center gap-1 shadow-xs" data-filter="favoritas">
+            <span class="text-amber-500">★</span> Favoritas (<span id="badgeContadorFavoritas">0</span>)
+          </button>
+        </div>
+
+        <a href="produtos.html" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs transition-all shadow-xs">
           <span>📦</span>
-          <span>Catálogo Produtos Sem Estoque</span>
-          <span class="bg-emerald-800 text-[10px] px-1.5 py-0.5 rounded font-black text-emerald-200">NOVO</span>
+          <span>Catálogo Sem Estoque</span>
+          <span class="text-[9px] bg-emerald-500 text-slate-950 font-black px-1.5 py-0.2 rounded-full">Abrir</span>
         </a>
       </div>
     </div>
@@ -2120,6 +2164,117 @@
     }
 
     // ATUALIZAR INTERFACE E CONTADORES
+
+    // ==============================================================
+    // FUNÇÕES DE CLASSIFICAÇÃO: SERVIÇOS PRESTADOS vs PRODUTOS
+    // ==============================================================
+    function ehDemandaServico(item) {
+      if (!item) return false;
+      const texto = `${item.titulo || ''} ${item.objeto || ''} ${item.cnae || ''} ${item.destaque || ''}`.toLowerCase();
+      // Palavras fortes de serviço / mão de obra
+      const termosServico = [
+        'prestação de serviço', 'prestacao de servico', 'manutenção', 'manutencao', 
+        'reforma', 'reparos', 'instalação', 'instalacao', 'revisão', 'revisao',
+        'social media', 'gestão de redes', 'gestao de redes', 'design gráfico', 
+        'cobertura fotográfica', 'adequação elétrica', 'adequacao eletrica',
+        'pintura', 'conserto', 'assentamento', 'alvenaria'
+      ];
+      // Se for fornecimento puro de produto
+      if (item.id === 'feijao_conab' || item.id === 'adesivos_serigrafia_cmp' || item.id === 'grades_metalon' || item.id === 'porta_seguranca_cpor' || item.id === 'coffeebreak_trt') {
+        return false;
+      }
+      return termosServico.some(term => texto.includes(term));
+    }
+
+    function renderizarPainelServicosPrestados() {
+      const grid = document.getElementById('servicesGrid');
+      grid.innerHTML = '';
+      const excluidos = getExcluidos();
+      const idsEnviados = getIdsPropostasEnviadas();
+
+      const lista = servicosDB.filter(s => {
+        const strId = String(s.id);
+        return !excluidos.includes(strId) && !idsEnviados.includes(strId) && ehDemandaServico(s);
+      });
+
+      document.getElementById('badgeQtdAtivas').innerText = `${lista.length} serviços prestados em monitoramento`;
+      
+      const banner = document.createElement('div');
+      banner.className = "col-span-full bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white rounded-3xl p-6 shadow-xl border-2 border-indigo-400/40 space-y-3";
+      banner.innerHTML = `
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="px-2.5 py-0.5 rounded-full text-xs font-black bg-indigo-500 text-white">Pasta: Serviços Prestados</span>
+              <span class="text-xs text-indigo-300 font-bold">Mão de Obra, Manutenção & Consultoria</span>
+            </div>
+            <h3 class="text-xl sm:text-2xl font-black text-white mt-1">Oportunidades de Prestação de Serviços (MEI)</h3>
+            <p class="text-xs text-slate-300 mt-0.5 max-w-2xl">
+              Demandas que exigem execução operacional direta ou subcontratação permitida: reformas, persianas, instalações, marketing digital e redes sociais.
+            </p>
+          </div>
+          <div class="bg-slate-900/90 p-3 rounded-2xl border border-indigo-500/30 text-right">
+            <span class="text-[10px] text-slate-400 uppercase font-bold block">Total de Serviços Ativos</span>
+            <strong class="text-lg font-black text-indigo-300">${lista.length} Oportunidades</strong>
+          </div>
+        </div>
+      `;
+      grid.appendChild(banner);
+      renderizarCards(lista);
+    }
+
+    function renderizarPainelProdutosFornecimento() {
+      const grid = document.getElementById('servicesGrid');
+      grid.innerHTML = '';
+      const excluidos = getExcluidos();
+      const idsEnviados = getIdsPropostasEnviadas();
+
+      const lista = servicosDB.filter(s => {
+        const strId = String(s.id);
+        return !excluidos.includes(strId) && !idsEnviados.includes(strId) && !ehDemandaServico(s);
+      });
+
+      document.getElementById('badgeQtdAtivas').innerText = `${lista.length} produtos para fornecimento`;
+
+      const banner = document.createElement('div');
+      banner.className = "col-span-full bg-gradient-to-r from-slate-900 via-emerald-950 to-slate-900 text-white rounded-3xl p-6 shadow-xl border-2 border-emerald-400/40 space-y-3";
+      banner.innerHTML = `
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="px-2.5 py-0.5 rounded-full text-xs font-black bg-emerald-500 text-slate-950">Pasta: Fornecimento de Produtos</span>
+              <span class="text-xs text-emerald-300 font-bold">Revenda Direta / Compra Sem Estoque</span>
+            </div>
+            <h3 class="text-xl sm:text-2xl font-black text-white mt-1">Oportunidades de Entrega de Materiais e Produtos</h3>
+            <p class="text-xs text-slate-300 mt-0.5 max-w-2xl">
+              Demandas com entrega física de mercadorias prontas (displays, adesivos em vinil, brindes, moedas metálicas, peças de aço, insumos). Você compra do fabricante ou gráfica e entrega com margem limpa!
+            </p>
+          </div>
+          <div class="flex items-center gap-2">
+            <a href="produtos.html" class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-black text-xs transition-all shadow-md flex items-center gap-1.5">
+              <span>📦</span>
+              <span>Abrir Catálogo Completo</span>
+            </a>
+          </div>
+        </div>
+      `;
+      grid.appendChild(banner);
+      renderizarCards(lista);
+    }
+
+    function atualizarContadoresPastas() {
+      const excluidos = typeof getExcluidos === 'function' ? getExcluidos() : [];
+      const idsEnviados = typeof getIdsPropostasEnviadas === 'function' ? getIdsPropostasEnviadas() : [];
+
+      const listaServicos = servicosDB.filter(s => !excluidos.includes(String(s.id)) && !idsEnviados.includes(String(s.id)) && ehDemandaServico(s));
+      const elServicos = document.getElementById('badgeServicosPrestados');
+      if (elServicos) elServicos.innerText = listaServicos.length;
+
+      const listaProdutos = servicosDB.filter(s => !excluidos.includes(String(s.id)) && !idsEnviados.includes(String(s.id)) && !ehDemandaServico(s));
+      const elProdutos = document.getElementById('badgeProdutosFornecimento');
+      if (elProdutos) elProdutos.innerText = listaProdutos.length;
+    }
+
     function atualizarInterface() {
       atualizarContadorContrataMais();
       atualizarContadorMarketing();
@@ -2155,10 +2310,18 @@
       if (btnContador) btnContador.innerText = propostasAtivas.length;
 
       // Renderiza conforme filtro selecionado
+      atualizarContadoresPastas();
+
       if (categoriaAtual === 'minhas_propostas') {
         renderizarMinhasPropostas();
       } else if (categoriaAtual === 'contratamais') {
         renderizarPainelContrataMais();
+      } else if (categoriaAtual === 'servicos_prestados') {
+        renderizarPainelServicosPrestados();
+      } else if (categoriaAtual === 'produtos_fornecimento') {
+        renderizarPainelProdutosFornecimento();
+      } else if (categoriaAtual === 'marketing') {
+        renderizarPainelMarketing();
       } else if (categoriaAtual === 'compra_fornecedor') {
         renderizarPainelCompraFornecedor();
       } else if (categoriaAtual === 'compras_gov_rs') {
@@ -2169,8 +2332,6 @@
         renderizarRadarPNCP();
       } else if (categoriaAtual === 'oceano_azul') {
         renderizarOceanoAzul();
-      } else if (categoriaAtual === 'marketing') {
-        renderizarPainelMarketing();
       } else if (categoriaAtual === 'todos') {
         renderizarCards(obterServicosSemProposta());
       } else {
@@ -4691,29 +4852,37 @@ Link: ${item.link}`;
       const buttons = document.querySelectorAll('.filter-btn');
       buttons.forEach(btn => {
         const f = btn.getAttribute('data-filter');
-        if (f === categoria) {
-          btn.className = "filter-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-slate-900 text-white shadow-sm flex items-center gap-1.5 ring-2 ring-slate-900/30";
-        } else {
-          if (f === 'oceano_azul') {
-            btn.className = "filter-btn px-3 py-1.5 rounded-lg text-xs font-black transition-all bg-cyan-950 hover:bg-cyan-900 text-cyan-200 border-2 border-cyan-400 flex items-center gap-1.5 shadow-md ring-2 ring-cyan-500/20";
-          } else if (f === 'favoritas') {
-            btn.className = "filter-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-300 flex items-center gap-1.5 shadow-sm";
-          } else if (f === 'minhas_propostas') {
-            btn.className = "filter-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-300 flex items-center gap-1.5 shadow-sm";
-          } else if (f === 'compra_fornecedor') {
-            btn.className = "filter-btn px-3 py-1.5 rounded-lg text-xs font-black transition-all bg-emerald-950 hover:bg-emerald-900 text-emerald-200 border-2 border-emerald-400 flex items-center gap-1.5 shadow-md ring-2 ring-emerald-500/20";
-          } else if (f === 'marketing') {
-            btn.className = "filter-btn px-3 py-1.5 rounded-lg text-xs font-black transition-all bg-emerald-950 hover:bg-emerald-900 text-emerald-200 border-2 border-emerald-400 flex items-center gap-1.5 shadow-md ring-2 ring-emerald-500/20";
-          } else if (f === 'contratamais') {
-            btn.className = "filter-btn px-3 py-1.5 rounded-lg text-xs font-black transition-all bg-emerald-950 hover:bg-emerald-900 text-emerald-200 border-2 border-emerald-400 flex items-center gap-1.5 shadow-md ring-2 ring-emerald-500/20";
-          } else if (f === 'compras_gov_rs') {
-            btn.className = "filter-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-white hover:bg-slate-200 text-slate-700 border border-slate-300 flex items-center gap-1.5";
-          } else if (f === 'radar_pncp') {
-            btn.className = "filter-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-sky-50 hover:bg-sky-100 text-sky-800 border border-sky-300 flex items-center gap-1.5";
-          } else if (f === 'alimentos') {
-            btn.className = "filter-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-300";
+        const ehCardGrande = ['contratamais', 'servicos_prestados', 'produtos_fornecimento', 'marketing', 'minhas_propostas'].includes(f);
+
+        if (ehCardGrande) {
+          if (f === categoria) {
+            btn.className = "filter-btn p-3 rounded-2xl text-left border-2 transition-all flex flex-col justify-between gap-1 shadow-md cursor-pointer bg-slate-900 text-white border-slate-900 ring-2 ring-emerald-500/50";
+            const strong = btn.querySelector('strong');
+            if (strong) strong.className = "text-xs font-black block text-white";
+            const spanSub = btn.querySelector('span.text-\[10px\]');
+            if (spanSub) spanSub.className = "text-[10px] text-slate-300 block leading-tight";
           } else {
-            btn.className = "filter-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-white hover:bg-slate-200 text-slate-700 border border-slate-300";
+            btn.className = "filter-btn p-3 rounded-2xl text-left border-2 transition-all flex flex-col justify-between gap-1 shadow-sm hover:shadow-md cursor-pointer bg-white text-slate-900 border-slate-200 hover:border-slate-300";
+            const strong = btn.querySelector('strong');
+            if (strong) strong.className = "text-xs font-black block text-slate-900";
+            const spanSub = btn.querySelector('span.text-\[10px\]');
+            if (spanSub) spanSub.className = "text-[10px] text-slate-500 block leading-tight";
+          }
+        } else {
+          if (f === categoria) {
+            btn.className = "filter-btn px-2.5 py-1 rounded-lg text-xs font-black transition-all bg-slate-900 text-white border border-slate-900 shadow-sm ring-1 ring-slate-900/30";
+          } else {
+            if (f === 'oceano_azul') {
+              btn.className = "filter-btn px-2.5 py-1 rounded-lg text-xs font-bold transition-all bg-cyan-50 hover:bg-cyan-100 text-cyan-900 border border-cyan-300 flex items-center gap-1 shadow-xs";
+            } else if (f === 'favoritas') {
+              btn.className = "filter-btn px-2.5 py-1 rounded-lg text-xs font-bold transition-all bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-300 flex items-center gap-1 shadow-xs";
+            } else if (f === 'compras_gov_rs') {
+              btn.className = "filter-btn px-2.5 py-1 rounded-lg text-xs font-bold transition-all bg-white hover:bg-slate-100 text-slate-700 border border-slate-300 flex items-center gap-1 shadow-xs";
+            } else if (f === 'radar_pncp') {
+              btn.className = "filter-btn px-2.5 py-1 rounded-lg text-xs font-bold transition-all bg-sky-50 hover:bg-sky-100 text-sky-900 border border-sky-300 flex items-center gap-1 shadow-xs";
+            } else {
+              btn.className = "filter-btn px-2.5 py-1 rounded-lg text-xs font-bold transition-all bg-white hover:bg-slate-100 text-slate-700 border border-slate-300 shadow-xs";
+            }
           }
         }
       });
@@ -4722,12 +4891,62 @@ Link: ${item.link}`;
     }
 
     // INICIALIZAÇÃO
+
+    // ==========================================
+    // SISTEMA DE ATUALIZAÇÃO AO VIVO A CADA 1 MINUTO
+    // ==========================================
+    let segundosRestantesTimer = 60;
+    let timerAoVivoId = null;
+
+    function iniciarTimerAoVivo() {
+      if (timerAoVivoId) clearInterval(timerAoVivoId);
+      segundosRestantesTimer = 60;
+
+      timerAoVivoId = setInterval(() => {
+        segundosRestantesTimer--;
+        const elSeg = document.getElementById('txtSegundosLive');
+        if (elSeg) elSeg.innerText = `(${segundosRestantesTimer}s)`;
+
+        if (segundosRestantesTimer <= 0) {
+          executarAtualizacaoSilenciosa();
+          segundosRestantesTimer = 60;
+        }
+      }, 1000);
+    }
+
+    function executarAtualizacaoSilenciosa() {
+      // Recalcula contadores e cronômetros sem piscar a tela
+      atualizarCronometrosDisputas();
+      atualizarContadorFavoritas();
+      atualizarContadorOceanoAzul();
+      atualizarContadorContrataMais();
+      atualizarContadorMarketing();
+      atualizarContadoresPastas();
+      atualizarInterface();
+
+      const elLive = document.getElementById('txtLiveUpdate');
+      if (elLive) {
+        elLive.innerText = 'Atualizado agora mesmo!';
+        setTimeout(() => {
+          if (elLive) elLive.innerText = 'Atualizando a cada 1 min';
+        }, 3000);
+      }
+    }
+
+    function forcarAtualizacaoAoVivo() {
+      executarAtualizacaoSilenciosa();
+      segundosRestantesTimer = 60;
+    }
+
     window.onload = function() {
       atualizarContadorFavoritas();
       atualizarContadorOceanoAzul();
       atualizarContadorContrataMais();
       atualizarContadorMarketing();
+      atualizarContadoresPastas();
       atualizarInterface();
+      iniciarTimerAoVivo();
+      setInterval(atualizarCronometrosDisputas, 1000);
     };
   
     // ==========================================
