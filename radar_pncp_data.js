@@ -1,5 +1,1752 @@
 window.RADAR_PNCP_DATA = [
   {
+    "id": "88372883000101_1_000311_2026",
+    "numeroControle": "88372883000101-1-000311/2026",
+    "orgao": "PREFEITURA MUNICIPAL DE PAROBE (Dispensa nº PDE 10)",
+    "cidade": "Parobe",
+    "objeto": "Contratação de empresa especializada na organização, produção e execução do Natal Iluminado de Parobé 2026, a ser realizado entre os dias 21 de novembro e 06 de dezembro de 2026, conforme condições, quantidades e exigências estabelecidas neste Aviso e seus anexos.",
+    "valorEstimado": 55000.0,
+    "valorFormatado": "R$ 55.000,00",
+    "dataEncerramento": "16/11/2026 às 07:59",
+    "dataEncerramentoIso": "2026-11-16T07:59:00",
+    "link": "https://pncp.gov.br/app/editais/88372883000101/2026/311",
+    "tipoLink": "PNCP",
+    "plataforma": "IPM Sistemas",
+    "ehComprasGov": false,
+    "compativelMEI": true,
+    "permiteCompraFornecedor": true,
+    "seloMEI": "⭐ VALE DO PARANHANA • Prioridade Regional",
+    "ehRegiaoProxima": true,
+    "ehValeParanhana": true,
+    "tags": [
+      "Vale do Paranhana",
+      "Parobe",
+      "Dispensa",
+      "Comunicação & Eventos"
+    ],
+    "scoreOceanoAzul": 96,
+    "nivelConcorrencia": "Baixíssima",
+    "motivosConcorrencia": [
+      "Demanda Regional Vale do Paranhana",
+      "Recebendo Proposta",
+      "Região Imediata"
+    ],
+    "ehDesertaOuProrrogada": false,
+    "arquivos": [
+      [
+        "Relatorio - Edital - WCO621102-4829-ENWHJYDYLCFRL-7.pdf",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/88372883000101/compras/2026/311/arquivos/1"
+      ]
+    ]
+  },
+  {
+    "id": "01612918000154_1_000123_2026",
+    "numeroControle": "01612918000154-1-000123/2026",
+    "orgao": "PREFEITURA MUNICIPAL DE ARARICA (Pregão - Eletrônico nº 153)",
+    "cidade": "Ararica",
+    "objeto": "VEÍCULO",
+    "valorEstimado": 95686.67,
+    "valorFormatado": "R$ 95.686,67",
+    "dataEncerramento": "16/11/2026 às 13:00",
+    "dataEncerramentoIso": "2026-11-16T13:00:00",
+    "link": "https://pncp.gov.br/app/editais/01612918000154/2026/123",
+    "tipoLink": "PNCP",
+    "plataforma": "Tecnosweb - Tecnologia de Gestão",
+    "ehComprasGov": false,
+    "compativelMEI": true,
+    "permiteCompraFornecedor": true,
+    "seloMEI": "⭐ VALE DO PARANHANA • Prioridade Regional",
+    "ehRegiaoProxima": true,
+    "ehValeParanhana": true,
+    "tags": [
+      "Vale do Paranhana",
+      "Ararica",
+      "Pregão - Eletrônico",
+      "Veículos & Máquinas"
+    ],
+    "scoreOceanoAzul": 96,
+    "nivelConcorrencia": "Baixíssima",
+    "motivosConcorrencia": [
+      "Demanda Regional Vale do Paranhana",
+      "Recebendo Proposta",
+      "Região Imediata"
+    ],
+    "ehDesertaOuProrrogada": false,
+    "arquivos": [
+      [
+        "edital e anexos",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/01612918000154/compras/2026/123/arquivos/1"
+      ],
+      [
+        "ETP",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/01612918000154/compras/2026/123/arquivos/2"
+      ],
+      [
+        "aviso de edital",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/01612918000154/compras/2026/123/arquivos/3"
+      ]
+    ]
+  },
+  {
+    "id": "88372883000101_1_000306_2026",
+    "numeroControle": "88372883000101-1-000306/2026",
+    "orgao": "PREFEITURA MUNICIPAL DE PAROBE (Pregão - Eletrônico nº PCE 78)",
+    "cidade": "Parobe",
+    "objeto": "1.1.\tO objeto da presente licitação é Registro de Preços para contratação de empresa especializada para a prestação de serviços médico-veterinários destinados ao atendimento de animais de pequeno porte, especialmente cães e gatos, em situação de rua ou vulnerabilidade, contemplando consultas clínicas, avaliação e acompanhamento veterinário, procedimentos ambulatoriais, exames e demais serviços necessários à prevenção, diagnóstico e tratamento de enfermidades, conforme demanda da Administração Pública e condições estabelecidas no Termo de Referência, o qual consta em anexo do presente edital.\n1.2.\tA presente licitação constitui novo procedimento para contratação do objeto anteriormente previsto no Pregão Eletrônico nº 75/2026, anulado em razão de inconsistências identificadas no Termo de Referência, devidamente corrigidas para a realização deste certame.",
+    "valorEstimado": 960888.4,
+    "valorFormatado": "R$ 960.888,40",
+    "dataEncerramento": "16/11/2026 às 13:59",
+    "dataEncerramentoIso": "2026-11-16T13:59:00",
+    "link": "https://pncp.gov.br/app/editais/88372883000101/2026/306",
+    "tipoLink": "PNCP",
+    "plataforma": "IPM Sistemas",
+    "ehComprasGov": false,
+    "compativelMEI": true,
+    "permiteCompraFornecedor": true,
+    "seloMEI": "⭐ VALE DO PARANHANA • Prioridade Regional",
+    "ehRegiaoProxima": true,
+    "ehValeParanhana": true,
+    "tags": [
+      "Vale do Paranhana",
+      "Parobe",
+      "Pregão - Eletrônico",
+      "Saúde & Veterinária"
+    ],
+    "scoreOceanoAzul": 96,
+    "nivelConcorrencia": "Baixíssima",
+    "motivosConcorrencia": [
+      "Demanda Regional Vale do Paranhana",
+      "Recebendo Proposta",
+      "Região Imediata"
+    ],
+    "ehDesertaOuProrrogada": false,
+    "arquivos": [
+      [
+        "Relatorio - Edital - WCO621102-4924-MGCVJTFJERIOB-8.pdf",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/88372883000101/compras/2026/306/arquivos/1"
+      ]
+    ]
+  },
+  {
+    "id": "88372883000101_1_000309_2026",
+    "numeroControle": "88372883000101-1-000309/2026",
+    "orgao": "PREFEITURA MUNICIPAL DE PAROBE (Pregão - Eletrônico nº PCE 80)",
+    "cidade": "Parobe",
+    "objeto": "Registro de Preços para futura e eventual aquisição parcelada de uniformes esportivos personalizados e materiais esportivos, destinados ao Projeto Parobé Futsal, Projeto Parobé Esportes e Núcleos do Projeto Parobé Futsal nos Bairros, desenvolvidos pelo Município de Parobé, por meio da Secretaria Municipal de Cultura, Turismo, Esporte e Lazer, conforme as especificações, os quantitativos e as condições estabelecidas no Termo de Referência, anexo ao presente edital.",
+    "valorEstimado": 138837.9,
+    "valorFormatado": "R$ 138.837,90",
+    "dataEncerramento": "16/11/2026 às 13:59",
+    "dataEncerramentoIso": "2026-11-16T13:59:00",
+    "link": "https://pncp.gov.br/app/editais/88372883000101/2026/309",
+    "tipoLink": "PNCP",
+    "plataforma": "IPM Sistemas",
+    "ehComprasGov": false,
+    "compativelMEI": true,
+    "permiteCompraFornecedor": true,
+    "seloMEI": "⭐ VALE DO PARANHANA • Prioridade Regional",
+    "ehRegiaoProxima": true,
+    "ehValeParanhana": true,
+    "tags": [
+      "Vale do Paranhana",
+      "Parobe",
+      "Pregão - Eletrônico",
+      "Serviços & Materiais Diversos"
+    ],
+    "scoreOceanoAzul": 96,
+    "nivelConcorrencia": "Baixíssima",
+    "motivosConcorrencia": [
+      "Demanda Regional Vale do Paranhana",
+      "Recebendo Proposta",
+      "Região Imediata"
+    ],
+    "ehDesertaOuProrrogada": false,
+    "arquivos": [
+      [
+        "Relatorio - Edital - WCO621102-4829-QRGUYDFVARBGN-3.pdf",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/88372883000101/compras/2026/309/arquivos/1"
+      ]
+    ]
+  },
+  {
+    "id": "02919554000112_1_000025_2026",
+    "numeroControle": "02919554000112-1-000025/2026",
+    "orgao": "PREFEITURA MUNICIPAL DE NOVA HARTZ (Dispensa nº 73)",
+    "cidade": "Nova Hartz",
+    "objeto": "SISTEMA DE REGISTRO DE PREÇO – Contratação de empresa especializada na prestação do serviço de fornecimento, sob demanda, de serviço de Coquetel e tortas decoradas (do tipo bolo aniversário), destinados a realização dos eventos da Câmara Municipal de Nova Hartz/RS, conforme condições, quantidades e exigências estabelecidas no Aviso de Contratação Direta e seus Anexos.",
+    "valorEstimado": 10120.0,
+    "valorFormatado": "R$ 10.120,00",
+    "dataEncerramento": "17/11/2026 às 08:00",
+    "dataEncerramentoIso": "2026-11-17T08:00:00",
+    "link": "https://pncp.gov.br/app/editais/02919554000112/2026/25",
+    "tipoLink": "PNCP",
+    "plataforma": "Compras.gov.br",
+    "ehComprasGov": false,
+    "compativelMEI": true,
+    "permiteCompraFornecedor": true,
+    "seloMEI": "⭐ VALE DO PARANHANA • Prioridade Regional",
+    "ehRegiaoProxima": true,
+    "ehValeParanhana": true,
+    "tags": [
+      "Vale do Paranhana",
+      "Nova Hartz",
+      "Dispensa",
+      "Comunicação & Eventos"
+    ],
+    "scoreOceanoAzul": 96,
+    "nivelConcorrencia": "Baixíssima",
+    "motivosConcorrencia": [
+      "Demanda Regional Vale do Paranhana",
+      "Recebendo Proposta",
+      "Região Imediata"
+    ],
+    "ehDesertaOuProrrogada": false,
+    "arquivos": [
+      [
+        "ETP ass.pdf",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/02919554000112/compras/2026/25/arquivos/1"
+      ],
+      [
+        "TR ass.pdf",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/02919554000112/compras/2026/25/arquivos/2"
+      ],
+      [
+        "Aviso ass.pdf",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/02919554000112/compras/2026/25/arquivos/3"
+      ],
+      [
+        "Autoriza contratacao ass.pdf",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/02919554000112/compras/2026/25/arquivos/4"
+      ],
+      [
+        "Minuta ATA-DE-REGISTRO-DE-PRECOS.pdf",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/02919554000112/compras/2026/25/arquivos/5"
+      ]
+    ]
+  },
+  {
+    "id": "97761407000173_1_000428_2026",
+    "numeroControle": "97761407000173-1-000428/2026",
+    "orgao": "PREFEITURA MUNICIPAL DE TAQUARA (Pregão - Eletrônico nº 185)",
+    "cidade": "Taquara",
+    "objeto": "A presente licitação tem por finalidade a para aquisição e entrega de conjuntos de lixeiras de coleta seletiva para utilização no Parque do Trabalhador, conforme as especificações técnicas detalhadas no Termo de Referência e no Estudo Técnico Preliminar, que seguem anexos a este instrumento convocatório.",
+    "valorEstimado": 5514.36,
+    "valorFormatado": "R$ 5.514,36",
+    "dataEncerramento": "17/11/2026 às 08:29",
+    "dataEncerramentoIso": "2026-11-17T08:29:00",
+    "link": "https://pncp.gov.br/app/editais/97761407000173/2026/428",
+    "tipoLink": "PNCP",
+    "plataforma": "MUNICIPIO DE TAQUARA",
+    "ehComprasGov": false,
+    "compativelMEI": true,
+    "permiteCompraFornecedor": true,
+    "seloMEI": "⭐ VALE DO PARANHANA • Prioridade Regional",
+    "ehRegiaoProxima": true,
+    "ehValeParanhana": true,
+    "tags": [
+      "Vale do Paranhana",
+      "Taquara",
+      "Pregão - Eletrônico",
+      "Serviços & Materiais Diversos"
+    ],
+    "scoreOceanoAzul": 96,
+    "nivelConcorrencia": "Baixíssima",
+    "motivosConcorrencia": [
+      "Demanda Regional Vale do Paranhana",
+      "Recebendo Proposta",
+      "Região Imediata"
+    ],
+    "ehDesertaOuProrrogada": false,
+    "arquivos": [
+      [
+        "ETP-ESTUDO TECNICO PRELIMINAR (54878)",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/428/arquivos/1"
+      ],
+      [
+        "EDITAL  (54883)",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/428/arquivos/2"
+      ],
+      [
+        "TERMO DE REFERENCIA (54881)",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/428/arquivos/3"
+      ],
+      [
+        "ANEXOS (54893)",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/428/arquivos/4"
+      ],
+      [
+        "ANEXOS (54894)",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/428/arquivos/5"
+      ],
+      [
+        "CONVOCACAO-AVISO DE EDITAL (54895)",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/428/arquivos/6"
+      ],
+      [
+        "ANEXOS (55575)",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/428/arquivos/7"
+      ],
+      [
+        "RETIFICACAO AO EDITAL (55612)",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/428/arquivos/8"
+      ],
+      [
+        "AVISO DE REPUBLICACAO DE EDITAL (55637)",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/428/arquivos/9"
+      ],
+      [
+        "AVISO DE REPUBLICACAO DE EDITAL (55638)",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/428/arquivos/10"
+      ]
+    ]
+  },
+  {
+    "id": "97761407000173_1_000433_2026",
+    "numeroControle": "97761407000173-1-000433/2026",
+    "orgao": "PREFEITURA MUNICIPAL DE TAQUARA (Pregão - Eletrônico nº 184)",
+    "cidade": "Taquara",
+    "objeto": "A presente licitação tem por finalidade a AQUISIÇÃO, ENTREGA E INSTALAÇÃO DE PLAYGROUND INFANTIL, para uso em Praças Públicas, nos bairros Cruzeiro do Sul, Ideal, Empresa, Santa Maria, Jardim do Prado e Santa Rosa, em Taquara/RS, com recursos oriundos da Emenda Parlamentar 202536660004 - Transferência Especial. Plano de ação 09032025-082741/2025 conforme as especificações técnicas detalhadas no Termo de Referência, que seguem em anexo a este instrumento convocatório.",
+    "valorEstimado": 174000.0,
+    "valorFormatado": "R$ 174.000,00",
+    "dataEncerramento": "17/11/2026 às 08:29",
+    "dataEncerramentoIso": "2026-11-17T08:29:00",
+    "link": "https://pncp.gov.br/app/editais/97761407000173/2026/433",
+    "tipoLink": "PNCP",
+    "plataforma": "MUNICIPIO DE TAQUARA",
+    "ehComprasGov": false,
+    "compativelMEI": true,
+    "permiteCompraFornecedor": true,
+    "seloMEI": "⭐ VALE DO PARANHANA • Prioridade Regional",
+    "ehRegiaoProxima": true,
+    "ehValeParanhana": true,
+    "tags": [
+      "Vale do Paranhana",
+      "Taquara",
+      "Pregão - Eletrônico",
+      "Serviços & Materiais Diversos"
+    ],
+    "scoreOceanoAzul": 96,
+    "nivelConcorrencia": "Baixíssima",
+    "motivosConcorrencia": [
+      "Demanda Regional Vale do Paranhana",
+      "Recebendo Proposta",
+      "Região Imediata"
+    ],
+    "ehDesertaOuProrrogada": false,
+    "arquivos": [
+      [
+        "ETP-ESTUDO TECNICO PRELIMINAR (54930)",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/433/arquivos/1"
+      ],
+      [
+        "EDITAL  (54947)",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/433/arquivos/2"
+      ],
+      [
+        "TERMO DE REFERENCIA (54931)",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/433/arquivos/3"
+      ],
+      [
+        "ANEXOS (54948)",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/433/arquivos/4"
+      ],
+      [
+        "ANEXOS (54932)",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/433/arquivos/5"
+      ],
+      [
+        "ANEXOS (54933)",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/433/arquivos/6"
+      ],
+      [
+        "ANEXOS (54934)",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/433/arquivos/7"
+      ],
+      [
+        "ANEXOS (54935)",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/433/arquivos/8"
+      ],
+      [
+        "ANEXOS (54936)",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/433/arquivos/9"
+      ],
+      [
+        "ANEXOS (54937)",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/433/arquivos/10"
+      ],
+      [
+        "ANEXOS (54938)",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/433/arquivos/11"
+      ],
+      [
+        "ANEXOS (54939)",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/433/arquivos/12"
+      ],
+      [
+        "CONVOCACAO-AVISO DE EDITAL (55238)",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/433/arquivos/13"
+      ]
+    ]
+  },
+  {
+    "id": "01612918000154_1_000124_2026",
+    "numeroControle": "01612918000154-1-000124/2026",
+    "orgao": "PREFEITURA MUNICIPAL DE ARARICA (Pregão - Eletrônico nº 146)",
+    "cidade": "Ararica",
+    "objeto": "GÊNERO ALIMENTÍCIO",
+    "valorEstimado": 156800.0,
+    "valorFormatado": "R$ 156.800,00",
+    "dataEncerramento": "17/11/2026 às 13:00",
+    "dataEncerramentoIso": "2026-11-17T13:00:00",
+    "link": "https://pncp.gov.br/app/editais/01612918000154/2026/124",
+    "tipoLink": "PNCP",
+    "plataforma": "Tecnosweb - Tecnologia de Gestão",
+    "ehComprasGov": false,
+    "compativelMEI": true,
+    "permiteCompraFornecedor": true,
+    "seloMEI": "⭐ VALE DO PARANHANA • Prioridade Regional",
+    "ehRegiaoProxima": true,
+    "ehValeParanhana": true,
+    "tags": [
+      "Vale do Paranhana",
+      "Ararica",
+      "Pregão - Eletrônico",
+      "Alimentação & Nutrição"
+    ],
+    "scoreOceanoAzul": 96,
+    "nivelConcorrencia": "Baixíssima",
+    "motivosConcorrencia": [
+      "Demanda Regional Vale do Paranhana",
+      "Recebendo Proposta",
+      "Região Imediata"
+    ],
+    "ehDesertaOuProrrogada": false,
+    "arquivos": [
+      [
+        "edital e anexos",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/01612918000154/compras/2026/124/arquivos/1"
+      ],
+      [
+        "etp",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/01612918000154/compras/2026/124/arquivos/2"
+      ],
+      [
+        "aviso de edital",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/01612918000154/compras/2026/124/arquivos/3"
+      ]
+    ]
+  },
+  {
+    "id": "97761407000173_1_000429_2026",
+    "numeroControle": "97761407000173-1-000429/2026",
+    "orgao": "PREFEITURA MUNICIPAL DE TAQUARA (Pregão - Eletrônico nº 186)",
+    "cidade": "Taquara",
+    "objeto": "A presente licitação tem por finalidade o Registro de Preço para aquisição, de forma parcelada, de refeições prontas tipo MARMITA, destinadas aos servidores da Secretaria Municipal de Obras e Serviços que desempenham atividades externas, operações emergenciais, mutirões e demais serviços que demandem permanência contínua em serviço, conforme as especificações técnicas detalhadas no Termo de Referência, que segue em anexo a este instrumento convocatório. ",
+    "valorEstimado": 232320.0,
+    "valorFormatado": "R$ 232.320,00",
+    "dataEncerramento": "18/11/2026 às 08:29",
+    "dataEncerramentoIso": "2026-11-18T08:29:00",
+    "link": "https://pncp.gov.br/app/editais/97761407000173/2026/429",
+    "tipoLink": "PNCP",
+    "plataforma": "MUNICIPIO DE TAQUARA",
+    "ehComprasGov": false,
+    "compativelMEI": true,
+    "permiteCompraFornecedor": true,
+    "seloMEI": "⭐ VALE DO PARANHANA • Prioridade Regional",
+    "ehRegiaoProxima": true,
+    "ehValeParanhana": true,
+    "tags": [
+      "Vale do Paranhana",
+      "Taquara",
+      "Pregão - Eletrônico",
+      "Obras & Infraestrutura"
+    ],
+    "scoreOceanoAzul": 96,
+    "nivelConcorrencia": "Baixíssima",
+    "motivosConcorrencia": [
+      "Demanda Regional Vale do Paranhana",
+      "Recebendo Proposta",
+      "Região Imediata"
+    ],
+    "ehDesertaOuProrrogada": false,
+    "arquivos": [
+      [
+        "EDITAL  (54902)",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/429/arquivos/1"
+      ],
+      [
+        "TERMO DE REFERENCIA (54904)",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/429/arquivos/2"
+      ],
+      [
+        "ETP-ESTUDO TECNICO PRELIMINAR (54903)",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/429/arquivos/3"
+      ],
+      [
+        "ANEXOS (54906)",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/429/arquivos/4"
+      ],
+      [
+        "ANEXOS (54907)",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/429/arquivos/5"
+      ],
+      [
+        "CONVOCACAO-AVISO DE EDITAL (54905)",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/429/arquivos/6"
+      ]
+    ]
+  },
+  {
+    "id": "97761407000173_1_000436_2026",
+    "numeroControle": "97761407000173-1-000436/2026",
+    "orgao": "PREFEITURA MUNICIPAL DE TAQUARA (Pregão - Eletrônico nº 187)",
+    "cidade": "Taquara",
+    "objeto": "A presente licitação tem por finalidade a para aquisição e entrega de 07 (sete) monitores de vídeo para computador, novos, de primeiro uso, acompanhados de todos os acessórios necessários ao perfeito funcionamento, com garantia e assistência técnica, destinados à Secretaria Municipal de Desenvolvimento Econômico, Mineração e Turismo, conforme as especificações técnicas detalhadas no Termo de Referência e no Estudo Técnico Preliminar, que seguem anexos a este instrumento convocatório.",
+    "valorEstimado": 7072.24,
+    "valorFormatado": "R$ 7.072,24",
+    "dataEncerramento": "18/11/2026 às 08:29",
+    "dataEncerramentoIso": "2026-11-18T08:29:00",
+    "link": "https://pncp.gov.br/app/editais/97761407000173/2026/436",
+    "tipoLink": "PNCP",
+    "plataforma": "MUNICIPIO DE TAQUARA",
+    "ehComprasGov": false,
+    "compativelMEI": true,
+    "permiteCompraFornecedor": true,
+    "seloMEI": "⭐ VALE DO PARANHANA • Prioridade Regional",
+    "ehRegiaoProxima": true,
+    "ehValeParanhana": true,
+    "tags": [
+      "Vale do Paranhana",
+      "Taquara",
+      "Pregão - Eletrônico",
+      "Comunicação & Eventos"
+    ],
+    "scoreOceanoAzul": 96,
+    "nivelConcorrencia": "Baixíssima",
+    "motivosConcorrencia": [
+      "Demanda Regional Vale do Paranhana",
+      "Recebendo Proposta",
+      "Região Imediata"
+    ],
+    "ehDesertaOuProrrogada": false,
+    "arquivos": [
+      [
+        "ETP-ESTUDO TECNICO PRELIMINAR (55150)",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/436/arquivos/1"
+      ],
+      [
+        "EDITAL  (55152)",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/436/arquivos/2"
+      ],
+      [
+        "TERMO DE REFERENCIA (55151)",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/436/arquivos/3"
+      ],
+      [
+        "ANEXOS (55153)",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/436/arquivos/4"
+      ],
+      [
+        "ANEXOS (55154)",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/436/arquivos/5"
+      ],
+      [
+        "CONVOCACAO-AVISO DE EDITAL (55155)",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/436/arquivos/6"
+      ],
+      [
+        "CONVOCACAO-AVISO DE EDITAL (55156)",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/436/arquivos/7"
+      ]
+    ]
+  },
+  {
+    "id": "97761407000173_1_000427_2026",
+    "numeroControle": "97761407000173-1-000427/2026",
+    "orgao": "PREFEITURA MUNICIPAL DE TAQUARA (Pregão - Eletrônico nº 181)",
+    "cidade": "Taquara",
+    "objeto": "A presente licitação tem por finalidade o Registro de Preço para prestação de serviços, de forma parcelada, de serviços de divulgação sonora itinerante (por meio de carro e/ou moto de som), para atender às necessidades do Departamento de Cultura na promoção de eventos e ações institucionais do Município de Taquara/RS, visando a garantir a ampla cobertura, divulgação e alcance de público do calendário oficial de eventos, conforme as especificações técnicas detalhadas no Termo de Referência, que segue em anexo a este instrumento convocatório. ",
+    "valorEstimado": 46250.0,
+    "valorFormatado": "R$ 46.250,00",
+    "dataEncerramento": "18/11/2026 às 10:29",
+    "dataEncerramentoIso": "2026-11-18T10:29:00",
+    "link": "https://pncp.gov.br/app/editais/97761407000173/2026/427",
+    "tipoLink": "PNCP",
+    "plataforma": "MUNICIPIO DE TAQUARA",
+    "ehComprasGov": false,
+    "compativelMEI": true,
+    "permiteCompraFornecedor": true,
+    "seloMEI": "⭐ VALE DO PARANHANA • Prioridade Regional",
+    "ehRegiaoProxima": true,
+    "ehValeParanhana": true,
+    "tags": [
+      "Vale do Paranhana",
+      "Taquara",
+      "Pregão - Eletrônico",
+      "Comunicação & Eventos"
+    ],
+    "scoreOceanoAzul": 96,
+    "nivelConcorrencia": "Baixíssima",
+    "motivosConcorrencia": [
+      "Demanda Regional Vale do Paranhana",
+      "Recebendo Proposta",
+      "Região Imediata"
+    ],
+    "ehDesertaOuProrrogada": false,
+    "arquivos": [
+      [
+        "ETP-ESTUDO TECNICO PRELIMINAR (54865)",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/427/arquivos/1"
+      ],
+      [
+        "EDITAL  (54867)",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/427/arquivos/2"
+      ],
+      [
+        "TERMO DE REFERENCIA (54866)",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/427/arquivos/3"
+      ],
+      [
+        "ANEXOS (54868)",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/427/arquivos/4"
+      ],
+      [
+        "CONVOCACAO-AVISO DE EDITAL (54869)",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/427/arquivos/5"
+      ],
+      [
+        "CONVOCACAO-AVISO DE EDITAL (54870)",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/427/arquivos/6"
+      ]
+    ]
+  },
+  {
+    "id": "97761407000173_1_000437_2026",
+    "numeroControle": "97761407000173-1-000437/2026",
+    "orgao": "PREFEITURA MUNICIPAL DE TAQUARA (Pregão - Eletrônico nº 188)",
+    "cidade": "Taquara",
+    "objeto": "A presente licitação tem por finalidade a para aquisição e entrega de (01) um eletrocardiógrafo, novo e sem uso, incluindo todos os acessórios necessários ao seu pleno funcionamento, garantia, transporte e entrega, para o Complexo Municipal de Saúde, conforme as especificações técnicas detalhadas no Termo de Referência e no Estudo Técnico Preliminar, que seguem anexos a este instrumento convocatório.",
+    "valorEstimado": 6549.39,
+    "valorFormatado": "R$ 6.549,39",
+    "dataEncerramento": "18/11/2026 às 10:29",
+    "dataEncerramentoIso": "2026-11-18T10:29:00",
+    "link": "https://pncp.gov.br/app/editais/97761407000173/2026/437",
+    "tipoLink": "PNCP",
+    "plataforma": "MUNICIPIO DE TAQUARA",
+    "ehComprasGov": false,
+    "compativelMEI": true,
+    "permiteCompraFornecedor": true,
+    "seloMEI": "⭐ VALE DO PARANHANA • Prioridade Regional",
+    "ehRegiaoProxima": true,
+    "ehValeParanhana": true,
+    "tags": [
+      "Vale do Paranhana",
+      "Taquara",
+      "Pregão - Eletrônico",
+      "Saúde & Veterinária"
+    ],
+    "scoreOceanoAzul": 96,
+    "nivelConcorrencia": "Baixíssima",
+    "motivosConcorrencia": [
+      "Demanda Regional Vale do Paranhana",
+      "Recebendo Proposta",
+      "Região Imediata"
+    ],
+    "ehDesertaOuProrrogada": false,
+    "arquivos": [
+      [
+        "ETP-ESTUDO TECNICO PRELIMINAR (55159)",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/437/arquivos/1"
+      ],
+      [
+        "EDITAL  (55161)",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/437/arquivos/2"
+      ],
+      [
+        "TERMO DE REFERENCIA (55160)",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/437/arquivos/3"
+      ],
+      [
+        "ANEXOS (55164)",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/437/arquivos/4"
+      ],
+      [
+        "ANEXOS (55165)",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/437/arquivos/5"
+      ],
+      [
+        "ANEXOS (55166)",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/437/arquivos/6"
+      ],
+      [
+        "CONVOCACAO-AVISO DE EDITAL (55162)",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/437/arquivos/7"
+      ],
+      [
+        "CONVOCACAO-AVISO DE EDITAL (55163)",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/437/arquivos/8"
+      ]
+    ]
+  },
+  {
+    "id": "01612918000154_1_000125_2026",
+    "numeroControle": "01612918000154-1-000125/2026",
+    "orgao": "PREFEITURA MUNICIPAL DE ARARICA (Pregão - Eletrônico nº 137)",
+    "cidade": "Ararica",
+    "objeto": "MATERIAIS DE CONSUMO",
+    "valorEstimado": 585260.85,
+    "valorFormatado": "R$ 585.260,85",
+    "dataEncerramento": "18/11/2026 às 13:00",
+    "dataEncerramentoIso": "2026-11-18T13:00:00",
+    "link": "https://pncp.gov.br/app/editais/01612918000154/2026/125",
+    "tipoLink": "PNCP",
+    "plataforma": "Tecnosweb - Tecnologia de Gestão",
+    "ehComprasGov": false,
+    "compativelMEI": true,
+    "permiteCompraFornecedor": true,
+    "seloMEI": "⭐ VALE DO PARANHANA • Prioridade Regional",
+    "ehRegiaoProxima": true,
+    "ehValeParanhana": true,
+    "tags": [
+      "Vale do Paranhana",
+      "Ararica",
+      "Pregão - Eletrônico",
+      "Serviços & Materiais Diversos"
+    ],
+    "scoreOceanoAzul": 96,
+    "nivelConcorrencia": "Baixíssima",
+    "motivosConcorrencia": [
+      "Demanda Regional Vale do Paranhana",
+      "Recebendo Proposta",
+      "Região Imediata"
+    ],
+    "ehDesertaOuProrrogada": false,
+    "arquivos": [
+      [
+        "Edital e Anexos",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/01612918000154/compras/2026/125/arquivos/1"
+      ],
+      [
+        "ETP",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/01612918000154/compras/2026/125/arquivos/2"
+      ],
+      [
+        "aviso de edital",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/01612918000154/compras/2026/125/arquivos/3"
+      ]
+    ]
+  },
+  {
+    "id": "91995365000159_1_000262_2026",
+    "numeroControle": "91995365000159-1-000262/2026",
+    "orgao": "PREFEITURA MUNICIPAL DE NOVA HARTZ (Pregão - Eletrônico nº 46)",
+    "cidade": "Nova Hartz",
+    "objeto": "AQUISIÇÃO DE DIETA ESPECIAL NEO ADVANCE",
+    "valorEstimado": 0.0,
+    "valorFormatado": "Valor Oculto / Sob Cotação",
+    "dataEncerramento": "18/11/2026 às 14:00",
+    "dataEncerramentoIso": "2026-11-18T14:00:00",
+    "link": "https://pncp.gov.br/app/editais/91995365000159/2026/262",
+    "tipoLink": "PNCP",
+    "plataforma": "Tecnosweb - Tecnologia de Gestão",
+    "ehComprasGov": false,
+    "compativelMEI": true,
+    "permiteCompraFornecedor": true,
+    "seloMEI": "⭐ VALE DO PARANHANA • Prioridade Regional",
+    "ehRegiaoProxima": true,
+    "ehValeParanhana": true,
+    "tags": [
+      "Vale do Paranhana",
+      "Nova Hartz",
+      "Pregão - Eletrônico",
+      "Alimentação & Nutrição"
+    ],
+    "scoreOceanoAzul": 96,
+    "nivelConcorrencia": "Baixíssima",
+    "motivosConcorrencia": [
+      "Demanda Regional Vale do Paranhana",
+      "Recebendo Proposta",
+      "Região Imediata"
+    ],
+    "ehDesertaOuProrrogada": false,
+    "arquivos": [
+      [
+        "EDI",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/91995365000159/compras/2026/262/arquivos/1"
+      ],
+      [
+        "ETP",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/91995365000159/compras/2026/262/arquivos/2"
+      ],
+      [
+        "PUE",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/91995365000159/compras/2026/262/arquivos/3"
+      ]
+    ]
+  },
+  {
+    "id": "97761407000173_1_000438_2026",
+    "numeroControle": "97761407000173-1-000438/2026",
+    "orgao": "PREFEITURA MUNICIPAL DE TAQUARA (Pregão - Eletrônico nº 189)",
+    "cidade": "Taquara",
+    "objeto": "A presente licitação tem por finalidade a para aquisição e entrega de CABINE COMPLETA, podendo ser nova ou usada, desde que em adequado estado de conservação, funcionamento e integridade estrutural, destinada ao veículo caminhão Mercedes Benz/1720 K, placa IHS4814, chassi 9BM693191WB166386, pertencente à frota da Secretaria de Obras e Serviços, conforme as especificações técnicas detalhadas no Termo de Referência e no Estudo Técnico Preliminar, que seguem anexos a este instrumento convocatório.",
+    "valorEstimado": 28706.11,
+    "valorFormatado": "R$ 28.706,11",
+    "dataEncerramento": "19/11/2026 às 08:29",
+    "dataEncerramentoIso": "2026-11-19T08:29:00",
+    "link": "https://pncp.gov.br/app/editais/97761407000173/2026/438",
+    "tipoLink": "PNCP",
+    "plataforma": "MUNICIPIO DE TAQUARA",
+    "ehComprasGov": false,
+    "compativelMEI": true,
+    "permiteCompraFornecedor": true,
+    "seloMEI": "⭐ VALE DO PARANHANA • Prioridade Regional",
+    "ehRegiaoProxima": true,
+    "ehValeParanhana": true,
+    "tags": [
+      "Vale do Paranhana",
+      "Taquara",
+      "Pregão - Eletrônico",
+      "Obras & Infraestrutura"
+    ],
+    "scoreOceanoAzul": 96,
+    "nivelConcorrencia": "Baixíssima",
+    "motivosConcorrencia": [
+      "Demanda Regional Vale do Paranhana",
+      "Recebendo Proposta",
+      "Região Imediata"
+    ],
+    "ehDesertaOuProrrogada": false,
+    "arquivos": [
+      [
+        "ETP-ESTUDO TECNICO PRELIMINAR (55172)",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/438/arquivos/1"
+      ],
+      [
+        "EDITAL  (55174)",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/438/arquivos/2"
+      ],
+      [
+        "ANEXOS (55177)",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/438/arquivos/3"
+      ],
+      [
+        "ANEXOS (55178)",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/438/arquivos/4"
+      ],
+      [
+        "ANEXOS (55179)",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/438/arquivos/5"
+      ],
+      [
+        "CONVOCACAO-AVISO DE EDITAL (55175)",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/438/arquivos/6"
+      ],
+      [
+        "CONVOCACAO-AVISO DE EDITAL (55176)",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/438/arquivos/7"
+      ]
+    ]
+  },
+  {
+    "id": "97761407000173_1_000439_2026",
+    "numeroControle": "97761407000173-1-000439/2026",
+    "orgao": "PREFEITURA MUNICIPAL DE TAQUARA (Pregão - Eletrônico nº 190)",
+    "cidade": "Taquara",
+    "objeto": "A presente licitação tem por finalidade o Registro de Preço para a prestação de serviços, de forma parcelada, de instalação de piso modular com amortecimento em praças públicas, no município de Taquara/RS, conforme as especificações técnicas detalhadas no Termo de Referência, que segue em anexo a este instrumento convocatório. ",
+    "valorEstimado": 272120.0,
+    "valorFormatado": "R$ 272.120,00",
+    "dataEncerramento": "23/11/2026 às 08:29",
+    "dataEncerramentoIso": "2026-11-23T08:29:00",
+    "link": "https://pncp.gov.br/app/editais/97761407000173/2026/439",
+    "tipoLink": "PNCP",
+    "plataforma": "MUNICIPIO DE TAQUARA",
+    "ehComprasGov": false,
+    "compativelMEI": true,
+    "permiteCompraFornecedor": true,
+    "seloMEI": "⭐ VALE DO PARANHANA • Prioridade Regional",
+    "ehRegiaoProxima": true,
+    "ehValeParanhana": true,
+    "tags": [
+      "Vale do Paranhana",
+      "Taquara",
+      "Pregão - Eletrônico",
+      "Serviços & Materiais Diversos"
+    ],
+    "scoreOceanoAzul": 96,
+    "nivelConcorrencia": "Baixíssima",
+    "motivosConcorrencia": [
+      "Demanda Regional Vale do Paranhana",
+      "Recebendo Proposta",
+      "Região Imediata"
+    ],
+    "ehDesertaOuProrrogada": false,
+    "arquivos": [
+      [
+        "ETP-ESTUDO TECNICO PRELIMINAR (55232)",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/439/arquivos/1"
+      ],
+      [
+        "EDITAL  (55234)",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/439/arquivos/2"
+      ],
+      [
+        "TERMO DE REFERENCIA (55233)",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/439/arquivos/3"
+      ],
+      [
+        "CONVOCACAO-AVISO DE EDITAL (55235)",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/439/arquivos/4"
+      ],
+      [
+        "CONVOCACAO-AVISO DE EDITAL (55236)",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/439/arquivos/5"
+      ]
+    ]
+  },
+  {
+    "id": "87366159000102_1_000451_2026",
+    "numeroControle": "87366159000102-1-000451/2026",
+    "orgao": "PREFEITURA MUNICIPAL DE SAPIRANGA (Pregão - Eletrônico nº 82)",
+    "cidade": "Sapiranga",
+    "objeto": "Aquisição de rolo compactador vibratório combinado, visando atender a Secretaria Municipal de Obras Públicas e Serviços Urbanos.",
+    "valorEstimado": 384142.5,
+    "valorFormatado": "R$ 384.142,50",
+    "dataEncerramento": "23/11/2026 às 12:00",
+    "dataEncerramentoIso": "2026-11-23T12:00:00",
+    "link": "https://pncp.gov.br/app/editais/87366159000102/2026/451",
+    "tipoLink": "PNCP",
+    "plataforma": "DBseller Serviços de Informática",
+    "ehComprasGov": false,
+    "compativelMEI": true,
+    "permiteCompraFornecedor": true,
+    "seloMEI": "⭐ VALE DO PARANHANA • Prioridade Regional",
+    "ehRegiaoProxima": true,
+    "ehValeParanhana": true,
+    "tags": [
+      "Vale do Paranhana",
+      "Sapiranga",
+      "Pregão - Eletrônico",
+      "Obras & Infraestrutura"
+    ],
+    "scoreOceanoAzul": 96,
+    "nivelConcorrencia": "Baixíssima",
+    "motivosConcorrencia": [
+      "Demanda Regional Vale do Paranhana",
+      "Recebendo Proposta",
+      "Região Imediata"
+    ],
+    "ehDesertaOuProrrogada": false,
+    "arquivos": [
+      [
+        "Pregão Eletrônico - 082/2026",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/87366159000102/compras/2026/451/arquivos/1"
+      ]
+    ]
+  },
+  {
+    "id": "01612918000154_1_000127_2026",
+    "numeroControle": "01612918000154-1-000127/2026",
+    "orgao": "PREFEITURA MUNICIPAL DE ARARICA (Pregão - Eletrônico nº 156)",
+    "cidade": "Ararica",
+    "objeto": "MATERIAIS DE CONSUMO",
+    "valorEstimado": 468290.0,
+    "valorFormatado": "R$ 468.290,00",
+    "dataEncerramento": "23/11/2026 às 13:00",
+    "dataEncerramentoIso": "2026-11-23T13:00:00",
+    "link": "https://pncp.gov.br/app/editais/01612918000154/2026/127",
+    "tipoLink": "PNCP",
+    "plataforma": "Tecnosweb - Tecnologia de Gestão",
+    "ehComprasGov": false,
+    "compativelMEI": true,
+    "permiteCompraFornecedor": true,
+    "seloMEI": "⭐ VALE DO PARANHANA • Prioridade Regional",
+    "ehRegiaoProxima": true,
+    "ehValeParanhana": true,
+    "tags": [
+      "Vale do Paranhana",
+      "Ararica",
+      "Pregão - Eletrônico",
+      "Serviços & Materiais Diversos"
+    ],
+    "scoreOceanoAzul": 96,
+    "nivelConcorrencia": "Baixíssima",
+    "motivosConcorrencia": [
+      "Demanda Regional Vale do Paranhana",
+      "Recebendo Proposta",
+      "Região Imediata"
+    ],
+    "ehDesertaOuProrrogada": false,
+    "arquivos": [
+      [
+        "edital e anexos",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/01612918000154/compras/2026/127/arquivos/1"
+      ],
+      [
+        "etp",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/01612918000154/compras/2026/127/arquivos/2"
+      ],
+      [
+        "aviso de edital",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/01612918000154/compras/2026/127/arquivos/3"
+      ]
+    ]
+  },
+  {
+    "id": "88379763000136_1_000156_2026",
+    "numeroControle": "88379763000136-1-000156/2026",
+    "orgao": "PREFEITURA MUNICIPAL DE IGREJINHA (Pregão - Eletrônico nº 113)",
+    "cidade": "Igrejinha",
+    "objeto": "[Portal de Compras Públicas] - Quadro escola verde",
+    "valorEstimado": 19114.95,
+    "valorFormatado": "R$ 19.114,95",
+    "dataEncerramento": "23/11/2026 às 13:29",
+    "dataEncerramentoIso": "2026-11-23T13:29:00",
+    "link": "https://pncp.gov.br/app/editais/88379763000136/2026/156",
+    "tipoLink": "PNCP",
+    "plataforma": "ECustomize Consultoria em Software S.A",
+    "ehComprasGov": false,
+    "compativelMEI": true,
+    "permiteCompraFornecedor": true,
+    "seloMEI": "⭐ VALE DO PARANHANA • Prioridade Regional",
+    "ehRegiaoProxima": true,
+    "ehValeParanhana": true,
+    "tags": [
+      "Vale do Paranhana",
+      "Igrejinha",
+      "Pregão - Eletrônico",
+      "Educação & Mobiliário"
+    ],
+    "scoreOceanoAzul": 96,
+    "nivelConcorrencia": "Baixíssima",
+    "motivosConcorrencia": [
+      "Demanda Regional Vale do Paranhana",
+      "Recebendo Proposta",
+      "Região Imediata"
+    ],
+    "ehDesertaOuProrrogada": false,
+    "arquivos": []
+  },
+  {
+    "id": "88379763000136_1_000155_2026",
+    "numeroControle": "88379763000136-1-000155/2026",
+    "orgao": "PREFEITURA MUNICIPAL DE IGREJINHA (Pregão - Eletrônico nº 107)",
+    "cidade": "Igrejinha",
+    "objeto": "[Portal de Compras Públicas] - DESMONTE DE ROCHAS POR EXPLOSIVOS",
+    "valorEstimado": 837200.0,
+    "valorFormatado": "R$ 837.200,00",
+    "dataEncerramento": "24/11/2026 às 14:59",
+    "dataEncerramentoIso": "2026-11-24T14:59:00",
+    "link": "https://pncp.gov.br/app/editais/88379763000136/2026/155",
+    "tipoLink": "PNCP",
+    "plataforma": "ECustomize Consultoria em Software S.A",
+    "ehComprasGov": false,
+    "compativelMEI": true,
+    "permiteCompraFornecedor": true,
+    "seloMEI": "⭐ VALE DO PARANHANA • Prioridade Regional",
+    "ehRegiaoProxima": true,
+    "ehValeParanhana": true,
+    "tags": [
+      "Vale do Paranhana",
+      "Igrejinha",
+      "Pregão - Eletrônico",
+      "Obras & Infraestrutura"
+    ],
+    "scoreOceanoAzul": 96,
+    "nivelConcorrencia": "Baixíssima",
+    "motivosConcorrencia": [
+      "Demanda Regional Vale do Paranhana",
+      "Recebendo Proposta",
+      "Região Imediata"
+    ],
+    "ehDesertaOuProrrogada": false,
+    "arquivos": [
+      [
+        "ed0107-2026_-_perf.rochas.doc",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/88379763000136/compras/2026/155/arquivos/1"
+      ]
+    ]
+  },
+  {
+    "id": "87366159000102_1_000452_2026",
+    "numeroControle": "87366159000102-1-000452/2026",
+    "orgao": "PREFEITURA MUNICIPAL DE SAPIRANGA (Pregão - Eletrônico nº 83)",
+    "cidade": "Sapiranga",
+    "objeto": "Registro de preços para a contratação da prestação de serviços de limpeza urbana, conservação e manutenção de vias e logradouros públicos no Município de Sapiranga.",
+    "valorEstimado": 10457219.76,
+    "valorFormatado": "R$ 10.457.219,76",
+    "dataEncerramento": "25/11/2026 às 12:00",
+    "dataEncerramentoIso": "2026-11-25T12:00:00",
+    "link": "https://pncp.gov.br/app/editais/87366159000102/2026/452",
+    "tipoLink": "PNCP",
+    "plataforma": "DBseller Serviços de Informática",
+    "ehComprasGov": false,
+    "compativelMEI": true,
+    "permiteCompraFornecedor": true,
+    "seloMEI": "⭐ VALE DO PARANHANA • Prioridade Regional",
+    "ehRegiaoProxima": true,
+    "ehValeParanhana": true,
+    "tags": [
+      "Vale do Paranhana",
+      "Sapiranga",
+      "Pregão - Eletrônico",
+      "Material de Limpeza"
+    ],
+    "scoreOceanoAzul": 96,
+    "nivelConcorrencia": "Baixíssima",
+    "motivosConcorrencia": [
+      "Demanda Regional Vale do Paranhana",
+      "Recebendo Proposta",
+      "Região Imediata"
+    ],
+    "ehDesertaOuProrrogada": false,
+    "arquivos": [
+      [
+        "Pregão Eletrônico - 083/2026",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/87366159000102/compras/2026/452/arquivos/1"
+      ]
+    ]
+  },
+  {
+    "id": "88379763000136_1_000157_2026",
+    "numeroControle": "88379763000136-1-000157/2026",
+    "orgao": "PREFEITURA MUNICIPAL DE IGREJINHA (Pregão - Eletrônico nº 112)",
+    "cidade": "Igrejinha",
+    "objeto": "[Portal de Compras Públicas] - AQUISIÇÃO DE MÓVEIS ESCOLARES",
+    "valorEstimado": 255326.0,
+    "valorFormatado": "R$ 255.326,00",
+    "dataEncerramento": "25/11/2026 às 13:29",
+    "dataEncerramentoIso": "2026-11-25T13:29:00",
+    "link": "https://pncp.gov.br/app/editais/88379763000136/2026/157",
+    "tipoLink": "PNCP",
+    "plataforma": "ECustomize Consultoria em Software S.A",
+    "ehComprasGov": false,
+    "compativelMEI": true,
+    "permiteCompraFornecedor": true,
+    "seloMEI": "⭐ VALE DO PARANHANA • Prioridade Regional",
+    "ehRegiaoProxima": true,
+    "ehValeParanhana": true,
+    "tags": [
+      "Vale do Paranhana",
+      "Igrejinha",
+      "Pregão - Eletrônico",
+      "Educação & Mobiliário"
+    ],
+    "scoreOceanoAzul": 96,
+    "nivelConcorrencia": "Baixíssima",
+    "motivosConcorrencia": [
+      "Demanda Regional Vale do Paranhana",
+      "Recebendo Proposta",
+      "Região Imediata"
+    ],
+    "ehDesertaOuProrrogada": false,
+    "arquivos": [
+      [
+        "ed112-2026_-_conjunto_de_classes.doc",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/88379763000136/compras/2026/157/arquivos/1"
+      ]
+    ]
+  },
+  {
+    "id": "87366159000102_1_000456_2026",
+    "numeroControle": "87366159000102-1-000456/2026",
+    "orgao": "PREFEITURA MUNICIPAL DE SAPIRANGA (Pregão - Eletrônico nº 84)",
+    "cidade": "Sapiranga",
+    "objeto": "Registro de preços para o fornecimento de brinquedos, parte I, visando atender diversas secretarias.",
+    "valorEstimado": 371932.92,
+    "valorFormatado": "R$ 371.932,92",
+    "dataEncerramento": "26/11/2026 às 08:00",
+    "dataEncerramentoIso": "2026-11-26T08:00:00",
+    "link": "https://pncp.gov.br/app/editais/87366159000102/2026/456",
+    "tipoLink": "PNCP",
+    "plataforma": "DBseller Serviços de Informática",
+    "ehComprasGov": false,
+    "compativelMEI": true,
+    "permiteCompraFornecedor": true,
+    "seloMEI": "⭐ VALE DO PARANHANA • Prioridade Regional",
+    "ehRegiaoProxima": true,
+    "ehValeParanhana": true,
+    "tags": [
+      "Vale do Paranhana",
+      "Sapiranga",
+      "Pregão - Eletrônico",
+      "Educação & Mobiliário"
+    ],
+    "scoreOceanoAzul": 96,
+    "nivelConcorrencia": "Baixíssima",
+    "motivosConcorrencia": [
+      "Demanda Regional Vale do Paranhana",
+      "Recebendo Proposta",
+      "Região Imediata"
+    ],
+    "ehDesertaOuProrrogada": false,
+    "arquivos": [
+      [
+        "Pregão Eletrônico - 084/2026",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/87366159000102/compras/2026/456/arquivos/1"
+      ]
+    ]
+  },
+  {
+    "id": "01612918000154_1_000130_2026",
+    "numeroControle": "01612918000154-1-000130/2026",
+    "orgao": "PREFEITURA MUNICIPAL DE ARARICA (Pregão - Eletrônico nº 151)",
+    "cidade": "Ararica",
+    "objeto": "MÁQUINAS E EQUIPAMENTOS",
+    "valorEstimado": 158722.7,
+    "valorFormatado": "R$ 158.722,70",
+    "dataEncerramento": "26/11/2026 às 13:00",
+    "dataEncerramentoIso": "2026-11-26T13:00:00",
+    "link": "https://pncp.gov.br/app/editais/01612918000154/2026/130",
+    "tipoLink": "PNCP",
+    "plataforma": "Tecnosweb - Tecnologia de Gestão",
+    "ehComprasGov": false,
+    "compativelMEI": true,
+    "permiteCompraFornecedor": true,
+    "seloMEI": "⭐ VALE DO PARANHANA • Prioridade Regional",
+    "ehRegiaoProxima": true,
+    "ehValeParanhana": true,
+    "tags": [
+      "Vale do Paranhana",
+      "Ararica",
+      "Pregão - Eletrônico",
+      "Veículos & Máquinas"
+    ],
+    "scoreOceanoAzul": 96,
+    "nivelConcorrencia": "Baixíssima",
+    "motivosConcorrencia": [
+      "Demanda Regional Vale do Paranhana",
+      "Recebendo Proposta",
+      "Região Imediata"
+    ],
+    "ehDesertaOuProrrogada": false,
+    "arquivos": [
+      [
+        "edital e anexos",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/01612918000154/compras/2026/130/arquivos/1"
+      ],
+      [
+        "etp",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/01612918000154/compras/2026/130/arquivos/2"
+      ],
+      [
+        "aviso de edital",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/01612918000154/compras/2026/130/arquivos/3"
+      ]
+    ]
+  },
+  {
+    "id": "88379763000136_1_000163_2026",
+    "numeroControle": "88379763000136-1-000163/2026",
+    "orgao": "PREFEITURA MUNICIPAL DE IGREJINHA (Pregão - Eletrônico nº 116)",
+    "cidade": "Igrejinha",
+    "objeto": "[Portal de Compras Públicas] - AQUISIÇÃO DE MATERIAL DE LIMPEZA",
+    "valorEstimado": 1505215.8,
+    "valorFormatado": "R$ 1.505.215,80",
+    "dataEncerramento": "27/11/2026 às 07:59",
+    "dataEncerramentoIso": "2026-11-27T07:59:00",
+    "link": "https://pncp.gov.br/app/editais/88379763000136/2026/163",
+    "tipoLink": "PNCP",
+    "plataforma": "ECustomize Consultoria em Software S.A",
+    "ehComprasGov": false,
+    "compativelMEI": true,
+    "permiteCompraFornecedor": true,
+    "seloMEI": "⭐ VALE DO PARANHANA • Prioridade Regional",
+    "ehRegiaoProxima": true,
+    "ehValeParanhana": true,
+    "tags": [
+      "Vale do Paranhana",
+      "Igrejinha",
+      "Pregão - Eletrônico",
+      "Material de Limpeza"
+    ],
+    "scoreOceanoAzul": 96,
+    "nivelConcorrencia": "Baixíssima",
+    "motivosConcorrencia": [
+      "Demanda Regional Vale do Paranhana",
+      "Recebendo Proposta",
+      "Região Imediata"
+    ],
+    "ehDesertaOuProrrogada": false,
+    "arquivos": [
+      [
+        "ed116-2026_-_limpeza.doc",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/88379763000136/compras/2026/163/arquivos/1"
+      ]
+    ]
+  },
+  {
+    "id": "88379763000136_1_000159_2026",
+    "numeroControle": "88379763000136-1-000159/2026",
+    "orgao": "PREFEITURA MUNICIPAL DE IGREJINHA (Pregão - Eletrônico nº 111)",
+    "cidade": "Igrejinha",
+    "objeto": "[Portal de Compras Públicas] - Castração e microchipagem de caninos fêmeas, incluindo procedimento cirúrgico completo (ovariohisterectomia), anestesia, monitoramento, cuidados pós-operatórios, fornecimento de roupa cirúrgica ou colar elisabetano (cone), kit de medicação pós- operatória e todos os insumos necessários.",
+    "valorEstimado": 129810.44,
+    "valorFormatado": "R$ 129.810,44",
+    "dataEncerramento": "27/11/2026 às 08:29",
+    "dataEncerramentoIso": "2026-11-27T08:29:00",
+    "link": "https://pncp.gov.br/app/editais/88379763000136/2026/159",
+    "tipoLink": "PNCP",
+    "plataforma": "ECustomize Consultoria em Software S.A",
+    "ehComprasGov": false,
+    "compativelMEI": true,
+    "permiteCompraFornecedor": true,
+    "seloMEI": "⭐ VALE DO PARANHANA • Prioridade Regional",
+    "ehRegiaoProxima": true,
+    "ehValeParanhana": true,
+    "tags": [
+      "Vale do Paranhana",
+      "Igrejinha",
+      "Pregão - Eletrônico",
+      "Saúde & Veterinária"
+    ],
+    "scoreOceanoAzul": 96,
+    "nivelConcorrencia": "Baixíssima",
+    "motivosConcorrencia": [
+      "Demanda Regional Vale do Paranhana",
+      "Recebendo Proposta",
+      "Região Imediata"
+    ],
+    "ehDesertaOuProrrogada": false,
+    "arquivos": [
+      [
+        "ed111-2026_-_castr_e_microchip_caninos.doc",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/88379763000136/compras/2026/159/arquivos/1"
+      ]
+    ]
+  },
+  {
+    "id": "87366159000102_1_000458_2026",
+    "numeroControle": "87366159000102-1-000458/2026",
+    "orgao": "PREFEITURA MUNICIPAL DE SAPIRANGA (Pregão - Eletrônico nº 85)",
+    "cidade": "Sapiranga",
+    "objeto": "Contratação de empresa para prestação de serviços de produção audiovisual, sob demanda e com execução parcelada, destinados ao atendimento das necessidades de comunicação institucional do Município de Sapiranga, conforme descrito e especificado no Anexo III  Estudo Técnico Preliminar e Termo de Referência.",
+    "valorEstimado": 616781.0,
+    "valorFormatado": "R$ 616.781,00",
+    "dataEncerramento": "27/11/2026 às 12:00",
+    "dataEncerramentoIso": "2026-11-27T12:00:00",
+    "link": "https://pncp.gov.br/app/editais/87366159000102/2026/458",
+    "tipoLink": "PNCP",
+    "plataforma": "DBseller Serviços de Informática",
+    "ehComprasGov": false,
+    "compativelMEI": true,
+    "permiteCompraFornecedor": true,
+    "seloMEI": "⭐ VALE DO PARANHANA • Prioridade Regional",
+    "ehRegiaoProxima": true,
+    "ehValeParanhana": true,
+    "tags": [
+      "Vale do Paranhana",
+      "Sapiranga",
+      "Pregão - Eletrônico",
+      "Comunicação & Eventos"
+    ],
+    "scoreOceanoAzul": 96,
+    "nivelConcorrencia": "Baixíssima",
+    "motivosConcorrencia": [
+      "Demanda Regional Vale do Paranhana",
+      "Recebendo Proposta",
+      "Região Imediata"
+    ],
+    "ehDesertaOuProrrogada": false,
+    "arquivos": [
+      [
+        "Pregão Eletrônico - 085/2026",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/87366159000102/compras/2026/458/arquivos/1"
+      ]
+    ]
+  },
+  {
+    "id": "97761407000173_1_000443_2026",
+    "numeroControle": "97761407000173-1-000443/2026",
+    "orgao": "PREFEITURA MUNICIPAL DE TAQUARA (Pregão - Eletrônico nº 191)",
+    "cidade": "Taquara",
+    "objeto": "A presente licitação tem por finalidade o Registro de Preço para a prestação de serviços, de forma parcelada, de locação, transporte, montagem, operação técnica, manutenção preventivo-corretiva e desmontagem de painéis/telões de LED (tipo outdoor e indoor), para atender às demandas e ao calendário de eventos do Departamento de Cultura de Taquara/RS, conforme as especificações técnicas detalhadas no Termo de Referência, que segue em anexo a este instrumento convocatório. ",
+    "valorEstimado": 109666.6,
+    "valorFormatado": "R$ 109.666,60",
+    "dataEncerramento": "30/11/2026 às 08:29",
+    "dataEncerramentoIso": "2026-11-30T08:29:00",
+    "link": "https://pncp.gov.br/app/editais/97761407000173/2026/443",
+    "tipoLink": "PNCP",
+    "plataforma": "MUNICIPIO DE TAQUARA",
+    "ehComprasGov": false,
+    "compativelMEI": true,
+    "permiteCompraFornecedor": true,
+    "seloMEI": "⭐ VALE DO PARANHANA • Prioridade Regional",
+    "ehRegiaoProxima": true,
+    "ehValeParanhana": true,
+    "tags": [
+      "Vale do Paranhana",
+      "Taquara",
+      "Pregão - Eletrônico",
+      "Comunicação & Eventos"
+    ],
+    "scoreOceanoAzul": 96,
+    "nivelConcorrencia": "Baixíssima",
+    "motivosConcorrencia": [
+      "Demanda Regional Vale do Paranhana",
+      "Recebendo Proposta",
+      "Região Imediata"
+    ],
+    "ehDesertaOuProrrogada": false,
+    "arquivos": [
+      [
+        "ETP-ESTUDO TECNICO PRELIMINAR (55514)",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/443/arquivos/1"
+      ],
+      [
+        "ANEXOS (55518)",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/443/arquivos/2"
+      ],
+      [
+        "EDITAL  (55516)",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/443/arquivos/3"
+      ],
+      [
+        "TERMO DE REFERENCIA (55515)",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/443/arquivos/4"
+      ],
+      [
+        "CONVOCACAO-AVISO DE EDITAL (55517)",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/443/arquivos/5"
+      ]
+    ]
+  },
+  {
+    "id": "97761407000173_1_000444_2026",
+    "numeroControle": "97761407000173-1-000444/2026",
+    "orgao": "PREFEITURA MUNICIPAL DE TAQUARA (Pregão - Eletrônico nº 192)",
+    "cidade": "Taquara",
+    "objeto": "A presente licitação tem por finalidade o Registro de Preço para a prestação de serviços, de forma parcelada, de recapagem de pneus, destinados aos veículos e máquinas integrantes da frota da Secretaria de Obras e Serviços do Município de Taquara/RS, conforme as especificações técnicas detalhadas no Termo de Referência, que segue em anexo a este instrumento convocatório. ",
+    "valorEstimado": 797629.25,
+    "valorFormatado": "R$ 797.629,25",
+    "dataEncerramento": "30/11/2026 às 08:29",
+    "dataEncerramentoIso": "2026-11-30T08:29:00",
+    "link": "https://pncp.gov.br/app/editais/97761407000173/2026/444",
+    "tipoLink": "PNCP",
+    "plataforma": "MUNICIPIO DE TAQUARA",
+    "ehComprasGov": false,
+    "compativelMEI": true,
+    "permiteCompraFornecedor": true,
+    "seloMEI": "⭐ VALE DO PARANHANA • Prioridade Regional",
+    "ehRegiaoProxima": true,
+    "ehValeParanhana": true,
+    "tags": [
+      "Vale do Paranhana",
+      "Taquara",
+      "Pregão - Eletrônico",
+      "Obras & Infraestrutura"
+    ],
+    "scoreOceanoAzul": 96,
+    "nivelConcorrencia": "Baixíssima",
+    "motivosConcorrencia": [
+      "Demanda Regional Vale do Paranhana",
+      "Recebendo Proposta",
+      "Região Imediata"
+    ],
+    "ehDesertaOuProrrogada": false,
+    "arquivos": [
+      [
+        "ETP-ESTUDO TECNICO PRELIMINAR (55589)",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/444/arquivos/1"
+      ],
+      [
+        "EDITAL  (55593)",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/444/arquivos/2"
+      ],
+      [
+        "TERMO DE REFERENCIA (55590)",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/444/arquivos/3"
+      ],
+      [
+        "ANEXOS (55594)",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/444/arquivos/4"
+      ],
+      [
+        "CONVOCACAO-AVISO DE EDITAL (55591)",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/444/arquivos/5"
+      ],
+      [
+        "CONVOCACAO-AVISO DE EDITAL (55592)",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/444/arquivos/6"
+      ]
+    ]
+  },
+  {
+    "id": "97761407000173_1_000445_2026",
+    "numeroControle": "97761407000173-1-000445/2026",
+    "orgao": "PREFEITURA MUNICIPAL DE TAQUARA (Pregão - Eletrônico nº 193)",
+    "cidade": "Taquara",
+    "objeto": "A presente licitação tem por finalidade o Registro de Preço para aquisição, de forma parcelada, de troféus e medalhas, para atender às demandas do Departamento de Esporte, conforme necessidades decorrentes da realização de eventos, competições e demais atividades esportivas, conforme as especificações técnicas detalhadas no Termo de Referência, que segue em anexo a este instrumento convocatório. ",
+    "valorEstimado": 376018.55,
+    "valorFormatado": "R$ 376.018,55",
+    "dataEncerramento": "30/11/2026 às 10:29",
+    "dataEncerramentoIso": "2026-11-30T10:29:00",
+    "link": "https://pncp.gov.br/app/editais/97761407000173/2026/445",
+    "tipoLink": "PNCP",
+    "plataforma": "MUNICIPIO DE TAQUARA",
+    "ehComprasGov": false,
+    "compativelMEI": true,
+    "permiteCompraFornecedor": true,
+    "seloMEI": "⭐ VALE DO PARANHANA • Prioridade Regional",
+    "ehRegiaoProxima": true,
+    "ehValeParanhana": true,
+    "tags": [
+      "Vale do Paranhana",
+      "Taquara",
+      "Pregão - Eletrônico",
+      "Comunicação & Eventos"
+    ],
+    "scoreOceanoAzul": 96,
+    "nivelConcorrencia": "Baixíssima",
+    "motivosConcorrencia": [
+      "Demanda Regional Vale do Paranhana",
+      "Recebendo Proposta",
+      "Região Imediata"
+    ],
+    "ehDesertaOuProrrogada": false,
+    "arquivos": [
+      [
+        "ETP-ESTUDO TECNICO PRELIMINAR (55598)",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/445/arquivos/1"
+      ],
+      [
+        "EDITAL  (55600)",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/445/arquivos/2"
+      ],
+      [
+        "TERMO DE REFERENCIA (55599)",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/445/arquivos/3"
+      ],
+      [
+        "ANEXOS (55604)",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/445/arquivos/4"
+      ],
+      [
+        "CONVOCACAO-AVISO DE EDITAL (55601)",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/445/arquivos/5"
+      ],
+      [
+        "CONVOCACAO-AVISO DE EDITAL (55602)",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/445/arquivos/6"
+      ]
+    ]
+  },
+  {
+    "id": "87366159000102_1_000459_2026",
+    "numeroControle": "87366159000102-1-000459/2026",
+    "orgao": "PREFEITURA MUNICIPAL DE SAPIRANGA (Pregão - Eletrônico nº 86)",
+    "cidade": "Sapiranga",
+    "objeto": "Registro de preços para o fornecimento de mochilas personalizadas para a Rede Pública Municipal de Ensino de Sapiranga.",
+    "valorEstimado": 830550.99,
+    "valorFormatado": "R$ 830.550,99",
+    "dataEncerramento": "30/11/2026 às 12:00",
+    "dataEncerramentoIso": "2026-11-30T12:00:00",
+    "link": "https://pncp.gov.br/app/editais/87366159000102/2026/459",
+    "tipoLink": "PNCP",
+    "plataforma": "DBseller Serviços de Informática",
+    "ehComprasGov": false,
+    "compativelMEI": true,
+    "permiteCompraFornecedor": true,
+    "seloMEI": "⭐ VALE DO PARANHANA • Prioridade Regional",
+    "ehRegiaoProxima": true,
+    "ehValeParanhana": true,
+    "tags": [
+      "Vale do Paranhana",
+      "Sapiranga",
+      "Pregão - Eletrônico",
+      "Educação & Mobiliário"
+    ],
+    "scoreOceanoAzul": 96,
+    "nivelConcorrencia": "Baixíssima",
+    "motivosConcorrencia": [
+      "Demanda Regional Vale do Paranhana",
+      "Recebendo Proposta",
+      "Região Imediata"
+    ],
+    "ehDesertaOuProrrogada": false,
+    "arquivos": [
+      [
+        "Pregão Eletrônico - 086/2026",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/87366159000102/compras/2026/459/arquivos/1"
+      ]
+    ]
+  },
+  {
+    "id": "87366159000102_1_000460_2026",
+    "numeroControle": "87366159000102-1-000460/2026",
+    "orgao": "PREFEITURA MUNICIPAL DE SAPIRANGA (Pregão - Eletrônico nº 87)",
+    "cidade": "Sapiranga",
+    "objeto": "Registro de preços para o fornecimento de cargas de gás GLP e botijões, para atender as Secretarias do Município, conforme descrito e especificado no Anexo IV  Estudo Técnico Preliminar e Termo de Referência.",
+    "valorEstimado": 381481.52,
+    "valorFormatado": "R$ 381.481,52",
+    "dataEncerramento": "01/12/2026 às 12:00",
+    "dataEncerramentoIso": "2026-12-01T12:00:00",
+    "link": "https://pncp.gov.br/app/editais/87366159000102/2026/460",
+    "tipoLink": "PNCP",
+    "plataforma": "DBseller Serviços de Informática",
+    "ehComprasGov": false,
+    "compativelMEI": true,
+    "permiteCompraFornecedor": true,
+    "seloMEI": "⭐ VALE DO PARANHANA • Prioridade Regional",
+    "ehRegiaoProxima": true,
+    "ehValeParanhana": true,
+    "tags": [
+      "Vale do Paranhana",
+      "Sapiranga",
+      "Pregão - Eletrônico",
+      "Gás & Combustíveis"
+    ],
+    "scoreOceanoAzul": 96,
+    "nivelConcorrencia": "Baixíssima",
+    "motivosConcorrencia": [
+      "Demanda Regional Vale do Paranhana",
+      "Recebendo Proposta",
+      "Região Imediata"
+    ],
+    "ehDesertaOuProrrogada": false,
+    "arquivos": [
+      [
+        "Pregão Eletrônico - 087/2026",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/87366159000102/compras/2026/460/arquivos/1"
+      ]
+    ]
+  },
+  {
+    "id": "97761407000173_1_000446_2026",
+    "numeroControle": "97761407000173-1-000446/2026",
+    "orgao": "PREFEITURA MUNICIPAL DE TAQUARA (Pregão - Eletrônico nº 194)",
+    "cidade": "Taquara",
+    "objeto": "A presente licitação tem por finalidade o Registro de Preço para aquisição, de forma parcelada, de alimentos perecíveis visando a atender de forma contínua e adequada a demanda da alimentação escolar nas instituições de ensino da rede municipal, conforme as especificações técnicas detalhadas no Termo de Referência, que segue em anexo a este instrumento convocatório. ",
+    "valorEstimado": 1764301.0,
+    "valorFormatado": "R$ 1.764.301,00",
+    "dataEncerramento": "02/12/2026 às 08:29",
+    "dataEncerramentoIso": "2026-12-02T08:29:00",
+    "link": "https://pncp.gov.br/app/editais/97761407000173/2026/446",
+    "tipoLink": "PNCP",
+    "plataforma": "MUNICIPIO DE TAQUARA",
+    "ehComprasGov": false,
+    "compativelMEI": true,
+    "permiteCompraFornecedor": true,
+    "seloMEI": "⭐ VALE DO PARANHANA • Prioridade Regional",
+    "ehRegiaoProxima": true,
+    "ehValeParanhana": true,
+    "tags": [
+      "Vale do Paranhana",
+      "Taquara",
+      "Pregão - Eletrônico",
+      "Educação & Mobiliário"
+    ],
+    "scoreOceanoAzul": 96,
+    "nivelConcorrencia": "Baixíssima",
+    "motivosConcorrencia": [
+      "Demanda Regional Vale do Paranhana",
+      "Recebendo Proposta",
+      "Região Imediata"
+    ],
+    "ehDesertaOuProrrogada": false,
+    "arquivos": [
+      [
+        "ETP-ESTUDO TECNICO PRELIMINAR (55606)",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/446/arquivos/1"
+      ],
+      [
+        "TERMO DE REFERENCIA (55607)",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/446/arquivos/2"
+      ],
+      [
+        "ANEXOS (55608)",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/446/arquivos/3"
+      ],
+      [
+        "ANEXOS (55609)",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/446/arquivos/4"
+      ],
+      [
+        "CONVOCACAO-AVISO DE EDITAL (55610)",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/446/arquivos/5"
+      ]
+    ]
+  },
+  {
+    "id": "88372883000101_1_000310_2026",
+    "numeroControle": "88372883000101-1-000310/2026",
+    "orgao": "PREFEITURA MUNICIPAL DE PAROBE (Pregão - Eletrônico nº PCE 81)",
+    "cidade": "Parobe",
+    "objeto": "Contratação de instituição financeira autorizada pelo Banco Central do Brasil para prestação de serviços de processamento e gerenciamento dos créditos da folha de pagamento dos servidores ativos, inativos, pensionistas e demais beneficiários vinculados ao Município de Parobé/RS, mediante cessão onerosa do direito de processamento da folha",
+    "valorEstimado": 3005614.81,
+    "valorFormatado": "R$ 3.005.614,81",
+    "dataEncerramento": "03/12/2026 às 07:59",
+    "dataEncerramentoIso": "2026-12-03T07:59:00",
+    "link": "https://pncp.gov.br/app/editais/88372883000101/2026/310",
+    "tipoLink": "PNCP",
+    "plataforma": "IPM Sistemas",
+    "ehComprasGov": false,
+    "compativelMEI": true,
+    "permiteCompraFornecedor": true,
+    "seloMEI": "⭐ VALE DO PARANHANA • Prioridade Regional",
+    "ehRegiaoProxima": true,
+    "ehValeParanhana": true,
+    "tags": [
+      "Vale do Paranhana",
+      "Parobe",
+      "Pregão - Eletrônico",
+      "Serviços & Materiais Diversos"
+    ],
+    "scoreOceanoAzul": 96,
+    "nivelConcorrencia": "Baixíssima",
+    "motivosConcorrencia": [
+      "Demanda Regional Vale do Paranhana",
+      "Recebendo Proposta",
+      "Região Imediata"
+    ],
+    "ehDesertaOuProrrogada": false,
+    "arquivos": [
+      [
+        "Relatorio - Edital - WCO621201-4484-XDXNECIQDTXQK-0.pdf",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/88372883000101/compras/2026/310/arquivos/1"
+      ]
+    ]
+  },
+  {
+    "id": "87366159000102_1_000464_2026",
+    "numeroControle": "87366159000102-1-000464/2026",
+    "orgao": "PREFEITURA MUNICIPAL DE SAPIRANGA (Pregão - Eletrônico nº 88)",
+    "cidade": "Sapiranga",
+    "objeto": "Aquisição de materiais escolares para a composição de kits, visando atender aos estudantes da Rede Municipal de Ensino, os recursos são oriundos da Emenda Parlamentar Federal n° 202544840005.",
+    "valorEstimado": 870653.75,
+    "valorFormatado": "R$ 870.653,75",
+    "dataEncerramento": "04/12/2026 às 08:00",
+    "dataEncerramentoIso": "2026-12-04T08:00:00",
+    "link": "https://pncp.gov.br/app/editais/87366159000102/2026/464",
+    "tipoLink": "PNCP",
+    "plataforma": "DBseller Serviços de Informática",
+    "ehComprasGov": false,
+    "compativelMEI": true,
+    "permiteCompraFornecedor": true,
+    "seloMEI": "⭐ VALE DO PARANHANA • Prioridade Regional",
+    "ehRegiaoProxima": true,
+    "ehValeParanhana": true,
+    "tags": [
+      "Vale do Paranhana",
+      "Sapiranga",
+      "Pregão - Eletrônico",
+      "Educação & Mobiliário"
+    ],
+    "scoreOceanoAzul": 96,
+    "nivelConcorrencia": "Baixíssima",
+    "motivosConcorrencia": [
+      "Demanda Regional Vale do Paranhana",
+      "Recebendo Proposta",
+      "Região Imediata"
+    ],
+    "ehDesertaOuProrrogada": false,
+    "arquivos": [
+      [
+        "Pregão Eletrônico - 088/2026",
+        "https://pncp.gov.br/pncp-api/v1/orgaos/87366159000102/compras/2026/464/arquivos/1"
+      ]
+    ]
+  },
+  {
     "id": "88830609000139_1_000633_2026",
     "numeroControle": "88830609000139-1-000633/2026",
     "orgao": "MRS-PREFEITURA MUNICIPAL DE CAXIAS DO SUL",

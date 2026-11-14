@@ -238,6 +238,10 @@
             <span>🌊</span> Oceano Azul (<span id="badgeOceanoAzul">7</span>)
           </button>
 
+          <button onclick="filterCards('vale_paranhana')" class="filter-btn px-2.5 py-1 rounded-lg text-xs font-black transition-all bg-emerald-50 hover:bg-emerald-100 text-emerald-900 border border-emerald-300 flex items-center gap-1 shadow-xs ring-1 ring-emerald-500/30" data-filter="vale_paranhana">
+            <span>📍</span> Vale do Paranhana (<span id="badgeValeParanhana">35</span>)
+          </button>
+
           <button onclick="filterCards('radar_pncp')" class="filter-btn px-2.5 py-1 rounded-lg text-xs font-bold transition-all bg-sky-50 hover:bg-sky-100 text-sky-900 border border-sky-300 flex items-center gap-1 shadow-xs" data-filter="radar_pncp">
             <span class="w-1.5 h-1.5 rounded-full bg-sky-500 animate-pulse"></span> Radar Geral PNCP
           </button>
@@ -2409,6 +2413,8 @@
         renderizarPainelComprasGovRs();
       } else if (categoriaAtual === 'favoritas') {
         renderizarFavoritas();
+      } else if (categoriaAtual === 'vale_paranhana') {
+        renderizarValeParanhana();
       } else if (categoriaAtual === 'radar_pncp') {
         renderizarRadarPNCP();
       } else if (categoriaAtual === 'oceano_azul') {
@@ -4481,6 +4487,138 @@
       });
     }
 
+    
+    // ==========================================
+    // RENDERIZADOR ESPECÍFICO DO VALE DO PARANHANA
+    // ==========================================
+    function renderizarValeParanhana() {
+      const grid = document.getElementById('servicesGrid');
+      grid.innerHTML = '';
+
+      const dados = (window.RADAR_PNCP_DATA || []).filter(item => item.ehValeParanhana === true);
+      const excluidos = getExcluidos();
+      const clicados = getClicados();
+      const favs = getFavoritos();
+      let itensAtivos = dados.filter(item => !excluidos.some(ex => String(ex) === String(item.id)));
+
+      itensAtivos.sort((a, b) => {
+        const dataA = a.dataEncerramentoIso ? new Date(a.dataEncerramentoIso).getTime() : 9999999999999;
+        const dataB = b.dataEncerramentoIso ? new Date(b.dataEncerramentoIso).getTime() : 9999999999999;
+        return dataA - dataB;
+      });
+
+      const badgeAtivas = document.getElementById('badgeQtdAtivas');
+      if (badgeAtivas) badgeAtivas.innerText = `${itensAtivos.length} no Vale do Paranhana (Ordem Cronológica)`;
+
+      const badgeBtn = document.getElementById('badgeValeParanhana');
+      if (badgeBtn) badgeBtn.innerText = itensAtivos.length;
+
+      if (itensAtivos.length === 0) {
+        grid.innerHTML = `
+          <div class="col-span-full py-12 text-center bg-white rounded-3xl border border-dashed border-emerald-300 p-8 space-y-3">
+            <div class="w-12 h-12 rounded-full bg-emerald-50 text-emerald-600 mx-auto flex items-center justify-center text-xl font-bold">
+              📍
+            </div>
+            <h4 class="text-base font-bold text-slate-800">Nenhuma oportunidade do Vale do Paranhana ativa no momento</h4>
+          </div>
+        `;
+        return;
+      }
+
+      itensAtivos.forEach((item, index) => {
+        const strId = String(item.id);
+        const jaClicado = clicados.some(c => String(c) === strId);
+        const jaFavoritado = favs.some(f => String(f) === strId);
+
+        const card = document.createElement('div');
+        card.id = 'card-radar-' + strId;
+        
+        let estiloCard = "border-emerald-200 bg-white hover:border-emerald-500 card-hover";
+        if (jaFavoritado) {
+          estiloCard = "border-amber-400 bg-amber-50/30 ring-2 ring-amber-400/40 shadow-md";
+        } else if (jaClicado) {
+          estiloCard = "border-emerald-500 bg-emerald-50/60 ring-2 ring-emerald-500/30";
+        }
+
+        card.className = "service-item group rounded-2xl border-2 transition-all flex flex-col justify-between p-5 relative overflow-hidden card-shadow " + estiloCard;
+        
+        const tagsHtml = (item.tags || []).map(t => `<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">${t}</span>`).join(' ');
+
+        const badgeCronologico = index < 5 ? 
+          `<span class="px-2 py-0.5 rounded text-[10px] font-extrabold bg-amber-100 text-amber-800 border border-amber-300">🔥 Próxima a Encerrar (#${index+1})</span>` : 
+          `<span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-slate-100 text-slate-600 border border-slate-200">#${index+1} Vale do Paranhana</span>`;
+
+        let arquivosHtml = '';
+        if (item.arquivos && item.arquivos.length > 0) {
+          arquivosHtml = `<div class="mt-3 pt-2.5 border-t border-slate-100 flex flex-wrap items-center gap-1.5">
+            <span class="text-[10px] font-bold text-slate-500">📥 Baixar Edital:</span>
+            ${item.arquivos.slice(0, 2).map(a => `<a href="${a[1]}" target="_blank" class="text-[10px] bg-slate-100 hover:bg-emerald-100 text-slate-700 hover:text-emerald-800 font-semibold px-2 py-0.5 rounded border border-slate-200 truncate max-w-[170px]" title="${a[0]}">${a[0]}</a>`).join('')}
+          </div>`;
+        }
+
+        card.innerHTML = `
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-2">
+              <div class="flex items-center gap-1.5 flex-wrap">
+                <span class="px-2 py-0.5 rounded text-[10px] font-black bg-emerald-600 text-white tracking-wide">📍 ${item.cidade.toUpperCase()}</span>
+                ${badgeCronologico}
+              </div>
+              <div class="flex items-center gap-1">
+                <button onclick="event.stopPropagation(); alternarFavorito('${strId}')" class="p-1 rounded-lg text-slate-400 hover:text-amber-500 transition-colors" title="${jaFavoritado ? 'Remover dos favoritos' : 'Salvar nos favoritos'}">
+                  <span class="text-sm">${jaFavoritado ? '★' : '☆'}</span>
+                </button>
+                <button onclick="event.stopPropagation(); excluirItemRadar('${strId}')" class="p-1 rounded-lg text-slate-400 hover:text-rose-500 transition-colors" title="Ocultar do Radar">
+                  <span class="text-xs">✕</span>
+                </button>
+              </div>
+            </div>
+
+            <h4 class="text-sm font-extrabold text-slate-900 group-hover:text-emerald-700 transition-colors line-clamp-2 mb-1.5" title="${item.objeto}">
+              ${item.objeto}
+            </h4>
+
+            <p class="text-xs text-slate-500 mb-3 flex items-center gap-1">
+              <span>🏛️</span>
+              <span class="truncate">${item.orgao}</span>
+            </p>
+
+            <div class="bg-slate-50 rounded-xl p-2.5 border border-slate-100 mb-3 space-y-1.5">
+              <div class="flex items-center justify-between text-xs">
+                <span class="text-slate-500 font-medium">Valor Estimado:</span>
+                <span class="font-black text-slate-900">${item.valorFormatado}</span>
+              </div>
+              <div class="flex items-center justify-between text-xs">
+                <span class="text-slate-500 font-medium">Prazo de Proposta:</span>
+                <span class="font-bold text-amber-700">${item.dataEncerramento}</span>
+              </div>
+              <div class="flex items-center justify-between text-[11px]">
+                <span class="text-slate-400">Sistema / Emissor:</span>
+                <span class="font-semibold text-slate-600 truncate max-w-[180px]">${item.plataforma}</span>
+              </div>
+            </div>
+
+            <div class="flex flex-wrap gap-1 mb-2">
+              ${tagsHtml}
+            </div>
+
+            ${arquivosHtml}
+          </div>
+
+          <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between gap-2">
+            <a href="${item.link}" target="_blank" onclick="registrarCliqueItem('${strId}')" class="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs transition-colors shadow-xs">
+              <span>🔗</span>
+              <span>Abrir no PNCP</span>
+            </a>
+            <button onclick="copiarDadosItem('${strId}')" class="px-2.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-xs transition-colors" title="Copiar resumo">
+              📋
+            </button>
+          </div>
+        `;
+
+        grid.appendChild(card);
+      });
+    }
+
     function renderizarRadarPNCP() {
       const grid = document.getElementById('servicesGrid');
       grid.innerHTML = '';
@@ -4989,6 +5127,8 @@ Link: ${item.link}`;
                 btn.className = "filter-btn px-2.5 py-1 rounded-lg text-xs font-bold transition-all bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-300 flex items-center gap-1 shadow-xs";
               } else if (f === 'compras_gov_rs') {
                 btn.className = "filter-btn px-2.5 py-1 rounded-lg text-xs font-bold transition-all bg-white hover:bg-slate-100 text-slate-700 border border-slate-300 flex items-center gap-1 shadow-xs";
+              } else if (f === 'vale_paranhana') {
+                btn.className = "filter-btn px-2.5 py-1 rounded-lg text-xs font-black transition-all bg-emerald-50 hover:bg-emerald-100 text-emerald-900 border border-emerald-300 flex items-center gap-1 shadow-xs";
               } else if (f === 'radar_pncp') {
                 btn.className = "filter-btn px-2.5 py-1 rounded-lg text-xs font-bold transition-all bg-sky-50 hover:bg-sky-100 text-sky-900 border border-sky-300 flex items-center gap-1 shadow-xs";
               } else {
