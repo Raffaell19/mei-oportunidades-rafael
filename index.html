@@ -1668,35 +1668,35 @@
     // ==============================================================
     function gerarBlocoPrecificacaoCard(tetoOrgao, custoEstimado, propostaSugerida, lucroLiquido) {
       return `
-        <div class="mt-3 p-3 rounded-2xl bg-slate-50 border-2 border-slate-200/90 text-xs space-y-2">
+        <div class="mt-3 p-3.5 rounded-2xl bg-slate-50 border-2 border-slate-200 text-xs space-y-2.5">
           <!-- Teto Máximo que o Órgão Paga -->
           <div class="flex items-center justify-between pb-2 border-b border-slate-200">
             <div class="flex items-center gap-1.5">
               <span class="text-base">🏛️</span>
               <div>
-                <span class="text-[10px] font-black uppercase text-slate-700 block leading-tight">Valor Disposto a Pagar (Órgão)</span>
+                <span class="text-[10px] font-black uppercase text-slate-700 block leading-tight">VALOR DISPOSTO A PAGAR (ÓRGÃO)</span>
                 <span class="text-[9px] text-slate-500 font-bold block leading-none">Teto Máximo Admitido no Edital</span>
               </div>
             </div>
             <div class="text-right">
-              <strong class="text-sm sm:text-base font-black text-slate-900 block leading-tight">${formatBRL(tetoOrgao)}</strong>
-              <span class="text-[9px] font-black text-sky-800 bg-sky-100 px-1.5 py-0.5 rounded border border-sky-300 uppercase">Teto Máximo</span>
+              <strong class="text-base sm:text-lg font-black text-slate-900 block leading-tight">${formatBRL(tetoOrgao)}</strong>
+              <span class="text-[9px] font-black text-sky-800 bg-sky-100 px-2 py-0.5 rounded border border-sky-300 uppercase">TETO MÁXIMO</span>
             </div>
           </div>
 
           <!-- Comparativo em 3 Colunas: Custo de Fornecimento vs Proposta vs Lucro -->
           <div class="grid grid-cols-3 gap-1.5 text-center">
-            <div class="p-1.5 rounded-xl bg-white border border-slate-200 shadow-xs">
-              <span class="text-[9px] font-bold text-slate-500 block uppercase leading-tight">Custo Estimado</span>
-              <strong class="text-xs font-black text-rose-700 block leading-tight mt-0.5">${formatBRL(custoEstimado)}</strong>
+            <div class="p-2 rounded-xl bg-white border border-rose-200 shadow-xs">
+              <span class="text-[9px] font-bold text-slate-500 block uppercase leading-tight">CUSTO ESTIMADO</span>
+              <strong class="text-xs sm:text-sm font-black text-rose-600 block leading-tight mt-0.5">${formatBRL(custoEstimado)}</strong>
             </div>
-            <div class="p-1.5 rounded-xl bg-sky-50 border border-sky-200 shadow-xs">
-              <span class="text-[9px] font-bold text-sky-800 block uppercase leading-tight">Sua Proposta</span>
-              <strong class="text-xs font-black text-sky-950 block leading-tight mt-0.5">${formatBRL(propostaSugerida)}</strong>
+            <div class="p-2 rounded-xl bg-white border border-sky-200 shadow-xs">
+              <span class="text-[9px] font-bold text-sky-800 block uppercase leading-tight">SUA PROPOSTA</span>
+              <strong class="text-xs sm:text-sm font-black text-sky-700 block leading-tight mt-0.5">${formatBRL(propostaSugerida)}</strong>
             </div>
-            <div class="p-1.5 rounded-xl bg-emerald-50 border border-emerald-200 shadow-xs">
-              <span class="text-[9px] font-bold text-emerald-800 block uppercase leading-tight">Lucro Líquido</span>
-              <strong class="text-xs font-black text-emerald-700 block leading-tight mt-0.5">+ ${formatBRL(lucroLiquido)}</strong>
+            <div class="p-2 rounded-xl bg-white border border-emerald-200 shadow-xs">
+              <span class="text-[9px] font-bold text-emerald-800 block uppercase leading-tight">LUCRO LÍQUIDO</span>
+              <strong class="text-xs sm:text-sm font-black text-emerald-600 block leading-tight mt-0.5">+ ${formatBRL(lucroLiquido)}</strong>
             </div>
           </div>
         </div>
@@ -2271,92 +2271,579 @@
       return termosServico.some(term => texto.includes(term));
     }
 
+    
+    // ==============================================================
+    // FUNÇÕES DE EXTRAÇÃO, IDENTIFICAÇÃO E CLASSIFICAÇÃO SEGREGADA
+    // ==============================================================
+    const VALE_PARANHANA_CIDADES = [
+      'igrejinha', 'sapiranga', 'nova hartz', 'taquara', 'parobe', 'parobé', 'ararica', 'araricá', 'rolante', 'riozinho', 'três coroas', 'tres coroas'
+    ];
+
+    function extrairCidadeItem(item) {
+      if (!item) return 'RS';
+      if (item.cidade && typeof item.cidade === 'string' && item.cidade.trim() && item.cidade.trim() !== 'RS') {
+        return item.cidade.trim();
+      }
+      const loc = (item.local || '').toLowerCase();
+      const org = (item.orgao || '').toLowerCase();
+      const obj = (item.objeto || '').toLowerCase();
+      const combined = `${loc} ${org} ${obj}`;
+
+      if (combined.includes('nova hartz')) return 'Nova Hartz';
+      if (combined.includes('sapiranga')) return 'Sapiranga';
+      if (combined.includes('taquara')) return 'Taquara';
+      if (combined.includes('parobé') || combined.includes('parobe')) return 'Parobé';
+      if (combined.includes('igrejinha')) return 'Igrejinha';
+      if (combined.includes('araricá') || combined.includes('ararica')) return 'Araricá';
+      if (combined.includes('porto alegre')) return 'Porto Alegre';
+      if (combined.includes('caxias')) return 'Caxias do Sul';
+      if (combined.includes('bento gonçalves') || combined.includes('bento goncalves')) return 'Bento Gonçalves';
+      if (combined.includes('salvador do sul')) return 'Salvador do Sul';
+      if (combined.includes('sapucaia')) return 'Sapucaia do Sul';
+      if (combined.includes('osório') || combined.includes('osorio')) return 'Osório';
+      if (combined.includes('canoas')) return 'Canoas';
+      if (combined.includes('brasília') || combined.includes('brasilia') || combined.includes('df')) return 'Brasília';
+      
+      return 'Porto Alegre';
+    }
+
+    function ehOportunidadeValeParanhana(item) {
+      if (!item) return false;
+      if (item.ehValeParanhana === true) return true;
+      const cid = extrairCidadeItem(item).toLowerCase();
+      return VALE_PARANHANA_CIDADES.some(vc => cid.includes(vc));
+    }
+
+    function ehOportunidadeMarketing(item) {
+      if (!item) return false;
+      const txt = `${item.titulo || ''} ${item.objeto || ''} ${item.cnae || ''} ${item.destaque || ''} ${item.categoria || ''}`.toLowerCase();
+      const termos = [
+        'marketing', 'redes sociais', 'social media', 'design gráfico', 'design grafico',
+        'audiovisual', 'fotográfica', 'fotografica', 'comunicação integrada', 'comunicacao integrada',
+        'diagramação', 'diagramacao', 'adesivos', 'vinil', 'serigrafia', 'impressão de adesivos'
+      ];
+      return termos.some(t => txt.includes(t));
+    }
+
+    function ehOportunidadeContrataMais(item) {
+      if (!item) return false;
+      const plat = (item.plataforma || '').toLowerCase();
+      const link = (item.linkDireto || item.linkSistemaOficial || item.link || '').toLowerCase();
+      const cat = (item.categoria || '').toLowerCase();
+      return plat.includes('contrata+') || link.includes('contratamais') || cat.includes('contratamais');
+    }
+
+    function ehOportunidadeServico(item) {
+      if (!item) return false;
+      const txt = `${item.titulo || ''} ${item.objeto || ''} ${item.cnae || ''} ${item.destaque || ''} ${item.categoria || ''}`.toLowerCase();
+      const termos = [
+        'prestação de serviço', 'prestacao de servico', 'manutenção', 'manutencao', 
+        'reforma', 'reparos', 'instalação', 'instalacao', 'revisão', 'revisao',
+        'adequação elétrica', 'adequacao eletrica', 'pintura', 'conserto', 'assentamento', 
+        'alvenaria', 'limpeza', 'dedetização', 'dedetizacao', 'hidrojateamento', 
+        'castração', 'microchipagem', 'organização e execução', 'organizacao e execucao',
+        'substituição de persianas', 'substituicao de persianas', 'confeccao de cortinas',
+        'telhado', 'drywall', 'epoxi'
+      ];
+      return termos.some(t => txt.includes(t));
+    }
+
+    function ehOportunidadeProduto(item) {
+      return !ehOportunidadeServico(item) && !ehOportunidadeMarketing(item);
+    }
+
+    // ==============================================================
+    // OBTENÇÃO SEGREGADA E DEDUPLICADA POR SESSÃO (PENTE FINO)
+    // ==============================================================
+    function obterOportunidadesValeParanhana() {
+      const excluidos = getExcluidos();
+      const enviados = getIdsPropostasEnviadas();
+      const todas = obterTodasOportunidadesUnificadas();
+      const vistos = new Set();
+      const lista = [];
+
+      todas.forEach(it => {
+        const strId = String(it.id);
+        if (!excluidos.includes(strId) && !enviados.includes(strId) && !vistos.has(strId)) {
+          if (ehOportunidadeValeParanhana(it)) {
+            vistos.add(strId);
+            lista.push(it);
+          }
+        }
+      });
+
+      lista.sort((a, b) => {
+        const tA = a.dataEncerramentoIso ? new Date(a.dataEncerramentoIso).getTime() : 9999999999999;
+        const tB = b.dataEncerramentoIso ? new Date(b.dataEncerramentoIso).getTime() : 9999999999999;
+        return tA - tB;
+      });
+
+      return lista;
+    }
+
+    function obterOportunidadesMarketing() {
+      const excluidos = getExcluidos();
+      const enviados = getIdsPropostasEnviadas();
+      const todas = obterTodasOportunidadesUnificadas();
+      const vistos = new Set();
+      const lista = [];
+
+      todas.forEach(it => {
+        const strId = String(it.id);
+        if (!excluidos.includes(strId) && !enviados.includes(strId) && !vistos.has(strId)) {
+          if (ehOportunidadeMarketing(it) && !ehOportunidadeValeParanhana(it)) {
+            vistos.add(strId);
+            lista.push(it);
+          }
+        }
+      });
+
+      return lista;
+    }
+
+    function obterOportunidadesContrataMais() {
+      const excluidos = getExcluidos();
+      const enviados = getIdsPropostasEnviadas();
+      const todas = obterTodasOportunidadesUnificadas();
+      const vistos = new Set();
+      const lista = [];
+
+      todas.forEach(it => {
+        const strId = String(it.id);
+        if (!excluidos.includes(strId) && !enviados.includes(strId) && !vistos.has(strId)) {
+          if (ehOportunidadeContrataMais(it) && !ehOportunidadeValeParanhana(it) && !ehOportunidadeMarketing(it)) {
+            vistos.add(strId);
+            lista.push(it);
+          }
+        }
+      });
+
+      return lista;
+    }
+
+    function obterOportunidadesServicosPrestados() {
+      const excluidos = getExcluidos();
+      const enviados = getIdsPropostasEnviadas();
+      const todas = obterTodasOportunidadesUnificadas();
+      const vistos = new Set();
+      const lista = [];
+
+      todas.forEach(it => {
+        const strId = String(it.id);
+        if (!excluidos.includes(strId) && !enviados.includes(strId) && !vistos.has(strId)) {
+          if (ehOportunidadeServico(it) && !ehOportunidadeValeParanhana(it) && !ehOportunidadeMarketing(it) && !ehOportunidadeContrataMais(it)) {
+            vistos.add(strId);
+            lista.push(it);
+          }
+        }
+      });
+
+      return lista;
+    }
+
+    function obterOportunidadesProdutosFornecimento() {
+      const excluidos = getExcluidos();
+      const enviados = getIdsPropostasEnviadas();
+      const todas = obterTodasOportunidadesUnificadas();
+      const vistos = new Set();
+      const lista = [];
+
+      todas.forEach(it => {
+        const strId = String(it.id);
+        if (!excluidos.includes(strId) && !enviados.includes(strId) && !vistos.has(strId)) {
+          if (ehOportunidadeProduto(it) && !ehOportunidadeValeParanhana(it) && !ehOportunidadeMarketing(it) && !ehOportunidadeContrataMais(it)) {
+            vistos.add(strId);
+            lista.push(it);
+          }
+        }
+      });
+
+      return lista;
+    }
+
+    function obterOportunidadesComprasGovRs() {
+      const excluidos = getExcluidos();
+      const enviados = getIdsPropostasEnviadas();
+      const todas = obterTodasOportunidadesUnificadas();
+      const vistos = new Set();
+      const lista = [];
+
+      todas.forEach(it => {
+        const strId = String(it.id);
+        if (!excluidos.includes(strId) && !enviados.includes(strId) && !vistos.has(strId)) {
+          const plat = (it.plataforma || '').toLowerCase();
+          const org = (it.orgao || '').toLowerCase();
+          const ehPortalRsGov = plat.includes('compras') || it.ehComprasGov || org.includes('celic') || org.includes('estado');
+          if (ehPortalRsGov && !ehOportunidadeValeParanhana(it) && !ehOportunidadeMarketing(it) && !ehOportunidadeContrataMais(it)) {
+            vistos.add(strId);
+            lista.push(it);
+          }
+        }
+      });
+
+      return lista;
+    }
+
+    function obterOportunidadesRadarPNCP() {
+      const excluidos = getExcluidos();
+      const radar = (typeof window !== 'undefined' && window.RADAR_PNCP_DATA) ? window.RADAR_PNCP_DATA : [];
+      const vistos = new Set();
+      const lista = [];
+
+      radar.forEach(r => {
+        const strId = String(r.id);
+        if (!excluidos.includes(strId) && !vistos.has(strId)) {
+          vistos.add(strId);
+          lista.push(normalizarOportunidadeRadar(r));
+        }
+      });
+
+      lista.sort((a, b) => {
+        const tA = a.dataEncerramentoIso ? new Date(a.dataEncerramentoIso).getTime() : 9999999999999;
+        const tB = b.dataEncerramentoIso ? new Date(b.dataEncerramentoIso).getTime() : 9999999999999;
+        return tA - tB;
+      });
+
+      return lista;
+    }
+
+    function obterOportunidadesOceanoAzul() {
+      const excluidos = getExcluidos();
+      const enviados = getIdsPropostasEnviadas();
+      const todas = obterTodasOportunidadesUnificadas();
+      const vistos = new Set();
+      const lista = [];
+
+      todas.forEach(it => {
+        const strId = String(it.id);
+        if (!excluidos.includes(strId) && !enviados.includes(strId) && !vistos.has(strId)) {
+          const score = it.scoreOceanoAzul || 70;
+          const nivel = (it.nivelConcorrencia || '').toLowerCase();
+          if (score >= 70 || nivel.includes('nula') || nivel.includes('baix')) {
+            vistos.add(strId);
+            lista.push(it);
+          }
+        }
+      });
+
+      return lista;
+    }
+
+    function obterOportunidadesFavoritas() {
+      const favIds = typeof getFavoritos === 'function' ? getFavoritos() : [];
+      const todas = obterTodasOportunidadesUnificadas();
+      const vistos = new Set();
+      const lista = [];
+
+      todas.forEach(it => {
+        const strId = String(it.id);
+        if (favIds.some(f => String(f) === strId) && !vistos.has(strId)) {
+          vistos.add(strId);
+          lista.push(it);
+        }
+      });
+
+      return lista;
+    }
+
+    // ==============================================================
+    // GERADOR PADRÃO DO CARD DE OPORTUNIDADE (IDENTIDADE VISUAL OFICIAL)
+    // ==============================================================
+    function gerarCardPadraoOportunidade(s) {
+      if (!s) return null;
+      const strId = String(s.id);
+      const favs = typeof getFavoritos === 'function' ? getFavoritos() : [];
+      const jaFavoritado = favs.some(f => String(f) === strId);
+      const clicados = typeof getClicados === 'function' ? getClicados() : [];
+      const jaClicado = clicados.some(c => String(c) === strId);
+
+      // Localização e Cidade no Topo do Card
+      const cidade = extrairCidadeItem(s);
+      const dist = s.distanciaKm || (typeof calcularDistanciaEstimada === 'function' ? calcularDistanciaEstimada(cidade) : 45);
+
+      // Valores Financeiros Inteligentes
+      const valorTeto = s.valorReferencia || s.valorEstimado || 0;
+      let propostaSugerida = s.propostaSugerida || (valorTeto > 0 ? Math.round(valorTeto * 0.92) : 5000);
+      let custoTotal = 0;
+      if (s.itensCompra && s.itensCompra.length > 0) {
+        custoTotal = s.itensCompra.reduce((acc, it) => acc + (it.total || 0), 0) + (s.equipe ? s.equipe.total : 0) + (s.logistica ? s.logistica.total : 0) + (s.reserva || 0);
+      } else if (s.custoOperacionalEstimado) {
+        custoTotal = s.custoOperacionalEstimado;
+      } else {
+        custoTotal = Math.round(propostaSugerida * 0.55);
+      }
+      let lucroLiquido = s.lucroProjetado || (propostaSugerida - custoTotal);
+
+      // Prazos e Urgência
+      const dt = extrairDataEncerramentoItem(s);
+
+      // Concorrência e Inteligência Estratégica
+      const score = s.scoreOceanoAzul || (s.id.includes('exercito') || s.id.includes('taquara') ? 85 : 70);
+      const nivelConcorrencia = s.nivelConcorrencia || (score >= 80 ? 'Baixíssima' : (score >= 60 ? 'Baixa' : 'Média'));
+      const txtConcorrentes = score >= 80 ? '1 a 2 concorrentes' : (score >= 60 ? '2 a 3 concorrentes' : 'Poucos concorrentes');
+
+      // Plataforma
+      const portalInfo = identificarPortalOportunidade(s);
+      let nomePlataforma = '🌐 Compras.gov.br (Federal)';
+      if (portalInfo.id === 'comprasrs') {
+        nomePlataforma = '🏛️ Compras RS (Estadual)';
+      } else if (portalInfo.id === 'contratamais' || s.ehContrataMais) {
+        nomePlataforma = '🏛️ Contrata+ Brasil';
+      } else if (s.plataforma && s.plataforma.includes('Banrisul')) {
+        nomePlataforma = '🌐 Banrisul / RS';
+      } else if (s.plataforma && s.plataforma.includes('Portal de Compras')) {
+        nomePlataforma = '🏛️ Portal de Compras Públicas';
+      }
+
+      // Selo MEI
+      const ehServ = ehOportunidadeServico(s);
+      const seloMei = ehServ ? '✓ Mão de Obra e Execução (100% MEI)' : '✓ Compra de Distribuidor / Revenda Autorizada (100% MEI)';
+
+      // Motivos da Concorrência Nula
+      let motivoSecundario = 'Demanda Específica / Mista (Afasta Licitantes Generalistas)';
+      if (!ehServ) {
+        motivoSecundario = 'Compra Direta de Distribuidor (Margem Limpa sem Maquinário)';
+      }
+      if (portalInfo.id === 'comprasrs') {
+        motivoSecundario = 'Portal RS Exclusivo: Exige CFE Estadual (Bloqueia 90% do Brasil)';
+      }
+
+      // Título e Órgão
+      const orgao = (s.orgao || 'ÓRGÃO PÚBLICO RS').toUpperCase();
+      const titulo = s.tituloResumo || s.titulo || (s.objeto ? (s.objeto.length > 90 ? s.objeto.substring(0, 87) + '...' : s.objeto) : 'Oportunidade Pública MEI');
+
+      // Link Direto Oficial
+      const linkOficial = formatarLinkDireto(s);
+      let labelLink = s.textoBotao || (portalInfo.id === 'contratamais' ? 'Acessar no Contrata+ ↗' : (portalInfo.id === 'comprasrs' ? 'Acessar no Compras RS ↗' : 'Acessar Oportunidade ↗'));
+      if (!labelLink.includes('↗')) labelLink += ' ↗';
+
+      // Card Container
+      const card = document.createElement('div');
+      card.id = 'card-item-' + strId;
+      card.setAttribute('data-id', strId);
+      
+      let borderClass = 'border-slate-200 card-shadow hover:border-cyan-400';
+      if (jaFavoritado) {
+        borderClass = 'border-amber-400 bg-amber-50/20 ring-2 ring-amber-400/40 shadow-md';
+      } else if (jaClicado) {
+        borderClass = 'border-emerald-500 bg-emerald-50/20 shadow-md';
+      }
+
+      card.className = "service-item group bg-white rounded-3xl border-2 " + borderClass + 
+        " card-hover transition-all cursor-pointer flex flex-col justify-between p-5 relative overflow-hidden";
+      card.onclick = () => abrirDetalhes(strId);
+
+      card.innerHTML = `
+        <div>
+          <!-- 1. LOCALIZAÇÃO EM DESTAQUE NO TOPO (SOLICITAÇÃO PRINCIPAL) -->
+          <div class="flex items-center justify-between pb-2.5 mb-2.5 border-b border-slate-100">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-900 text-white font-extrabold text-xs shadow-xs tracking-wide">
+              <span class="text-rose-400">📍</span> ${cidade.toUpperCase()} - RS
+            </span>
+            <span class="text-[11px] font-bold text-slate-500">
+              📍 ${dist} km de Nova Hartz
+            </span>
+          </div>
+
+          <!-- 2. LINHA 1 DE BADGES: CONCORRÊNCIA BAIXÍSSIMA / NULA -->
+          <div class="flex items-center justify-between gap-1.5 mb-2">
+            <span class="px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800 border border-emerald-300 flex items-center gap-1 shadow-2xs">
+              <span>🌊</span> Concorrência: ${nivelConcorrencia} (${score}%)
+            </span>
+            <span class="px-3 py-1 rounded-full text-xs font-bold bg-cyan-50 text-cyan-800 border border-cyan-200">
+              ${txtConcorrentes}
+            </span>
+          </div>
+
+          <!-- 3. LINHA 2 DE BADGES: PLATAFORMA + FAVORITA + EXCLUIR -->
+          <div class="flex items-center justify-between gap-2 mb-2.5">
+            <span class="px-3 py-1 rounded-full text-xs font-bold bg-sky-100 text-sky-800 border border-sky-300 flex items-center gap-1">
+              ${nomePlataforma}
+            </span>
+            <div class="flex items-center gap-1.5">
+              <button onclick="alternarFavorito('${strId}', event)" class="px-3 py-1 rounded-lg text-xs font-black transition-all flex items-center gap-1 ${jaFavoritado ? 'bg-amber-400 text-slate-950 shadow-sm ring-1 ring-amber-500' : 'bg-slate-100 hover:bg-amber-50 text-slate-600 hover:text-amber-800 border border-slate-200'}" title="${jaFavoritado ? 'Remover dos Favoritos' : 'Salvar nas Melhores Oportunidades'}">
+                <span class="${jaFavoritado ? 'text-slate-950 font-black' : 'text-amber-500'}">★</span>
+                <span class="text-[11px] font-extrabold">${jaFavoritado ? 'Favorita' : 'Favoritar'}</span>
+              </button>
+              <button onclick="event.stopPropagation(); excluirServico('${strId}')" title="Excluir oportunidade do painel" class="p-1 px-2 rounded-lg bg-slate-100 hover:bg-rose-100 text-slate-400 hover:text-rose-600 border border-slate-200 hover:border-rose-300 transition-all text-xs cursor-pointer shadow-xs">
+                <span>🗑️</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- 4. LINHA 3: SELO MEI -->
+          <div class="mb-3">
+            <span class="w-full inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-800 border border-emerald-300">
+              <span>✓</span> ${seloMei}
+            </span>
+          </div>
+
+          <!-- 5. ÓRGÃO, TÍTULO E LOCALIZAÇÃO -->
+          <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">${orgao}</span>
+          <h3 class="text-base sm:text-lg font-black text-slate-900 group-hover:text-sky-600 transition-colors mt-0.5 leading-snug line-clamp-2">
+            ${titulo}
+          </h3>
+          <p class="text-xs font-semibold text-slate-500 mt-1 flex items-center gap-1">
+            <span class="text-rose-500">📍</span> ${cidade}
+          </p>
+
+          <!-- 6. BOX: POR QUE A CONCORRÊNCIA É QUASE NULA? -->
+          <div class="mt-3 bg-cyan-50/70 border border-cyan-200 rounded-2xl p-3.5 space-y-1.5 text-xs text-slate-700">
+            <strong class="text-[11px] font-black text-cyan-900 uppercase tracking-wider block">POR QUE A CONCORRÊNCIA É QUASE NULA?</strong>
+            <p class="text-slate-600 text-xs flex items-center gap-1.5">
+              <span class="w-1.5 h-1.5 rounded-full bg-cyan-500"></span>
+              <span>📍 Praça Regional no RS (Vantagem de Proximidade Local)</span>
+            </p>
+            <p class="text-slate-600 text-xs flex items-center gap-1.5">
+              <span class="w-1.5 h-1.5 rounded-full bg-cyan-500"></span>
+              <span>${motivoSecundario}</span>
+            </p>
+          </div>
+
+          <!-- 7. BOX: PRAZO DE ENCERRAMENTO COM URGÊNCIA -->
+          <div class="mt-3 p-3 rounded-2xl border flex items-center justify-between text-xs ${dt.classe}">
+            <div class="flex items-center gap-1.5 font-bold">
+              <span>⏳</span>
+              <span>Encerra em:</span>
+            </div>
+            <div class="text-right">
+              <strong class="font-black text-xs block">${dt.texto}</strong>
+              ${dt.badgeUrgencia ? `<span class="text-[10px] block font-extrabold uppercase tracking-tight text-rose-600">🔥 ${dt.badgeUrgencia}</span>` : ''}
+            </div>
+          </div>
+
+          <!-- 8. BOX: VALOR DISPOSTO A PAGAR (ÓRGÃO) COM CUSTO, PROPOSTA E LUCRO -->
+          ${gerarBlocoPrecificacaoCard(valorTeto, custoTotal, propostaSugerida, lucroLiquido)}
+        </div>
+
+        <!-- 9. BOTÕES DE AÇÃO INFERIORES -->
+        <div class="mt-4 pt-3 border-t border-slate-100 space-y-2">
+          <button onclick="event.stopPropagation(); abrirModalRegistroPropostaItem('${strId}', '${s.tipoOrigem || 'interno'}')" class="w-full py-2.5 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-black text-xs text-center transition-all shadow-sm flex items-center justify-center gap-1.5 cursor-pointer">
+            <span>📝</span>
+            <span>Cadastrar Proposta Enviada</span>
+          </button>
+
+          ${gerarBotaoFornecedoresCard(strId)}
+
+          <div class="grid grid-cols-2 gap-2 text-xs">
+            <button onclick="event.stopPropagation(); abrirDetalhes('${strId}')" class="w-full py-2.5 px-3 rounded-xl text-xs font-bold bg-slate-900 hover:bg-slate-800 text-white transition-all text-center shadow-sm flex items-center justify-center gap-1">
+              <span>Ver Orçamento</span>
+              <span>→</span>
+            </button>
+            <a href="${linkOficial}" target="_blank" onclick="event.stopPropagation(); marcarCardComoClicado('${strId}')" class="w-full py-2.5 px-3 rounded-xl text-xs font-bold bg-sky-600 hover:bg-sky-500 text-white transition-all flex items-center justify-center gap-1 shadow-sm text-center" title="Acessar edital oficial da oportunidade">
+              <span>${labelLink}</span>
+              <span class="text-[10px]">↗</span>
+            </a>
+          </div>
+        </div>
+      `;
+
+      return card;
+    }
+
+
     function renderizarPainelServicosPrestados() {
       const grid = document.getElementById('servicesGrid');
       grid.innerHTML = '';
-      const excluidos = getExcluidos();
-      const idsEnviados = getIdsPropostasEnviadas();
-      const lista = obterTodasOportunidadesUnificadas().filter(s => {
-        const strId = String(s.id);
-        return !excluidos.includes(strId) && !idsEnviados.includes(strId) && ehDemandaServico(s);
-      });
 
-      document.getElementById('badgeQtdAtivas').innerText = `${lista.length} serviços prestados em monitoramento`;
-      
+      const lista = obterOportunidadesServicosPrestados();
+      const badgeAtivas = document.getElementById('badgeQtdAtivas');
+      if (badgeAtivas) badgeAtivas.innerText = `${lista.length} serviços de mão de obra e execução`;
+
       const banner = document.createElement('div');
-      banner.className = "col-span-full bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white rounded-3xl p-6 shadow-xl border-2 border-indigo-400/40 space-y-3";
+      banner.className = "col-span-full bg-gradient-to-r from-slate-950 via-indigo-950 to-slate-900 text-white rounded-3xl p-6 shadow-xl border-2 border-indigo-400/40 space-y-3";
       banner.innerHTML = `
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div>
             <div class="flex items-center gap-2">
-              <span class="px-2.5 py-0.5 rounded-full text-xs font-black bg-indigo-500 text-white">Pasta: Serviços Prestados</span>
-              <span class="text-xs text-indigo-300 font-bold">Mão de Obra, Manutenção & Consultoria</span>
+              <span class="px-2.5 py-0.5 rounded-full text-xs font-black bg-indigo-400 text-slate-950">
+                🛠️ Serviços Prestados & Manutenção
+              </span>
+              <span class="text-xs text-indigo-300 font-semibold">Mão de Obra, Reformas & Execução</span>
             </div>
-            <h3 class="text-xl sm:text-2xl font-black text-white mt-1">Oportunidades de Prestação de Serviços (MEI)</h3>
-            <p class="text-xs text-slate-300 mt-0.5 max-w-2xl">
-              Demandas que exigem execução operacional direta ou subcontratação permitida: reformas, persianas, instalações, marketing digital e redes sociais.
+            <h3 class="text-xl sm:text-2xl font-black text-white mt-1">Serviços Físicos e Técnicos no RS</h3>
+            <p class="text-xs text-slate-300 mt-0.5 max-w-xl">
+              Demandas com alta margem onde o valor contratado fica quase integralmente para o MEI (sem custo de revenda pesada).
             </p>
           </div>
-          <div class="bg-slate-900/90 p-3 rounded-2xl border border-indigo-500/30 text-right">
-            <span class="text-[10px] text-slate-400 uppercase font-bold block">Total de Serviços Ativos</span>
-            <strong class="text-lg font-black text-indigo-300">${lista.length} Oportunidades</strong>
+          <div class="bg-slate-900/90 px-4 py-2 rounded-2xl border border-indigo-500/30 text-right">
+            <span class="text-[10px] text-slate-400 block uppercase font-bold">Total Serviços</span>
+            <span class="text-lg font-black text-indigo-300">${lista.length} oportunidades</span>
           </div>
         </div>
       `;
       grid.appendChild(banner);
+
       renderizarCards(lista, true);
     }
 
     function renderizarPainelProdutosFornecimento() {
       const grid = document.getElementById('servicesGrid');
       grid.innerHTML = '';
-      const excluidos = getExcluidos();
-      const idsEnviados = getIdsPropostasEnviadas();
-      const lista = obterTodasOportunidadesUnificadas().filter(s => {
-        const strId = String(s.id);
-        return !excluidos.includes(strId) && !idsEnviados.includes(strId) && !ehDemandaServico(s);
-      });
 
-      document.getElementById('badgeQtdAtivas').innerText = `${lista.length} produtos para fornecimento`;
+      const lista = obterOportunidadesProdutosFornecimento();
+      const badgeAtivas = document.getElementById('badgeQtdAtivas');
+      if (badgeAtivas) badgeAtivas.innerText = `${lista.length} produtos para fornecimento e revenda`;
 
       const banner = document.createElement('div');
-      banner.className = "col-span-full bg-gradient-to-r from-slate-900 via-emerald-950 to-slate-900 text-white rounded-3xl p-6 shadow-xl border-2 border-emerald-400/40 space-y-3";
+      banner.className = "col-span-full bg-gradient-to-r from-slate-950 via-emerald-950 to-slate-900 text-white rounded-3xl p-6 shadow-xl border-2 border-emerald-400/40 space-y-3";
       banner.innerHTML = `
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div>
             <div class="flex items-center gap-2">
-              <span class="px-2.5 py-0.5 rounded-full text-xs font-black bg-emerald-500 text-slate-950">Pasta: Fornecimento de Produtos</span>
-              <span class="text-xs text-emerald-300 font-bold">Revenda Direta / Compra Sem Estoque</span>
+              <span class="px-2.5 py-0.5 rounded-full text-xs font-black bg-emerald-400 text-slate-950">
+                📦 Produtos a Entregar & Revenda
+              </span>
+              <span class="text-xs text-emerald-300 font-semibold">Compra Direta em Distribuidor & Entrega</span>
             </div>
-            <h3 class="text-xl sm:text-2xl font-black text-white mt-1">Oportunidades de Entrega de Materiais e Produtos</h3>
-            <p class="text-xs text-slate-300 mt-0.5 max-w-2xl">
-              Demandas com entrega física de mercadorias prontas (displays, adesivos em vinil, brindes, moedas metálicas, peças de aço, insumos). Você compra do fabricante ou gráfica e entrega com margem limpa!
+            <h3 class="text-xl sm:text-2xl font-black text-white mt-1">Fornecimento de Bens e Materiais</h3>
+            <p class="text-xs text-slate-300 mt-0.5 max-w-xl">
+              Compre faturado de distribuidores parceiros e entregue aos órgãos públicos com margem líquida limpa.
             </p>
           </div>
-          <div class="flex items-center gap-2">
-            <a href="produtos.html" class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-black text-xs transition-all shadow-md flex items-center gap-1.5">
-              <span>📦</span>
-              <span>Abrir Catálogo Completo</span>
-            </a>
+          <div class="bg-slate-900/90 px-4 py-2 rounded-2xl border border-emerald-500/30 text-right">
+            <span class="text-[10px] text-slate-400 block uppercase font-bold">Total Produtos</span>
+            <span class="text-lg font-black text-emerald-400">${lista.length} oportunidades</span>
           </div>
         </div>
       `;
       grid.appendChild(banner);
+
       renderizarCards(lista, true);
     }
 
     function atualizarContadoresPastas() {
-      const excluidos = typeof getExcluidos === 'function' ? getExcluidos() : [];
-      const idsEnviados = typeof getIdsPropostasEnviadas === 'function' ? getIdsPropostasEnviadas() : [];
-      const todas = obterTodasOportunidadesUnificadas();
+      try {
+        const cContrata = obterOportunidadesContrataMais().length;
+        const elContrata = document.getElementById('badgeContrataMais');
+        if (elContrata) elContrata.innerText = cContrata;
 
-      const listaServicos = todas.filter(s => !excluidos.includes(String(s.id)) && !idsEnviados.includes(String(s.id)) && ehDemandaServico(s));
-      const elServicos = document.getElementById('badgeServicosPrestados');
-      if (elServicos) elServicos.innerText = listaServicos.length;
+        const cServicos = obterOportunidadesServicosPrestados().length;
+        const elServicos = document.getElementById('badgeServicosPrestados');
+        if (elServicos) elServicos.innerText = cServicos;
 
-      const listaProdutos = todas.filter(s => !excluidos.includes(String(s.id)) && !idsEnviados.includes(String(s.id)) && !ehDemandaServico(s));
-      const elProdutos = document.getElementById('badgeProdutosFornecimento');
-      if (elProdutos) elProdutos.innerText = listaProdutos.length;
+        const cProdutos = obterOportunidadesProdutosFornecimento().length;
+        const elProdutos = document.getElementById('badgeProdutosFornecimento');
+        if (elProdutos) elProdutos.innerText = cProdutos;
+
+        const cMarketing = obterOportunidadesMarketing().length;
+        const elMarketing = document.getElementById('badgeMarketingContador');
+        if (elMarketing) elMarketing.innerText = cMarketing;
+
+        const cVale = obterOportunidadesValeParanhana().length;
+        const elVale = document.getElementById('badgeValeParanhana');
+        if (elVale) elVale.innerText = cVale;
+
+        const cOceano = obterOportunidadesOceanoAzul().length;
+        const elOceano = document.getElementById('badgeOceanoAzul');
+        if (elOceano) elOceano.innerText = cOceano;
+
+        const cFavs = obterOportunidadesFavoritas().length;
+        const elFavs = document.getElementById('badgeContadorFavoritas');
+        if (elFavs) elFavs.innerText = cFavs;
+      } catch (e) {
+        console.error('Erro ao atualizar contadores das pastas:', e);
+      }
     }
 
     function atualizarInterface() {
@@ -2995,165 +3482,35 @@
       const grid = document.getElementById('servicesGrid');
       grid.innerHTML = '';
 
-      const idsEnviados = getIdsPropostasEnviadas();
-      const excluidos = getExcluidos();
-      const favs = getFavoritos();
+      const lista = obterOportunidadesMarketing();
+      const badgeAtivas = document.getElementById('badgeQtdAtivas');
+      if (badgeAtivas) badgeAtivas.innerText = `${lista.length} demandas de Marketing, Design e Social Media`;
 
-      const itensMarketing = obterTodasOportunidadesUnificadas().filter(s => {
-        const strId = String(s.id);
-        const txt = `${s.titulo || ''} ${s.objeto || ''} ${s.categoria || ''} ${(s.tags || []).join(' ')}`.toLowerCase();
-        const ehMkt = s.ehMarketing || (s.categoria && s.categoria.includes('marketing')) ||
-                      txt.includes('marketing') || txt.includes('design') || 
-                      txt.includes('rede social') || txt.includes('redes sociais') || 
-                      txt.includes('audiovisual') || txt.includes('foto') || 
-                      txt.includes('vídeo') || txt.includes('video') || 
-                      txt.includes('comunicação visual') || txt.includes('placa') || 
-                      txt.includes('adesivo') || txt.includes('banner') || txt.includes('faixa');
-        return ehMkt && !excluidos.includes(strId);
-      });
-
-      document.getElementById('badgeQtdAtivas').innerText = `${itensMarketing.length} oportunidades em Marketing & Design`;
-
-      const somaTeto = itensMarketing.reduce((acc, it) => acc + (it.valorReferencia || 0), 0);
-      const somaProposta = itensMarketing.reduce((acc, it) => acc + (it.propostaSugerida || 0), 0);
-      const somaLucro = itensMarketing.reduce((acc, it) => {
-        let custo = 0;
-        if (it.itensCompra && it.itensCompra.length > 0) {
-          custo = it.itensCompra.reduce((a, b) => a + b.total, 0) + (it.equipe ? it.equipe.total : 0) + (it.logistica ? it.logistica.total : 0) + (it.reserva || 0);
-        } else {
-          custo = it.propostaSugerida * 0.25;
-        }
-        return acc + (it.propostaSugerida - custo);
-      }, 0);
-
-      // Banner Exclusivo Marketing Digital
       const banner = document.createElement('div');
-      banner.className = "col-span-full bg-gradient-to-r from-emerald-950 via-teal-900 to-slate-900 rounded-3xl p-6 sm:p-8 text-white border-2 border-emerald-500/40 shadow-xl space-y-4";
+      banner.className = "col-span-full bg-gradient-to-r from-slate-950 via-purple-950 to-slate-900 text-white rounded-3xl p-6 shadow-xl border-2 border-purple-400/40 space-y-3";
       banner.innerHTML = `
-        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div>
-            <div class="flex items-center gap-2 mb-1.5">
-              <span class="px-3 py-1 rounded-full text-xs font-black bg-emerald-500/20 text-emerald-300 border border-emerald-400/40 flex items-center gap-1.5">
-                <span>📱</span> Setor: Marketing Digital, Design & Audiovisual
+            <div class="flex items-center gap-2">
+              <span class="px-2.5 py-0.5 rounded-full text-xs font-black bg-purple-400 text-slate-950">
+                📱 Marketing Digital, Design & Gráfica
               </span>
-              <span class="text-xs text-emerald-300 font-bold">100% Compatível com MEI</span>
+              <span class="text-xs text-purple-300 font-semibold">Social Media, Audiovisual, Gráfica & Criativos</span>
             </div>
-            <h3 class="text-xl sm:text-2xl font-black text-white mt-1 flex items-center gap-2">
-              <span>🚀</span>
-              <span>Oportunidades em Marketing Digital & Criação</span>
-            </h3>
-            <p class="text-xs text-slate-300 mt-0.5 max-w-2xl">
-              Demandas com execução remota (home office) ou entrega de materiais gráficos e vídeos. Altíssima margem líquida (75% a 88%) e custo operacional mínimo para o seu MEI.
+            <h3 class="text-xl sm:text-2xl font-black text-white mt-1">Comunicação e Mídias Sociais no RS</h3>
+            <p class="text-xs text-slate-300 mt-0.5 max-w-xl">
+              Demandas digitais e criativas de alta margem de lucro, executáveis de forma 100% remota ou regional.
             </p>
           </div>
-          <div class="flex flex-wrap items-center gap-3">
-            <div class="bg-emerald-900/60 border border-emerald-400/30 px-3.5 py-2 rounded-xl text-right">
-              <span class="text-[10px] uppercase font-bold text-emerald-200 block">Teto Médio Somado</span>
-              <strong class="text-sm font-black text-white">${formatBRL(somaTeto)}</strong>
-            </div>
-            <div class="bg-emerald-500 text-slate-950 px-3.5 py-2 rounded-xl font-black text-right shadow-md">
-              <span class="text-[10px] uppercase font-extrabold block text-emerald-950">Lucro Médio Estimado</span>
-              <strong class="text-sm block">+ ${formatBRL(somaLucro)}</strong>
-            </div>
+          <div class="bg-slate-900/90 px-4 py-2 rounded-2xl border border-purple-500/30 text-right">
+            <span class="text-[10px] text-slate-400 block uppercase font-bold">Total Marketing</span>
+            <span class="text-lg font-black text-purple-300">${lista.length} oportunidades</span>
           </div>
         </div>
       `;
       grid.appendChild(banner);
 
-      if (itensMarketing.length === 0) {
-        const vazio = document.createElement('div');
-        vazio.className = "col-span-full bg-white rounded-3xl p-12 text-center border-2 border-dashed border-slate-300 space-y-2";
-        vazio.innerHTML = `
-          <div class="text-3xl">📱</div>
-          <h4 class="text-base font-bold text-slate-800">Nenhuma oportunidade de marketing ativa no momento</h4>
-          <p class="text-xs text-slate-500">Restaure as oportunidades excluídas para voltar a visualizá-las.</p>
-        `;
-        grid.appendChild(vazio);
-        return;
-      }
-
-      itensMarketing.forEach(item => {
-        const strId = String(item.id);
-        const jaFavoritado = favs.some(f => String(f) === strId);
-        const jaEnviado = idsEnviados.includes(strId);
-
-        let custoTotal = 0;
-        if (item.itensCompra && item.itensCompra.length > 0) {
-          custoTotal = item.itensCompra.reduce((acc, it) => acc + it.total, 0) + (item.equipe ? item.equipe.total : 0) + (item.logistica ? item.logistica.total : 0) + (item.reserva || 0);
-        } else {
-          custoTotal = Math.round(item.propostaSugerida * 0.25 * 100) / 100;
-        }
-        const lucro = item.propostaSugerida - custoTotal;
-        const dt = extrairDataEncerramentoItem(item);
-
-        const card = document.createElement('div');
-        card.className = "service-item bg-white rounded-2xl border-2 " + 
-          (jaEnviado ? "border-emerald-500/70 shadow-sm" : (jaFavoritado ? "border-amber-400 bg-amber-50/10 shadow-md" : "border-slate-200 hover:border-emerald-400")) + 
-          " transition-all p-5 shadow-sm flex flex-col justify-between relative";
-
-        card.innerHTML = `
-          <div>
-            <div class="flex items-center justify-between gap-2 mb-3">
-              <span class="px-2.5 py-0.5 rounded-full text-[11px] font-black border ${item.badgeClass || 'bg-emerald-100 text-emerald-900 border-emerald-300'} flex items-center gap-1">
-                <span>📱</span>
-                <span>${item.badgeText || 'Marketing Digital • MEI'}</span>
-              </span>
-              <div class="flex items-center gap-1.5">
-                <button onclick="alternarFavorito('${strId}', event)" class="px-2.5 py-1 rounded-lg text-xs font-bold ${jaFavoritado ? 'bg-amber-400 text-slate-950 font-black' : 'bg-slate-100 text-slate-600'}">
-                  ★ ${jaFavoritado ? 'Favorita' : 'Favoritar'}
-                </button>
-                <button onclick="event.stopPropagation(); excluirServico('${strId}')" title="Excluir" class="p-1 px-2 rounded-lg bg-slate-100 hover:bg-rose-100 text-slate-500 hover:text-rose-600 border border-slate-200">
-                  🗑️
-                </button>
-              </div>
-            </div>
-
-            <div class="my-2 flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-emerald-50 text-emerald-900 border border-emerald-200 text-[10px] font-bold">
-              <span class="text-emerald-600 font-black">✓</span>
-              <span>${item.cnae || 'CNAE Compatível com MEI'}</span>
-            </div>
-
-            <span class="text-xs font-semibold text-slate-400 block">${item.orgao}</span>
-            <h3 class="text-base sm:text-lg font-black text-slate-900 mt-1 leading-snug">
-              ${item.titulo}
-            </h3>
-            <p class="text-xs text-slate-500 mt-0.5">📍 ${item.local}</p>
-
-            <!-- Prazo de Encerramento -->
-            <div class="mt-3 p-2.5 rounded-xl border flex items-center justify-between text-xs ${dt.classe}">
-              <div class="flex items-center gap-1.5 font-bold">
-                <span>⏳</span>
-                <span>Encerra em:</span>
-              </div>
-              <div class="text-right">
-                <strong class="font-black text-xs block">${dt.texto}</strong>
-                ${dt.badgeUrgencia ? `<span class="text-[10px] block font-extrabold uppercase tracking-tight">${dt.badgeUrgencia}</span>` : ''}
-              </div>
-            </div>
-
-            ${gerarBlocoPrecificacaoCard(item.valorReferencia, custoTotal, item.propostaSugerida, lucro)}
-          </div>
-
-          <div class="mt-4 pt-3 border-t border-slate-100 space-y-2">
-            <button onclick="event.stopPropagation(); abrirModalRegistroPropostaItem('${strId}', 'interno')" class="w-full py-2.5 px-3 rounded-xl ${jaEnviado ? 'bg-slate-800 hover:bg-slate-700' : 'bg-emerald-600 hover:bg-emerald-500'} text-white font-black text-xs text-center transition-all shadow-sm flex items-center justify-center gap-1.5 cursor-pointer">
-              <span>📝</span>
-              <span>${jaEnviado ? 'Atualizar Proposta Enviada' : 'Cadastrar Proposta Enviada'}</span>
-            </button>
-            ${gerarBotaoFornecedoresCard(strId)}
-            <div class="flex items-center gap-2">
-              <button onclick="abrirDetalhes('${strId}')" class="flex-1 py-2 px-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs text-center transition-all flex items-center justify-center gap-1 shadow-sm">
-                <span>Ver Orçamento</span>
-                <span>→</span>
-              </button>
-              <a href="${formatarLinkDireto(item)}" target="_blank" rel="noopener noreferrer" class="py-2 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition-all flex items-center gap-1.5 shadow-sm" title="Acessar página da oportunidade">
-                <span>Acessar Edital</span>
-                <span class="text-[10px]">↗</span>
-              </a>
-            </div>
-          </div>
-        `;
-        grid.appendChild(card);
-      });
+      renderizarCards(lista, true);
     }
 
     // RENDERIZAR A PASTA DE FAVORITAS COM BALANÇO COMPLETO
@@ -3161,269 +3518,38 @@
       const grid = document.getElementById('servicesGrid');
       grid.innerHTML = '';
 
-      const favIds = obterFavoritosElegiveis();
-      const todosOriginais = [...servicosDB];
-      const todosRadar = window.RADAR_PNCP_DATA || [];
+      const lista = obterOportunidadesFavoritas();
+      const badgeAtivas = document.getElementById('badgeQtdAtivas');
+      if (badgeAtivas) badgeAtivas.innerText = `${lista.length} favoritas salvas`;
 
-      // Une as duas fontes com comparação segura de IDs
-      const listaFavoritas = [];
-      favIds.forEach(id => {
-        const itemDb = todosOriginais.find(s => String(s.id) === String(id));
-        if (itemDb) {
-          listaFavoritas.push({ ...itemDb, origem: 'banco_interno' });
-        } else {
-          const itemRadar = todosRadar.find(r => String(r.id) === String(id));
-          if (itemRadar) {
-            listaFavoritas.push({ ...itemRadar, origem: 'radar' });
-          }
-        }
-      });
+      const badgeBtn = document.getElementById('badgeContadorFavoritas');
+      if (badgeBtn) badgeBtn.innerText = lista.length;
 
-      document.getElementById('badgeQtdAtivas').innerText = `${listaFavoritas.length} selecionadas na Pasta de Favoritas`;
-
-      if (listaFavoritas.length === 0) {
-        grid.innerHTML = `
-          <div class="col-span-full py-16 text-center bg-white rounded-2xl border border-dashed border-slate-300 p-8 space-y-4">
-            <div class="w-12 h-12 rounded-xl bg-amber-50 text-amber-600 mx-auto flex items-center justify-center text-2xl font-bold">
-              ★
-            </div>
-            <div>
-              <h4 class="text-base font-bold text-slate-900">Sua Pasta de Melhores Oportunidades está Vazia</h4>
-              <p class="text-xs text-slate-500 max-w-md mx-auto mt-1">
-                Navegue pelas abas do painel e clique no botão <strong>★ Favoritar</strong> em cada oportunidade que achar vantajosa. Elas virão para cá com o balanço de compras e link direto!
-              </p>
-            </div>
-            <button onclick="filterCards('todos')" class="px-4 py-2 text-xs font-bold rounded-lg bg-slate-900 hover:bg-slate-800 text-white transition-all shadow-sm">
-              Explorar Oportunidades
-            </button>
-          </div>
-        `;
-        return;
-      }
-
-      // Painel Executivo de Balanço Geral das Favoritas
-      let somaTeto = 0;
-      let somaProposta = 0;
-      let somaCusto = 0;
-      let somaLucro = 0;
-
-      listaFavoritas.forEach(it => {
-        if (it.origem === 'banco_interno') {
-          const custo = it.itensCompra.reduce((acc, x) => acc + x.total, 0) + it.equipe.total + it.logistica.total + (it.reserva || 0);
-          somaTeto += it.valorReferencia;
-          somaProposta += it.propostaSugerida;
-          somaCusto += custo;
-          somaLucro += (it.propostaSugerida - custo);
-        } else {
-          const b = gerarBalancoEstimado(it.objeto, it.valorEstimado);
-          somaTeto += b.valorReferencia;
-          somaProposta += b.propostaRecomendada;
-          somaCusto += b.custoTotalEstimado;
-          somaLucro += b.lucroLiquido;
-        }
-      });
-
-      const bannerBalanco = document.createElement('div');
-      bannerBalanco.className = "col-span-full bg-slate-900 text-white rounded-2xl p-6 border border-slate-800 shadow-md space-y-4";
-      bannerBalanco.innerHTML = `
-        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+      const banner = document.createElement('div');
+      banner.className = "col-span-full bg-gradient-to-r from-amber-950 via-slate-900 to-slate-950 text-white rounded-3xl p-6 shadow-xl border-2 border-amber-400/40 space-y-3";
+      banner.innerHTML = `
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div>
             <div class="flex items-center gap-2">
-              <span class="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-amber-400 text-slate-950 flex items-center gap-1">
-                <span>★</span> Pasta Selecionada
+              <span class="px-2.5 py-0.5 rounded-full text-xs font-black bg-amber-400 text-slate-950">
+                ★ Melhores Oportunidades Selecionadas
               </span>
-              <span class="text-xs text-slate-400">Balanço Consolidado de Execução</span>
+              <span class="text-xs text-amber-300 font-semibold">Sua Lista Pessoal de Prioridades</span>
             </div>
-            <h3 class="text-xl font-bold text-white mt-1">Balanço Financeiro das Oportunidades Selecionadas</h3>
-            <p class="text-xs text-slate-400 mt-0.5">Visão unificada de capital necessário para insumos e retorno líquido projetado para o seu MEI.</p>
+            <h3 class="text-xl sm:text-2xl font-black text-white mt-1">Pasta de Favoritas</h3>
+            <p class="text-xs text-slate-300 mt-0.5 max-w-xl">
+              Oportunidades marcadas com estrela para acompanhamento direto e envio de propostas.
+            </p>
           </div>
-
-          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 bg-slate-800/80 p-3.5 rounded-xl border border-slate-700">
-            <div>
-              <span class="text-[10px] text-slate-400 font-bold block uppercase">Oportunidades</span>
-              <span class="text-base sm:text-lg font-black text-white">${listaFavoritas.length} itens</span>
-            </div>
-            <div>
-              <span class="text-[10px] text-sky-400 font-bold block uppercase">Faturamento Total</span>
-              <span class="text-base sm:text-lg font-black text-sky-300">${formatBRL(somaProposta)}</span>
-            </div>
-            <div>
-              <span class="text-[10px] text-rose-400 font-bold block uppercase">Capital Necessário</span>
-              <span class="text-base sm:text-lg font-black text-rose-300">${formatBRL(somaCusto)}</span>
-            </div>
-            <div>
-              <span class="text-[10px] text-emerald-400 font-bold block uppercase">Lucro Líquido Real</span>
-              <span class="text-base sm:text-lg font-black text-emerald-400">+ ${formatBRL(somaLucro)}</span>
-            </div>
+          <div class="bg-slate-900/90 px-4 py-2 rounded-2xl border border-amber-500/30 text-right">
+            <span class="text-[10px] text-slate-400 block uppercase font-bold">Total Favoritas</span>
+            <span class="text-lg font-black text-amber-400">${lista.length} salvas</span>
           </div>
         </div>
       `;
-      grid.appendChild(bannerBalanco);
+      grid.appendChild(banner);
 
-      // Renderiza cada cartão favorito com seu balanço completo discriminado
-      listaFavoritas.forEach((item, idx) => {
-        const card = document.createElement('div');
-        card.className = "service-item bg-white rounded-2xl border-2 border-amber-300/80 hover:border-amber-400 transition-all p-5 shadow-sm flex flex-col justify-between relative";
-
-        if (item.origem === 'banco_interno') {
-          const custo = item.itensCompra.reduce((acc, it) => acc + it.total, 0) + item.equipe.total + item.logistica.total + (item.reserva || 0);
-          const lucro = item.propostaSugerida - custo;
-          const margem = ((lucro / item.propostaSugerida) * 100).toFixed(1);
-          const dt = extrairDataEncerramentoItem(item);
-
-          card.innerHTML = `
-            <div>
-              <div class="flex items-center justify-between gap-2 mb-2">
-                <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-slate-100 text-slate-700">
-                  📍 ${item.distanciaTexto ? item.distanciaTexto.split('•')[0] : 'RS'}
-                </span>
-                <button onclick="alternarFavorito('${item.id}', event)" class="px-2 py-1 rounded-md text-xs font-bold text-amber-600 hover:bg-amber-50 border border-amber-200 transition-all flex items-center gap-1" title="Remover dos Favoritos">
-                  <span>★</span>
-                  <span>Favorito</span>
-                </button>
-              </div>
-
-              <div class="my-1.5 flex items-center gap-1.5 px-2 py-0.5 rounded-lg bg-emerald-50 text-emerald-900 border border-emerald-200 text-[10px] font-bold">
-                <span class="text-emerald-600 font-black">✓</span>
-                <span>MEI Elegível: Fornecimento Autorizado</span>
-              </div>
-              <h3 class="text-base font-bold text-slate-900 leading-snug mb-1">
-                ${item.titulo}
-              </h3>
-              <p class="text-xs text-slate-500 mb-3">🏛️ ${item.orgao}</p>
-
-              <!-- Balanço da Demanda -->
-              <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-2 mb-3">
-                <div class="text-[11px] font-bold text-slate-800 flex items-center justify-between">
-                  <span>O QUE SERÁ COMPRADO / FEITO:</span>
-                  <span class="text-[10px] text-slate-500">${item.itensCompra.length} itens orçados</span>
-                </div>
-                <ul class="text-xs text-slate-600 space-y-1 pl-1">
-                  ${item.itensCompra.slice(0, 3).map(it => `
-                    <li class="flex items-center justify-between">
-                      <span class="truncate max-w-[180px]">• ${it.item}</span>
-                      <strong class="text-slate-900">${formatBRL(it.total)}</strong>
-                    </li>
-                  `).join('')}
-                </ul>
-                <div class="pt-1.5 border-t border-slate-200 flex items-center justify-between text-xs">
-                  <span class="text-slate-500">Mão de Obra + Frete:</span>
-                  <strong class="text-slate-800">${formatBRL(item.equipe.total + item.logistica.total)}</strong>
-                </div>
-              </div>
-
-              <!-- Prazo de Encerramento das Propostas -->
-              <div class="p-2.5 rounded-xl border flex items-center justify-between text-xs mb-3 ${dt.classe}">
-                <div class="flex items-center gap-1.5 font-bold">
-                  <span>⏳</span>
-                  <span>Encerra em:</span>
-                </div>
-                <div class="text-right">
-                  <strong class="font-black text-xs block">${dt.texto}</strong>
-                  ${dt.badgeUrgencia ? `<span class="text-[10px] block font-extrabold uppercase tracking-tight">${dt.badgeUrgencia}</span>` : ''}
-                </div>
-              </div>
-            </div>
-
-            <div class="pt-3 border-t border-slate-100 space-y-3">
-              ${gerarBlocoPrecificacaoCard(item.valorReferencia, custo, item.propostaSugerida, lucro)}
-
-              <div class="space-y-2">
-                <button onclick="event.stopPropagation(); abrirModalRegistroPropostaItem('${item.id}', 'banco_interno')" class="w-full py-2.5 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-black text-xs text-center transition-all shadow-sm flex items-center justify-center gap-1.5 cursor-pointer">
-                  <span>📝</span>
-                  <span>Cadastrar Proposta Enviada</span>
-                </button>
-                ${gerarBotaoFornecedoresCard(item.id)}
-                <div class="flex items-center gap-2">
-                  <button onclick="abrirDetalhes('${item.id}')" class="flex-1 py-2 px-3 rounded-lg bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs text-center transition-all shadow-sm">
-                    Ver Orçamento Detalhado
-                  </button>
-                  <a href="${formatarLinkDireto(item)}" target="_blank" class="py-2 px-3 rounded-lg bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs transition-all flex items-center gap-1 shadow-sm" title="Acessar página direta da oportunidade">
-                    <span>Acessar Oportunidade</span>
-                    <span class="text-[10px]">↗</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          `;
-        } else {
-          // Item vindo do Radar PNCP com Balanço Gerado por Inteligência
-          const balanco = gerarBalancoEstimado(item.objeto, item.valorEstimado);
-          const dt = extrairDataEncerramentoItem(item);
-
-          card.innerHTML = `
-            <div>
-              <div class="flex items-center justify-between gap-2 mb-2">
-                <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-sky-50 text-sky-800 border border-sky-200">
-                  📍 ${item.cidade} • ${item.plataforma}
-                </span>
-                <button onclick="alternarFavorito('${item.id}', event)" class="px-2 py-1 rounded-md text-xs font-bold text-amber-600 hover:bg-amber-50 border border-amber-200 transition-all flex items-center gap-1" title="Remover dos Favoritos">
-                  <span>★</span>
-                  <span>Favorito</span>
-                </button>
-              </div>
-
-                          <div class="mb-2">
-              <h3 class="text-sm font-black text-slate-900 group-hover:text-sky-700 transition-colors leading-snug">
-                ${item.tituloCurto ? `📦 ${item.tituloCurto}` : item.objeto}
-              </h3>
-              <p class="text-xs text-slate-500 line-clamp-2 mt-1 leading-relaxed" title="${item.objeto}">
-                ${item.objeto}
-              </p>
-            </div>
-              <p class="text-xs text-slate-500 mb-3 line-clamp-1">🏛️ ${item.orgao}</p>
-
-              <!-- Balanço Estimado -->
-              <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-2 mb-3">
-                <div class="text-[11px] font-bold text-slate-800 flex items-center justify-between">
-                  <span>BALANÇO ESTIMADO:</span>
-                  <span class="text-[10px] text-slate-500">${balanco.tipo}</span>
-                </div>
-                <ul class="text-xs text-slate-600 space-y-1 pl-1">
-                  ${balanco.composicao.map(c => `<li class="truncate max-w-[280px]">• ${c}</li>`).join('')}
-                </ul>
-                <div class="pt-1.5 border-t border-slate-200 flex items-center justify-between text-xs">
-                  <span class="text-slate-500">Custo Estimado Insumos:</span>
-                  <strong class="text-slate-900">${formatBRL(balanco.custoTotalEstimado)}</strong>
-                </div>
-              </div>
-
-              <!-- Prazo de Encerramento das Propostas -->
-              <div class="p-2.5 rounded-xl border flex items-center justify-between text-xs mb-3 ${dt.classe}">
-                <div class="flex items-center gap-1.5 font-bold">
-                  <span>⏳</span>
-                  <span>Encerra em:</span>
-                </div>
-                <div class="text-right">
-                  <strong class="font-black text-xs block">${dt.texto}</strong>
-                  ${dt.badgeUrgencia ? `<span class="text-[10px] block font-extrabold uppercase tracking-tight">${dt.badgeUrgencia}</span>` : ''}
-                </div>
-              </div>
-            </div>
-
-            <div class="pt-2 border-t border-slate-100 space-y-2">
-              ${gerarBlocoPrecificacaoCard(balanco.valorReferencia, balanco.custoTotalEstimado, balanco.propostaRecomendada, balanco.lucroLiquido)}
-
-              <button onclick="event.stopPropagation(); abrirModalRegistroPropostaItem('${item.id}', 'radar')" class="w-full py-2.5 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-black text-xs text-center transition-all shadow-sm flex items-center justify-center gap-1.5 cursor-pointer">
-                <span>📝</span>
-                <span>Cadastrar Proposta Enviada</span>
-              </button>
-              ${gerarBotaoFornecedoresCard(item.id)}
-              <div class="flex items-center gap-2">
-                <a href="${formatarLinkDireto(item)}" target="_blank" onclick="registrarClique('${item.id}')" class="flex-1 py-2 px-3 rounded-lg bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs text-center transition-all shadow-sm flex items-center justify-center gap-1.5">
-                  <span>${item.tipoLink && !item.tipoLink.includes('Google') ? item.tipoLink : 'Acessar Edital Oficial'}</span>
-                  <span class="text-[10px]">↗</span>
-                </a>
-                <button onclick="copiarDadosItem('${item.id}')" class="py-2 px-3 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs transition-all flex items-center gap-1" title="Copiar Dados">
-                  📋
-                </button>
-              </div>
-            </div>
-          `;
-        }
-
-        grid.appendChild(card);
-      });
+      renderizarCards(lista, true);
     }
 
     // RENDERIZAR AS PROPOSTAS JÁ ENVIADAS PELO RAFAEL
@@ -3947,198 +4073,35 @@
       const grid = document.getElementById('servicesGrid');
       grid.innerHTML = '';
 
-      const idsEnviados = getIdsPropostasEnviadas();
-      const excluidos = getExcluidos();
-      const favs = getFavoritos();
-      const propostasSalvas = obterPropostasGravadas();
-
-      // Pega todas as oportunidades do Contrata+ Brasil do banco de dados (excluindo itens de marketing para ficarem apenas no Painel de Marketing)
-      const todasContrata = obterTodasOportunidadesUnificadas().filter(s => {
-        const portal = identificarPortalOportunidade(s).id;
-        const strId = String(s.id);
-        const ehMarketing = s.ehMarketing || (s.categoria && s.categoria.includes('marketing'));
-        const ehContrata = s.ehContrataMais || s.ehComprasGov || portal === 'contratamais';
-        return ehContrata && !ehMarketing && !excluidos.includes(strId);
-      });
-
-      // Separa entre abertas e com proposta enviada
-      const listaAbertas = todasContrata.filter(s => !idsEnviados.includes(String(s.id)));
-      const listaEnviadas = todasContrata.filter(s => idsEnviados.includes(String(s.id)));
-
-      let listaExibicao = todasContrata;
-      if (subFiltroContrataMais === 'abertas') {
-        listaExibicao = listaAbertas;
-      } else if (subFiltroContrataMais === 'enviadas') {
-        listaExibicao = listaEnviadas;
-      }
-
-      document.getElementById('badgeQtdAtivas').innerText = `${todasContrata.length} oportunidades no Contrata+ Brasil`;
-      const badgeBtn = document.getElementById('badgeContrataMais');
-      if (badgeBtn) badgeBtn.innerText = todasContrata.length;
-
-      // Soma de valores
-      const somaTeto = todasContrata.reduce((acc, it) => acc + (it.valorReferencia || it.propostaSugerida || 0), 0);
-      const somaLucro = todasContrata.reduce((acc, it) => {
-        const custo = it.itensCompra ? (it.itensCompra.reduce((a, c) => a + c.total, 0) + (it.equipe ? it.equipe.total : 0) + (it.logistica ? it.logistica.total : 0) + (it.reserva || 0)) : 0;
-        return acc + (it.propostaSugerida - custo);
-      }, 0);
+      const lista = obterOportunidadesContrataMais();
+      const badgeAtivas = document.getElementById('badgeQtdAtivas');
+      if (badgeAtivas) badgeAtivas.innerText = `${lista.length} oportunidades no Contrata+ Brasil (Exclusivo MEI)`;
 
       const banner = document.createElement('div');
-      banner.className = "col-span-full bg-gradient-to-r from-slate-950 via-emerald-950 to-slate-900 text-white rounded-3xl p-6 shadow-xl border-2 border-emerald-400/50 space-y-4";
+      banner.className = "col-span-full bg-gradient-to-r from-slate-950 via-slate-900 to-emerald-950 text-white rounded-3xl p-6 shadow-xl border-2 border-emerald-500/40 space-y-3";
       banner.innerHTML = `
-        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div>
             <div class="flex items-center gap-2">
-              <span class="px-2.5 py-0.5 rounded-full text-xs font-black bg-emerald-400 text-slate-950 flex items-center gap-1">
-                <span>🏛️</span> Pasta Oficial: Contrata+ Brasil
+              <span class="px-2.5 py-0.5 rounded-full text-xs font-black bg-emerald-400 text-slate-950">
+                🏛️ Contrata+ Brasil (Compras.gov.br)
               </span>
-              <span class="text-xs text-emerald-300 font-bold">Portal Direto do Governo Federal & MEI</span>
+              <span class="text-xs text-emerald-300 font-semibold">Exclusivo MEI Federal • Sem Concorrência de Grandes Empresas</span>
             </div>
-            <h3 class="text-xl sm:text-2xl font-black text-white mt-1 flex items-center gap-2">
-              <span>🏛️</span>
-              <span>Todas as Oportunidades no Contrata+ Brasil</span>
-            </h3>
-            <p class="text-xs text-slate-300 mt-0.5 max-w-2xl">
-              Todas as demandas municipais, estaduais e federais cadastradas no Contrata+ Brasil reunidas aqui com acesso direto, balanço de custos e gerenciamento completo para o seu MEI.
+            <h3 class="text-xl sm:text-2xl font-black text-white mt-1">Dispensas Eletrônicas Federais no RS</h3>
+            <p class="text-xs text-slate-300 mt-0.5 max-w-xl">
+              Contratações 100% exclusivas para Microempreendedores Individuais com pagamento direto garantido via Nota de Empenho Federal.
             </p>
           </div>
-          <div class="flex items-center gap-2">
-            <a href="https://contratamaisbrasil.sistema.gov.br/" target="_blank" rel="noopener noreferrer" class="px-4 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xs transition-all shadow-md flex items-center gap-1.5 shrink-0">
-              <span>Acessar Portal Contrata+</span>
-              <span>↗</span>
-            </a>
-          </div>
-        </div>
-
-        <!-- Sub-filtros e Resumo -->
-        <div class="pt-3 border-t border-emerald-800/60 flex flex-wrap items-center justify-between gap-3">
-          <div class="flex flex-wrap items-center gap-2">
-            <button onclick="filtrarContrataMaisSub('todas')" class="px-3 py-1.5 rounded-xl text-xs font-black transition-all ${subFiltroContrataMais === 'todas' ? 'bg-emerald-400 text-slate-950 shadow-md ring-2 ring-emerald-300' : 'bg-slate-900/80 hover:bg-slate-800 text-slate-200 border border-slate-700'}">
-              🏛️ Todas as Demandas (${todasContrata.length})
-            </button>
-            <button onclick="filtrarContrataMaisSub('abertas')" class="px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${subFiltroContrataMais === 'abertas' ? 'bg-emerald-400 text-slate-950 font-black shadow-md ring-2 ring-emerald-300' : 'bg-slate-900/80 hover:bg-slate-800 text-slate-200 border border-slate-700'}">
-              🟢 Abertas para Cotação (${listaAbertas.length})
-            </button>
-            <button onclick="filtrarContrataMaisSub('enviadas')" class="px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${subFiltroContrataMais === 'enviadas' ? 'bg-emerald-400 text-slate-950 font-black shadow-md ring-2 ring-emerald-300' : 'bg-slate-900/80 hover:bg-slate-800 text-slate-200 border border-slate-700'}">
-              📋 Propostas Enviadas (${listaEnviadas.length})
-            </button>
-          </div>
-
-          <div class="text-xs text-slate-300 flex items-center gap-3">
-            <span>Teto Total: <strong class="text-white">${formatBRL(somaTeto)}</strong></span>
-            <span>Lucro Projetado: <strong class="text-emerald-400">+ ${formatBRL(somaLucro)}</strong></span>
+          <div class="bg-slate-900/90 px-4 py-2 rounded-2xl border border-emerald-500/30 text-right">
+            <span class="text-[10px] text-slate-400 block uppercase font-bold">Total Contrata+</span>
+            <span class="text-lg font-black text-emerald-400">${lista.length} oportunidades</span>
           </div>
         </div>
       `;
       grid.appendChild(banner);
 
-      if (listaExibicao.length === 0) {
-        const vazio = document.createElement('div');
-        vazio.className = "col-span-full bg-white rounded-3xl p-12 text-center border-2 border-dashed border-slate-300 space-y-2";
-        vazio.innerHTML = `
-          <div class="text-3xl">🏛️</div>
-          <h4 class="text-base font-bold text-slate-800">Nenhuma oportunidade nesta visualização do Contrata+ Brasil</h4>
-          <p class="text-xs text-slate-500">Alterne os botões acima para ver todas as demandas ou aquelas com proposta enviada.</p>
-        `;
-        grid.appendChild(vazio);
-        return;
-      }
-
-      listaExibicao.forEach(item => {
-        const strId = String(item.id);
-        const jaFavoritado = favs.some(f => String(f) === strId);
-        const jaEnviado = idsEnviados.includes(strId);
-        const propostaCadastrada = propostasSalvas.find(p => String(p.detalheServicoId) === strId || String(p.id) === strId);
-
-        let custoTotal = 0;
-        if (item.itensCompra && item.itensCompra.length > 0) {
-          custoTotal = item.itensCompra.reduce((acc, it) => acc + it.total, 0) + (item.equipe ? item.equipe.total : 0) + (item.logistica ? item.logistica.total : 0) + (item.reserva || 0);
-        } else {
-          custoTotal = Math.round(item.propostaSugerida * 0.55 * 100) / 100;
-        }
-        const lucro = item.propostaSugerida - custoTotal;
-        const dt = extrairDataEncerramentoItem(item);
-
-        const card = document.createElement('div');
-        card.className = "service-item bg-white rounded-2xl border-2 " + 
-          (jaEnviado ? "border-emerald-500/70 shadow-sm" : (jaFavoritado ? "border-amber-400 bg-amber-50/10 shadow-md" : "border-slate-200 hover:border-emerald-300")) + 
-          " transition-all p-5 shadow-sm flex flex-col justify-between relative";
-
-        card.innerHTML = `
-          <div>
-            <div class="flex items-center justify-between gap-2 mb-3">
-              <span class="px-2.5 py-0.5 rounded-full text-[11px] font-black border bg-emerald-100 text-emerald-900 border-emerald-300 flex items-center gap-1">
-                <span>🏛️</span>
-                <span>Contrata+ Brasil</span>
-              </span>
-              <div class="flex items-center gap-1.5">
-                <button onclick="alternarFavorito('${strId}', event)" class="px-2.5 py-1 rounded-lg text-xs font-bold ${jaFavoritado ? 'bg-amber-400 text-slate-950 font-black' : 'bg-slate-100 text-slate-600'}">
-                  ★ ${jaFavoritado ? 'Favorita' : 'Favoritar'}
-                </button>
-                <button onclick="event.stopPropagation(); excluirServico('${strId}')" title="Excluir" class="p-1 px-2 rounded-lg bg-slate-100 hover:bg-rose-100 text-slate-500 hover:text-rose-600 border border-slate-200">
-                  🗑️
-                </button>
-              </div>
-            </div>
-
-            <!-- Status do Envio -->
-            ${jaEnviado ? `
-              <div class="my-2 flex items-center justify-between px-2.5 py-1.5 rounded-xl bg-emerald-50 text-emerald-900 border border-emerald-300 text-xs font-black">
-                <div class="flex items-center gap-1.5">
-                  <span class="text-emerald-600 font-black text-sm">✓</span>
-                  <span>Proposta Protocolada no Contrata+ Brasil</span>
-                </div>
-                ${propostaCadastrada ? `<strong class="text-emerald-800">${formatBRL(propostaCadastrada.valorLance)}</strong>` : ''}
-              </div>
-            ` : `
-              <div class="my-2 flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-emerald-50 text-emerald-900 border border-emerald-200 text-[10px] font-bold">
-                <span class="text-emerald-600 font-black">✓</span>
-                <span>Exclusivo MEI • Oportunidade Aberta para Envio</span>
-              </div>
-            `}
-
-            <span class="text-xs font-semibold text-slate-400 block">${item.orgao}</span>
-            <h3 class="text-base sm:text-lg font-black text-slate-900 mt-1 leading-snug">
-              ${item.titulo}
-            </h3>
-            <p class="text-xs text-slate-500 mt-0.5">📍 ${item.local} ${item.distanciaKm ? `• ${item.distanciaKm} km de Nova Hartz` : ''}</p>
-
-            <!-- Prazo de Encerramento -->
-            <div class="mt-3 p-2.5 rounded-xl border flex items-center justify-between text-xs ${dt.classe}">
-              <div class="flex items-center gap-1.5 font-bold">
-                <span>⏳</span>
-                <span>Encerra em:</span>
-              </div>
-              <div class="text-right">
-                <strong class="font-black text-xs block">${dt.texto}</strong>
-                ${dt.badgeUrgencia ? `<span class="text-[10px] block font-extrabold uppercase tracking-tight">${dt.badgeUrgencia}</span>` : ''}
-              </div>
-            </div>
-
-            ${gerarBlocoPrecificacaoCard(item.valorReferencia, custoTotal, item.propostaSugerida, lucro)}
-          </div>
-
-          <div class="mt-4 pt-3 border-t border-slate-100 space-y-2">
-            <button onclick="event.stopPropagation(); abrirModalRegistroPropostaItem('${strId}', 'interno')" class="w-full py-2.5 px-3 rounded-xl ${jaEnviado ? 'bg-slate-800 hover:bg-slate-700' : 'bg-emerald-600 hover:bg-emerald-500'} text-white font-black text-xs text-center transition-all shadow-sm flex items-center justify-center gap-1.5 cursor-pointer">
-              <span>📝</span>
-              <span>${jaEnviado ? 'Atualizar Proposta Enviada' : 'Cadastrar Proposta Enviada'}</span>
-            </button>
-            ${gerarBotaoFornecedoresCard(strId)}
-            <div class="flex items-center gap-2">
-              <button onclick="abrirDetalhes('${strId}')" class="flex-1 py-2 px-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs text-center transition-all flex items-center justify-center gap-1 shadow-sm">
-                <span>Ver Orçamento</span>
-                <span>→</span>
-              </button>
-              <a href="${formatarLinkDireto(item)}" target="_blank" rel="noopener noreferrer" class="py-2 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition-all flex items-center gap-1.5 shadow-sm" title="Acessar página da oportunidade no Contrata+ Brasil">
-                <span>Acessar no Contrata+</span>
-                <span class="text-[10px]">↗</span>
-              </a>
-            </div>
-          </div>
-        `;
-
-        grid.appendChild(card);
-      });
+      renderizarCards(lista, true);
     }
 
     function renderizarPainelCompraFornecedor() {
@@ -4354,198 +4317,35 @@
       const grid = document.getElementById('servicesGrid');
       grid.innerHTML = '';
 
-      const idsEnviados = getIdsPropostasEnviadas();
-      const excluidos = getExcluidos();
-      const favs = getFavoritos();
-      const todosRadar = window.RADAR_PNCP_DATA || [];
-
-      // Filtra itens do banco interno e do radar que sejam do Compras RS ou Compras.gov (EXCLUINDO os de marketing para ficarem apenas no Painel de Marketing)
-      const listaInterna = servicosDB.filter(s => {
-        const portal = identificarPortalOportunidade(s).id;
-        const strId = String(s.id);
-        const ehMarketing = s.categoria && s.categoria.includes('marketing');
-        return (portal === 'comprasrs' || portal === 'comprasgov') && !ehMarketing && !idsEnviados.includes(strId) && !excluidos.includes(strId);
-      }).map(s => ({ ...s, origemPainel: 'interno' }));
-
-      const listaRadar = todosRadar.filter(r => {
-        const portal = identificarPortalOportunidade(r).id;
-        const strId = String(r.id);
-        const objLower = (r.objeto || '').toLowerCase();
-        const ehMarketing = objLower.includes('marketing digital') || objLower.includes('redes sociais');
-        return (portal === 'comprasrs' || portal === 'comprasgov') && !ehMarketing && !idsEnviados.includes(strId) && !excluidos.includes(strId);
-      }).map(r => ({ ...r, origemPainel: 'radar' }));
-
-      const listaCompleta = [...listaInterna, ...listaRadar];
-
-      document.getElementById('badgeQtdAtivas').innerText = `${listaCompleta.length} no Compras Gov & Compras RS`;
+      const lista = obterOportunidadesComprasGovRs();
+      const badgeAtivas = document.getElementById('badgeQtdAtivas');
+      if (badgeAtivas) badgeAtivas.innerText = `${lista.length} no Compras Gov & Compras RS`;
 
       const banner = document.createElement('div');
       banner.className = "col-span-full bg-gradient-to-r from-slate-950 via-slate-900 to-sky-950 text-white rounded-3xl p-6 shadow-xl border-2 border-sky-500/40 space-y-3";
       banner.innerHTML = `
-        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div>
             <div class="flex items-center gap-2">
               <span class="px-2.5 py-0.5 rounded-full text-xs font-black bg-sky-400 text-slate-950">
                 🌐 Compras.gov.br & 🏛️ Compras RS (CFE)
               </span>
-              <span class="text-xs text-sky-300">Dispensas Eletrônicas Estaduais e Federais</span>
+              <span class="text-xs text-sky-300 font-semibold">Portais Oficiais Federal e Estadual</span>
             </div>
-            <h3 class="text-xl sm:text-2xl font-black text-white mt-1">Painel Unificado: Compras.gov.br & Compras Eletrônicas RS</h3>
-            <p class="text-xs text-slate-300 mt-0.5 max-w-2xl">
-              Aqui estão as dispensas e compras públicas do Estado do RS (que exigem seu CFE) e do Governo Federal (Compras.gov.br). Use o botão verde para cadastrar propostas enviadas e transferi-las diretamente para a Dashboard.
+            <h3 class="text-xl sm:text-2xl font-black text-white mt-1">Dispensas Estaduais e Regionais no RS</h3>
+            <p class="text-xs text-slate-300 mt-0.5 max-w-xl">
+              Oportunidades abertas nos portais oficiais do Estado do RS e órgãos federais situados no Rio Grande do Sul.
             </p>
           </div>
-          <div class="bg-slate-900/80 p-3 rounded-2xl border border-sky-500/30 text-center">
-            <span class="text-[10px] text-slate-400 block uppercase font-bold">Oportunidades</span>
-            <span class="text-xl font-black text-white">${listaCompleta.length} abertas</span>
+          <div class="bg-slate-900/90 px-4 py-2 rounded-2xl border border-sky-500/30 text-right">
+            <span class="text-[10px] text-slate-400 block uppercase font-bold">Total Portal RS & Gov</span>
+            <span class="text-lg font-black text-sky-400">${lista.length} oportunidades</span>
           </div>
         </div>
       `;
       grid.appendChild(banner);
 
-      if (listaCompleta.length === 0) {
-        grid.innerHTML += `
-          <div class="col-span-full bg-white rounded-3xl p-12 text-center border-2 border-dashed border-slate-300">
-            <h4 class="text-base font-bold text-slate-800">Nenhuma oportunidade pendente no momento</h4>
-            <p class="text-xs text-slate-500 mt-1">Todas as dispensas ativas já foram disputadas ou arquivadas.</p>
-          </div>
-        `;
-        return;
-      }
-
-      listaCompleta.forEach(item => {
-        const strId = String(item.id);
-        const jaFavoritado = favs.some(f => String(f) === strId);
-        const portalInfo = identificarPortalOportunidade(item);
-        const dt = extrairDataEncerramentoItem(item);
-
-        const card = document.createElement('div');
-        card.className = "service-item group bg-white rounded-3xl border-2 border-slate-200 hover:border-sky-400 card-shadow card-hover transition-all flex flex-col justify-between p-6 relative overflow-hidden";
-
-        if (item.origemPainel === 'interno') {
-          let custoTotal = item.itensCompra.reduce((acc, it) => acc + it.total, 0) + item.equipe.total + item.logistica.total + (item.reserva || 0);
-          let lucro = item.propostaSugerida - custoTotal;
-
-          card.innerHTML = `
-            <div>
-              <div class="flex items-center justify-between gap-2 mb-3">
-                <span class="px-2.5 py-0.5 rounded-full text-[11px] font-black border ${portalInfo.badgeClass} flex items-center gap-1">
-                  <span>${portalInfo.icone}</span>
-                  <span>${portalInfo.nome}</span>
-                </span>
-                <div class="flex items-center gap-1.5">
-                  <button onclick="alternarFavorito('${strId}', event)" class="px-2.5 py-1 rounded-lg text-xs font-bold ${jaFavoritado ? 'bg-amber-400 text-slate-950 font-black' : 'bg-slate-100 text-slate-600'}">
-                    ★ ${jaFavoritado ? 'Favorita' : 'Favoritar'}
-                  </button>
-                  <button onclick="event.stopPropagation(); excluirServico('${strId}')" title="Excluir" class="p-1 px-2 rounded-lg bg-slate-100 hover:bg-rose-100 text-slate-500 hover:text-rose-600 border border-slate-200">
-                    🗑️
-                  </button>
-                </div>
-              </div>
-
-              <span class="text-xs font-semibold text-slate-400 block">${item.orgao}</span>
-              <h3 class="text-base sm:text-lg font-black text-slate-900 mt-1 leading-snug">
-                ${item.titulo}
-              </h3>
-              <p class="text-xs text-slate-500 mt-0.5">📍 ${item.local}</p>
-
-              <!-- Prazo de Encerramento -->
-              <div class="mt-3 p-2.5 rounded-xl border flex items-center justify-between text-xs ${dt.classe}">
-                <div class="flex items-center gap-1.5 font-bold">
-                  <span>⏳</span>
-                  <span>Encerra em:</span>
-                </div>
-                <div class="text-right">
-                  <strong class="font-black text-xs block">${dt.texto}</strong>
-                  ${dt.badgeUrgencia ? `<span class="text-[10px] block font-extrabold uppercase tracking-tight">${dt.badgeUrgencia}</span>` : ''}
-                </div>
-              </div>
-
-              ${gerarBlocoPrecificacaoCard(item.valorReferencia, custoTotal, item.propostaSugerida, lucro)}
-            </div>
-
-            <div class="mt-4 pt-3 border-t border-slate-100 space-y-2">
-              <button onclick="event.stopPropagation(); abrirModalRegistroPropostaItem('${strId}', 'interno')" class="w-full py-2.5 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-black text-xs text-center transition-all shadow-sm flex items-center justify-center gap-1.5 cursor-pointer">
-                <span>📝</span>
-                <span>Cadastrar Proposta Enviada</span>
-              </button>
-              ${gerarBotaoFornecedoresCard(strId)}
-              <div class="flex items-center gap-2">
-                <button onclick="abrirDetalhes('${strId}')" class="flex-1 py-2 px-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs text-center transition-all flex items-center justify-center gap-1">
-                  <span>Ver Orçamento</span>
-                  <span>→</span>
-                </button>
-                <a href="${formatarLinkDireto(item)}" target="_blank" class="py-2 px-3 rounded-xl bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs transition-all flex items-center gap-1.5 shadow-sm" title="Acessar página direta da oportunidade">
-                  <span>Acessar Oportunidade</span>
-                  <span class="text-[10px]">↗</span>
-                </a>
-              </div>
-            </div>
-          `;
-        } else {
-          // Item do Radar
-          const balanco = gerarBalancoEstimado(item.objeto, item.valorEstimado);
-          const dt = extrairDataEncerramentoItem(item);
-
-          card.innerHTML = `
-            <div>
-              <div class="flex items-center justify-between gap-2 mb-3">
-                <span class="px-2.5 py-0.5 rounded-full text-[11px] font-black border ${portalInfo.badgeClass} flex items-center gap-1">
-                  <span>${portalInfo.icone}</span>
-                  <span>${portalInfo.nome}</span>
-                </span>
-                <div class="flex items-center gap-1.5">
-                  <button onclick="alternarFavorito('${strId}', event)" class="px-2.5 py-1 rounded-lg text-xs font-bold ${jaFavoritado ? 'bg-amber-400 text-slate-950 font-black' : 'bg-slate-100 text-slate-600'}">
-                    ★ ${jaFavoritado ? 'Favorita' : 'Favoritar'}
-                  </button>
-                  <button onclick="event.stopPropagation(); excluirRadarItem('${strId}')" title="Excluir" class="p-1 px-2 rounded-lg bg-slate-100 hover:bg-rose-100 text-slate-500 hover:text-rose-600 border border-slate-200">
-                    🗑️
-                  </button>
-                </div>
-              </div>
-
-              <span class="text-xs font-semibold text-slate-400 block">${item.orgao}</span>
-              <h3 class="text-base sm:text-lg font-black text-slate-900 mt-1 leading-snug">
-                📦 ${item.tituloResumo || item.titulo || item.objeto}
-              </h3>
-              <p class="text-xs text-slate-500 mt-0.5">📍 ${item.cidade} / RS</p>
-
-              ${gerarBlocoPrecificacaoCard(balanco.valorReferencia, balanco.custoTotalEstimado, balanco.propostaRecomendada, balanco.lucroLiquido)}
-
-              <!-- Prazo de Encerramento -->
-              <div class="mt-2.5 p-2.5 rounded-xl border flex items-center justify-between text-xs ${dt.classe}">
-                <div class="flex items-center gap-1.5 font-bold">
-                  <span>⏳</span>
-                  <span>Encerra em:</span>
-                </div>
-                <div class="text-right">
-                  <strong class="font-black text-xs block">${dt.texto}</strong>
-                  ${dt.badgeUrgencia ? `<span class="text-[10px] block font-extrabold uppercase tracking-tight">${dt.badgeUrgencia}</span>` : ''}
-                </div>
-              </div>
-            </div>
-
-            <div class="mt-4 pt-3 border-t border-slate-100 space-y-2">
-              <button onclick="event.stopPropagation(); abrirModalRegistroPropostaItem('${strId}', 'radar')" class="w-full py-2.5 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-black text-xs text-center transition-all shadow-sm flex items-center justify-center gap-1.5 cursor-pointer">
-                <span>📝</span>
-                <span>Cadastrar Proposta Enviada</span>
-              </button>
-              ${gerarBotaoFornecedoresCard(strId)}
-              <div class="flex items-center gap-2">
-                <a href="${formatarLinkDireto(item)}" target="_blank" class="flex-1 py-2 px-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs text-center transition-all flex items-center justify-center gap-1">
-                  <span>${item.textoBotao || 'Acessar Edital Oficial'}</span>
-                  <span class="text-[10px]">↗</span>
-                </a>
-                <button onclick="copiarDadosItem('${strId}')" class="py-2 px-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs">
-                  📋
-                </button>
-              </div>
-            </div>
-          `;
-        }
-
-        grid.appendChild(card);
-      });
+      renderizarCards(lista, true);
     }
 
     
@@ -4556,300 +4356,73 @@
       const grid = document.getElementById('servicesGrid');
       grid.innerHTML = '';
 
-      const dados = (window.RADAR_PNCP_DATA || []).filter(item => item.ehValeParanhana === true);
-      const excluidos = getExcluidos();
-      const clicados = getClicados();
-      const favs = getFavoritos();
-      let itensAtivos = dados.filter(item => !excluidos.some(ex => String(ex) === String(item.id)));
-
-      itensAtivos.sort((a, b) => {
-        const dataA = a.dataEncerramentoIso ? new Date(a.dataEncerramentoIso).getTime() : 9999999999999;
-        const dataB = b.dataEncerramentoIso ? new Date(b.dataEncerramentoIso).getTime() : 9999999999999;
-        return dataA - dataB;
-      });
-
+      const lista = obterOportunidadesValeParanhana();
       const badgeAtivas = document.getElementById('badgeQtdAtivas');
-      if (badgeAtivas) badgeAtivas.innerText = `${itensAtivos.length} no Vale do Paranhana (Ordem Cronológica)`;
+      if (badgeAtivas) badgeAtivas.innerText = `${lista.length} no Vale do Paranhana (Ordem Cronológica)`;
 
       const badgeBtn = document.getElementById('badgeValeParanhana');
-      if (badgeBtn) badgeBtn.innerText = itensAtivos.length;
+      if (badgeBtn) badgeBtn.innerText = lista.length;
 
-      if (itensAtivos.length === 0) {
-        grid.innerHTML = `
-          <div class="col-span-full py-12 text-center bg-white rounded-3xl border border-dashed border-emerald-300 p-8 space-y-3">
-            <div class="w-12 h-12 rounded-full bg-emerald-50 text-emerald-600 mx-auto flex items-center justify-center text-xl font-bold">
-              📍
-            </div>
-            <h4 class="text-base font-bold text-slate-800">Nenhuma oportunidade do Vale do Paranhana ativa no momento</h4>
-          </div>
-        `;
-        return;
-      }
-
-      itensAtivos.forEach((item, index) => {
-        const strId = String(item.id);
-        const jaClicado = clicados.some(c => String(c) === strId);
-        const jaFavoritado = favs.some(f => String(f) === strId);
-
-        const card = document.createElement('div');
-        card.id = 'card-radar-' + strId;
-        
-        let estiloCard = "border-emerald-200 bg-white hover:border-emerald-500 card-hover";
-        if (jaFavoritado) {
-          estiloCard = "border-amber-400 bg-amber-50/30 ring-2 ring-amber-400/40 shadow-md";
-        } else if (jaClicado) {
-          estiloCard = "border-emerald-500 bg-emerald-50/60 ring-2 ring-emerald-500/30";
-        }
-
-        card.className = "service-item group rounded-2xl border-2 transition-all flex flex-col justify-between p-5 relative overflow-hidden card-shadow " + estiloCard;
-        
-        const tagsHtml = (item.tags || []).map(t => `<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">${t}</span>`).join(' ');
-
-        const badgeCronologico = index < 5 ? 
-          `<span class="px-2 py-0.5 rounded text-[10px] font-extrabold bg-amber-100 text-amber-800 border border-amber-300">🔥 Próxima a Encerrar (#${index+1})</span>` : 
-          `<span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-slate-100 text-slate-600 border border-slate-200">#${index+1} Vale do Paranhana</span>`;
-
-        let arquivosHtml = '';
-        if (item.arquivos && item.arquivos.length > 0) {
-          arquivosHtml = `<div class="mt-3 pt-2.5 border-t border-slate-100 flex flex-wrap items-center gap-1.5">
-            <span class="text-[10px] font-bold text-slate-500">📥 Baixar Edital:</span>
-            ${item.arquivos.slice(0, 2).map(a => `<a href="${a[1]}" target="_blank" class="text-[10px] bg-slate-100 hover:bg-emerald-100 text-slate-700 hover:text-emerald-800 font-semibold px-2 py-0.5 rounded border border-slate-200 truncate max-w-[170px]" title="${a[0]}">${a[0]}</a>`).join('')}
-          </div>`;
-        }
-
-        card.innerHTML = `
+      const banner = document.createElement('div');
+      banner.className = "col-span-full bg-gradient-to-r from-slate-950 via-slate-900 to-emerald-950 text-white rounded-3xl p-6 shadow-xl border-2 border-emerald-500/40 space-y-3";
+      banner.innerHTML = `
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div>
-            <div class="flex items-center justify-between gap-2 mb-2">
-              <div class="flex items-center gap-1.5 flex-wrap">
-                <span class="px-2 py-0.5 rounded text-[10px] font-black bg-emerald-600 text-white tracking-wide">📍 ${item.cidade.toUpperCase()}</span>
-                ${badgeCronologico}
-              </div>
-              <div class="flex items-center gap-1">
-                <button onclick="event.stopPropagation(); alternarFavorito('${strId}')" class="p-1 rounded-lg text-slate-400 hover:text-amber-500 transition-colors" title="${jaFavoritado ? 'Remover dos favoritos' : 'Salvar nos favoritos'}">
-                  <span class="text-sm">${jaFavoritado ? '★' : '☆'}</span>
-                </button>
-                <button onclick="event.stopPropagation(); excluirItemRadar('${strId}')" class="p-1 rounded-lg text-slate-400 hover:text-rose-500 transition-colors" title="Ocultar do Radar">
-                  <span class="text-xs">✕</span>
-                </button>
-              </div>
+            <div class="flex items-center gap-2">
+              <span class="px-2.5 py-0.5 rounded-full text-xs font-black bg-emerald-400 text-slate-950">
+                📍 Radar Regional do Vale do Paranhana
+              </span>
+              <span class="text-xs text-emerald-300 font-semibold">Nova Hartz, Sapiranga, Igrejinha, Taquara, Parobé, Araricá</span>
             </div>
-
-            <div class="mb-2">
-              <h4 class="text-sm font-black text-slate-900 group-hover:text-emerald-700 transition-colors leading-snug">
-                📦 ${item.tituloResumo || item.titulo || item.tituloCurto || item.objeto}
-              </h4>
-              <p class="text-xs text-slate-500 line-clamp-2 mt-1 leading-relaxed" title="${item.objeto}">
-                ${item.objeto}
-              </p>
-            </div>
-
-            <p class="text-xs text-slate-500 mb-3 flex items-center gap-1">
-              <span>🏛️</span>
-              <span class="truncate">${item.orgao}</span>
+            <h3 class="text-xl sm:text-2xl font-black text-white mt-1">Oportunidades Municipais Exclusivas</h3>
+            <p class="text-xs text-slate-300 mt-0.5 max-w-xl">
+              Demandas dos municípios vizinhos com frete mínimo e máxima vantagem de proximidade física para o MEI.
             </p>
-
-            <div class="bg-slate-50 rounded-xl p-2.5 border border-slate-100 mb-3 space-y-1.5">
-              <div class="flex items-center justify-between text-xs">
-                <span class="text-slate-500 font-medium">Valor Estimado:</span>
-                <span class="font-black text-slate-900">${item.valorFormatado}</span>
-              </div>
-              <div class="flex items-center justify-between text-xs">
-                <span class="text-slate-500 font-medium">Prazo de Proposta:</span>
-                <span class="font-bold text-amber-700">${item.dataEncerramento}</span>
-              </div>
-              <div class="flex items-center justify-between text-[11px]">
-                <span class="text-slate-400">Sistema / Emissor:</span>
-                <span class="font-semibold text-slate-600 truncate max-w-[180px]">${item.plataforma}</span>
-              </div>
-            </div>
-
-            <div class="flex flex-wrap gap-1 mb-2">
-              ${tagsHtml}
-            </div>
-
-            ${arquivosHtml}
           </div>
-
-          <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between gap-2">
-            <a href="${formatarLinkDireto(item)}" target="_blank" onclick="registrarCliqueItem('${strId}')" class="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs transition-colors shadow-sm">
-              <span>🏛️</span>
-              <span>Acessar Sistema Oficial</span>
-            </a>
-            <a href="${obterLinkPncpSeguro(item)}" target="_blank" class="px-2.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs transition-colors" title="Ver contratação no PNCP">
-              🌐 PNCP
-            </a>
-            <button onclick="copiarDadosItem('${strId}')" class="px-2.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-xs transition-colors" title="Copiar resumo">
-              📋
-            </button>
+          <div class="bg-slate-900/90 px-4 py-2 rounded-2xl border border-emerald-500/30 text-right">
+            <span class="text-[10px] text-slate-400 block uppercase font-bold">Total no Vale</span>
+            <span class="text-lg font-black text-emerald-400">${lista.length} oportunidades</span>
           </div>
-        `;
+        </div>
+      `;
+      grid.appendChild(banner);
 
-        grid.appendChild(card);
-      });
+      renderizarCards(lista, true);
     }
 
     function renderizarRadarPNCP() {
       const grid = document.getElementById('servicesGrid');
       grid.innerHTML = '';
 
-      const dados = window.RADAR_PNCP_DATA || [];
-      const excluidos = getExcluidos();
-      const clicados = getClicados();
-      const favs = getFavoritos();
-      let itensAtivos = dados.filter(item => !excluidos.some(ex => String(ex) === String(item.id)));
+      const lista = obterOportunidadesRadarPNCP();
+      const badgeAtivas = document.getElementById('badgeQtdAtivas');
+      if (badgeAtivas) badgeAtivas.innerText = `${lista.length} no Radar RS (Ordem Cronológica)`;
 
-      // ORDENAÇÃO CRESCENTE POR PRAZO DE ENCERRAMENTO (DO MAIS URGENTE AO MAIS DISTANTE)
-      itensAtivos.sort((a, b) => {
-        // Se tiver data ISO exata do PNCP
-        const dataA = a.dataEncerramentoIso ? new Date(a.dataEncerramentoIso).getTime() : 
-                     (a.dataEncerramento ? converterDataPtBrParaTimestamp(a.dataEncerramento) : 9999999999999);
-        const dataB = b.dataEncerramentoIso ? new Date(b.dataEncerramentoIso).getTime() : 
-                     (b.dataEncerramento ? converterDataPtBrParaTimestamp(b.dataEncerramento) : 9999999999999);
-        return dataA - dataB;
-      });
-
-      document.getElementById('badgeQtdAtivas').innerText = `${itensAtivos.length} no Radar RS (Ordem Cronológica)`;
-
-      if (itensAtivos.length === 0) {
-        grid.innerHTML = `
-          <div class="col-span-full py-12 text-center bg-white rounded-3xl border border-dashed border-sky-300 p-8 space-y-3">
-            <div class="w-12 h-12 rounded-full bg-sky-50 text-sky-600 mx-auto flex items-center justify-center text-xl font-bold">
-              📡
-            </div>
-            <h4 class="text-base font-bold text-slate-800">Nenhuma oportunidade nova no Radar</h4>
-            <p class="text-xs text-slate-500">Execute o script <code>python rastreador_pncp_mei.py</code> no terminal para buscar novas dispensas.</p>
-          </div>
-        `;
-        return;
-      }
-
-      itensAtivos.forEach((item, index) => {
-        const strId = String(item.id);
-        const jaClicado = clicados.some(c => String(c) === strId);
-        const jaFavoritado = favs.some(f => String(f) === strId);
-
-        const card = document.createElement('div');
-        card.id = 'card-radar-' + strId;
-        
-        // Estilo condicional: se já foi favoritado, destaca com borda dourada e fundo âmbar sutil
-        let estiloCard = "border-sky-200 bg-white hover:border-sky-500 card-hover";
-        if (jaFavoritado) {
-          estiloCard = "border-amber-400 bg-amber-50/30 ring-2 ring-amber-400/40 shadow-md";
-        } else if (jaClicado) {
-          estiloCard = "border-emerald-500 bg-emerald-50/60 ring-2 ring-emerald-500/30";
-        }
-
-        card.className = "service-item group rounded-2xl border-2 transition-all flex flex-col justify-between p-5 relative overflow-hidden card-shadow " + estiloCard;
-        
-        const tagsHtml = item.tags.map(t => `<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-sky-50 text-sky-700 border border-sky-200">${t}</span>`).join(' ');
-
-        // Indicador de urgência do calendário
-        const badgeCronologico = index < 5 ? 
-          `<span class="px-2 py-0.5 rounded text-[10px] font-extrabold bg-amber-100 text-amber-800 border border-amber-300">🔥 Próximas a Encerrar (#${index+1})</span>` : 
-          `<span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-slate-100 text-slate-600 border border-slate-200">#${index+1} Cronológico</span>`;
-
-        const balanco = gerarBalancoEstimado(item.objeto, item.valorEstimado);
-        const dt = extrairDataEncerramentoItem(item);
-
-        card.innerHTML = `
+      const banner = document.createElement('div');
+      banner.className = "col-span-full bg-gradient-to-r from-slate-950 via-slate-900 to-sky-950 text-white rounded-3xl p-6 shadow-xl border-2 border-sky-500/40 space-y-3";
+      banner.innerHTML = `
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div>
-            <div class="flex items-center justify-between gap-2 mb-2">
-              <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-sky-100 text-sky-800">
-                📍 ${item.cidade} • ${item.plataforma}
+            <div class="flex items-center gap-2">
+              <span class="px-2.5 py-0.5 rounded-full text-xs font-black bg-sky-400 text-slate-950">
+                📡 Radar Geral PNCP (Rio Grande do Sul)
               </span>
-              <div class="flex items-center gap-1.5">
-                <button onclick="alternarFavorito('${strId}', event)" class="px-2.5 py-1 rounded-lg text-xs font-bold transition-all flex items-center gap-1 ${jaFavoritado ? 'bg-amber-400 text-slate-950 font-black shadow-sm ring-1 ring-amber-500' : 'bg-slate-100 text-slate-500 hover:bg-amber-50 hover:text-amber-700 border border-slate-200'}" title="${jaFavoritado ? 'Remover dos Favoritos' : 'Salvar nas Melhores Oportunidades'}">
-                  <span class="text-sm leading-none ${jaFavoritado ? 'text-slate-950 font-black' : 'text-amber-500'}">★</span>
-                  <span class="text-[10px] uppercase tracking-wide font-extrabold">${jaFavoritado ? 'Favorita' : 'Favoritar'}</span>
-                </button>
-                <button onclick="event.stopPropagation(); excluirRadarItem('${strId}');" class="p-1 px-2 rounded-lg bg-slate-100 hover:bg-rose-100 text-slate-500 hover:text-rose-600 border border-slate-200 hover:border-rose-300 flex items-center gap-1 text-xs font-bold transition-all cursor-pointer shadow-xs" title="Excluir do Radar">
-                  <span>🗑️</span>
-                  <span class="text-[10px] hidden sm:inline">Excluir</span>
-                </button>
-              </div>
+              <span class="text-xs text-sky-300 font-semibold">Todas as Dispensas Oficiais com Links Diretos</span>
             </div>
-
-            <!-- Faixa se Favoritada -->
-            ${jaFavoritado ? `
-              <div class="mb-2 flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-amber-100 text-amber-900 text-xs font-black border border-amber-300">
-                <span>★</span>
-                <span>SALVA NA SUA PASTA DE FAVORITAS</span>
-              </div>
-            ` : ''}
-
-            <!-- Faixa de Sinalização se Já Clicado -->
-            <div id="badge-visto-${strId}" class="${jaClicado ? '' : 'hidden'} mb-2.5 flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-emerald-100 text-emerald-800 text-xs font-extrabold border border-emerald-300">
-              <span>✓</span>
-              <span>VOCÊ JÁ ACESSOU ESTA OPORTUNIDADE</span>
-            </div>
-
-            <div class="mb-2">
-              ${badgeCronologico}
-            </div>
-
-                        <div class="mb-2">
-              <h3 class="text-sm font-black text-slate-900 group-hover:text-sky-700 transition-colors leading-snug">
-                📦 ${item.tituloResumo || item.titulo || item.tituloCurto || item.objeto}
-              </h3>
-              <p class="text-xs text-slate-500 line-clamp-2 mt-1 leading-relaxed" title="${item.objeto}">
-                ${item.objeto}
-              </p>
-            </div>
-            <p class="text-xs text-slate-500 mb-2 line-clamp-1">🏛️ ${item.orgao}</p>
-            ${item.arquivos && item.arquivos.length > 0 ? `
-              <div class="mb-2.5 flex flex-wrap items-center gap-1.5">
-                <span class="text-[10px] font-bold text-slate-500">📥 Anexos:</span>
-                ${item.arquivos.slice(0, 2).map(a => `<a href="${a[1]}" target="_blank" class="text-[10px] bg-slate-100 hover:bg-sky-100 text-slate-700 hover:text-sky-800 font-semibold px-2 py-0.5 rounded border border-slate-200 truncate max-w-[170px]" title="${a[0]}">${a[0]}</a>`).join('')}
-              </div>
-            ` : ''}
-            <div class="flex flex-wrap gap-1 mb-4">
-              ${tagsHtml}
-            </div>
+            <h3 class="text-xl sm:text-2xl font-black text-white mt-1">Varredura Completa do PNCP no RS</h3>
+            <p class="text-xs text-slate-300 mt-0.5 max-w-xl">
+              Lista cronológica com ordenação por encerramento iminente e acesso aos editais oficiais.
+            </p>
           </div>
-
-          <div class="pt-2 border-t border-slate-200/80 space-y-2">
-            <!-- Prazo de Encerramento com Urgência -->
-            <div class="p-2.5 rounded-xl border flex items-center justify-between text-xs ${dt.classe}">
-              <div class="flex items-center gap-1.5 font-bold">
-                <span>⏳</span>
-                <span>Encerra em:</span>
-              </div>
-              <div class="text-right">
-                <strong class="font-black text-xs block">${dt.texto}</strong>
-                ${dt.badgeUrgencia ? `<span class="text-[10px] block font-extrabold uppercase tracking-tight">${dt.badgeUrgencia}</span>` : ''}
-              </div>
-            </div>
-
-            ${gerarBlocoPrecificacaoCard(balanco.valorReferencia, balanco.custoTotalEstimado, balanco.propostaRecomendada, balanco.lucroLiquido)}
-
-            <div class="space-y-2 pt-1">
-              <button onclick="event.stopPropagation(); abrirModalRegistroPropostaItem('${item.id}', 'radar')" class="w-full py-2.5 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-black text-xs text-center transition-all shadow-sm flex items-center justify-center gap-1.5 cursor-pointer">
-                <span>📝</span>
-                <span>Cadastrar Proposta Enviada</span>
-              </button>
-              ${gerarBotaoFornecedoresCard(item.id)}
-              <div class="flex items-center gap-2">
-                <a href="${formatarLinkDireto(item)}" target="_blank" onclick="registrarClique('${item.id}'); event.stopPropagation()" class="flex-1 py-2 px-3 rounded-xl ${jaClicado ? 'bg-emerald-700 hover:bg-emerald-800' : 'bg-sky-600 hover:bg-sky-700'} text-white font-bold text-xs text-center shadow-sm hover:shadow transition-all flex items-center justify-center gap-1.5">
-                  <span>${jaClicado ? '✓ Acessar Novamente' : (item.tipoLink && !item.tipoLink.includes('Google') ? item.tipoLink : 'Acessar Edital Oficial')}</span>
-                  <span class="text-[10px]">↗</span>
-                </a>
-                <button onclick="event.stopPropagation(); copiarDadosItem('${item.id}')" class="py-2 px-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs transition-all flex items-center gap-1" title="Copiar dados para orçar">
-                  <span>📋</span>
-                  <span class="text-[10px] hidden sm:inline">Copiar</span>
-                </button>
-              </div>
-              <div class="flex items-center justify-between px-1 text-[10px] text-slate-400">
-                <span>Controle: <strong class="text-slate-600">${item.numeroControle || item.id}</strong></span>
-                <a href="${obterLinkPncpSeguro(item)}" target="_blank" onclick="registrarClique('${item.id}'); event.stopPropagation()" class="text-sky-600 hover:underline font-semibold">
-                  Ver no PNCP ↗
-                </a>
-              </div>
-            </div>
+          <div class="bg-slate-900/90 px-4 py-2 rounded-2xl border border-sky-500/30 text-right">
+            <span class="text-[10px] text-slate-400 block uppercase font-bold">Total Radar PNCP</span>
+            <span class="text-lg font-black text-sky-400">${lista.length} oportunidades</span>
           </div>
-        `;
+        </div>
+      `;
+      grid.appendChild(banner);
 
-        grid.appendChild(card);
-      });
+      renderizarCards(lista, true);
     }
 
     // HELPER PARA CONVERSÃO DE DATA PT-BR
@@ -4908,14 +4481,14 @@ Link: ${item.link}`;
         grid.innerHTML = '';
       }
 
-      if (lista.length === 0) {
+      if (!lista || lista.length === 0) {
         const msgVazio = `
           <div class="col-span-full py-12 text-center bg-white rounded-3xl border border-dashed border-slate-300 p-8 space-y-3">
             <div class="w-12 h-12 rounded-full bg-slate-100 text-slate-400 mx-auto flex items-center justify-center text-xl font-bold">
               📂
             </div>
-            <h4 class="text-base font-bold text-slate-800">Nenhuma oportunidade nesta categoria</h4>
-            <p class="text-xs text-slate-500">Você pode mudar o filtro acima ou restaurar as demandas que foram excluídas.</p>
+            <h4 class="text-base font-bold text-slate-800">Nenhuma oportunidade ativa nesta pasta</h4>
+            <p class="text-xs text-slate-500">Você pode alternar para outra pasta acima ou restaurar itens arquivados.</p>
           </div>
         `;
         if (manterBanner) {
@@ -4929,106 +4502,17 @@ Link: ${item.link}`;
         return;
       }
 
-      const favs = getFavoritos();
-
-      lista.forEach(s => {
-        const strId = String(s.id);
-        const jaFavoritado = favs.some(f => String(f) === strId);
-        let custoTotal = 0;
-        if (s.itensCompra && s.itensCompra.length > 0) {
-          custoTotal = s.itensCompra.reduce((acc, it) => acc + it.total, 0) + (s.equipe ? s.equipe.total : 0) + (s.logistica ? s.logistica.total : 0) + (s.reserva || 0);
-        } else {
-          custoTotal = Math.round(s.propostaSugerida * 0.55 * 100) / 100;
+      // Deduplicação estrita de segurança na renderização
+      const vistos = new Set();
+      lista.forEach(item => {
+        const strId = String(item.id);
+        if (!vistos.has(strId)) {
+          vistos.add(strId);
+          const cardEl = gerarCardPadraoOportunidade(item);
+          if (cardEl) {
+            grid.appendChild(cardEl);
+          }
         }
-        let lucro = s.propostaSugerida - custoTotal;
-        const dt = extrairDataEncerramentoItem(s);
-
-        const card = document.createElement('div');
-        
-        let borderClass = (s.id === 'eletrica_taquara' ? 'border-emerald-500 ring-2 ring-emerald-500/20' : 
-           s.id === 'porta_seguranca_cpor' ? 'border-emerald-600 ring-2 ring-emerald-600/10' :
-           s.id === 'coffeebreak_trt' ? 'border-amber-400' : 
-           s.id === 'feijao_conab' ? 'border-rose-400 opacity-90' : 'border-slate-200');
-
-        if (jaFavoritado) {
-          borderClass = 'border-amber-400 bg-amber-50/20 ring-2 ring-amber-400/40 shadow-md';
-        }
-
-        card.className = "service-item group bg-white rounded-2xl border-2 " + borderClass + 
-          " card-shadow card-hover transition-all cursor-pointer flex flex-col justify-between p-5 relative overflow-hidden";
-        card.setAttribute('data-cat', s.categoria);
-        card.onclick = () => abrirDetalhes(s.id);
-
-        card.innerHTML = `
-          <div>
-            <div class="flex items-center justify-between gap-2 mb-3">
-              <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider ${s.badgeClass}">
-                ${s.badgeText}
-              </span>
-              <div class="flex items-center gap-1.5">
-                <span class="text-[11px] font-bold text-slate-500">
-                  📍 ${s.distanciaKm} km
-                </span>
-                <button onclick="alternarFavorito('${strId}', event)" class="px-2.5 py-1 rounded-lg text-xs font-bold transition-all flex items-center gap-1 ${jaFavoritado ? 'bg-amber-400 text-slate-950 font-black shadow-sm ring-1 ring-amber-500' : 'bg-slate-100 text-slate-500 hover:bg-amber-50 hover:text-amber-700 border border-slate-200'}" title="${jaFavoritado ? 'Remover dos Favoritos' : 'Salvar nas Melhores Oportunidades'}">
-                  <span class="text-sm leading-none ${jaFavoritado ? 'text-slate-950 font-black' : 'text-amber-500'}">★</span>
-                  <span class="text-[10px] uppercase tracking-wide font-extrabold">${jaFavoritado ? 'Favorita' : 'Favoritar'}</span>
-                </button>
-                <button onclick="event.stopPropagation(); excluirServico('${s.id}')" title="Excluir oportunidade do painel" class="p-1 px-2 rounded-lg bg-slate-100 hover:bg-rose-100 text-slate-500 hover:text-rose-600 border border-slate-200 hover:border-rose-300 transition-all flex items-center gap-1 text-xs font-bold cursor-pointer shadow-xs">
-                  <span>🗑️</span>
-                  <span class="text-[10px] hidden sm:inline">Excluir</span>
-                </button>
-              </div>
-            </div>
-
-            ${jaFavoritado ? `
-              <div class="mb-2.5 flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-amber-100 text-amber-900 text-xs font-black border border-amber-300">
-                <span>★</span>
-                <span>SALVA NA SUA PASTA DE FAVORITAS</span>
-              </div>
-            ` : ''}
-
-            <span class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider block">${s.orgao}</span>
-            <h3 class="text-base font-extrabold text-slate-900 group-hover:text-sky-600 transition-colors mt-0.5 leading-snug">
-              ${s.titulo}
-            </h3>
-            <p class="text-xs text-slate-500 mt-1 line-clamp-1">
-              ${s.local}
-            </p>
-
-            <!-- Prazo de Encerramento -->
-            <div class="mt-3 p-2.5 rounded-xl border flex items-center justify-between text-xs ${dt.classe}">
-              <div class="flex items-center gap-1.5 font-bold">
-                <span>⏳</span>
-                <span>Encerra em:</span>
-              </div>
-              <div class="text-right">
-                <strong class="font-black text-xs block">${dt.texto}</strong>
-                ${dt.badgeUrgencia ? `<span class="text-[10px] block font-extrabold uppercase tracking-tight">${dt.badgeUrgencia}</span>` : ''}
-              </div>
-            </div>
-
-            ${gerarBlocoPrecificacaoCard(s.valorReferencia, custoTotal, s.propostaSugerida, lucro)}
-          </div>
-
-          <div class="mt-4 pt-3 border-t border-slate-100 space-y-2">
-            <button onclick="event.stopPropagation(); abrirModalRegistroPropostaItem('${s.id}', 'banco_interno')" class="w-full py-2.5 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-black text-xs text-center transition-all shadow-sm flex items-center justify-center gap-1.5 cursor-pointer">
-              <span>📝</span>
-              <span>Cadastrar Proposta Enviada</span>
-            </button>
-            ${gerarBotaoFornecedoresCard(s.id)}
-            <div class="flex items-center justify-between text-xs gap-2">
-              <button onclick="abrirDetalhes('${s.id}')" class="flex-1 py-2 px-3 rounded-lg text-xs font-bold bg-slate-900 hover:bg-slate-800 text-white transition-all text-center shadow-sm">
-                Ver Orçamento →
-              </button>
-              <a href="${formatarLinkDireto(s)}" target="_blank" onclick="event.stopPropagation()" class="py-2 px-3 rounded-lg text-xs font-bold bg-sky-600 hover:bg-sky-500 text-white transition-all flex items-center gap-1 shadow-sm" title="Acessar edital/página da oportunidade">
-                <span>Acessar</span>
-                <span class="text-[10px]">↗</span>
-              </a>
-            </div>
-          </div>
-        `;
-
-        grid.appendChild(card);
       });
     }
 
@@ -5551,277 +5035,38 @@ Link: ${item.link}`;
       const grid = document.getElementById('servicesGrid');
       grid.innerHTML = '';
 
-      const ativosDb = obterServicosAtivos();
-      const todosRadar = window.RADAR_PNCP_DATA || [];
-      const excluidos = getExcluidos();
-      const favs = getFavoritos();
-      const enviados = getIdsPropostasEnviadas();
+      const lista = obterOportunidadesOceanoAzul();
+      const badgeAtivas = document.getElementById('badgeQtdAtivas');
+      if (badgeAtivas) badgeAtivas.innerText = `${lista.length} no Radar Oceano Azul`;
 
-      const listaOceano = [];
+      const badgeBtn = document.getElementById('badgeOceanoAzul');
+      if (badgeBtn) badgeBtn.innerText = lista.length;
 
-      // 1. Analisa itens do banco interno (apenas abertos e elegíveis para MEI sem veto)
-      ativosDb.filter(s => !enviados.includes(String(s.id)) && verificarElegibilidadeSubcontratacaoMEI(s) && oportunidadeEstaAberta(s)).forEach(s => {
-        const metrica = calcularMetricaOceanoAzul(s);
-        if (metrica.score >= 70 || metrica.ehDesertaOuProrrogada) {
-          listaOceano.push({ ...s, metrica, origemOceano: 'interno' });
-        }
-      });
-
-      // 2. Analisa itens do Radar PNCP RS (apenas abertos e elegíveis para MEI sem veto)
-      todosRadar.filter(r => 
-        !excluidos.some(e => String(e) === String(r.id)) && 
-        !enviados.includes(String(r.id)) &&
-        verificarElegibilidadeSubcontratacaoMEI(r) &&
-        oportunidadeEstaAberta(r)
-      ).forEach(r => {
-        const metrica = calcularMetricaOceanoAzul(r);
-        if (metrica.score >= 78 || metrica.ehDesertaOuProrrogada) {
-          listaOceano.push({ ...r, metrica, origemOceano: 'radar' });
-        }
-      });
-
-      // Ordena por maior probabilidade de concorrência zero (score decrescente)
-      listaOceano.sort((a, b) => b.metrica.score - a.metrica.score);
-
-      // Atualiza badges
-      document.getElementById('badgeQtdAtivas').innerText = `${listaOceano.length} no Oceano Azul (Concorrência Quase Zero)`;
-      const badgeNav = document.getElementById('badgeOceanoAzul');
-      if (badgeNav) badgeNav.innerText = listaOceano.length;
-
-      // Banner Explicativo do Oceano Azul
       const banner = document.createElement('div');
-      banner.className = "col-span-full bg-gradient-to-r from-slate-950 via-cyan-950 to-slate-900 text-white rounded-3xl p-6 shadow-xl border-2 border-cyan-500/50 space-y-4";
+      banner.className = "col-span-full bg-gradient-to-r from-cyan-950 via-slate-900 to-slate-950 text-white rounded-3xl p-6 shadow-xl border-2 border-cyan-400/40 space-y-3";
       banner.innerHTML = `
-        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div>
             <div class="flex items-center gap-2">
               <span class="px-2.5 py-0.5 rounded-full text-xs font-black bg-cyan-400 text-slate-950">
-                Filtro Inteligente Ativo
+                🌊 Radar Estratégico Oceano Azul
               </span>
-              <span class="text-xs text-cyan-300 font-bold">Base RS • 100% MEI Apto • Menor Risco</span>
+              <span class="text-xs text-cyan-300 font-semibold">Baixa / Nula Concorrência • Alta Margem Líquida</span>
             </div>
-            <h3 class="text-xl sm:text-2xl font-black text-white mt-1 flex items-center gap-2">
-              <span>🌊</span>
-              <span>Oceano Azul: Licitações com Concorrência Quase Zero</span>
-            </h3>
-            <p class="text-xs text-slate-300 mt-1 max-w-2xl leading-relaxed">
-              Oportunidades que tiveram prazos estendidos, republicações após terem dado desertas, ou processos exclusivos no RS que exigem o CFE (barrando concorrentes de fora do estado). Aqui você disputa praticamente sozinho e vence no valor teto!
+            <h3 class="text-xl sm:text-2xl font-black text-white mt-1">Dispensas com Barreiras Naturais no RS</h3>
+            <p class="text-xs text-slate-300 mt-0.5 max-w-xl">
+              Demandas com poucos participantes cadastrados, exigências regionais que afastam concorrentes distantes e margens preservadas.
             </p>
           </div>
-          <div class="flex items-center gap-3 bg-slate-900/80 p-3.5 rounded-2xl border border-cyan-500/30">
-            <div>
-              <span class="text-[10px] text-cyan-300 block uppercase font-bold">Oportunidades Mapeadas</span>
-              <span class="text-2xl font-black text-white">${listaOceano.length}</span>
-            </div>
-            <div class="w-px h-8 bg-slate-700"></div>
-            <div>
-              <span class="text-[10px] text-emerald-400 block uppercase font-bold">Estimativa Concorrentes</span>
-              <span class="text-sm font-black text-emerald-400">0 a 1 por lote</span>
-            </div>
+          <div class="bg-slate-900/90 px-4 py-2 rounded-2xl border border-cyan-500/30 text-right">
+            <span class="text-[10px] text-slate-400 block uppercase font-bold">Total Oceano Azul</span>
+            <span class="text-lg font-black text-cyan-400">${lista.length} oportunidades</span>
           </div>
         </div>
       `;
       grid.appendChild(banner);
 
-      if (listaOceano.length === 0) {
-        grid.innerHTML += `
-          <div class="col-span-full py-12 text-center bg-white rounded-3xl border border-dashed border-slate-300 p-8 space-y-3">
-            <h4 class="text-base font-bold text-slate-800">Nenhuma oportunidade atende aos critérios no momento</h4>
-          </div>
-        `;
-        return;
-      }
-
-      listaOceano.forEach(item => {
-        const strId = String(item.id);
-        const jaFavoritado = favs.some(f => String(f) === strId);
-        const m = item.metrica;
-        const dt = extrairDataEncerramentoItem(item);
-        const portalInfo = identificarPortalOportunidade(item);
-
-        const card = document.createElement('div');
-        card.className = "service-item group bg-white rounded-3xl border-2 border-cyan-200 hover:border-cyan-500 card-shadow card-hover transition-all flex flex-col justify-between p-6 relative overflow-hidden";
-        
-        const motivosHtml = m.motivos.map(mot => `
-          <li class="flex items-center gap-1.5 text-[11px] text-slate-600">
-            <span class="w-1.5 h-1.5 rounded-full bg-cyan-500"></span>
-            ${mot}
-          </li>
-        `).join('');
-
-        if (item.origemOceano === 'interno') {
-          let custoTotal = item.itensCompra.reduce((acc, it) => acc + it.total, 0) + item.equipe.total + item.logistica.total + (item.reserva || 0);
-          let lucro = item.propostaSugerida - custoTotal;
-
-          card.innerHTML = `
-            <div>
-              <!-- Termômetro de Concorrência -->
-              <div class="flex items-center justify-between gap-2 mb-3">
-                <span class="px-3 py-1 rounded-full text-xs font-black border ${m.badgeCor} flex items-center gap-1">
-                  <span>🌊</span>
-                  <span>Concorrência: ${m.nivel} (${m.score}%)</span>
-                </span>
-                <span class="text-xs font-bold text-cyan-800 bg-cyan-50 px-2.5 py-0.5 rounded-full border border-cyan-200">
-                  ${m.concorrentes}
-                </span>
-              </div>
-
-              <div class="flex items-center justify-between gap-2 mb-2">
-                <span class="px-2.5 py-0.5 rounded-full text-[11px] font-black border ${portalInfo.badgeClass} flex items-center gap-1">
-                  <span>${portalInfo.icone}</span>
-                  <span>${portalInfo.nome}</span>
-                </span>
-                <div class="flex items-center gap-1.5">
-                  <button onclick="alternarFavorito('${strId}', event)" class="px-2.5 py-1 rounded-lg text-xs font-bold ${jaFavoritado ? 'bg-amber-400 text-slate-950 font-black' : 'bg-slate-100 text-slate-600'}">
-                    ★ ${jaFavoritado ? 'Favorita' : 'Favoritar'}
-                  </button>
-                  <button onclick="event.stopPropagation(); excluirServico('${strId}')" title="Excluir oportunidade" class="p-1 px-2 rounded-lg bg-slate-100 hover:bg-rose-100 text-slate-500 hover:text-rose-600 border border-slate-200">
-                    🗑️
-                  </button>
-                </div>
-              </div>
-
-              <!-- Selo MEI Seguro -->
-              <div class="my-2 flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-emerald-50 text-emerald-900 border border-emerald-200 text-[10px] font-bold">
-                <span class="text-emerald-600 font-black">✓</span>
-                <span>Compra de Distribuidor / Revenda Autorizada (100% MEI)</span>
-              </div>
-
-              <span class="text-xs font-semibold text-slate-400 block">${item.orgao}</span>
-              <h3 class="text-base sm:text-lg font-black text-slate-900 mt-1 leading-snug">
-                ${item.titulo}
-              </h3>
-              <p class="text-xs text-slate-500 mt-0.5">📍 ${item.local}</p>
-
-              <!-- Box de Por que não tem concorrência -->
-              <div class="mt-3 p-3 rounded-2xl bg-cyan-50/50 border border-cyan-200/80 space-y-1">
-                <span class="text-[10px] font-black uppercase text-cyan-950 block">Por que a concorrência é quase nula?</span>
-                <ul class="space-y-0.5">
-                  ${motivosHtml}
-                </ul>
-              </div>
-
-              <!-- Prazo de Encerramento -->
-              <div class="mt-3 p-2.5 rounded-xl border flex items-center justify-between text-xs ${dt.classe}">
-                <div class="flex items-center gap-1.5 font-bold">
-                  <span>⏳</span>
-                  <span>Encerra em:</span>
-                </div>
-                <div class="text-right">
-                  <strong class="font-black text-xs block">${dt.texto}</strong>
-                  ${dt.badgeUrgencia ? `<span class="text-[10px] block font-extrabold uppercase tracking-tight">${dt.badgeUrgencia}</span>` : ''}
-                </div>
-              </div>
-
-              ${gerarBlocoPrecificacaoCard(item.valorReferencia, custoTotal, item.propostaSugerida, lucro)}
-            </div>
-
-            <div class="mt-4 pt-3 border-t border-slate-100 space-y-2">
-              <button onclick="event.stopPropagation(); abrirModalRegistroPropostaItem('${strId}', 'interno')" class="w-full py-2.5 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-black text-xs text-center transition-all shadow-sm flex items-center justify-center gap-1.5 cursor-pointer">
-                <span>📝</span>
-                <span>Cadastrar Proposta Enviada</span>
-              </button>
-              ${gerarBotaoFornecedoresCard(strId)}
-              <div class="flex items-center gap-2">
-                <button onclick="abrirDetalhes('${strId}')" class="flex-1 py-2 px-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs text-center transition-all flex items-center justify-center gap-1">
-                  <span>Ver Orçamento</span>
-                  <span>→</span>
-                </button>
-                <a href="${formatarLinkDireto(item)}" target="_blank" class="py-2 px-3 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-xs transition-all flex items-center gap-1.5 shadow-sm" title="Acessar página direta da oportunidade">
-                  <span>Acessar Oportunidade</span>
-                  <span class="text-[10px]">↗</span>
-                </a>
-              </div>
-            </div>
-          `;
-        } else {
-          // Item do Radar PNCP
-          const balanco = gerarBalancoEstimado(item.objeto, item.valorEstimado);
-
-          card.innerHTML = `
-            <div>
-              <!-- Termômetro de Concorrência -->
-              <div class="flex items-center justify-between gap-2 mb-3">
-                <span class="px-3 py-1 rounded-full text-xs font-black border ${m.badgeCor} flex items-center gap-1">
-                  <span>🌊</span>
-                  <span>Concorrência: ${m.nivel} (${m.score}%)</span>
-                </span>
-                <span class="text-xs font-bold text-cyan-800 bg-cyan-50 px-2.5 py-0.5 rounded-full border border-cyan-200">
-                  ${m.concorrentes}
-                </span>
-              </div>
-
-              <div class="flex items-center justify-between gap-2 mb-2">
-                <span class="px-2.5 py-0.5 rounded-full text-[11px] font-black border ${portalInfo.badgeClass} flex items-center gap-1">
-                  <span>${portalInfo.icone}</span>
-                  <span>${portalInfo.nome}</span>
-                </span>
-                <div class="flex items-center gap-1.5">
-                  <button onclick="alternarFavorito('${strId}', event)" class="px-2.5 py-1 rounded-lg text-xs font-bold ${jaFavoritado ? 'bg-amber-400 text-slate-950 font-black' : 'bg-slate-100 text-slate-600'}">
-                    ★ ${jaFavoritado ? 'Favorita' : 'Favoritar'}
-                  </button>
-                  <button onclick="event.stopPropagation(); excluirRadarItem('${strId}')" title="Excluir oportunidade do Radar" class="p-1 px-2 rounded-lg bg-slate-100 hover:bg-rose-100 text-slate-500 hover:text-rose-600 border border-slate-200">
-                    🗑️
-                  </button>
-                </div>
-              </div>
-
-              <!-- Selo MEI Seguro -->
-              <div class="my-2 flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-emerald-50 text-emerald-900 border border-emerald-200 text-[10px] font-bold">
-                <span class="text-emerald-600 font-black">✓</span>
-                <span>Compra de Distribuidor / Revenda Autorizada (100% MEI)</span>
-              </div>
-
-              <span class="text-xs font-semibold text-slate-400 block">${item.orgao}</span>
-              <h3 class="text-base sm:text-lg font-black text-slate-900 mt-1 leading-snug">
-                📦 ${item.tituloResumo || item.titulo || item.objeto}
-              </h3>
-              <p class="text-xs text-slate-500 mt-0.5">📍 ${item.cidade} / RS</p>
-
-              <!-- Box de Por que não tem concorrência -->
-              <div class="mt-3 p-3 rounded-2xl bg-cyan-50/50 border border-cyan-200/80 space-y-1">
-                <span class="text-[10px] font-black uppercase text-cyan-950 block">Por que a concorrência é quase nula?</span>
-                <ul class="space-y-0.5">
-                  ${motivosHtml}
-                </ul>
-              </div>
-
-              <!-- Prazo de Encerramento com Countdown -->
-              <div class="mt-3 p-2.5 rounded-xl border flex items-center justify-between text-xs ${dt.classe}">
-                <div class="flex items-center gap-1.5 font-bold">
-                  <span>⏳</span>
-                  <span>Encerra em:</span>
-                </div>
-                <div class="text-right">
-                  <strong class="font-black text-xs block">${dt.texto}</strong>
-                  ${dt.badgeUrgencia ? `<span class="text-[10px] block font-extrabold uppercase tracking-tight">${dt.badgeUrgencia}</span>` : ''}
-                </div>
-              </div>
-
-              ${gerarBlocoPrecificacaoCard(balanco.valorReferencia, balanco.custoTotalEstimado, balanco.propostaRecomendada, balanco.lucroLiquido)}
-            </div>
-
-            <div class="mt-4 pt-3 border-t border-slate-100 space-y-2">
-              <button onclick="event.stopPropagation(); abrirModalRegistroPropostaItem('${strId}', 'radar')" class="w-full py-2.5 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-black text-xs text-center transition-all shadow-sm flex items-center justify-center gap-1.5 cursor-pointer">
-                <span>📝</span>
-                <span>Cadastrar Proposta Enviada</span>
-              </button>
-              ${gerarBotaoFornecedoresCard(strId)}
-              <div class="flex items-center gap-2">
-                <a href="${formatarLinkDireto(item)}" target="_blank" class="flex-1 py-2 px-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs text-center transition-all flex items-center justify-center gap-1">
-                  <span>Acessar Edital Oficial</span>
-                  <span>↗</span>
-                </a>
-                <button onclick="copiarDadosItem('${strId}')" class="py-2 px-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs">
-                  📋
-                </button>
-              </div>
-            </div>
-          `;
-        }
-
-        grid.appendChild(card);
-      });
+      renderizarCards(lista, true);
     }
 
   </script>
