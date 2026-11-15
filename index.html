@@ -2153,9 +2153,9 @@
 
       return {
         id: String(r.id),
-        titulo: r.objeto ? (r.objeto.length > 85 ? r.objeto.substring(0, 82) + '...' : r.objeto) : 'Oportunidade Pública MEI',
+        titulo: r.tituloResumo || r.titulo || (r.objeto ? (r.objeto.length > 85 ? r.objeto.substring(0, 82) + '...' : r.objeto) : 'Oportunidade Pública MEI'),
         objeto: r.objeto || '',
-        destaque: r.objeto || '',
+        destaque: r.destaque || r.objeto || '',
         orgao: r.orgao || 'Órgão Público RS',
         local: cidadeLimpa,
         cidade: cidadeLimpa,
@@ -2172,8 +2172,14 @@
         prazo: r.dataEncerramento || 'Consultar Edital',
         dataEncerramento: r.dataEncerramento || 'Consultar Edital',
         dataEncerramentoIso: r.dataEncerramentoIso || null,
-        linkDireto: r.link || 'https://pncp.gov.br',
-        link: r.link || 'https://pncp.gov.br',
+        numeroControle: r.numeroControle || '',
+        numeroEdital: r.numeroEdital || '',
+        linkDireto: r.linkDireto || r.linkSistemaOrigem || r.link || 'https://pncp.gov.br',
+        link: r.linkDireto || r.linkSistemaOrigem || r.link || 'https://pncp.gov.br',
+        linkPncp: r.linkPncp || '',
+        linkSistemaOrigem: r.linkSistemaOrigem || '',
+        linkProcessoEletronico: r.linkProcessoEletronico || '',
+        arquivos: r.arquivos || [],
         tipoEdital: 'Dispensa Eletrônica',
         plataforma: r.plataforma || 'PNCP / Compras Públicas',
         ehComprasGov: r.ehComprasGov || false,
@@ -3847,31 +3853,58 @@
       });
     }
 
-    // RESOLVE O LINK DIRETO PARA O EDITAL (SEMPRE LINK OFICIAL OU PNCP, NUNCA GOOGLE)
+    // RESOLVE O LINK DIRETO PARA O EDITAL (SEMPRE LINK OFICIAL OU PNCP SEGURO, NUNCA GOOGLE OU ROTA QUEBRADA)
     function formatarLinkDireto(item) {
       if (!item) return "https://contratamaisbrasil.sistema.gov.br/";
-      if (item.linkDireto && item.linkDireto.trim()) return item.linkDireto;
-      if (item.link && !item.link.includes('google.com')) return item.link;
-      if (item.linkServico && !item.linkServico.includes('google.com')) return item.linkServico;
-      
-      const portalInfo = identificarPortalOportunidade(item);
-      if (portalInfo.id === 'contratamais') {
-        return "https://contratamaisbrasil.sistema.gov.br/";
+
+      // 1. Prioridade máxima: sistema de disputa real (Comprasnet, Portal de Compras Públicas, Compras RS)
+      if (item.linkSistemaOrigem && typeof item.linkSistemaOrigem === 'string' && item.linkSistemaOrigem.startsWith('http')) {
+        return item.linkSistemaOrigem;
       }
-      if (portalInfo.id === 'comprasrs') {
-        return "https://compras.rs.gov.br";
-      }
-      if (item.numeroControle) {
-        const m = item.numeroControle.match(/(\d+)-1-(\d+)\/(\d+)/);
-        if (m) {
-          const cnpj = m[1];
-          const seq = parseInt(m[2], 10);
-          const ano = m[3];
-          return `https://pncp.gov.br/app/editais/${cnpj}/${ano}/${seq}`;
+
+      // 2. Se houver linkDireto e não for rota quebrada do SPA do PNCP
+      if (item.linkDireto && typeof item.linkDireto === 'string' && item.linkDireto.trim()) {
+        if (!item.linkDireto.includes('pncp.gov.br/app/editais/') || item.linkDireto.includes('?q=')) {
+          return item.linkDireto;
         }
+      }
+
+      // 3. Se houver link e não for Google nem rota quebrada do PNCP
+      if (item.link && typeof item.link === 'string' && !item.link.includes('google.com')) {
+        if (!item.link.includes('pncp.gov.br/app/editais/') || item.link.includes('?q=')) {
+          return item.link;
+        }
+      }
+
+      // 4. Se houver link de processo eletrônico do município
+      if (item.linkProcessoEletronico && typeof item.linkProcessoEletronico === 'string' && item.linkProcessoEletronico.startsWith('http')) {
+        return item.linkProcessoEletronico;
+      }
+
+      // 5. Portais conhecidos
+      const portalInfo = typeof identificarPortalOportunidade === 'function' ? identificarPortalOportunidade(item) : { id: '' };
+      if (portalInfo.id === 'comprasrs' || (item.plataforma && item.plataforma.toLowerCase().includes('compras rs'))) {
+        return "https://www.compras.rs.gov.br";
+      }
+
+      // 6. PNCP Seguro: NUNCA usar /app/editais/{cnpj}/{ano}/{seq} (erro 503 na API interna do PNCP)
+      // SEMPRE usar rota de busca (?q=) que consulta a API /api/consulta/v1 e abre a contratação perfeitamente
+      if (item.numeroControle) {
         return `https://pncp.gov.br/app/editais?q=${encodeURIComponent(item.numeroControle)}`;
       }
-      return "https://contratamaisbrasil.sistema.gov.br/";
+
+      if (portalInfo.id === 'contratamais' || item.ehComprasGov) {
+        return "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/login";
+      }
+
+      return "https://pncp.gov.br/app/editais";
+    }
+
+    function obterLinkPncpSeguro(item) {
+      if (!item) return "https://pncp.gov.br/app/editais";
+      if (item.linkPncp && typeof item.linkPncp === 'string') return item.linkPncp;
+      if (item.numeroControle) return `https://pncp.gov.br/app/editais?q=${encodeURIComponent(item.numeroControle)}`;
+      return "https://pncp.gov.br/app/editais";
     }
 
     // RENDERIZAR O RADAR AO VIVO DO PNCP
@@ -4580,7 +4613,7 @@
 
             <div class="mb-2">
               <h4 class="text-sm font-black text-slate-900 group-hover:text-emerald-700 transition-colors leading-snug">
-                ${item.tituloCurto ? `📦 ${item.tituloCurto}` : item.objeto}
+                📦 ${item.tituloResumo || item.titulo || item.tituloCurto || item.objeto}
               </h4>
               <p class="text-xs text-slate-500 line-clamp-2 mt-1 leading-relaxed" title="${item.objeto}">
                 ${item.objeto}
@@ -4615,9 +4648,12 @@
           </div>
 
           <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between gap-2">
-            <a href="${item.link}" target="_blank" onclick="registrarCliqueItem('${strId}')" class="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs transition-colors shadow-xs">
-              <span>🔗</span>
-              <span>Abrir no PNCP</span>
+            <a href="${formatarLinkDireto(item)}" target="_blank" onclick="registrarCliqueItem('${strId}')" class="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs transition-colors shadow-sm">
+              <span>🏛️</span>
+              <span>Acessar Sistema Oficial</span>
+            </a>
+            <a href="${obterLinkPncpSeguro(item)}" target="_blank" class="px-2.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs transition-colors" title="Ver contratação no PNCP">
+              🌐 PNCP
             </a>
             <button onclick="copiarDadosItem('${strId}')" class="px-2.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-xs transition-colors" title="Copiar resumo">
               📋
@@ -4730,13 +4766,19 @@
 
                         <div class="mb-2">
               <h3 class="text-sm font-black text-slate-900 group-hover:text-sky-700 transition-colors leading-snug">
-                ${item.tituloCurto ? `📦 ${item.tituloCurto}` : item.objeto}
+                📦 ${item.tituloResumo || item.titulo || item.tituloCurto || item.objeto}
               </h3>
               <p class="text-xs text-slate-500 line-clamp-2 mt-1 leading-relaxed" title="${item.objeto}">
                 ${item.objeto}
               </p>
             </div>
-            <p class="text-xs text-slate-500 mb-3 line-clamp-1">🏛️ ${item.orgao}</p>
+            <p class="text-xs text-slate-500 mb-2 line-clamp-1">🏛️ ${item.orgao}</p>
+            ${item.arquivos && item.arquivos.length > 0 ? `
+              <div class="mb-2.5 flex flex-wrap items-center gap-1.5">
+                <span class="text-[10px] font-bold text-slate-500">📥 Anexos:</span>
+                ${item.arquivos.slice(0, 2).map(a => `<a href="${a[1]}" target="_blank" class="text-[10px] bg-slate-100 hover:bg-sky-100 text-slate-700 hover:text-sky-800 font-semibold px-2 py-0.5 rounded border border-slate-200 truncate max-w-[170px]" title="${a[0]}">${a[0]}</a>`).join('')}
+              </div>
+            ` : ''}
             <div class="flex flex-wrap gap-1 mb-4">
               ${tagsHtml}
             </div>
@@ -4775,7 +4817,7 @@
               </div>
               <div class="flex items-center justify-between px-1 text-[10px] text-slate-400">
                 <span>Controle: <strong class="text-slate-600">${item.numeroControle || item.id}</strong></span>
-                <a href="${formatarLinkDireto(item)}" target="_blank" onclick="registrarClique('${item.id}'); event.stopPropagation()" class="text-sky-600 hover:underline font-semibold">
+                <a href="${obterLinkPncpSeguro(item)}" target="_blank" onclick="registrarClique('${item.id}'); event.stopPropagation()" class="text-sky-600 hover:underline font-semibold">
                   Ver no PNCP ↗
                 </a>
               </div>
@@ -5048,12 +5090,16 @@ Link: ${item.link}`;
       // Atualiza o botão do Portal Oficial com o link funcional correto
       const btnPortal = document.getElementById('modalBtnPortal');
       if (btnPortal) {
-        if (s.linkDireto) {
-          btnPortal.href = s.linkDireto;
-        } else if (s.id.includes('taquara')) {
-          btnPortal.href = "https://contratamaisbrasil.sistema.gov.br/";
+        btnPortal.href = formatarLinkDireto(s);
+        const portalInfo = typeof identificarPortalOportunidade === 'function' ? identificarPortalOportunidade(s) : { id: '' };
+        if (s.linkSistemaOrigem && s.linkSistemaOrigem.includes('comprasnet')) {
+          btnPortal.innerHTML = `<span>Acessar no Comprasnet / Contrata+</span> <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>`;
+        } else if (s.linkSistemaOrigem && s.linkSistemaOrigem.includes('portaldecompraspublicas')) {
+          btnPortal.innerHTML = `<span>Acessar no Portal de Compras Públicas</span> <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>`;
+        } else if (portalInfo.id === 'comprasrs') {
+          btnPortal.innerHTML = `<span>Acessar no Compras RS</span> <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>`;
         } else {
-          btnPortal.href = "https://contratamaisbrasil.sistema.gov.br/";
+          btnPortal.innerHTML = `<span>Acessar Sistema Oficial</span> <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>`;
         }
       }
 

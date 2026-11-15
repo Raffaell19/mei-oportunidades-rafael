@@ -9,8 +9,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 55.000,00",
     "dataEncerramento": "16/11/2026 às 07:59",
     "dataEncerramentoIso": "2026-11-16T07:59:00",
-    "link": "https://pncp.gov.br/app/editais/88372883000101/2026/311",
-    "tipoLink": "PNCP",
+    "link": "https://pncp.gov.br/app/editais?q=88372883000101-1-000311/2026",
+    "tipoLink": "PNCP Oficial",
     "plataforma": "IPM Sistemas",
     "ehComprasGov": false,
     "compativelMEI": true,
@@ -38,7 +38,13 @@ window.RADAR_PNCP_DATA = [
         "https://pncp.gov.br/pncp-api/v1/orgaos/88372883000101/compras/2026/311/arquivos/1"
       ]
     ],
-    "tituloCurto": "Organização, Produção e Estrutura do Natal Iluminado 2026"
+    "tituloCurto": "Organização, Produção e Estrutura do Natal Iluminado 2026",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "linkPncp": "https://pncp.gov.br/app/editais?q=88372883000101-1-000311/2026",
+    "linkDireto": "https://pncp.gov.br/app/editais?q=88372883000101-1-000311/2026",
+    "titulo": "Organização e Execução do Natal Iluminado de Parobé 2026",
+    "tituloResumo": "Organização e Execução do Natal Iluminado de Parobé 2026"
   },
   {
     "id": "01612918000154_1_000123_2026",
@@ -50,8 +56,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 95.686,67",
     "dataEncerramento": "16/11/2026 às 13:00",
     "dataEncerramentoIso": "2026-11-16T13:00:00",
-    "link": "https://pncp.gov.br/app/editais/01612918000154/2026/123",
-    "tipoLink": "PNCP",
+    "link": "https://pncp.gov.br/app/editais?q=01612918000154-1-000123/2026",
+    "tipoLink": "PNCP Oficial",
     "plataforma": "Tecnosweb - Tecnologia de Gestão",
     "ehComprasGov": false,
     "compativelMEI": true,
@@ -87,7 +93,13 @@ window.RADAR_PNCP_DATA = [
         "https://pncp.gov.br/pncp-api/v1/orgaos/01612918000154/compras/2026/123/arquivos/3"
       ]
     ],
-    "tituloCurto": "Aquisição de Veículo Automotor Zero Km para Serviços"
+    "tituloCurto": "Aquisição de Veículo Automotor Zero Km para Serviços",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "linkPncp": "https://pncp.gov.br/app/editais?q=01612918000154-1-000123/2026",
+    "linkDireto": "https://pncp.gov.br/app/editais?q=01612918000154-1-000123/2026",
+    "titulo": "Aquisição de Veículo Utilitário / Furgão 0km",
+    "tituloResumo": "Aquisição de Veículo Utilitário / Furgão 0km"
   },
   {
     "id": "88372883000101_1_000306_2026",
@@ -99,8 +111,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 960.888,40",
     "dataEncerramento": "16/11/2026 às 13:59",
     "dataEncerramentoIso": "2026-11-16T13:59:00",
-    "link": "https://pncp.gov.br/app/editais/88372883000101/2026/306",
-    "tipoLink": "PNCP",
+    "link": "https://pncp.gov.br/app/editais?q=88372883000101-1-000306/2026",
+    "tipoLink": "PNCP Oficial",
     "plataforma": "IPM Sistemas",
     "ehComprasGov": false,
     "compativelMEI": true,
@@ -128,7 +140,13 @@ window.RADAR_PNCP_DATA = [
         "https://pncp.gov.br/pncp-api/v1/orgaos/88372883000101/compras/2026/306/arquivos/1"
       ]
     ],
-    "tituloCurto": "Atendimento Médico-Veterinário para Cães e Gatos de Rua"
+    "tituloCurto": "Atendimento Médico-Veterinário para Cães e Gatos de Rua",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "linkPncp": "https://pncp.gov.br/app/editais?q=88372883000101-1-000306/2026",
+    "linkDireto": "https://pncp.gov.br/app/editais?q=88372883000101-1-000306/2026",
+    "titulo": "Serviços Médico-Veterinários de Castração e Microchipagem",
+    "tituloResumo": "Serviços Médico-Veterinários de Castração e Microchipagem"
   },
   {
     "id": "88372883000101_1_000309_2026",
@@ -140,8 +158,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 138.837,90",
     "dataEncerramento": "16/11/2026 às 13:59",
     "dataEncerramentoIso": "2026-11-16T13:59:00",
-    "link": "https://pncp.gov.br/app/editais/88372883000101/2026/309",
-    "tipoLink": "PNCP",
+    "link": "https://pncp.gov.br/app/editais?q=88372883000101-1-000309/2026",
+    "tipoLink": "PNCP Oficial",
     "plataforma": "IPM Sistemas",
     "ehComprasGov": false,
     "compativelMEI": true,
@@ -169,7 +187,13 @@ window.RADAR_PNCP_DATA = [
         "https://pncp.gov.br/pncp-api/v1/orgaos/88372883000101/compras/2026/309/arquivos/1"
       ]
     ],
-    "tituloCurto": "Uniformes Esportivos Personalizados e Bolas/Materiais"
+    "tituloCurto": "Uniformes Esportivos Personalizados e Bolas/Materiais",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "linkPncp": "https://pncp.gov.br/app/editais?q=88372883000101-1-000309/2026",
+    "linkDireto": "https://pncp.gov.br/app/editais?q=88372883000101-1-000309/2026",
+    "titulo": "Uniformes Esportivos Personalizados e Materiais Esportivos",
+    "tituloResumo": "Uniformes Esportivos Personalizados e Materiais Esportivos"
   },
   {
     "id": "02919554000112_1_000025_2026",
@@ -181,8 +205,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 10.120,00",
     "dataEncerramento": "17/11/2026 às 08:00",
     "dataEncerramentoIso": "2026-11-17T08:00:00",
-    "link": "https://pncp.gov.br/app/editais/02919554000112/2026/25",
-    "tipoLink": "PNCP",
+    "link": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/acompanhamento-compra?compra=93056606000732026",
+    "tipoLink": "Sistema Oficial (Disputa Direta)",
     "plataforma": "Compras.gov.br",
     "ehComprasGov": false,
     "compativelMEI": true,
@@ -226,7 +250,13 @@ window.RADAR_PNCP_DATA = [
         "https://pncp.gov.br/pncp-api/v1/orgaos/02919554000112/compras/2026/25/arquivos/5"
       ]
     ],
-    "tituloCurto": "Serviço de Coquetel, Salgadinhos e Tortas de Aniversário"
+    "tituloCurto": "Serviço de Coquetel, Salgadinhos e Tortas de Aniversário",
+    "linkSistemaOrigem": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/acompanhamento-compra?compra=93056606000732026",
+    "linkProcessoEletronico": "https://www.camaranovahartz.rs.gov.br/imprensa/licitacoes/Dispensa-de-licitacao/1/2026/2869",
+    "linkPncp": "https://pncp.gov.br/app/editais?q=02919554000112-1-000025/2026",
+    "linkDireto": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/acompanhamento-compra?compra=93056606000732026",
+    "titulo": "Serviço de Coquetel e Tortas Decoradas (Eventos da Câmara)",
+    "tituloResumo": "Serviço de Coquetel e Tortas Decoradas (Eventos da Câmara)"
   },
   {
     "id": "97761407000173_1_000428_2026",
@@ -238,8 +268,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 5.514,36",
     "dataEncerramento": "17/11/2026 às 08:29",
     "dataEncerramentoIso": "2026-11-17T08:29:00",
-    "link": "https://pncp.gov.br/app/editais/97761407000173/2026/428",
-    "tipoLink": "PNCP",
+    "link": "https://pncp.gov.br/app/editais?q=97761407000173-1-000428/2026",
+    "tipoLink": "PNCP Oficial",
     "plataforma": "MUNICIPIO DE TAQUARA",
     "ehComprasGov": false,
     "compativelMEI": true,
@@ -303,7 +333,13 @@ window.RADAR_PNCP_DATA = [
         "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/428/arquivos/10"
       ]
     ],
-    "tituloCurto": "Conjuntos de Lixeiras Plásticas de Coleta Seletiva"
+    "tituloCurto": "Conjuntos de Lixeiras Plásticas de Coleta Seletiva",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "linkPncp": "https://pncp.gov.br/app/editais?q=97761407000173-1-000428/2026",
+    "linkDireto": "https://pncp.gov.br/app/editais?q=97761407000173-1-000428/2026",
+    "titulo": "Conjuntos de Lixeiras de Coleta Seletiva (Parque do Trabalhador)",
+    "tituloResumo": "Conjuntos de Lixeiras de Coleta Seletiva (Parque do Trabalhador)"
   },
   {
     "id": "97761407000173_1_000433_2026",
@@ -315,8 +351,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 174.000,00",
     "dataEncerramento": "17/11/2026 às 08:29",
     "dataEncerramentoIso": "2026-11-17T08:29:00",
-    "link": "https://pncp.gov.br/app/editais/97761407000173/2026/433",
-    "tipoLink": "PNCP",
+    "link": "https://pncp.gov.br/app/editais?q=97761407000173-1-000433/2026",
+    "tipoLink": "PNCP Oficial",
     "plataforma": "MUNICIPIO DE TAQUARA",
     "ehComprasGov": false,
     "compativelMEI": true,
@@ -392,7 +428,13 @@ window.RADAR_PNCP_DATA = [
         "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/433/arquivos/13"
       ]
     ],
-    "tituloCurto": "Playgrounds Infantis: Fornecimento e Instalação em Praças"
+    "tituloCurto": "Playgrounds Infantis: Fornecimento e Instalação em Praças",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "linkPncp": "https://pncp.gov.br/app/editais?q=97761407000173-1-000433/2026",
+    "linkDireto": "https://pncp.gov.br/app/editais?q=97761407000173-1-000433/2026",
+    "titulo": "Playground Infantil Completo para Praças Públicas",
+    "tituloResumo": "Playground Infantil Completo para Praças Públicas"
   },
   {
     "id": "01612918000154_1_000124_2026",
@@ -404,8 +446,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 156.800,00",
     "dataEncerramento": "17/11/2026 às 13:00",
     "dataEncerramentoIso": "2026-11-17T13:00:00",
-    "link": "https://pncp.gov.br/app/editais/01612918000154/2026/124",
-    "tipoLink": "PNCP",
+    "link": "https://pncp.gov.br/app/editais?q=01612918000154-1-000124/2026",
+    "tipoLink": "PNCP Oficial",
     "plataforma": "Tecnosweb - Tecnologia de Gestão",
     "ehComprasGov": false,
     "compativelMEI": true,
@@ -441,7 +483,13 @@ window.RADAR_PNCP_DATA = [
         "https://pncp.gov.br/pncp-api/v1/orgaos/01612918000154/compras/2026/124/arquivos/3"
       ]
     ],
-    "tituloCurto": "Gêneros Alimentícios Básicos e Merenda Escolar"
+    "tituloCurto": "Gêneros Alimentícios Básicos e Merenda Escolar",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "linkPncp": "https://pncp.gov.br/app/editais?q=01612918000154-1-000124/2026",
+    "linkDireto": "https://pncp.gov.br/app/editais?q=01612918000154-1-000124/2026",
+    "titulo": "Gêneros Alimentícios para Alimentação Escolar",
+    "tituloResumo": "Gêneros Alimentícios para Alimentação Escolar"
   },
   {
     "id": "97761407000173_1_000429_2026",
@@ -453,8 +501,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 232.320,00",
     "dataEncerramento": "18/11/2026 às 08:29",
     "dataEncerramentoIso": "2026-11-18T08:29:00",
-    "link": "https://pncp.gov.br/app/editais/97761407000173/2026/429",
-    "tipoLink": "PNCP",
+    "link": "https://pncp.gov.br/app/editais?q=97761407000173-1-000429/2026",
+    "tipoLink": "PNCP Oficial",
     "plataforma": "MUNICIPIO DE TAQUARA",
     "ehComprasGov": false,
     "compativelMEI": true,
@@ -502,7 +550,13 @@ window.RADAR_PNCP_DATA = [
         "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/429/arquivos/6"
       ]
     ],
-    "tituloCurto": "Fornecimento de Refeições Prontas tipo Marmita"
+    "tituloCurto": "Fornecimento de Refeições Prontas tipo Marmita",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "linkPncp": "https://pncp.gov.br/app/editais?q=97761407000173-1-000429/2026",
+    "linkDireto": "https://pncp.gov.br/app/editais?q=97761407000173-1-000429/2026",
+    "titulo": "Fornecimento de Refeições Prontas (Marmitas)",
+    "tituloResumo": "Fornecimento de Refeições Prontas (Marmitas)"
   },
   {
     "id": "97761407000173_1_000436_2026",
@@ -514,8 +568,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 7.072,24",
     "dataEncerramento": "18/11/2026 às 08:29",
     "dataEncerramentoIso": "2026-11-18T08:29:00",
-    "link": "https://pncp.gov.br/app/editais/97761407000173/2026/436",
-    "tipoLink": "PNCP",
+    "link": "https://pncp.gov.br/app/editais?q=97761407000173-1-000436/2026",
+    "tipoLink": "PNCP Oficial",
     "plataforma": "MUNICIPIO DE TAQUARA",
     "ehComprasGov": false,
     "compativelMEI": true,
@@ -567,7 +621,13 @@ window.RADAR_PNCP_DATA = [
         "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/436/arquivos/7"
       ]
     ],
-    "tituloCurto": "07 Monitores de Vídeo LED para Computadores da Prefeitura"
+    "tituloCurto": "07 Monitores de Vídeo LED para Computadores da Prefeitura",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "linkPncp": "https://pncp.gov.br/app/editais?q=97761407000173-1-000436/2026",
+    "linkDireto": "https://pncp.gov.br/app/editais?q=97761407000173-1-000436/2026",
+    "titulo": "07 Monitores de Vídeo para Computador (Novos)",
+    "tituloResumo": "07 Monitores de Vídeo para Computador (Novos)"
   },
   {
     "id": "97761407000173_1_000427_2026",
@@ -579,8 +639,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 46.250,00",
     "dataEncerramento": "18/11/2026 às 10:29",
     "dataEncerramentoIso": "2026-11-18T10:29:00",
-    "link": "https://pncp.gov.br/app/editais/97761407000173/2026/427",
-    "tipoLink": "PNCP",
+    "link": "https://pncp.gov.br/app/editais?q=97761407000173-1-000427/2026",
+    "tipoLink": "PNCP Oficial",
     "plataforma": "MUNICIPIO DE TAQUARA",
     "ehComprasGov": false,
     "compativelMEI": true,
@@ -628,7 +688,13 @@ window.RADAR_PNCP_DATA = [
         "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/427/arquivos/6"
       ]
     ],
-    "tituloCurto": "Divulgação Sonora Itinerante (Carro e Moto de Som)"
+    "tituloCurto": "Divulgação Sonora Itinerante (Carro e Moto de Som)",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "linkPncp": "https://pncp.gov.br/app/editais?q=97761407000173-1-000427/2026",
+    "linkDireto": "https://pncp.gov.br/app/editais?q=97761407000173-1-000427/2026",
+    "titulo": "Divulgação Sonora Itinerante (Carro de Som)",
+    "tituloResumo": "Divulgação Sonora Itinerante (Carro de Som)"
   },
   {
     "id": "97761407000173_1_000437_2026",
@@ -640,8 +706,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 6.549,39",
     "dataEncerramento": "18/11/2026 às 10:29",
     "dataEncerramentoIso": "2026-11-18T10:29:00",
-    "link": "https://pncp.gov.br/app/editais/97761407000173/2026/437",
-    "tipoLink": "PNCP",
+    "link": "https://pncp.gov.br/app/editais?q=97761407000173-1-000437/2026",
+    "tipoLink": "PNCP Oficial",
     "plataforma": "MUNICIPIO DE TAQUARA",
     "ehComprasGov": false,
     "compativelMEI": true,
@@ -697,7 +763,13 @@ window.RADAR_PNCP_DATA = [
         "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/437/arquivos/8"
       ]
     ],
-    "tituloCurto": "01 Eletrocardiógrafo Portátil Hospitalar com Acessórios"
+    "tituloCurto": "01 Eletrocardiógrafo Portátil Hospitalar com Acessórios",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "linkPncp": "https://pncp.gov.br/app/editais?q=97761407000173-1-000437/2026",
+    "linkDireto": "https://pncp.gov.br/app/editais?q=97761407000173-1-000437/2026",
+    "titulo": "Eletrocardiógrafo Portátil com Acessórios",
+    "tituloResumo": "Eletrocardiógrafo Portátil com Acessórios"
   },
   {
     "id": "01612918000154_1_000125_2026",
@@ -709,8 +781,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 585.260,85",
     "dataEncerramento": "18/11/2026 às 13:00",
     "dataEncerramentoIso": "2026-11-18T13:00:00",
-    "link": "https://pncp.gov.br/app/editais/01612918000154/2026/125",
-    "tipoLink": "PNCP",
+    "link": "https://pncp.gov.br/app/editais?q=01612918000154-1-000125/2026",
+    "tipoLink": "PNCP Oficial",
     "plataforma": "Tecnosweb - Tecnologia de Gestão",
     "ehComprasGov": false,
     "compativelMEI": true,
@@ -746,7 +818,13 @@ window.RADAR_PNCP_DATA = [
         "https://pncp.gov.br/pncp-api/v1/orgaos/01612918000154/compras/2026/125/arquivos/3"
       ]
     ],
-    "tituloCurto": "Materiais de Consumo Geral, Elétricos e Ferramentas"
+    "tituloCurto": "Materiais de Consumo Geral, Elétricos e Ferramentas",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "linkPncp": "https://pncp.gov.br/app/editais?q=01612918000154-1-000125/2026",
+    "linkDireto": "https://pncp.gov.br/app/editais?q=01612918000154-1-000125/2026",
+    "titulo": "Materiais de Consumo e Expediente",
+    "tituloResumo": "Materiais de Consumo e Expediente"
   },
   {
     "id": "91995365000159_1_000262_2026",
@@ -758,8 +836,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "Valor Oculto / Sob Cotação",
     "dataEncerramento": "18/11/2026 às 14:00",
     "dataEncerramentoIso": "2026-11-18T14:00:00",
-    "link": "https://pncp.gov.br/app/editais/91995365000159/2026/262",
-    "tipoLink": "PNCP",
+    "link": "https://pncp.gov.br/app/editais?q=91995365000159-1-000262/2026",
+    "tipoLink": "PNCP Oficial",
     "plataforma": "Tecnosweb - Tecnologia de Gestão",
     "ehComprasGov": false,
     "compativelMEI": true,
@@ -795,7 +873,13 @@ window.RADAR_PNCP_DATA = [
         "https://pncp.gov.br/pncp-api/v1/orgaos/91995365000159/compras/2026/262/arquivos/3"
       ]
     ],
-    "tituloCurto": "Fórmula Infantil Especial Neo Advance (Nutrição Clínica)"
+    "tituloCurto": "Fórmula Infantil Especial Neo Advance (Nutrição Clínica)",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "linkPncp": "https://pncp.gov.br/app/editais?q=91995365000159-1-000262/2026",
+    "linkDireto": "https://pncp.gov.br/app/editais?q=91995365000159-1-000262/2026",
+    "titulo": "Fórmula Nutricional Especial Neo Advance",
+    "tituloResumo": "Fórmula Nutricional Especial Neo Advance"
   },
   {
     "id": "97761407000173_1_000438_2026",
@@ -807,8 +891,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 28.706,11",
     "dataEncerramento": "19/11/2026 às 08:29",
     "dataEncerramentoIso": "2026-11-19T08:29:00",
-    "link": "https://pncp.gov.br/app/editais/97761407000173/2026/438",
-    "tipoLink": "PNCP",
+    "link": "https://pncp.gov.br/app/editais?q=97761407000173-1-000438/2026",
+    "tipoLink": "PNCP Oficial",
     "plataforma": "MUNICIPIO DE TAQUARA",
     "ehComprasGov": false,
     "compativelMEI": true,
@@ -860,7 +944,13 @@ window.RADAR_PNCP_DATA = [
         "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/438/arquivos/7"
       ]
     ],
-    "tituloCurto": "Cabine Completa de Caminhão Mercedes-Benz 1720 K"
+    "tituloCurto": "Cabine Completa de Caminhão Mercedes-Benz 1720 K",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "linkPncp": "https://pncp.gov.br/app/editais?q=97761407000173-1-000438/2026",
+    "linkDireto": "https://pncp.gov.br/app/editais?q=97761407000173-1-000438/2026",
+    "titulo": "Cabine Completa para Veículo Operacional",
+    "tituloResumo": "Cabine Completa para Veículo Operacional"
   },
   {
     "id": "97761407000173_1_000439_2026",
@@ -872,8 +962,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 272.120,00",
     "dataEncerramento": "23/11/2026 às 08:29",
     "dataEncerramentoIso": "2026-11-23T08:29:00",
-    "link": "https://pncp.gov.br/app/editais/97761407000173/2026/439",
-    "tipoLink": "PNCP",
+    "link": "https://pncp.gov.br/app/editais?q=97761407000173-1-000439/2026",
+    "tipoLink": "PNCP Oficial",
     "plataforma": "MUNICIPIO DE TAQUARA",
     "ehComprasGov": false,
     "compativelMEI": true,
@@ -917,7 +1007,13 @@ window.RADAR_PNCP_DATA = [
         "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/439/arquivos/5"
       ]
     ],
-    "tituloCurto": "Piso Modular com Amortecimento de Impacto para Praças"
+    "tituloCurto": "Piso Modular com Amortecimento de Impacto para Praças",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "linkPncp": "https://pncp.gov.br/app/editais?q=97761407000173-1-000439/2026",
+    "linkDireto": "https://pncp.gov.br/app/editais?q=97761407000173-1-000439/2026",
+    "titulo": "Instalação de Piso Modular com Amortecimento",
+    "tituloResumo": "Instalação de Piso Modular com Amortecimento"
   },
   {
     "id": "87366159000102_1_000451_2026",
@@ -929,8 +1025,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 384.142,50",
     "dataEncerramento": "23/11/2026 às 12:00",
     "dataEncerramentoIso": "2026-11-23T12:00:00",
-    "link": "https://pncp.gov.br/app/editais/87366159000102/2026/451",
-    "tipoLink": "PNCP",
+    "link": "https://pncp.gov.br/app/editais?q=87366159000102-1-000451/2026",
+    "tipoLink": "PNCP Oficial",
     "plataforma": "DBseller Serviços de Informática",
     "ehComprasGov": false,
     "compativelMEI": true,
@@ -958,7 +1054,13 @@ window.RADAR_PNCP_DATA = [
         "https://pncp.gov.br/pncp-api/v1/orgaos/87366159000102/compras/2026/451/arquivos/1"
       ]
     ],
-    "tituloCurto": "Rolo Compactador Vibratório Combinado para Obras"
+    "tituloCurto": "Rolo Compactador Vibratório Combinado para Obras",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "linkPncp": "https://pncp.gov.br/app/editais?q=87366159000102-1-000451/2026",
+    "linkDireto": "https://pncp.gov.br/app/editais?q=87366159000102-1-000451/2026",
+    "titulo": "Rolo Compactador Vibratório Combinado",
+    "tituloResumo": "Rolo Compactador Vibratório Combinado"
   },
   {
     "id": "01612918000154_1_000127_2026",
@@ -970,8 +1072,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 468.290,00",
     "dataEncerramento": "23/11/2026 às 13:00",
     "dataEncerramentoIso": "2026-11-23T13:00:00",
-    "link": "https://pncp.gov.br/app/editais/01612918000154/2026/127",
-    "tipoLink": "PNCP",
+    "link": "https://pncp.gov.br/app/editais?q=01612918000154-1-000127/2026",
+    "tipoLink": "PNCP Oficial",
     "plataforma": "Tecnosweb - Tecnologia de Gestão",
     "ehComprasGov": false,
     "compativelMEI": true,
@@ -1007,7 +1109,13 @@ window.RADAR_PNCP_DATA = [
         "https://pncp.gov.br/pncp-api/v1/orgaos/01612918000154/compras/2026/127/arquivos/3"
       ]
     ],
-    "tituloCurto": "Materiais de Consumo e Expediente Administrativo"
+    "tituloCurto": "Materiais de Consumo e Expediente Administrativo",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "linkPncp": "https://pncp.gov.br/app/editais?q=01612918000154-1-000127/2026",
+    "linkDireto": "https://pncp.gov.br/app/editais?q=01612918000154-1-000127/2026",
+    "titulo": "Materiais de Consumo e Limpeza",
+    "tituloResumo": "Materiais de Consumo e Limpeza"
   },
   {
     "id": "88379763000136_1_000156_2026",
@@ -1019,8 +1127,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 19.114,95",
     "dataEncerramento": "23/11/2026 às 13:29",
     "dataEncerramentoIso": "2026-11-23T13:29:00",
-    "link": "https://pncp.gov.br/app/editais/88379763000136/2026/156",
-    "tipoLink": "PNCP",
+    "link": "https://www.portaldecompraspublicas.com.br/processos/RS/Prefeitura-Municipal-de-Igrejinha-15/RPE-113-2026-2026-523994",
+    "tipoLink": "Sistema Oficial (Disputa Direta)",
     "plataforma": "ECustomize Consultoria em Software S.A",
     "ehComprasGov": false,
     "compativelMEI": true,
@@ -1043,7 +1151,13 @@ window.RADAR_PNCP_DATA = [
     ],
     "ehDesertaOuProrrogada": false,
     "arquivos": [],
-    "tituloCurto": "Quadros Escolares Verdes com Moldura para Salas de Aula"
+    "tituloCurto": "Quadros Escolares Verdes com Moldura para Salas de Aula",
+    "linkSistemaOrigem": "https://www.portaldecompraspublicas.com.br/processos/RS/Prefeitura-Municipal-de-Igrejinha-15/RPE-113-2026-2026-523994",
+    "linkProcessoEletronico": null,
+    "linkPncp": "https://pncp.gov.br/app/editais?q=88379763000136-1-000156/2026",
+    "linkDireto": "https://www.portaldecompraspublicas.com.br/processos/RS/Prefeitura-Municipal-de-Igrejinha-15/RPE-113-2026-2026-523994",
+    "titulo": "Quadro Escolar Verde com Moldura em Alumínio",
+    "tituloResumo": "Quadro Escolar Verde com Moldura em Alumínio"
   },
   {
     "id": "88379763000136_1_000155_2026",
@@ -1055,8 +1169,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 837.200,00",
     "dataEncerramento": "24/11/2026 às 14:59",
     "dataEncerramentoIso": "2026-11-24T14:59:00",
-    "link": "https://pncp.gov.br/app/editais/88379763000136/2026/155",
-    "tipoLink": "PNCP",
+    "link": "https://www.portaldecompraspublicas.com.br/processos/RS/Prefeitura-Municipal-de-Igrejinha-15/RPE-107-2026-2026-523938",
+    "tipoLink": "Sistema Oficial (Disputa Direta)",
     "plataforma": "ECustomize Consultoria em Software S.A",
     "ehComprasGov": false,
     "compativelMEI": true,
@@ -1084,7 +1198,13 @@ window.RADAR_PNCP_DATA = [
         "https://pncp.gov.br/pncp-api/v1/orgaos/88379763000136/compras/2026/155/arquivos/1"
       ]
     ],
-    "tituloCurto": "Serviços de Desmonte de Rochas com Explosivos"
+    "tituloCurto": "Serviços de Desmonte de Rochas com Explosivos",
+    "linkSistemaOrigem": "https://www.portaldecompraspublicas.com.br/processos/RS/Prefeitura-Municipal-de-Igrejinha-15/RPE-107-2026-2026-523938",
+    "linkProcessoEletronico": null,
+    "linkPncp": "https://pncp.gov.br/app/editais?q=88379763000136-1-000155/2026",
+    "linkDireto": "https://www.portaldecompraspublicas.com.br/processos/RS/Prefeitura-Municipal-de-Igrejinha-15/RPE-107-2026-2026-523938",
+    "titulo": "Desmonte de Rochas por Explosivos",
+    "tituloResumo": "Desmonte de Rochas por Explosivos"
   },
   {
     "id": "87366159000102_1_000452_2026",
@@ -1096,8 +1216,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 10.457.219,76",
     "dataEncerramento": "25/11/2026 às 12:00",
     "dataEncerramentoIso": "2026-11-25T12:00:00",
-    "link": "https://pncp.gov.br/app/editais/87366159000102/2026/452",
-    "tipoLink": "PNCP",
+    "link": "https://pncp.gov.br/app/editais?q=87366159000102-1-000452/2026",
+    "tipoLink": "PNCP Oficial",
     "plataforma": "DBseller Serviços de Informática",
     "ehComprasGov": false,
     "compativelMEI": true,
@@ -1125,7 +1245,13 @@ window.RADAR_PNCP_DATA = [
         "https://pncp.gov.br/pncp-api/v1/orgaos/87366159000102/compras/2026/452/arquivos/1"
       ]
     ],
-    "tituloCurto": "Serviços Contínuos de Limpeza Urbana e Capina de Vias"
+    "tituloCurto": "Serviços Contínuos de Limpeza Urbana e Capina de Vias",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "linkPncp": "https://pncp.gov.br/app/editais?q=87366159000102-1-000452/2026",
+    "linkDireto": "https://pncp.gov.br/app/editais?q=87366159000102-1-000452/2026",
+    "titulo": "Limpeza Urbana e Conservação de Vias Públicas",
+    "tituloResumo": "Limpeza Urbana e Conservação de Vias Públicas"
   },
   {
     "id": "88379763000136_1_000157_2026",
@@ -1137,8 +1263,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 255.326,00",
     "dataEncerramento": "25/11/2026 às 13:29",
     "dataEncerramentoIso": "2026-11-25T13:29:00",
-    "link": "https://pncp.gov.br/app/editais/88379763000136/2026/157",
-    "tipoLink": "PNCP",
+    "link": "https://www.portaldecompraspublicas.com.br/processos/RS/Prefeitura-Municipal-de-Igrejinha-15/RPE-112-2026-2026-524041",
+    "tipoLink": "Sistema Oficial (Disputa Direta)",
     "plataforma": "ECustomize Consultoria em Software S.A",
     "ehComprasGov": false,
     "compativelMEI": true,
@@ -1166,7 +1292,13 @@ window.RADAR_PNCP_DATA = [
         "https://pncp.gov.br/pncp-api/v1/orgaos/88379763000136/compras/2026/157/arquivos/1"
       ]
     ],
-    "tituloCurto": "Móveis Escolares FNDE: Carteiras, Mesas e Cadeiras"
+    "tituloCurto": "Móveis Escolares FNDE: Carteiras, Mesas e Cadeiras",
+    "linkSistemaOrigem": "https://www.portaldecompraspublicas.com.br/processos/RS/Prefeitura-Municipal-de-Igrejinha-15/RPE-112-2026-2026-524041",
+    "linkProcessoEletronico": null,
+    "linkPncp": "https://pncp.gov.br/app/editais?q=88379763000136-1-000157/2026",
+    "linkDireto": "https://www.portaldecompraspublicas.com.br/processos/RS/Prefeitura-Municipal-de-Igrejinha-15/RPE-112-2026-2026-524041",
+    "titulo": "Móveis Escolares (Conjuntos Aluno e Professor)",
+    "tituloResumo": "Móveis Escolares (Conjuntos Aluno e Professor)"
   },
   {
     "id": "87366159000102_1_000456_2026",
@@ -1178,8 +1310,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 371.932,92",
     "dataEncerramento": "26/11/2026 às 08:00",
     "dataEncerramentoIso": "2026-11-26T08:00:00",
-    "link": "https://pncp.gov.br/app/editais/87366159000102/2026/456",
-    "tipoLink": "PNCP",
+    "link": "https://pncp.gov.br/app/editais?q=87366159000102-1-000456/2026",
+    "tipoLink": "PNCP Oficial",
     "plataforma": "DBseller Serviços de Informática",
     "ehComprasGov": false,
     "compativelMEI": true,
@@ -1207,7 +1339,13 @@ window.RADAR_PNCP_DATA = [
         "https://pncp.gov.br/pncp-api/v1/orgaos/87366159000102/compras/2026/456/arquivos/1"
       ]
     ],
-    "tituloCurto": "Brinquedos Educativos e Pedagógicos para Escolas"
+    "tituloCurto": "Brinquedos Educativos e Pedagógicos para Escolas",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "linkPncp": "https://pncp.gov.br/app/editais?q=87366159000102-1-000456/2026",
+    "linkDireto": "https://pncp.gov.br/app/editais?q=87366159000102-1-000456/2026",
+    "titulo": "Brinquedos Pedagógicos e Recreativos (Parte I)",
+    "tituloResumo": "Brinquedos Pedagógicos e Recreativos (Parte I)"
   },
   {
     "id": "01612918000154_1_000130_2026",
@@ -1219,8 +1357,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 158.722,70",
     "dataEncerramento": "26/11/2026 às 13:00",
     "dataEncerramentoIso": "2026-11-26T13:00:00",
-    "link": "https://pncp.gov.br/app/editais/01612918000154/2026/130",
-    "tipoLink": "PNCP",
+    "link": "https://pncp.gov.br/app/editais?q=01612918000154-1-000130/2026",
+    "tipoLink": "PNCP Oficial",
     "plataforma": "Tecnosweb - Tecnologia de Gestão",
     "ehComprasGov": false,
     "compativelMEI": true,
@@ -1256,7 +1394,13 @@ window.RADAR_PNCP_DATA = [
         "https://pncp.gov.br/pncp-api/v1/orgaos/01612918000154/compras/2026/130/arquivos/3"
       ]
     ],
-    "tituloCurto": "Máquinas, Roçadeiras e Equipamentos Mecânicos"
+    "tituloCurto": "Máquinas, Roçadeiras e Equipamentos Mecânicos",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "linkPncp": "https://pncp.gov.br/app/editais?q=01612918000154-1-000130/2026",
+    "linkDireto": "https://pncp.gov.br/app/editais?q=01612918000154-1-000130/2026",
+    "titulo": "Máquinas e Equipamentos Operacionais",
+    "tituloResumo": "Máquinas e Equipamentos Operacionais"
   },
   {
     "id": "88379763000136_1_000163_2026",
@@ -1268,8 +1412,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 1.505.215,80",
     "dataEncerramento": "27/11/2026 às 07:59",
     "dataEncerramentoIso": "2026-11-27T07:59:00",
-    "link": "https://pncp.gov.br/app/editais/88379763000136/2026/163",
-    "tipoLink": "PNCP",
+    "link": "https://www.portaldecompraspublicas.com.br/processos/RS/Prefeitura-Municipal-de-Igrejinha-15/RPE-116-2026-2026-525003",
+    "tipoLink": "Sistema Oficial (Disputa Direta)",
     "plataforma": "ECustomize Consultoria em Software S.A",
     "ehComprasGov": false,
     "compativelMEI": true,
@@ -1297,7 +1441,13 @@ window.RADAR_PNCP_DATA = [
         "https://pncp.gov.br/pncp-api/v1/orgaos/88379763000136/compras/2026/163/arquivos/1"
       ]
     ],
-    "tituloCurto": "Material de Limpeza, Descartáveis e Higiene"
+    "tituloCurto": "Material de Limpeza, Descartáveis e Higiene",
+    "linkSistemaOrigem": "https://www.portaldecompraspublicas.com.br/processos/RS/Prefeitura-Municipal-de-Igrejinha-15/RPE-116-2026-2026-525003",
+    "linkProcessoEletronico": null,
+    "linkPncp": "https://pncp.gov.br/app/editais?q=88379763000136-1-000163/2026",
+    "linkDireto": "https://www.portaldecompraspublicas.com.br/processos/RS/Prefeitura-Municipal-de-Igrejinha-15/RPE-116-2026-2026-525003",
+    "titulo": "Materiais de Limpeza e Higienização",
+    "tituloResumo": "Materiais de Limpeza e Higienização"
   },
   {
     "id": "88379763000136_1_000159_2026",
@@ -1309,8 +1459,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 129.810,44",
     "dataEncerramento": "27/11/2026 às 08:29",
     "dataEncerramentoIso": "2026-11-27T08:29:00",
-    "link": "https://pncp.gov.br/app/editais/88379763000136/2026/159",
-    "tipoLink": "PNCP",
+    "link": "https://www.portaldecompraspublicas.com.br/processos/RS/Prefeitura-Municipal-de-Igrejinha-15/PE-111-2026-2026-524295",
+    "tipoLink": "Sistema Oficial (Disputa Direta)",
     "plataforma": "ECustomize Consultoria em Software S.A",
     "ehComprasGov": false,
     "compativelMEI": true,
@@ -1338,7 +1488,13 @@ window.RADAR_PNCP_DATA = [
         "https://pncp.gov.br/pncp-api/v1/orgaos/88379763000136/compras/2026/159/arquivos/1"
       ]
     ],
-    "tituloCurto": "Castração Cirúrgica e Microchipagem de Cadelas"
+    "tituloCurto": "Castração Cirúrgica e Microchipagem de Cadelas",
+    "linkSistemaOrigem": "https://www.portaldecompraspublicas.com.br/processos/RS/Prefeitura-Municipal-de-Igrejinha-15/PE-111-2026-2026-524295",
+    "linkProcessoEletronico": null,
+    "linkPncp": "https://pncp.gov.br/app/editais?q=88379763000136-1-000159/2026",
+    "linkDireto": "https://www.portaldecompraspublicas.com.br/processos/RS/Prefeitura-Municipal-de-Igrejinha-15/PE-111-2026-2026-524295",
+    "titulo": "Castração e Microchipagem de Caninos Fêmeas",
+    "tituloResumo": "Castração e Microchipagem de Caninos Fêmeas"
   },
   {
     "id": "87366159000102_1_000458_2026",
@@ -1350,8 +1506,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 616.781,00",
     "dataEncerramento": "27/11/2026 às 12:00",
     "dataEncerramentoIso": "2026-11-27T12:00:00",
-    "link": "https://pncp.gov.br/app/editais/87366159000102/2026/458",
-    "tipoLink": "PNCP",
+    "link": "https://pncp.gov.br/app/editais?q=87366159000102-1-000458/2026",
+    "tipoLink": "PNCP Oficial",
     "plataforma": "DBseller Serviços de Informática",
     "ehComprasGov": false,
     "compativelMEI": true,
@@ -1379,7 +1535,13 @@ window.RADAR_PNCP_DATA = [
         "https://pncp.gov.br/pncp-api/v1/orgaos/87366159000102/compras/2026/458/arquivos/1"
       ]
     ],
-    "tituloCurto": "Produção Audiovisual: Filmagens e Edição de Vídeos"
+    "tituloCurto": "Produção Audiovisual: Filmagens e Edição de Vídeos",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "linkPncp": "https://pncp.gov.br/app/editais?q=87366159000102-1-000458/2026",
+    "linkDireto": "https://pncp.gov.br/app/editais?q=87366159000102-1-000458/2026",
+    "titulo": "Produção Audiovisual e Cobertura de Eventos",
+    "tituloResumo": "Produção Audiovisual e Cobertura de Eventos"
   },
   {
     "id": "97761407000173_1_000443_2026",
@@ -1391,8 +1553,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 109.666,60",
     "dataEncerramento": "30/11/2026 às 08:29",
     "dataEncerramentoIso": "2026-11-30T08:29:00",
-    "link": "https://pncp.gov.br/app/editais/97761407000173/2026/443",
-    "tipoLink": "PNCP",
+    "link": "https://pncp.gov.br/app/editais?q=97761407000173-1-000443/2026",
+    "tipoLink": "PNCP Oficial",
     "plataforma": "MUNICIPIO DE TAQUARA",
     "ehComprasGov": false,
     "compativelMEI": true,
@@ -1436,7 +1598,13 @@ window.RADAR_PNCP_DATA = [
         "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/443/arquivos/5"
       ]
     ],
-    "tituloCurto": "Locação e Montagem de Painéis de LED (Indoor e Outdoor)"
+    "tituloCurto": "Locação e Montagem de Painéis de LED (Indoor e Outdoor)",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "linkPncp": "https://pncp.gov.br/app/editais?q=97761407000173-1-000443/2026",
+    "linkDireto": "https://pncp.gov.br/app/editais?q=97761407000173-1-000443/2026",
+    "titulo": "Serviços Gráficos e Impressão de Materiais",
+    "tituloResumo": "Serviços Gráficos e Impressão de Materiais"
   },
   {
     "id": "97761407000173_1_000444_2026",
@@ -1448,8 +1616,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 797.629,25",
     "dataEncerramento": "30/11/2026 às 08:29",
     "dataEncerramentoIso": "2026-11-30T08:29:00",
-    "link": "https://pncp.gov.br/app/editais/97761407000173/2026/444",
-    "tipoLink": "PNCP",
+    "link": "https://pncp.gov.br/app/editais?q=97761407000173-1-000444/2026",
+    "tipoLink": "PNCP Oficial",
     "plataforma": "MUNICIPIO DE TAQUARA",
     "ehComprasGov": false,
     "compativelMEI": true,
@@ -1497,7 +1665,13 @@ window.RADAR_PNCP_DATA = [
         "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/444/arquivos/6"
       ]
     ],
-    "tituloCurto": "Recapagem, Vulcanização e Reforma de Pneus de Frota"
+    "tituloCurto": "Recapagem, Vulcanização e Reforma de Pneus de Frota",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "linkPncp": "https://pncp.gov.br/app/editais?q=97761407000173-1-000444/2026",
+    "linkDireto": "https://pncp.gov.br/app/editais?q=97761407000173-1-000444/2026",
+    "titulo": "Manutenção e Reparos Mecânicos em Frotas",
+    "tituloResumo": "Manutenção e Reparos Mecânicos em Frotas"
   },
   {
     "id": "97761407000173_1_000445_2026",
@@ -1509,8 +1683,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 376.018,55",
     "dataEncerramento": "30/11/2026 às 10:29",
     "dataEncerramentoIso": "2026-11-30T10:29:00",
-    "link": "https://pncp.gov.br/app/editais/97761407000173/2026/445",
-    "tipoLink": "PNCP",
+    "link": "https://pncp.gov.br/app/editais?q=97761407000173-1-000445/2026",
+    "tipoLink": "PNCP Oficial",
     "plataforma": "MUNICIPIO DE TAQUARA",
     "ehComprasGov": false,
     "compativelMEI": true,
@@ -1558,7 +1732,13 @@ window.RADAR_PNCP_DATA = [
         "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/445/arquivos/6"
       ]
     ],
-    "tituloCurto": "Troféus Personalizados e Medalhas Esportivas"
+    "tituloCurto": "Troféus Personalizados e Medalhas Esportivas",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "linkPncp": "https://pncp.gov.br/app/editais?q=97761407000173-1-000445/2026",
+    "linkDireto": "https://pncp.gov.br/app/editais?q=97761407000173-1-000445/2026",
+    "titulo": "Troféus e Medalhas para Competições Esportivas",
+    "tituloResumo": "Troféus e Medalhas para Competições Esportivas"
   },
   {
     "id": "87366159000102_1_000459_2026",
@@ -1570,8 +1750,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 830.550,99",
     "dataEncerramento": "30/11/2026 às 12:00",
     "dataEncerramentoIso": "2026-11-30T12:00:00",
-    "link": "https://pncp.gov.br/app/editais/87366159000102/2026/459",
-    "tipoLink": "PNCP",
+    "link": "https://pncp.gov.br/app/editais?q=87366159000102-1-000459/2026",
+    "tipoLink": "PNCP Oficial",
     "plataforma": "DBseller Serviços de Informática",
     "ehComprasGov": false,
     "compativelMEI": true,
@@ -1599,7 +1779,13 @@ window.RADAR_PNCP_DATA = [
         "https://pncp.gov.br/pncp-api/v1/orgaos/87366159000102/compras/2026/459/arquivos/1"
       ]
     ],
-    "tituloCurto": "Mochilas Escolares Personalizadas para Alunos"
+    "tituloCurto": "Mochilas Escolares Personalizadas para Alunos",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "linkPncp": "https://pncp.gov.br/app/editais?q=87366159000102-1-000459/2026",
+    "linkDireto": "https://pncp.gov.br/app/editais?q=87366159000102-1-000459/2026",
+    "titulo": "Mochilas Escolares Personalizadas",
+    "tituloResumo": "Mochilas Escolares Personalizadas"
   },
   {
     "id": "87366159000102_1_000460_2026",
@@ -1611,8 +1797,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 381.481,52",
     "dataEncerramento": "01/12/2026 às 12:00",
     "dataEncerramentoIso": "2026-12-01T12:00:00",
-    "link": "https://pncp.gov.br/app/editais/87366159000102/2026/460",
-    "tipoLink": "PNCP",
+    "link": "https://pncp.gov.br/app/editais?q=87366159000102-1-000460/2026",
+    "tipoLink": "PNCP Oficial",
     "plataforma": "DBseller Serviços de Informática",
     "ehComprasGov": false,
     "compativelMEI": true,
@@ -1640,7 +1826,13 @@ window.RADAR_PNCP_DATA = [
         "https://pncp.gov.br/pncp-api/v1/orgaos/87366159000102/compras/2026/460/arquivos/1"
       ]
     ],
-    "tituloCurto": "Cargas de Gás GLP P13/P45 e Vasilhames/Botijões"
+    "tituloCurto": "Cargas de Gás GLP P13/P45 e Vasilhames/Botijões",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "linkPncp": "https://pncp.gov.br/app/editais?q=87366159000102-1-000460/2026",
+    "linkDireto": "https://pncp.gov.br/app/editais?q=87366159000102-1-000460/2026",
+    "titulo": "Cargas de Gás GLP (Botijões P13 e P45)",
+    "tituloResumo": "Cargas de Gás GLP (Botijões P13 e P45)"
   },
   {
     "id": "97761407000173_1_000446_2026",
@@ -1652,8 +1844,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 1.764.301,00",
     "dataEncerramento": "02/12/2026 às 08:29",
     "dataEncerramentoIso": "2026-12-02T08:29:00",
-    "link": "https://pncp.gov.br/app/editais/97761407000173/2026/446",
-    "tipoLink": "PNCP",
+    "link": "https://pncp.gov.br/app/editais?q=97761407000173-1-000446/2026",
+    "tipoLink": "PNCP Oficial",
     "plataforma": "MUNICIPIO DE TAQUARA",
     "ehComprasGov": false,
     "compativelMEI": true,
@@ -1697,7 +1889,13 @@ window.RADAR_PNCP_DATA = [
         "https://pncp.gov.br/pncp-api/v1/orgaos/97761407000173/compras/2026/446/arquivos/5"
       ]
     ],
-    "tituloCurto": "Alimentos Perecíveis: Carnes, Frangos, Laticínios e Frios"
+    "tituloCurto": "Alimentos Perecíveis: Carnes, Frangos, Laticínios e Frios",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "linkPncp": "https://pncp.gov.br/app/editais?q=97761407000173-1-000446/2026",
+    "linkDireto": "https://pncp.gov.br/app/editais?q=97761407000173-1-000446/2026",
+    "titulo": "Materiais e Insumos Elétricos e Iluminação",
+    "tituloResumo": "Materiais e Insumos Elétricos e Iluminação"
   },
   {
     "id": "88372883000101_1_000310_2026",
@@ -1709,8 +1907,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 3.005.614,81",
     "dataEncerramento": "03/12/2026 às 07:59",
     "dataEncerramentoIso": "2026-12-03T07:59:00",
-    "link": "https://pncp.gov.br/app/editais/88372883000101/2026/310",
-    "tipoLink": "PNCP",
+    "link": "https://pncp.gov.br/app/editais?q=88372883000101-1-000310/2026",
+    "tipoLink": "PNCP Oficial",
     "plataforma": "IPM Sistemas",
     "ehComprasGov": false,
     "compativelMEI": true,
@@ -1738,7 +1936,13 @@ window.RADAR_PNCP_DATA = [
         "https://pncp.gov.br/pncp-api/v1/orgaos/88372883000101/compras/2026/310/arquivos/1"
       ]
     ],
-    "tituloCurto": "Processamento da Folha de Pagamento Municipal (Bancos)"
+    "tituloCurto": "Processamento da Folha de Pagamento Municipal (Bancos)",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "linkPncp": "https://pncp.gov.br/app/editais?q=88372883000101-1-000310/2026",
+    "linkDireto": "https://pncp.gov.br/app/editais?q=88372883000101-1-000310/2026",
+    "titulo": "Serviços de Instituição Financeira / Folha de Pagamento",
+    "tituloResumo": "Serviços de Instituição Financeira / Folha de Pagamento"
   },
   {
     "id": "87366159000102_1_000464_2026",
@@ -1750,8 +1954,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 870.653,75",
     "dataEncerramento": "04/12/2026 às 08:00",
     "dataEncerramentoIso": "2026-12-04T08:00:00",
-    "link": "https://pncp.gov.br/app/editais/87366159000102/2026/464",
-    "tipoLink": "PNCP",
+    "link": "https://pncp.gov.br/app/editais?q=87366159000102-1-000464/2026",
+    "tipoLink": "PNCP Oficial",
     "plataforma": "DBseller Serviços de Informática",
     "ehComprasGov": false,
     "compativelMEI": true,
@@ -1779,7 +1983,13 @@ window.RADAR_PNCP_DATA = [
         "https://pncp.gov.br/pncp-api/v1/orgaos/87366159000102/compras/2026/464/arquivos/1"
       ]
     ],
-    "tituloCurto": "Kits de Materiais Escolares Completos para Estudantes"
+    "tituloCurto": "Kits de Materiais Escolares Completos para Estudantes",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "linkPncp": "https://pncp.gov.br/app/editais?q=87366159000102-1-000464/2026",
+    "linkDireto": "https://pncp.gov.br/app/editais?q=87366159000102-1-000464/2026",
+    "titulo": "Kits de Material Escolar para Alunos da Rede Pública",
+    "tituloResumo": "Kits de Material Escolar para Alunos da Rede Pública"
   },
   {
     "id": "88830609000139_1_000633_2026",
@@ -1791,8 +2001,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 6.348,51",
     "dataEncerramento": "13/11/2026 às 08:00",
     "dataEncerramentoIso": "2026-11-13T08:00:00",
-    "link": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/acompanhamento-compra?compra=98859906001902026",
-    "tipoLink": "Link Direto Oficial",
+    "link": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/login",
+    "tipoLink": "Compras.gov.br",
     "plataforma": "Contrata+ Brasil / Compras.gov.br",
     "ehComprasGov": true,
     "compativelMEI": true,
@@ -1804,7 +2014,14 @@ window.RADAR_PNCP_DATA = [
     ],
     "permiteCompraFornecedor": true,
     "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)",
-    "tituloCurto": "Fornecimento, instalação de porta de correr em alumínio laqueado "
+    "tituloCurto": "Fornecimento, instalação de porta de correr em alumínio laqueado ",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "arquivos": [],
+    "linkPncp": "https://pncp.gov.br/app/editais?q=88830609000139-1-000633/2026",
+    "linkDireto": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/login",
+    "titulo": "Porta de Correr em Alumínio Laqueado Branco",
+    "tituloResumo": "Porta de Correr em Alumínio Laqueado Branco"
   },
   {
     "id": "05110425000177_1_000051_2026",
@@ -1816,8 +2033,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 3.620,28",
     "dataEncerramento": "12/11/2026 às 13:30",
     "dataEncerramentoIso": "2026-11-12T13:30:00",
-    "link": "https://www.compras.rs.gov.br/editais/1089_2026/358873",
-    "tipoLink": "Link Direto Oficial",
+    "link": "https://pncp.gov.br/app/editais?q=05110425000177-1-000051/2026",
+    "tipoLink": "PNCP Oficial",
     "plataforma": "Compras RS (Governo Estadual)",
     "ehComprasGov": false,
     "compativelMEI": true,
@@ -1827,7 +2044,14 @@ window.RADAR_PNCP_DATA = [
     ],
     "permiteCompraFornecedor": true,
     "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)",
-    "tituloCurto": "AQUISIÇÃO DE BENS DA(S) FAMÍLIA(S):\n0788-ALIMENTACAO HUMANA - LAT"
+    "tituloCurto": "AQUISIÇÃO DE BENS DA(S) FAMÍLIA(S):\n0788-ALIMENTACAO HUMANA - LAT",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "arquivos": [],
+    "linkPncp": "https://pncp.gov.br/app/editais?q=05110425000177-1-000051/2026",
+    "linkDireto": "https://pncp.gov.br/app/editais?q=05110425000177-1-000051/2026",
+    "titulo": "Laticínios e Gêneros Alimentícios",
+    "tituloResumo": "Laticínios e Gêneros Alimentícios"
   },
   {
     "id": "87934675000196_1_000314_2026",
@@ -1839,8 +2063,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 4.107,24",
     "dataEncerramento": "13/11/2026 às 10:00",
     "dataEncerramentoIso": "2026-11-13T10:00:00",
-    "link": "https://www.compras.rs.gov.br/editais/1099_2026/358958",
-    "tipoLink": "Link Direto Oficial",
+    "link": "https://pncp.gov.br/app/editais?q=87934675000196-1-000314/2026",
+    "tipoLink": "PNCP Oficial",
     "plataforma": "Compras RS (Governo Estadual)",
     "ehComprasGov": false,
     "compativelMEI": true,
@@ -1850,7 +2074,14 @@ window.RADAR_PNCP_DATA = [
     ],
     "permiteCompraFornecedor": true,
     "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)",
-    "tituloCurto": "AQUISIÇÃO DE BENS DA(S) FAMÍLIA(S):\n0035-EQUIPAMENTOS P/INFORMATI"
+    "tituloCurto": "AQUISIÇÃO DE BENS DA(S) FAMÍLIA(S):\n0035-EQUIPAMENTOS P/INFORMATI",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "arquivos": [],
+    "linkPncp": "https://pncp.gov.br/app/editais?q=87934675000196-1-000314/2026",
+    "linkDireto": "https://pncp.gov.br/app/editais?q=87934675000196-1-000314/2026",
+    "titulo": "Equipamentos e Periféricos de Informática",
+    "tituloResumo": "Equipamentos e Periféricos de Informática"
   },
   {
     "id": "17176399000169_1_000040_2026",
@@ -1862,8 +2093,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 9.081,80",
     "dataEncerramento": "18/11/2026 às 10:00",
     "dataEncerramentoIso": "2026-11-18T10:00:00",
-    "link": "https://www.compras.rs.gov.br/editais/1102_2026/358989",
-    "tipoLink": "Link Direto Oficial",
+    "link": "https://pncp.gov.br/app/editais?q=17176399000169-1-000040/2026",
+    "tipoLink": "PNCP Oficial",
     "plataforma": "Compras RS (Governo Estadual)",
     "ehComprasGov": false,
     "compativelMEI": true,
@@ -1873,7 +2104,14 @@ window.RADAR_PNCP_DATA = [
     ],
     "permiteCompraFornecedor": true,
     "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)",
-    "tituloCurto": "AQUISIÇÃO DE BENS DA(S) FAMÍLIA(S):\n0035-EQUIPAMENTOS P/INFORMATI"
+    "tituloCurto": "AQUISIÇÃO DE BENS DA(S) FAMÍLIA(S):\n0035-EQUIPAMENTOS P/INFORMATI",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "arquivos": [],
+    "linkPncp": "https://pncp.gov.br/app/editais?q=17176399000169-1-000040/2026",
+    "linkDireto": "https://pncp.gov.br/app/editais?q=17176399000169-1-000040/2026",
+    "titulo": "Equipamentos e Monitores de Informática",
+    "tituloResumo": "Equipamentos e Monitores de Informática"
   },
   {
     "id": "92854876000113_1_000078_2026",
@@ -1885,8 +2123,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 10.173,75",
     "dataEncerramento": "17/11/2026 às 08:59",
     "dataEncerramentoIso": "2026-11-17T08:59:00",
-    "link": "https://www.compras.rs.gov.br/editais/1104_2026/359001",
-    "tipoLink": "Link Direto Oficial",
+    "link": "https://pncp.gov.br/app/editais?q=92854876000113-1-000078/2026",
+    "tipoLink": "PNCP Oficial",
     "plataforma": "Compras RS (Governo Estadual)",
     "ehComprasGov": false,
     "compativelMEI": true,
@@ -1896,7 +2134,14 @@ window.RADAR_PNCP_DATA = [
     ],
     "permiteCompraFornecedor": true,
     "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)",
-    "tituloCurto": "AQUISIÇÃO DE BENS DA(S) FAMÍLIA(S):\n0045-MATERIAIS GRÁFICOS / SIM"
+    "tituloCurto": "AQUISIÇÃO DE BENS DA(S) FAMÍLIA(S):\n0045-MATERIAIS GRÁFICOS / SIM",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "arquivos": [],
+    "linkPncp": "https://pncp.gov.br/app/editais?q=92854876000113-1-000078/2026",
+    "linkDireto": "https://pncp.gov.br/app/editais?q=92854876000113-1-000078/2026",
+    "titulo": "Materiais Gráficos, Banners e Impressos",
+    "tituloResumo": "Materiais Gráficos, Banners e Impressos"
   },
   {
     "id": "92854876000113_1_000079_2026",
@@ -1908,8 +2153,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 62.466,33",
     "dataEncerramento": "18/11/2026 às 08:59",
     "dataEncerramentoIso": "2026-11-18T08:59:00",
-    "link": "https://www.compras.rs.gov.br/editais/1105_2026/359014",
-    "tipoLink": "Link Direto Oficial",
+    "link": "https://pncp.gov.br/app/editais?q=92854876000113-1-000079/2026",
+    "tipoLink": "PNCP Oficial",
     "plataforma": "Compras RS (Governo Estadual)",
     "ehComprasGov": false,
     "compativelMEI": true,
@@ -1919,7 +2164,14 @@ window.RADAR_PNCP_DATA = [
     ],
     "permiteCompraFornecedor": true,
     "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)",
-    "tituloCurto": "AQUISIÇÃO DE BENS DA(S) FAMÍLIA(S):\n0035-EQUIPAMENTOS P/INFORMATI"
+    "tituloCurto": "AQUISIÇÃO DE BENS DA(S) FAMÍLIA(S):\n0035-EQUIPAMENTOS P/INFORMATI",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "arquivos": [],
+    "linkPncp": "https://pncp.gov.br/app/editais?q=92854876000113-1-000079/2026",
+    "linkDireto": "https://pncp.gov.br/app/editais?q=92854876000113-1-000079/2026",
+    "titulo": "Acessórios e Cabos de Informática",
+    "tituloResumo": "Acessórios e Cabos de Informática"
   },
   {
     "id": "89522064000166_1_000242_2026",
@@ -1932,7 +2184,7 @@ window.RADAR_PNCP_DATA = [
     "dataEncerramento": "12/11/2026 às 14:00",
     "dataEncerramentoIso": "2026-11-12T14:00:00",
     "link": "https://pncp.gov.br/app/editais?q=89522064000166-1-000242/2026",
-    "tipoLink": "Buscar Edital no PNCP",
+    "tipoLink": "PNCP Oficial",
     "plataforma": "Tribunal de Justiça do Estado do Rio Grande do Sul",
     "ehComprasGov": false,
     "compativelMEI": true,
@@ -1942,7 +2194,14 @@ window.RADAR_PNCP_DATA = [
     ],
     "permiteCompraFornecedor": true,
     "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)",
-    "tituloCurto": "Fornecimento, por demanda, de óleo diesel B S500 comum para abast"
+    "tituloCurto": "Fornecimento, por demanda, de óleo diesel B S500 comum para abast",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "arquivos": [],
+    "linkPncp": "https://pncp.gov.br/app/editais?q=89522064000166-1-000242/2026",
+    "linkDireto": "https://pncp.gov.br/app/editais?q=89522064000166-1-000242/2026",
+    "titulo": "Óleo Diesel B S500 Comum para Geradores",
+    "tituloResumo": "Óleo Diesel B S500 Comum para Geradores"
   },
   {
     "id": "17176399000169_1_000041_2026",
@@ -1954,8 +2213,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 54.729,00",
     "dataEncerramento": "13/11/2026 às 10:00",
     "dataEncerramentoIso": "2026-11-13T10:00:00",
-    "link": "https://www.compras.rs.gov.br/editais/1108_2026/359077",
-    "tipoLink": "Link Direto Oficial",
+    "link": "https://pncp.gov.br/app/editais?q=17176399000169-1-000041/2026",
+    "tipoLink": "PNCP Oficial",
     "plataforma": "Compras RS (Governo Estadual)",
     "ehComprasGov": false,
     "compativelMEI": true,
@@ -1965,7 +2224,14 @@ window.RADAR_PNCP_DATA = [
     ],
     "permiteCompraFornecedor": true,
     "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)",
-    "tituloCurto": "AQUISIÇÃO DE BENS DA(S) FAMÍLIA(S):\n0880-MEDICAMENTOS DE USO HUMA"
+    "tituloCurto": "AQUISIÇÃO DE BENS DA(S) FAMÍLIA(S):\n0880-MEDICAMENTOS DE USO HUMA",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "arquivos": [],
+    "linkPncp": "https://pncp.gov.br/app/editais?q=17176399000169-1-000041/2026",
+    "linkDireto": "https://pncp.gov.br/app/editais?q=17176399000169-1-000041/2026",
+    "titulo": "Medicamentos de Uso Humano",
+    "tituloResumo": "Medicamentos de Uso Humano"
   },
   {
     "id": "13738204000176_1_000082_2026",
@@ -1977,8 +2243,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 131,40",
     "dataEncerramento": "13/11/2026 às 08:00",
     "dataEncerramentoIso": "2026-11-13T08:00:00",
-    "link": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/acompanhamento-compra?compra=93095806000542026",
-    "tipoLink": "Link Direto Oficial",
+    "link": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/login",
+    "tipoLink": "Compras.gov.br",
     "plataforma": "Contrata+ Brasil / Compras.gov.br",
     "ehComprasGov": true,
     "compativelMEI": true,
@@ -1988,7 +2254,14 @@ window.RADAR_PNCP_DATA = [
     ],
     "permiteCompraFornecedor": true,
     "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)",
-    "tituloCurto": "Contratação de empresa especializada na intermediação de serviços"
+    "tituloCurto": "Contratação de empresa especializada na intermediação de serviços",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "arquivos": [],
+    "linkPncp": "https://pncp.gov.br/app/editais?q=13738204000176-1-000082/2026",
+    "linkDireto": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/login",
+    "titulo": "Intermediação de Vouchers e Benefícios",
+    "tituloResumo": "Intermediação de Vouchers e Benefícios"
   },
   {
     "id": "28610005000155_1_000108_2026",
@@ -2000,8 +2273,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 12.033,33",
     "dataEncerramento": "13/11/2026 às 09:00",
     "dataEncerramentoIso": "2026-11-13T09:00:00",
-    "link": "https://www.compras.rs.gov.br/editais/0001_2026/359113",
-    "tipoLink": "Link Direto Oficial",
+    "link": "https://pncp.gov.br/app/editais?q=28610005000155-1-000108/2026",
+    "tipoLink": "PNCP Oficial",
     "plataforma": "Compras RS (Governo Estadual)",
     "ehComprasGov": false,
     "compativelMEI": true,
@@ -2013,7 +2286,14 @@ window.RADAR_PNCP_DATA = [
     ],
     "permiteCompraFornecedor": true,
     "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)",
-    "tituloCurto": "Contratação de empresa especializada para execução dos serviços d"
+    "tituloCurto": "Contratação de empresa especializada para execução dos serviços d",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "arquivos": [],
+    "linkPncp": "https://pncp.gov.br/app/editais?q=28610005000155-1-000108/2026",
+    "linkDireto": "https://pncp.gov.br/app/editais?q=28610005000155-1-000108/2026",
+    "titulo": "Instalação e Manutenção de Ar Condicionado",
+    "tituloResumo": "Instalação e Manutenção de Ar Condicionado"
   },
   {
     "id": "92969856000198_1_000329_2026",
@@ -2025,8 +2305,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 15.763,95",
     "dataEncerramento": "13/11/2026 às 08:00",
     "dataEncerramentoIso": "2026-11-13T08:00:00",
-    "link": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/acompanhamento-compra?compra=15311406004892026",
-    "tipoLink": "Link Direto Oficial",
+    "link": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/login",
+    "tipoLink": "Compras.gov.br",
     "plataforma": "Contrata+ Brasil / Compras.gov.br",
     "ehComprasGov": true,
     "compativelMEI": true,
@@ -2036,7 +2316,14 @@ window.RADAR_PNCP_DATA = [
     ],
     "permiteCompraFornecedor": true,
     "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)",
-    "tituloCurto": "Aquisição de redes de proteção com instalação"
+    "tituloCurto": "Aquisição de redes de proteção com instalação",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "arquivos": [],
+    "linkPncp": "https://pncp.gov.br/app/editais?q=92969856000198-1-000329/2026",
+    "linkDireto": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/login",
+    "titulo": "Redes de Proteção com Instalação",
+    "tituloResumo": "Redes de Proteção com Instalação"
   },
   {
     "id": "89175541000164_1_000432_2026",
@@ -2048,8 +2335,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 10.225,34",
     "dataEncerramento": "12/11/2026 às 13:00",
     "dataEncerramentoIso": "2026-11-12T13:00:00",
-    "link": "https://www.compras.rs.gov.br/editais/1113_2026/359126",
-    "tipoLink": "Link Direto Oficial",
+    "link": "https://pncp.gov.br/app/editais?q=89175541000164-1-000432/2026",
+    "tipoLink": "PNCP Oficial",
     "plataforma": "Compras RS (Governo Estadual)",
     "ehComprasGov": false,
     "compativelMEI": true,
@@ -2059,7 +2346,14 @@ window.RADAR_PNCP_DATA = [
     ],
     "permiteCompraFornecedor": true,
     "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)",
-    "tituloCurto": "AQUISIÇÃO DE BENS DA(S) FAMÍLIA(S):\n0290-EQUIPAMENTOS/COMPONENTES"
+    "tituloCurto": "AQUISIÇÃO DE BENS DA(S) FAMÍLIA(S):\n0290-EQUIPAMENTOS/COMPONENTES",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "arquivos": [],
+    "linkPncp": "https://pncp.gov.br/app/editais?q=89175541000164-1-000432/2026",
+    "linkDireto": "https://pncp.gov.br/app/editais?q=89175541000164-1-000432/2026",
+    "titulo": "Componentes e Acessórios para Computadores",
+    "tituloResumo": "Componentes e Acessórios para Computadores"
   },
   {
     "id": "90938143000131_1_000057_2026",
@@ -2071,8 +2365,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 1.890,00",
     "dataEncerramento": "13/11/2026 às 13:00",
     "dataEncerramentoIso": "2026-11-13T13:00:00",
-    "link": "https://pncp.gov.br/app/editais/90938143000131/2026/57",
-    "tipoLink": "Edital Direto no PNCP",
+    "link": "https://pncp.gov.br/app/editais?q=90938143000131-1-000057/2026",
+    "tipoLink": "PNCP Oficial",
     "plataforma": "Portal IPM (Prefeitura/Autarquia)",
     "ehComprasGov": false,
     "compativelMEI": true,
@@ -2082,7 +2376,14 @@ window.RADAR_PNCP_DATA = [
     ],
     "permiteCompraFornecedor": true,
     "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)",
-    "tituloCurto": "Aquisição de 01 (um) balcão de pia."
+    "tituloCurto": "Aquisição de 01 (um) balcão de pia.",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "arquivos": [],
+    "linkPncp": "https://pncp.gov.br/app/editais?q=90938143000131-1-000057/2026",
+    "linkDireto": "https://pncp.gov.br/app/editais?q=90938143000131-1-000057/2026",
+    "titulo": "Balcão de Pia em Aço Inox com Gabinete",
+    "tituloResumo": "Balcão de Pia em Aço Inox com Gabinete"
   },
   {
     "id": "87958658000199_1_001166_2026",
@@ -2094,8 +2395,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 3.713,68",
     "dataEncerramento": "13/11/2026 às 09:00",
     "dataEncerramentoIso": "2026-11-13T09:00:00",
-    "link": "https://www.compras.rs.gov.br/editais/1116_2026/359140",
-    "tipoLink": "Link Direto Oficial",
+    "link": "https://pncp.gov.br/app/editais?q=87958658000199-1-001166/2026",
+    "tipoLink": "PNCP Oficial",
     "plataforma": "Compras RS (Governo Estadual)",
     "ehComprasGov": false,
     "compativelMEI": true,
@@ -2105,7 +2406,14 @@ window.RADAR_PNCP_DATA = [
     ],
     "permiteCompraFornecedor": true,
     "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)",
-    "tituloCurto": "AQUISIÇÃO DE BENS DA(S) FAMÍLIA(S):\n0960-FORRAGENS E OUTROS ALIME"
+    "tituloCurto": "AQUISIÇÃO DE BENS DA(S) FAMÍLIA(S):\n0960-FORRAGENS E OUTROS ALIME",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "arquivos": [],
+    "linkPncp": "https://pncp.gov.br/app/editais?q=87958658000199-1-001166/2026",
+    "linkDireto": "https://pncp.gov.br/app/editais?q=87958658000199-1-001166/2026",
+    "titulo": "Forragens e Alimentos para Animais",
+    "tituloResumo": "Forragens e Alimentos para Animais"
   },
   {
     "id": "87934675000196_1_000316_2026",
@@ -2117,8 +2425,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 296,60",
     "dataEncerramento": "13/11/2026 às 09:30",
     "dataEncerramentoIso": "2026-11-13T09:30:00",
-    "link": "https://www.compras.rs.gov.br/editais/1117_2026/359142",
-    "tipoLink": "Link Direto Oficial",
+    "link": "https://pncp.gov.br/app/editais?q=87934675000196-1-000316/2026",
+    "tipoLink": "PNCP Oficial",
     "plataforma": "Compras RS (Governo Estadual)",
     "ehComprasGov": false,
     "compativelMEI": true,
@@ -2128,7 +2436,14 @@ window.RADAR_PNCP_DATA = [
     ],
     "permiteCompraFornecedor": true,
     "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)",
-    "tituloCurto": "AQUISIÇÃO DE BENS DA(S) FAMÍLIA(S):\n0002-EQUIPAMENTOS/MATERIAIS P"
+    "tituloCurto": "AQUISIÇÃO DE BENS DA(S) FAMÍLIA(S):\n0002-EQUIPAMENTOS/MATERIAIS P",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "arquivos": [],
+    "linkPncp": "https://pncp.gov.br/app/editais?q=87934675000196-1-000316/2026",
+    "linkDireto": "https://pncp.gov.br/app/editais?q=87934675000196-1-000316/2026",
+    "titulo": "Materiais e Equipamentos para Escritório/Escola",
+    "tituloResumo": "Materiais e Equipamentos para Escritório/Escola"
   },
   {
     "id": "89522064000166_1_000244_2026",
@@ -2141,7 +2456,7 @@ window.RADAR_PNCP_DATA = [
     "dataEncerramento": "13/11/2026 às 14:00",
     "dataEncerramentoIso": "2026-11-13T14:00:00",
     "link": "https://pncp.gov.br/app/editais?q=89522064000166-1-000244/2026",
-    "tipoLink": "Buscar Edital no PNCP",
+    "tipoLink": "PNCP Oficial",
     "plataforma": "Tribunal de Justiça do Estado do Rio Grande do Sul",
     "ehComprasGov": false,
     "compativelMEI": true,
@@ -2151,7 +2466,14 @@ window.RADAR_PNCP_DATA = [
     ],
     "permiteCompraFornecedor": true,
     "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)",
-    "tituloCurto": "Contratação de empresa especializada na prestação de serviços com"
+    "tituloCurto": "Contratação de empresa especializada na prestação de serviços com",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "arquivos": [],
+    "linkPncp": "https://pncp.gov.br/app/editais?q=89522064000166-1-000244/2026",
+    "linkDireto": "https://pncp.gov.br/app/editais?q=89522064000166-1-000244/2026",
+    "titulo": "Serviços de Manutenção Predial e Reparos",
+    "tituloResumo": "Serviços de Manutenção Predial e Reparos"
   },
   {
     "id": "92969856000198_1_000330_2026",
@@ -2163,8 +2485,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 1.871,00",
     "dataEncerramento": "13/11/2026 às 08:00",
     "dataEncerramentoIso": "2026-11-13T08:00:00",
-    "link": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/acompanhamento-compra?compra=15311406005072026",
-    "tipoLink": "Link Direto Oficial",
+    "link": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/login",
+    "tipoLink": "Compras.gov.br",
     "plataforma": "Contrata+ Brasil / Compras.gov.br",
     "ehComprasGov": true,
     "compativelMEI": true,
@@ -2174,7 +2496,14 @@ window.RADAR_PNCP_DATA = [
     ],
     "permiteCompraFornecedor": true,
     "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)",
-    "tituloCurto": "Rotulador eletrônico e 06 fitas para refil"
+    "tituloCurto": "Rotulador eletrônico e 06 fitas para refil",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "arquivos": [],
+    "linkPncp": "https://pncp.gov.br/app/editais?q=92969856000198-1-000330/2026",
+    "linkDireto": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/login",
+    "titulo": "Rotulador Eletrônico Portátil com Fitas Refil",
+    "tituloResumo": "Rotulador Eletrônico Portátil com Fitas Refil"
   },
   {
     "id": "00394502000144_1_015634_2026",
@@ -2186,8 +2515,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 7.436,89",
     "dataEncerramento": "13/11/2026 às 08:00",
     "dataEncerramentoIso": "2026-11-13T08:00:00",
-    "link": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/acompanhamento-compra?compra=78520006002082026",
-    "tipoLink": "Link Direto Oficial",
+    "link": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/login",
+    "tipoLink": "Compras.gov.br",
     "plataforma": "Contrata+ Brasil / Compras.gov.br",
     "ehComprasGov": true,
     "compativelMEI": true,
@@ -2197,7 +2526,14 @@ window.RADAR_PNCP_DATA = [
     ],
     "permiteCompraFornecedor": true,
     "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)",
-    "tituloCurto": "Materiais para substituição do sistema hidráulico da seção de saú"
+    "tituloCurto": "Materiais para substituição do sistema hidráulico da seção de saú",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "arquivos": [],
+    "linkPncp": "https://pncp.gov.br/app/editais?q=00394502000144-1-015634/2026",
+    "linkDireto": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/login",
+    "titulo": "Materiais Hidráulicos (Tubos, Conexões e Registros)",
+    "tituloResumo": "Materiais Hidráulicos (Tubos, Conexões e Registros)"
   },
   {
     "id": "00394502000144_1_015635_2026",
@@ -2209,8 +2545,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 9.300,00",
     "dataEncerramento": "13/11/2026 às 08:00",
     "dataEncerramentoIso": "2026-11-13T08:00:00",
-    "link": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/acompanhamento-compra?compra=78520006001752026",
-    "tipoLink": "Link Direto Oficial",
+    "link": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/login",
+    "tipoLink": "Compras.gov.br",
     "plataforma": "Contrata+ Brasil / Compras.gov.br",
     "ehComprasGov": true,
     "compativelMEI": true,
@@ -2220,7 +2556,14 @@ window.RADAR_PNCP_DATA = [
     ],
     "permiteCompraFornecedor": true,
     "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)",
-    "tituloCurto": "1 . Material - Moeda de Zinco Linha A\nTamanho - 5 cm\nEmbalagem - "
+    "tituloCurto": "1 . Material - Moeda de Zinco Linha A\nTamanho - 5 cm\nEmbalagem - ",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "arquivos": [],
+    "linkPncp": "https://pncp.gov.br/app/editais?q=00394502000144-1-015635/2026",
+    "linkDireto": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/login",
+    "titulo": "Moedas Comemorativas Personalizadas em Zinco (5cm)",
+    "tituloResumo": "Moedas Comemorativas Personalizadas em Zinco (5cm)"
   },
   {
     "id": "32613632000117_1_000023_2026",
@@ -2232,8 +2575,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 5.985,00",
     "dataEncerramento": "12/11/2026 às 10:25",
     "dataEncerramentoIso": "2026-11-12T10:25:00",
-    "link": "https://www.compras.rs.gov.br/editais/9026_2026/359164",
-    "tipoLink": "Link Direto Oficial",
+    "link": "https://pncp.gov.br/app/editais?q=32613632000117-1-000023/2026",
+    "tipoLink": "PNCP Oficial",
     "plataforma": "Compras RS (Governo Estadual)",
     "ehComprasGov": false,
     "compativelMEI": true,
@@ -2243,7 +2586,14 @@ window.RADAR_PNCP_DATA = [
     ],
     "permiteCompraFornecedor": true,
     "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)",
-    "tituloCurto": "Contratação de empresa especializada para fornecimento de coffee "
+    "tituloCurto": "Contratação de empresa especializada para fornecimento de coffee ",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "arquivos": [],
+    "linkPncp": "https://pncp.gov.br/app/editais?q=32613632000117-1-000023/2026",
+    "linkDireto": "https://pncp.gov.br/app/editais?q=32613632000117-1-000023/2026",
+    "titulo": "Serviço de Coffee Break para Eventos Institucionais",
+    "tituloResumo": "Serviço de Coffee Break para Eventos Institucionais"
   },
   {
     "id": "00489828000155_1_000697_2026",
@@ -2255,8 +2605,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 7.462,92",
     "dataEncerramento": "13/11/2026 às 09:00",
     "dataEncerramentoIso": "2026-11-13T09:00:00",
-    "link": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/acompanhamento-compra?compra=17017506000382026",
-    "tipoLink": "Link Direto Oficial",
+    "link": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/login",
+    "tipoLink": "Compras.gov.br",
     "plataforma": "Contrata+ Brasil / Compras.gov.br",
     "ehComprasGov": true,
     "compativelMEI": true,
@@ -2266,7 +2616,14 @@ window.RADAR_PNCP_DATA = [
     ],
     "permiteCompraFornecedor": true,
     "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)",
-    "tituloCurto": "Aquisição de material de consumo SRA/RS e SRTE/RS."
+    "tituloCurto": "Aquisição de material de consumo SRA/RS e SRTE/RS.",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "arquivos": [],
+    "linkPncp": "https://pncp.gov.br/app/editais?q=00489828000155-1-000697/2026",
+    "linkDireto": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/login",
+    "titulo": "Materiais de Consumo e Expediente SRA/SRTE",
+    "tituloResumo": "Materiais de Consumo e Expediente SRA/SRTE"
   },
   {
     "id": "92969856000198_1_000333_2026",
@@ -2278,8 +2635,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 3.506,60",
     "dataEncerramento": "16/11/2026 às 08:00",
     "dataEncerramentoIso": "2026-11-16T08:00:00",
-    "link": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/acompanhamento-compra?compra=15311406004672026",
-    "tipoLink": "Link Direto Oficial",
+    "link": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/login",
+    "tipoLink": "Compras.gov.br",
     "plataforma": "Contrata+ Brasil / Compras.gov.br",
     "ehComprasGov": true,
     "compativelMEI": true,
@@ -2291,7 +2648,14 @@ window.RADAR_PNCP_DATA = [
     ],
     "permiteCompraFornecedor": true,
     "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)",
-    "tituloCurto": "A contratação de uma lavadora de alta pressão destina-se à higien"
+    "tituloCurto": "A contratação de uma lavadora de alta pressão destina-se à higien",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "arquivos": [],
+    "linkPncp": "https://pncp.gov.br/app/editais?q=92969856000198-1-000333/2026",
+    "linkDireto": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/login",
+    "titulo": "Lavadora de Alta Pressão Industrial",
+    "tituloResumo": "Lavadora de Alta Pressão Industrial"
   },
   {
     "id": "92969856000198_1_000334_2026",
@@ -2303,8 +2667,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 25.207,13",
     "dataEncerramento": "16/11/2026 às 08:00",
     "dataEncerramentoIso": "2026-11-16T08:00:00",
-    "link": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/acompanhamento-compra?compra=15311406005282026",
-    "tipoLink": "Link Direto Oficial",
+    "link": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/login",
+    "tipoLink": "Compras.gov.br",
     "plataforma": "Contrata+ Brasil / Compras.gov.br",
     "ehComprasGov": true,
     "compativelMEI": true,
@@ -2314,7 +2678,14 @@ window.RADAR_PNCP_DATA = [
     ],
     "permiteCompraFornecedor": true,
     "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)",
-    "tituloCurto": "Aquisição integrada de equipamentos de informática, audiovisual e"
+    "tituloCurto": "Aquisição integrada de equipamentos de informática, audiovisual e",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "arquivos": [],
+    "linkPncp": "https://pncp.gov.br/app/editais?q=92969856000198-1-000334/2026",
+    "linkDireto": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/login",
+    "titulo": "Equipamentos Audiovisuais e Multimídia",
+    "tituloResumo": "Equipamentos Audiovisuais e Multimídia"
   },
   {
     "id": "87958658000199_1_001167_2026",
@@ -2326,8 +2697,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 2.970,00",
     "dataEncerramento": "13/11/2026 às 09:00",
     "dataEncerramentoIso": "2026-11-13T09:00:00",
-    "link": "https://www.compras.rs.gov.br/editais/1121_2026/359193",
-    "tipoLink": "Link Direto Oficial",
+    "link": "https://pncp.gov.br/app/editais?q=87958658000199-1-001167/2026",
+    "tipoLink": "PNCP Oficial",
     "plataforma": "Compras RS (Governo Estadual)",
     "ehComprasGov": false,
     "compativelMEI": true,
@@ -2337,7 +2708,14 @@ window.RADAR_PNCP_DATA = [
     ],
     "permiteCompraFornecedor": true,
     "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)",
-    "tituloCurto": "AQUISIÇÃO DE BENS DA(S) FAMÍLIA(S):\n0830-EQUIPAMENTOS/MATERIAIS P"
+    "tituloCurto": "AQUISIÇÃO DE BENS DA(S) FAMÍLIA(S):\n0830-EQUIPAMENTOS/MATERIAIS P",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "arquivos": [],
+    "linkPncp": "https://pncp.gov.br/app/editais?q=87958658000199-1-001167/2026",
+    "linkDireto": "https://pncp.gov.br/app/editais?q=87958658000199-1-001167/2026",
+    "titulo": "Materiais e Reagentes para Laboratório",
+    "tituloResumo": "Materiais e Reagentes para Laboratório"
   },
   {
     "id": "00058163000125_1_000166_2026",
@@ -2349,8 +2727,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 3.403,00",
     "dataEncerramento": "12/11/2026 às 14:00",
     "dataEncerramentoIso": "2026-11-12T14:00:00",
-    "link": "https://www.compras.rs.gov.br/editais/1122_2026/359194",
-    "tipoLink": "Link Direto Oficial",
+    "link": "https://pncp.gov.br/app/editais?q=00058163000125-1-000166/2026",
+    "tipoLink": "PNCP Oficial",
     "plataforma": "Compras RS (Governo Estadual)",
     "ehComprasGov": false,
     "compativelMEI": true,
@@ -2360,7 +2738,14 @@ window.RADAR_PNCP_DATA = [
     ],
     "permiteCompraFornecedor": true,
     "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)",
-    "tituloCurto": "AQUISIÇÃO DE BENS DA(S) FAMÍLIA(S):\n0390-EQUIPAMENTOS/ACESSORIOS "
+    "tituloCurto": "AQUISIÇÃO DE BENS DA(S) FAMÍLIA(S):\n0390-EQUIPAMENTOS/ACESSORIOS ",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "arquivos": [],
+    "linkPncp": "https://pncp.gov.br/app/editais?q=00058163000125-1-000166/2026",
+    "linkDireto": "https://pncp.gov.br/app/editais?q=00058163000125-1-000166/2026",
+    "titulo": "Equipamentos e Acessórios para Acampamento / Tático",
+    "tituloResumo": "Equipamentos e Acessórios para Acampamento / Tático"
   },
   {
     "id": "00394502000144_1_015680_2026",
@@ -2372,8 +2757,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 2.759,25",
     "dataEncerramento": "16/11/2026 às 08:00",
     "dataEncerramentoIso": "2026-11-16T08:00:00",
-    "link": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/acompanhamento-compra?compra=78520006001592026",
-    "tipoLink": "Link Direto Oficial",
+    "link": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/login",
+    "tipoLink": "Compras.gov.br",
     "plataforma": "Contrata+ Brasil / Compras.gov.br",
     "ehComprasGov": true,
     "compativelMEI": true,
@@ -2383,7 +2768,14 @@ window.RADAR_PNCP_DATA = [
     ],
     "permiteCompraFornecedor": true,
     "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)",
-    "tituloCurto": "LÂMPADAS RANCHO"
+    "tituloCurto": "LÂMPADAS RANCHO",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "arquivos": [],
+    "linkPncp": "https://pncp.gov.br/app/editais?q=00394502000144-1-015680/2026",
+    "linkDireto": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/login",
+    "titulo": "Lâmpadas LED e Iluminação para Rancho",
+    "tituloResumo": "Lâmpadas LED e Iluminação para Rancho"
   },
   {
     "id": "08838143000189_1_000038_2026",
@@ -2395,8 +2787,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 37.700,00",
     "dataEncerramento": "16/11/2026 às 09:15",
     "dataEncerramentoIso": "2026-11-16T09:15:00",
-    "link": "https://www.compras.rs.gov.br/editais/1123_2026/359206",
-    "tipoLink": "Link Direto Oficial",
+    "link": "https://pncp.gov.br/app/editais?q=08838143000189-1-000038/2026",
+    "tipoLink": "PNCP Oficial",
     "plataforma": "Compras RS (Governo Estadual)",
     "ehComprasGov": false,
     "compativelMEI": true,
@@ -2406,7 +2798,14 @@ window.RADAR_PNCP_DATA = [
     ],
     "permiteCompraFornecedor": true,
     "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)",
-    "tituloCurto": "AQUISIÇÃO DE BENS DA(S) FAMÍLIA(S):\n0475-EQUIPAMENTOS/MATERIAIS P"
+    "tituloCurto": "AQUISIÇÃO DE BENS DA(S) FAMÍLIA(S):\n0475-EQUIPAMENTOS/MATERIAIS P",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "arquivos": [],
+    "linkPncp": "https://pncp.gov.br/app/editais?q=08838143000189-1-000038/2026",
+    "linkDireto": "https://pncp.gov.br/app/editais?q=08838143000189-1-000038/2026",
+    "titulo": "Materiais para Instalações Elétricas Prediais",
+    "tituloResumo": "Materiais para Instalações Elétricas Prediais"
   },
   {
     "id": "89175541000164_1_000437_2026",
@@ -2418,8 +2817,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 7.000,00",
     "dataEncerramento": "12/11/2026 às 13:50",
     "dataEncerramentoIso": "2026-11-12T13:50:00",
-    "link": "https://www.compras.rs.gov.br/editais/1124_2026/359209",
-    "tipoLink": "Link Direto Oficial",
+    "link": "https://pncp.gov.br/app/editais?q=89175541000164-1-000437/2026",
+    "tipoLink": "PNCP Oficial",
     "plataforma": "Compras RS (Governo Estadual)",
     "ehComprasGov": false,
     "compativelMEI": true,
@@ -2429,7 +2828,14 @@ window.RADAR_PNCP_DATA = [
     ],
     "permiteCompraFornecedor": true,
     "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)",
-    "tituloCurto": "AQUISIÇÃO DE BENS DA(S) FAMÍLIA(S):\n0380-EQUIPAMENTOS/MATERIAIS P"
+    "tituloCurto": "AQUISIÇÃO DE BENS DA(S) FAMÍLIA(S):\n0380-EQUIPAMENTOS/MATERIAIS P",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "arquivos": [],
+    "linkPncp": "https://pncp.gov.br/app/editais?q=89175541000164-1-000437/2026",
+    "linkDireto": "https://pncp.gov.br/app/editais?q=89175541000164-1-000437/2026",
+    "titulo": "Produtos de Higiene e Limpeza Profissional",
+    "tituloResumo": "Produtos de Higiene e Limpeza Profissional"
   },
   {
     "id": "00394502000144_1_015716_2026",
@@ -2441,8 +2847,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 7.399,80",
     "dataEncerramento": "16/11/2026 às 08:00",
     "dataEncerramentoIso": "2026-11-16T08:00:00",
-    "link": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/acompanhamento-compra?compra=78520006001862026",
-    "tipoLink": "Link Direto Oficial",
+    "link": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/login",
+    "tipoLink": "Compras.gov.br",
     "plataforma": "Contrata+ Brasil / Compras.gov.br",
     "ehComprasGov": true,
     "compativelMEI": true,
@@ -2452,7 +2858,14 @@ window.RADAR_PNCP_DATA = [
     ],
     "permiteCompraFornecedor": true,
     "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)",
-    "tituloCurto": "Aquisição de Caixa D'água."
+    "tituloCurto": "Aquisição de Caixa D'água.",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "arquivos": [],
+    "linkPncp": "https://pncp.gov.br/app/editais?q=00394502000144-1-015716/2026",
+    "linkDireto": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/login",
+    "titulo": "Caixa D'água Polietileno de Grande Capacidade",
+    "tituloResumo": "Caixa D'água Polietileno de Grande Capacidade"
   },
   {
     "id": "92967595000177_1_000001_2027",
@@ -2464,8 +2877,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 32.600,00",
     "dataEncerramento": "13/11/2026 às 08:00",
     "dataEncerramentoIso": "2026-11-13T08:00:00",
-    "link": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/acompanhamento-compra?compra=15403206000062027",
-    "tipoLink": "Link Direto Oficial",
+    "link": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/login",
+    "tipoLink": "Compras.gov.br",
     "plataforma": "Contrata+ Brasil / Compras.gov.br",
     "ehComprasGov": true,
     "compativelMEI": true,
@@ -2475,7 +2888,14 @@ window.RADAR_PNCP_DATA = [
     ],
     "permiteCompraFornecedor": true,
     "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)",
-    "tituloCurto": "Maravalha de pinus seco sem mistura de outras madeiras, sem pó, q"
+    "tituloCurto": "Maravalha de pinus seco sem mistura de outras madeiras, sem pó, q",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "arquivos": [],
+    "linkPncp": "https://pncp.gov.br/app/editais?q=92967595000177-1-000001/2027",
+    "linkDireto": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/login",
+    "titulo": "Maravalha de Pinus Seco Tratada sem Pó",
+    "tituloResumo": "Maravalha de Pinus Seco Tratada sem Pó"
   },
   {
     "id": "00394452000103_1_023989_2026",
@@ -2487,8 +2907,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 6.369,96",
     "dataEncerramento": "16/11/2026 às 08:00",
     "dataEncerramentoIso": "2026-11-16T08:00:00",
-    "link": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/acompanhamento-compra?compra=16038406000922026",
-    "tipoLink": "Link Direto Oficial",
+    "link": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/login",
+    "tipoLink": "Compras.gov.br",
     "plataforma": "Contrata+ Brasil / Compras.gov.br",
     "ehComprasGov": true,
     "compativelMEI": true,
@@ -2498,7 +2918,14 @@ window.RADAR_PNCP_DATA = [
     ],
     "permiteCompraFornecedor": true,
     "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)",
-    "tituloCurto": "Dispensa de Licitação para a Aquisição de Gêneros de Alimentação "
+    "tituloCurto": "Dispensa de Licitação para a Aquisição de Gêneros de Alimentação ",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "arquivos": [],
+    "linkPncp": "https://pncp.gov.br/app/editais?q=00394452000103-1-023989/2026",
+    "linkDireto": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/login",
+    "titulo": "Gêneros Alimentícios para Rancho do 18° BIMtz",
+    "tituloResumo": "Gêneros Alimentícios para Rancho do 18° BIMtz"
   },
   {
     "id": "89175541000164_1_000438_2026",
@@ -2510,8 +2937,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 4.160,68",
     "dataEncerramento": "13/11/2026 às 13:00",
     "dataEncerramentoIso": "2026-11-13T13:00:00",
-    "link": "https://www.compras.rs.gov.br/editais/1125_2026/359218",
-    "tipoLink": "Link Direto Oficial",
+    "link": "https://pncp.gov.br/app/editais?q=89175541000164-1-000438/2026",
+    "tipoLink": "PNCP Oficial",
     "plataforma": "Compras RS (Governo Estadual)",
     "ehComprasGov": false,
     "compativelMEI": true,
@@ -2521,7 +2948,14 @@ window.RADAR_PNCP_DATA = [
     ],
     "permiteCompraFornecedor": true,
     "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)",
-    "tituloCurto": "AQUISIÇÃO DE BENS DA(S) FAMÍLIA(S):\n0380-EQUIPAMENTOS/MATERIAIS P"
+    "tituloCurto": "AQUISIÇÃO DE BENS DA(S) FAMÍLIA(S):\n0380-EQUIPAMENTOS/MATERIAIS P",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "arquivos": [],
+    "linkPncp": "https://pncp.gov.br/app/editais?q=89175541000164-1-000438/2026",
+    "linkDireto": "https://pncp.gov.br/app/editais?q=89175541000164-1-000438/2026",
+    "titulo": "Desinfetantes e Sabonetes Líquidos Industriais",
+    "tituloResumo": "Desinfetantes e Sabonetes Líquidos Industriais"
   },
   {
     "id": "32639070000180_1_000067_2026",
@@ -2533,8 +2967,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 19.760,00",
     "dataEncerramento": "13/11/2026 às 10:00",
     "dataEncerramentoIso": "2026-11-13T10:00:00",
-    "link": "https://www.compras.rs.gov.br/editais/9036_2026/359222",
-    "tipoLink": "Link Direto Oficial",
+    "link": "https://pncp.gov.br/app/editais?q=32639070000180-1-000067/2026",
+    "tipoLink": "PNCP Oficial",
     "plataforma": "Compras RS (Governo Estadual)",
     "ehComprasGov": false,
     "compativelMEI": true,
@@ -2545,7 +2979,14 @@ window.RADAR_PNCP_DATA = [
     ],
     "permiteCompraFornecedor": true,
     "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)",
-    "tituloCurto": "Contratação de serviços de manutenção preventiva e corretiva para"
+    "tituloCurto": "Contratação de serviços de manutenção preventiva e corretiva para",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "arquivos": [],
+    "linkPncp": "https://pncp.gov.br/app/editais?q=32639070000180-1-000067/2026",
+    "linkDireto": "https://pncp.gov.br/app/editais?q=32639070000180-1-000067/2026",
+    "titulo": "Manutenção da Central Telefônica Ericsson BP250",
+    "tituloResumo": "Manutenção da Central Telefônica Ericsson BP250"
   },
   {
     "id": "00509968000148_1_003898_2026",
@@ -2557,8 +2998,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "Valor Oculto / Sob Cotação",
     "dataEncerramento": "13/11/2026 às 10:00",
     "dataEncerramentoIso": "2026-11-13T10:00:00",
-    "link": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/acompanhamento-compra?compra=08001406003442026",
-    "tipoLink": "Link Direto Oficial",
+    "link": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/login",
+    "tipoLink": "Compras.gov.br",
     "plataforma": "Contrata+ Brasil / Compras.gov.br",
     "ehComprasGov": true,
     "compativelMEI": true,
@@ -2569,7 +3010,14 @@ window.RADAR_PNCP_DATA = [
     ],
     "permiteCompraFornecedor": true,
     "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)",
-    "tituloCurto": "Compra de câmeras corporais (bodycams) destinadas ao uso dos Agen"
+    "tituloCurto": "Compra de câmeras corporais (bodycams) destinadas ao uso dos Agen",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "arquivos": [],
+    "linkPncp": "https://pncp.gov.br/app/editais?q=00509968000148-1-003898/2026",
+    "linkDireto": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/login",
+    "titulo": "Câmeras Corporais (Bodycams) para Polícia Judicial",
+    "tituloResumo": "Câmeras Corporais (Bodycams) para Polícia Judicial"
   },
   {
     "id": "00394502000144_1_015779_2026",
@@ -2581,8 +3029,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 9.681,00",
     "dataEncerramento": "16/11/2026 às 08:00",
     "dataEncerramentoIso": "2026-11-16T08:00:00",
-    "link": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/acompanhamento-compra?compra=78520006002042026",
-    "tipoLink": "Link Direto Oficial",
+    "link": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/login",
+    "tipoLink": "Compras.gov.br",
     "plataforma": "Contrata+ Brasil / Compras.gov.br",
     "ehComprasGov": true,
     "compativelMEI": true,
@@ -2592,7 +3040,14 @@ window.RADAR_PNCP_DATA = [
     ],
     "permiteCompraFornecedor": true,
     "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)",
-    "tituloCurto": "AQUISIÇÃO DE LIXEIRAS SELETIVAS PARA A GESTÃO AMBIENTAL DO 5ºBTLO"
+    "tituloCurto": "AQUISIÇÃO DE LIXEIRAS SELETIVAS PARA A GESTÃO AMBIENTAL DO 5ºBTLO",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "arquivos": [],
+    "linkPncp": "https://pncp.gov.br/app/editais?q=00394502000144-1-015779/2026",
+    "linkDireto": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/login",
+    "titulo": "Lixeiras Seletivas Ecológicas (5º BTL Op Lit FN)",
+    "tituloResumo": "Lixeiras Seletivas Ecológicas (5º BTL Op Lit FN)"
   },
   {
     "id": "92969856000198_1_000336_2026",
@@ -2604,8 +3059,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 7.621,59",
     "dataEncerramento": "17/11/2026 às 08:00",
     "dataEncerramentoIso": "2026-11-17T08:00:00",
-    "link": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/acompanhamento-compra?compra=15311406004742026",
-    "tipoLink": "Link Direto Oficial",
+    "link": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/login",
+    "tipoLink": "Compras.gov.br",
     "plataforma": "Contrata+ Brasil / Compras.gov.br",
     "ehComprasGov": true,
     "compativelMEI": true,
@@ -2615,7 +3070,14 @@ window.RADAR_PNCP_DATA = [
     ],
     "permiteCompraFornecedor": true,
     "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)",
-    "tituloCurto": "Aquisição de um novo compressor de ar a ser utilizado em atividad"
+    "tituloCurto": "Aquisição de um novo compressor de ar a ser utilizado em atividad",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "arquivos": [],
+    "linkPncp": "https://pncp.gov.br/app/editais?q=92969856000198-1-000336/2026",
+    "linkDireto": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/login",
+    "titulo": "Compressor de Ar Odontológico/Laboratorial",
+    "tituloResumo": "Compressor de Ar Odontológico/Laboratorial"
   },
   {
     "id": "00394502000144_1_015834_2026",
@@ -2627,8 +3089,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 52.205,00",
     "dataEncerramento": "16/11/2026 às 08:00",
     "dataEncerramentoIso": "2026-11-16T08:00:00",
-    "link": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/acompanhamento-compra?compra=78500006001142026",
-    "tipoLink": "Link Direto Oficial",
+    "link": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/login",
+    "tipoLink": "Compras.gov.br",
     "plataforma": "Contrata+ Brasil / Compras.gov.br",
     "ehComprasGov": true,
     "compativelMEI": true,
@@ -2640,7 +3102,14 @@ window.RADAR_PNCP_DATA = [
     ],
     "permiteCompraFornecedor": true,
     "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)",
-    "tituloCurto": "prestação de serviços de limpeza e higienização de caixas d’água,"
+    "tituloCurto": "prestação de serviços de limpeza e higienização de caixas d’água,",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "arquivos": [],
+    "linkPncp": "https://pncp.gov.br/app/editais?q=00394502000144-1-015834/2026",
+    "linkDireto": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/login",
+    "titulo": "Limpeza de Caixas D'Água, Dedetização e Hidrojateamento",
+    "tituloResumo": "Limpeza de Caixas D'Água, Dedetização e Hidrojateamento"
   },
   {
     "id": "00394502000144_1_015842_2026",
@@ -2652,8 +3121,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 3.800,00",
     "dataEncerramento": "16/11/2026 às 08:00",
     "dataEncerramentoIso": "2026-11-16T08:00:00",
-    "link": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/acompanhamento-compra?compra=78500006001162026",
-    "tipoLink": "Link Direto Oficial",
+    "link": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/login",
+    "tipoLink": "Compras.gov.br",
     "plataforma": "Contrata+ Brasil / Compras.gov.br",
     "ehComprasGov": true,
     "compativelMEI": true,
@@ -2664,7 +3133,14 @@ window.RADAR_PNCP_DATA = [
     ],
     "permiteCompraFornecedor": true,
     "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)",
-    "tituloCurto": "Contratação de serviço de locação, instalação, operação e desmont"
+    "tituloCurto": "Contratação de serviço de locação, instalação, operação e desmont",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "arquivos": [],
+    "linkPncp": "https://pncp.gov.br/app/editais?q=00394502000144-1-015842/2026",
+    "linkDireto": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/login",
+    "titulo": "Locação e Operação de Telões de LED para Eventos",
+    "tituloResumo": "Locação e Operação de Telões de LED para Eventos"
   },
   {
     "id": "00394452000103_1_024084_2026",
@@ -2676,8 +3152,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 2.695,00",
     "dataEncerramento": "16/11/2026 às 08:00",
     "dataEncerramentoIso": "2026-11-16T08:00:00",
-    "link": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/acompanhamento-compra?compra=16038406000932026",
-    "tipoLink": "Link Direto Oficial",
+    "link": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/login",
+    "tipoLink": "Compras.gov.br",
     "plataforma": "Contrata+ Brasil / Compras.gov.br",
     "ehComprasGov": true,
     "compativelMEI": true,
@@ -2687,7 +3163,14 @@ window.RADAR_PNCP_DATA = [
     ],
     "permiteCompraFornecedor": true,
     "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)",
-    "tituloCurto": "Dispensa de Licitação para a Aquisição de Tag's de Rastreio em fa"
+    "tituloCurto": "Dispensa de Licitação para a Aquisição de Tag's de Rastreio em fa",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "arquivos": [],
+    "linkPncp": "https://pncp.gov.br/app/editais?q=00394452000103-1-024084/2026",
+    "linkDireto": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/login",
+    "titulo": "Tags de Rastreio Inteligente (18° BIMtz)",
+    "tituloResumo": "Tags de Rastreio Inteligente (18° BIMtz)"
   },
   {
     "id": "93859817000109_1_000075_2026",
@@ -2699,8 +3182,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 5.016,00",
     "dataEncerramento": "16/11/2026 às 09:00",
     "dataEncerramentoIso": "2026-11-16T09:00:00",
-    "link": "https://www.compras.rs.gov.br/editais/1128_2026/359268",
-    "tipoLink": "Link Direto Oficial",
+    "link": "https://pncp.gov.br/app/editais?q=93859817000109-1-000075/2026",
+    "tipoLink": "PNCP Oficial",
     "plataforma": "Compras RS (Governo Estadual)",
     "ehComprasGov": false,
     "compativelMEI": true,
@@ -2710,7 +3193,14 @@ window.RADAR_PNCP_DATA = [
     ],
     "permiteCompraFornecedor": true,
     "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)",
-    "tituloCurto": "AQUISIÇÃO DE BENS DA(S) FAMÍLIA(S):\n0515-EQUIPAMENTOS/MATERIAIS D"
+    "tituloCurto": "AQUISIÇÃO DE BENS DA(S) FAMÍLIA(S):\n0515-EQUIPAMENTOS/MATERIAIS D",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "arquivos": [],
+    "linkPncp": "https://pncp.gov.br/app/editais?q=93859817000109-1-000075/2026",
+    "linkDireto": "https://pncp.gov.br/app/editais?q=93859817000109-1-000075/2026",
+    "titulo": "Equipamentos de Proteção Individual (EPIs)",
+    "tituloResumo": "Equipamentos de Proteção Individual (EPIs)"
   },
   {
     "id": "00394502000144_1_015862_2026",
@@ -2722,8 +3212,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 49.178,00",
     "dataEncerramento": "17/11/2026 às 08:00",
     "dataEncerramentoIso": "2026-11-17T08:00:00",
-    "link": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/acompanhamento-compra?compra=78520006001982026",
-    "tipoLink": "Link Direto Oficial",
+    "link": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/login",
+    "tipoLink": "Compras.gov.br",
     "plataforma": "Contrata+ Brasil / Compras.gov.br",
     "ehComprasGov": true,
     "compativelMEI": true,
@@ -2733,7 +3223,14 @@ window.RADAR_PNCP_DATA = [
     ],
     "permiteCompraFornecedor": true,
     "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)",
-    "tituloCurto": "Aquisição de equipamentos de cozinha"
+    "tituloCurto": "Aquisição de equipamentos de cozinha",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "arquivos": [],
+    "linkPncp": "https://pncp.gov.br/app/editais?q=00394502000144-1-015862/2026",
+    "linkDireto": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/login",
+    "titulo": "Equipamentos e Utensílios de Cozinha Industrial",
+    "tituloResumo": "Equipamentos e Utensílios de Cozinha Industrial"
   },
   {
     "id": "00394452000103_1_024108_2026",
@@ -2745,8 +3242,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 4.850,00",
     "dataEncerramento": "16/11/2026 às 08:00",
     "dataEncerramentoIso": "2026-11-16T08:00:00",
-    "link": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/acompanhamento-compra?compra=16038406000942026",
-    "tipoLink": "Link Direto Oficial",
+    "link": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/login",
+    "tipoLink": "Compras.gov.br",
     "plataforma": "Contrata+ Brasil / Compras.gov.br",
     "ehComprasGov": true,
     "compativelMEI": true,
@@ -2756,7 +3253,14 @@ window.RADAR_PNCP_DATA = [
     ],
     "permiteCompraFornecedor": true,
     "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)",
-    "tituloCurto": "Dispensa de Licitação para a Aquisição de Ar Condicionado em favo"
+    "tituloCurto": "Dispensa de Licitação para a Aquisição de Ar Condicionado em favo",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "arquivos": [],
+    "linkPncp": "https://pncp.gov.br/app/editais?q=00394452000103-1-024108/2026",
+    "linkDireto": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/login",
+    "titulo": "Aparelhos de Ar Condicionado Split (18° BIMtz)",
+    "tituloResumo": "Aparelhos de Ar Condicionado Split (18° BIMtz)"
   },
   {
     "id": "00394452000103_1_024122_2026",
@@ -2768,8 +3272,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 2.585,00",
     "dataEncerramento": "13/11/2026 às 08:00",
     "dataEncerramentoIso": "2026-11-13T08:00:00",
-    "link": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/acompanhamento-compra?compra=16038906001192026",
-    "tipoLink": "Link Direto Oficial",
+    "link": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/login",
+    "tipoLink": "Compras.gov.br",
     "plataforma": "Contrata+ Brasil / Compras.gov.br",
     "ehComprasGov": true,
     "compativelMEI": true,
@@ -2779,7 +3283,14 @@ window.RADAR_PNCP_DATA = [
     ],
     "permiteCompraFornecedor": true,
     "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)",
-    "tituloCurto": "Aquisição de serviço para Viatura Mascarello do 8° Batalhão Logís"
+    "tituloCurto": "Aquisição de serviço para Viatura Mascarello do 8° Batalhão Logís",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "arquivos": [],
+    "linkPncp": "https://pncp.gov.br/app/editais?q=00394452000103-1-024122/2026",
+    "linkDireto": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/login",
+    "titulo": "Manutenção Mecânica em Viatura Mascarello (8° BLog)",
+    "tituloResumo": "Manutenção Mecânica em Viatura Mascarello (8° BLog)"
   },
   {
     "id": "87934675000196_1_000317_2026",
@@ -2791,8 +3302,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 1.339,12",
     "dataEncerramento": "16/11/2026 às 10:00",
     "dataEncerramentoIso": "2026-11-16T10:00:00",
-    "link": "https://www.compras.rs.gov.br/editais/1129_2026/359288",
-    "tipoLink": "Link Direto Oficial",
+    "link": "https://pncp.gov.br/app/editais?q=87934675000196-1-000317/2026",
+    "tipoLink": "PNCP Oficial",
     "plataforma": "Compras RS (Governo Estadual)",
     "ehComprasGov": false,
     "compativelMEI": true,
@@ -2802,7 +3313,14 @@ window.RADAR_PNCP_DATA = [
     ],
     "permiteCompraFornecedor": true,
     "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)",
-    "tituloCurto": "AQUISIÇÃO DE BENS DA(S) FAMÍLIA(S):\n0185-EMBALAGENS EM GERAL/CORD"
+    "tituloCurto": "AQUISIÇÃO DE BENS DA(S) FAMÍLIA(S):\n0185-EMBALAGENS EM GERAL/CORD",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "arquivos": [],
+    "linkPncp": "https://pncp.gov.br/app/editais?q=87934675000196-1-000317/2026",
+    "linkDireto": "https://pncp.gov.br/app/editais?q=87934675000196-1-000317/2026",
+    "titulo": "Embalagens, Fitas e Cordas em Geral",
+    "tituloResumo": "Embalagens, Fitas e Cordas em Geral"
   },
   {
     "id": "87958658000199_1_001172_2026",
@@ -2814,8 +3332,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 15.750,00",
     "dataEncerramento": "16/11/2026 às 09:00",
     "dataEncerramentoIso": "2026-11-16T09:00:00",
-    "link": "https://www.compras.rs.gov.br/editais/1130_2026/359290",
-    "tipoLink": "Link Direto Oficial",
+    "link": "https://pncp.gov.br/app/editais?q=87958658000199-1-001172/2026",
+    "tipoLink": "PNCP Oficial",
     "plataforma": "Compras RS (Governo Estadual)",
     "ehComprasGov": false,
     "compativelMEI": true,
@@ -2825,7 +3343,14 @@ window.RADAR_PNCP_DATA = [
     ],
     "permiteCompraFornecedor": true,
     "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)",
-    "tituloCurto": "AQUISIÇÃO DE BENS DA(S) FAMÍLIA(S):\n0034-MATERIAIS/ SUPRIMENTOS P"
+    "tituloCurto": "AQUISIÇÃO DE BENS DA(S) FAMÍLIA(S):\n0034-MATERIAIS/ SUPRIMENTOS P",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "arquivos": [],
+    "linkPncp": "https://pncp.gov.br/app/editais?q=87958658000199-1-001172/2026",
+    "linkDireto": "https://pncp.gov.br/app/editais?q=87958658000199-1-001172/2026",
+    "titulo": "Toners, Cartuchos e Suprimentos de Impressão",
+    "tituloResumo": "Toners, Cartuchos e Suprimentos de Impressão"
   },
   {
     "id": "00394452000103_1_024124_2026",
@@ -2837,8 +3362,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 60.425,60",
     "dataEncerramento": "13/11/2026 às 08:00",
     "dataEncerramentoIso": "2026-11-13T08:00:00",
-    "link": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/acompanhamento-compra?compra=16038906001202026",
-    "tipoLink": "Link Direto Oficial",
+    "link": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/login",
+    "tipoLink": "Compras.gov.br",
     "plataforma": "Contrata+ Brasil / Compras.gov.br",
     "ehComprasGov": true,
     "compativelMEI": true,
@@ -2848,7 +3373,14 @@ window.RADAR_PNCP_DATA = [
     ],
     "permiteCompraFornecedor": true,
     "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)",
-    "tituloCurto": "Aquisição de Serviço Curso Especializado do 8° Batalhão Logístico"
+    "tituloCurto": "Aquisição de Serviço Curso Especializado do 8° Batalhão Logístico",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "arquivos": [],
+    "linkPncp": "https://pncp.gov.br/app/editais?q=00394452000103-1-024124/2026",
+    "linkDireto": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/login",
+    "titulo": "Treinamento e Curso Especializado (8° BLog)",
+    "tituloResumo": "Treinamento e Curso Especializado (8° BLog)"
   },
   {
     "id": "00394452000103_1_024128_2026",
@@ -2860,8 +3392,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 7.500,00",
     "dataEncerramento": "16/11/2026 às 08:00",
     "dataEncerramentoIso": "2026-11-16T08:00:00",
-    "link": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/acompanhamento-compra?compra=16039906002142026",
-    "tipoLink": "Link Direto Oficial",
+    "link": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/login",
+    "tipoLink": "Compras.gov.br",
     "plataforma": "Contrata+ Brasil / Compras.gov.br",
     "ehComprasGov": true,
     "compativelMEI": true,
@@ -2871,7 +3403,14 @@ window.RADAR_PNCP_DATA = [
     ],
     "permiteCompraFornecedor": true,
     "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)",
-    "tituloCurto": "Contratação de serviço  de qualificação de equipamentos (autoclav"
+    "tituloCurto": "Contratação de serviço  de qualificação de equipamentos (autoclav",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "arquivos": [],
+    "linkPncp": "https://pncp.gov.br/app/editais?q=00394452000103-1-024128/2026",
+    "linkDireto": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/login",
+    "titulo": "Qualificação e Calibração de Autoclaves e Seladoras",
+    "tituloResumo": "Qualificação e Calibração de Autoclaves e Seladoras"
   },
   {
     "id": "90601147000120_1_000042_2026",
@@ -2883,8 +3422,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 22.565,94",
     "dataEncerramento": "16/11/2026 às 08:00",
     "dataEncerramentoIso": "2026-11-16T08:00:00",
-    "link": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/acompanhamento-compra?compra=92800006000762026",
-    "tipoLink": "Link Direto Oficial",
+    "link": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/login",
+    "tipoLink": "Compras.gov.br",
     "plataforma": "Contrata+ Brasil / Compras.gov.br",
     "ehComprasGov": true,
     "compativelMEI": true,
@@ -2894,7 +3433,14 @@ window.RADAR_PNCP_DATA = [
     ],
     "permiteCompraFornecedor": true,
     "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)",
-    "tituloCurto": "Aquisição de material de expediente com fornecimento continuado e"
+    "tituloCurto": "Aquisição de material de expediente com fornecimento continuado e",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "arquivos": [],
+    "linkPncp": "https://pncp.gov.br/app/editais?q=90601147000120-1-000042/2026",
+    "linkDireto": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/login",
+    "titulo": "Material de Expediente e Papelaria Contínuo",
+    "tituloResumo": "Material de Expediente e Papelaria Contínuo"
   },
   {
     "id": "10637926000146_1_000311_2026",
@@ -2906,8 +3452,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 3.075,00",
     "dataEncerramento": "16/11/2026 às 08:30",
     "dataEncerramentoIso": "2026-11-16T08:30:00",
-    "link": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/acompanhamento-compra?compra=15814106004812026",
-    "tipoLink": "Link Direto Oficial",
+    "link": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/login",
+    "tipoLink": "Compras.gov.br",
     "plataforma": "Contrata+ Brasil / Compras.gov.br",
     "ehComprasGov": true,
     "compativelMEI": true,
@@ -2918,7 +3464,14 @@ window.RADAR_PNCP_DATA = [
     ],
     "permiteCompraFornecedor": true,
     "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)",
-    "tituloCurto": "Contratação de empresa especializada para prestação de serviços d"
+    "tituloCurto": "Contratação de empresa especializada para prestação de serviços d",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "arquivos": [],
+    "linkPncp": "https://pncp.gov.br/app/editais?q=10637926000146-1-000311/2026",
+    "linkDireto": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/login",
+    "titulo": "Licença Técnica do Software aSc TimeTables",
+    "tituloResumo": "Licença Técnica do Software aSc TimeTables"
   },
   {
     "id": "00394502000144_1_015921_2026",
@@ -2930,8 +3483,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 47.650,00",
     "dataEncerramento": "18/11/2026 às 08:00",
     "dataEncerramentoIso": "2026-11-18T08:00:00",
-    "link": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/acompanhamento-compra?compra=78520006001912026",
-    "tipoLink": "Link Direto Oficial",
+    "link": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/login",
+    "tipoLink": "Compras.gov.br",
     "plataforma": "Contrata+ Brasil / Compras.gov.br",
     "ehComprasGov": true,
     "compativelMEI": true,
@@ -2941,7 +3494,14 @@ window.RADAR_PNCP_DATA = [
     ],
     "permiteCompraFornecedor": true,
     "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)",
-    "tituloCurto": "Aquisição de forno para a cozinha."
+    "tituloCurto": "Aquisição de forno para a cozinha.",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "arquivos": [],
+    "linkPncp": "https://pncp.gov.br/app/editais?q=00394502000144-1-015921/2026",
+    "linkDireto": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/login",
+    "titulo": "Forno Industrial para Cozinha Comunitária",
+    "tituloResumo": "Forno Industrial para Cozinha Comunitária"
   },
   {
     "id": "89175541000164_1_000441_2026",
@@ -2953,8 +3513,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 59.997,22",
     "dataEncerramento": "16/11/2026 às 13:50",
     "dataEncerramentoIso": "2026-11-16T13:50:00",
-    "link": "https://www.compras.rs.gov.br/editais/1132_2026/359312",
-    "tipoLink": "Link Direto Oficial",
+    "link": "https://pncp.gov.br/app/editais?q=89175541000164-1-000441/2026",
+    "tipoLink": "PNCP Oficial",
     "plataforma": "Compras RS (Governo Estadual)",
     "ehComprasGov": false,
     "compativelMEI": true,
@@ -2964,7 +3524,14 @@ window.RADAR_PNCP_DATA = [
     ],
     "permiteCompraFornecedor": true,
     "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)",
-    "tituloCurto": "AQUISIÇÃO DE BENS DA(S) FAMÍLIA(S):\n0045-MATERIAIS GRÁFICOS / SIM"
+    "tituloCurto": "AQUISIÇÃO DE BENS DA(S) FAMÍLIA(S):\n0045-MATERIAIS GRÁFICOS / SIM",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "arquivos": [],
+    "linkPncp": "https://pncp.gov.br/app/editais?q=89175541000164-1-000441/2026",
+    "linkDireto": "https://pncp.gov.br/app/editais?q=89175541000164-1-000441/2026",
+    "titulo": "Impressão de Folders, Cartazes e Materiais Gráficos",
+    "tituloResumo": "Impressão de Folders, Cartazes e Materiais Gráficos"
   },
   {
     "id": "33787094000140_1_000595_2026",
@@ -2976,8 +3543,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 7.444,92",
     "dataEncerramento": "16/11/2026 às 08:00",
     "dataEncerramentoIso": "2026-11-16T08:00:00",
-    "link": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/acompanhamento-compra?compra=11462506000642026",
-    "tipoLink": "Link Direto Oficial",
+    "link": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/login",
+    "tipoLink": "Compras.gov.br",
     "plataforma": "Contrata+ Brasil / Compras.gov.br",
     "ehComprasGov": true,
     "compativelMEI": true,
@@ -2987,7 +3554,14 @@ window.RADAR_PNCP_DATA = [
     ],
     "permiteCompraFornecedor": true,
     "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)",
-    "tituloCurto": "Aquisição de 2 (dois) projetores multimídia, incluindo frete e en"
+    "tituloCurto": "Aquisição de 2 (dois) projetores multimídia, incluindo frete e en",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "arquivos": [],
+    "linkPncp": "https://pncp.gov.br/app/editais?q=33787094000140-1-000595/2026",
+    "linkDireto": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/login",
+    "titulo": "02 Projetores Multimídia Alta Resolução",
+    "tituloResumo": "02 Projetores Multimídia Alta Resolução"
   },
   {
     "id": "92518737000119_1_000145_2026",
@@ -2999,8 +3573,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 2,66",
     "dataEncerramento": "16/11/2026 às 08:00",
     "dataEncerramentoIso": "2026-11-16T08:00:00",
-    "link": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/acompanhamento-compra?compra=09003006002572026",
-    "tipoLink": "Link Direto Oficial",
+    "link": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/login",
+    "tipoLink": "Compras.gov.br",
     "plataforma": "Contrata+ Brasil / Compras.gov.br",
     "ehComprasGov": true,
     "compativelMEI": true,
@@ -3010,7 +3584,14 @@ window.RADAR_PNCP_DATA = [
     ],
     "permiteCompraFornecedor": true,
     "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)",
-    "tituloCurto": "Aquisição de pilhas alcalinas dos tipos AA e AAA - Ler com atençã"
+    "tituloCurto": "Aquisição de pilhas alcalinas dos tipos AA e AAA - Ler com atençã",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "arquivos": [],
+    "linkPncp": "https://pncp.gov.br/app/editais?q=92518737000119-1-000145/2026",
+    "linkDireto": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/login",
+    "titulo": "Pilhas Alcalinas AA e AAA em Grande Escala",
+    "tituloResumo": "Pilhas Alcalinas AA e AAA em Grande Escala"
   },
   {
     "id": "00394502000144_1_015950_2026",
@@ -3022,8 +3603,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 5.137,49",
     "dataEncerramento": "16/11/2026 às 09:00",
     "dataEncerramentoIso": "2026-11-16T09:00:00",
-    "link": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/acompanhamento-compra?compra=78520006001662026",
-    "tipoLink": "Link Direto Oficial",
+    "link": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/login",
+    "tipoLink": "Compras.gov.br",
     "plataforma": "Contrata+ Brasil / Compras.gov.br",
     "ehComprasGov": true,
     "compativelMEI": true,
@@ -3033,7 +3614,14 @@ window.RADAR_PNCP_DATA = [
     ],
     "permiteCompraFornecedor": true,
     "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)",
-    "tituloCurto": "CETOPROFENO 50MG/ML IM C1X2ML\nONDANSETRONA 8MG C/1X4ML IM/IV\nDEXA"
+    "tituloCurto": "CETOPROFENO 50MG/ML IM C1X2ML\nONDANSETRONA 8MG C/1X4ML IM/IV\nDEXA",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "arquivos": [],
+    "linkPncp": "https://pncp.gov.br/app/editais?q=00394502000144-1-015950/2026",
+    "linkDireto": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/login",
+    "titulo": "Medicamentos Injetáveis Hospitalares",
+    "tituloResumo": "Medicamentos Injetáveis Hospitalares"
   },
   {
     "id": "28610005000155_1_000109_2026",
@@ -3045,8 +3633,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 50.000,00",
     "dataEncerramento": "16/11/2026 às 14:00",
     "dataEncerramentoIso": "2026-11-16T14:00:00",
-    "link": "https://www.compras.rs.gov.br/editais/0002_2026/359316",
-    "tipoLink": "Link Direto Oficial",
+    "link": "https://pncp.gov.br/app/editais?q=28610005000155-1-000109/2026",
+    "tipoLink": "PNCP Oficial",
     "plataforma": "Compras RS (Governo Estadual)",
     "ehComprasGov": false,
     "compativelMEI": true,
@@ -3057,7 +3645,14 @@ window.RADAR_PNCP_DATA = [
     ],
     "permiteCompraFornecedor": true,
     "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)",
-    "tituloCurto": "O presente instrumento tem por objeto a Contratação de empresa es"
+    "tituloCurto": "O presente instrumento tem por objeto a Contratação de empresa es",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "arquivos": [],
+    "linkPncp": "https://pncp.gov.br/app/editais?q=28610005000155-1-000109/2026",
+    "linkDireto": "https://pncp.gov.br/app/editais?q=28610005000155-1-000109/2026",
+    "titulo": "Reforma e Reparos nas Dependências do 2º Batalhão",
+    "tituloResumo": "Reforma e Reparos nas Dependências do 2º Batalhão"
   },
   {
     "id": "89175541000164_1_000442_2026",
@@ -3069,8 +3664,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 7.009,60",
     "dataEncerramento": "16/11/2026 às 15:00",
     "dataEncerramentoIso": "2026-11-16T15:00:00",
-    "link": "https://www.compras.rs.gov.br/editais/9012_2026/359317",
-    "tipoLink": "Link Direto Oficial",
+    "link": "https://pncp.gov.br/app/editais?q=89175541000164-1-000442/2026",
+    "tipoLink": "PNCP Oficial",
     "plataforma": "Compras RS (Governo Estadual)",
     "ehComprasGov": false,
     "compativelMEI": true,
@@ -3081,7 +3676,14 @@ window.RADAR_PNCP_DATA = [
     ],
     "permiteCompraFornecedor": true,
     "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)",
-    "tituloCurto": "contratação de empresa especializada para o fornecimento de mater"
+    "tituloCurto": "contratação de empresa especializada para o fornecimento de mater",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "arquivos": [],
+    "linkPncp": "https://pncp.gov.br/app/editais?q=89175541000164-1-000442/2026",
+    "linkDireto": "https://pncp.gov.br/app/editais?q=89175541000164-1-000442/2026",
+    "titulo": "Fabricação e Instalação de Algerozes e Calhas",
+    "tituloResumo": "Fabricação e Instalação de Algerozes e Calhas"
   },
   {
     "id": "94235330000100_1_000006_2026",
@@ -3093,8 +3695,8 @@ window.RADAR_PNCP_DATA = [
     "valorFormatado": "R$ 40.114,67",
     "dataEncerramento": "17/11/2026 às 09:00",
     "dataEncerramentoIso": "2026-11-17T09:00:00",
-    "link": "https://www.compras.rs.gov.br/editais/9007_2026/359292",
-    "tipoLink": "Link Direto Oficial",
+    "link": "https://pncp.gov.br/app/editais?q=94235330000100-1-000006/2026",
+    "tipoLink": "PNCP Oficial",
     "plataforma": "Compras RS (Governo Estadual)",
     "ehComprasGov": false,
     "compativelMEI": true,
@@ -3105,6 +3707,13 @@ window.RADAR_PNCP_DATA = [
     ],
     "permiteCompraFornecedor": true,
     "seloMEI": "✓ Compra de Fornecedor / Revenda 100% Permitida (Sem Veto)",
-    "tituloCurto": "Contratação de empresa especializada para execução de serviço de "
+    "tituloCurto": "Contratação de empresa especializada para execução de serviço de ",
+    "linkSistemaOrigem": null,
+    "linkProcessoEletronico": null,
+    "arquivos": [],
+    "linkPncp": "https://pncp.gov.br/app/editais?q=94235330000100-1-000006/2026",
+    "linkDireto": "https://pncp.gov.br/app/editais?q=94235330000100-1-000006/2026",
+    "titulo": "Manutenção do Sistema de Climatização do MARGS",
+    "tituloResumo": "Manutenção do Sistema de Climatização do MARGS"
   }
 ];
