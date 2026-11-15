@@ -3855,57 +3855,69 @@
       });
     }
 
-    // RESOLVE O LINK DIRETO PARA O EDITAL (SEMPRE O SISTEMA OFICIAL DE DISPUTA REAL, NUNCA O SPA QUEBRADO DO PNCP)
+    // RESOLVE O LINK DIRETO PARA O EDITAL (SEMPRE O LINK DIRETO EXATO DA OPORTUNIDADE)
     function formatarLinkDireto(item) {
       if (!item) return "https://www.compras.rs.gov.br";
 
-      // 1. Se tem linkSistemaOrigem que não seja o PNCP quebrado
-      if (item.linkSistemaOrigem && typeof item.linkSistemaOrigem === 'string' && item.linkSistemaOrigem.startsWith('http') && !item.linkSistemaOrigem.includes('pncp.gov.br')) {
-        return item.linkSistemaOrigem;
+      // 1. Prioridade absoluta: link DIRETO para o edital específico
+      // Ex: https://www.compras.rs.gov.br/editais/1123_2026/359206
+      // Ex: https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/acompanhamento-compra?compra=...
+      // Ex: https://www.portaldecompraspublicas.com.br/processos/...
+      const linksParaTestar = [
+        item.linkSistemaOrigem,
+        item.linkDireto,
+        item.linkSistemaOficial,
+        item.link,
+        item.linkProcessoEletronico
+      ];
+
+      for (const u of linksParaTestar) {
+        if (u && typeof u === 'string' && u.startsWith('http') && !u.includes('pncp.gov.br/app/editais/')) {
+          const uTrim = u.trim();
+          if (uTrim.includes('/editais/') || uTrim.includes('/processos/') || uTrim.includes('compra=') || uTrim.includes('download') || uTrim.length > 32) {
+            return uTrim;
+          }
+        }
       }
 
-      // 2. Se tem linkSistemaOficial pré-configurado
-      if (item.linkSistemaOficial && typeof item.linkSistemaOficial === 'string' && item.linkSistemaOficial.startsWith('http') && !item.linkSistemaOficial.includes('pncp.gov.br')) {
-        return item.linkSistemaOficial;
+      // 2. Se houver linkDireto válido que não seja a home genérica
+      if (item.linkDireto && typeof item.linkDireto === 'string' && item.linkDireto.trim()) {
+        const ld = item.linkDireto.trim();
+        if (!ld.includes('pncp.gov.br/app/editais/') && ld !== 'https://www.compras.rs.gov.br' && ld !== 'https://compras.rs.gov.br') {
+          return ld;
+        }
       }
 
+      // 3. Fallbacks inteligentes por plataforma
       const plat = (item.plataforma || '').toLowerCase();
       const org = (item.orgao || '').toLowerCase();
       const cid = (item.cidade || item.local || '').toLowerCase();
 
-      // 3. Compras RS / Governo do Estado do RS (PROCERGS)
       if (plat.includes('compras rs') || plat.includes('procergs') || org.includes('compras rs') || org.includes('instituto rio grandense') || org.includes('margs') || org.includes('tve') || org.includes('brigada militar')) {
+        if (item.numeroEdital) {
+          return `https://www.compras.rs.gov.br/editais/pesquisar?e=${encodeURIComponent(item.numeroEdital)}`;
+        }
         return "https://www.compras.rs.gov.br";
       }
 
-      // 4. Portal de Compras Públicas (Igrejinha, etc.)
       if (plat.includes('portal de compras públicas') || plat.includes('ecustomize') || cid.includes('igrejinha')) {
         return "https://www.portaldecompraspublicas.com.br";
       }
 
-      // 5. Pregão Online Banrisul / DBseller (Sapiranga)
       if (plat.includes('dbseller') || cid.includes('sapiranga') || plat.includes('banrisul')) {
         return "https://www.pregaobanrisul.com.br";
       }
 
-      // 6. Taquara / Atende.net
       if (cid.includes('taquara') || org.includes('taquara')) {
         return "https://taquara.atende.net";
       }
 
-      // 7. Araricá / Tecnosweb
       if (cid.includes('ararica') || org.includes('ararica') || plat.includes('tecnosweb')) {
         return "https://ararica.rs.gov.br";
       }
 
-      // 8. Compras.gov.br / Contrata+ Brasil
       if (plat.includes('contrata+') || plat.includes('compras.gov') || item.ehComprasGov || org.includes('nova hartz') || org.includes('batalhão') || org.includes('ufrgs')) {
         return "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/pesquisa-compra";
-      }
-
-      // 9. Se houver linkDireto válido e não for a rota quebrada do SPA
-      if (item.linkDireto && typeof item.linkDireto === 'string' && item.linkDireto.trim() && !item.linkDireto.includes('pncp.gov.br/app/editais/')) {
-        return item.linkDireto;
       }
 
       return "https://www.compras.rs.gov.br";
