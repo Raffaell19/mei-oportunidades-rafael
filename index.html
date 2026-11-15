@@ -2174,11 +2174,13 @@
         dataEncerramentoIso: r.dataEncerramentoIso || null,
         numeroControle: r.numeroControle || '',
         numeroEdital: r.numeroEdital || '',
-        linkDireto: r.linkDireto || r.linkSistemaOrigem || r.link || 'https://pncp.gov.br',
-        link: r.linkDireto || r.linkSistemaOrigem || r.link || 'https://pncp.gov.br',
+        linkDireto: r.linkSistemaOficial || r.linkSistemaOrigem || r.linkDireto || r.link || 'https://www.compras.rs.gov.br',
+        link: r.linkSistemaOficial || r.linkSistemaOrigem || r.linkDireto || r.link || 'https://www.compras.rs.gov.br',
         linkPncp: r.linkPncp || '',
         linkSistemaOrigem: r.linkSistemaOrigem || '',
+        linkSistemaOficial: r.linkSistemaOficial || '',
         linkProcessoEletronico: r.linkProcessoEletronico || '',
+        textoBotao: r.textoBotao || 'Acessar Sistema Oficial',
         arquivos: r.arquivos || [],
         tipoEdital: 'Dispensa Eletrônica',
         plataforma: r.plataforma || 'PNCP / Compras Públicas',
@@ -3853,51 +3855,60 @@
       });
     }
 
-    // RESOLVE O LINK DIRETO PARA O EDITAL (SEMPRE LINK OFICIAL OU PNCP SEGURO, NUNCA GOOGLE OU ROTA QUEBRADA)
+    // RESOLVE O LINK DIRETO PARA O EDITAL (SEMPRE O SISTEMA OFICIAL DE DISPUTA REAL, NUNCA O SPA QUEBRADO DO PNCP)
     function formatarLinkDireto(item) {
-      if (!item) return "https://contratamaisbrasil.sistema.gov.br/";
+      if (!item) return "https://www.compras.rs.gov.br";
 
-      // 1. Prioridade máxima: sistema de disputa real (Comprasnet, Portal de Compras Públicas, Compras RS)
-      if (item.linkSistemaOrigem && typeof item.linkSistemaOrigem === 'string' && item.linkSistemaOrigem.startsWith('http')) {
+      // 1. Se tem linkSistemaOrigem que não seja o PNCP quebrado
+      if (item.linkSistemaOrigem && typeof item.linkSistemaOrigem === 'string' && item.linkSistemaOrigem.startsWith('http') && !item.linkSistemaOrigem.includes('pncp.gov.br')) {
         return item.linkSistemaOrigem;
       }
 
-      // 2. Se houver linkDireto e não for rota quebrada do SPA do PNCP
-      if (item.linkDireto && typeof item.linkDireto === 'string' && item.linkDireto.trim()) {
-        if (!item.linkDireto.includes('pncp.gov.br/app/editais/') || item.linkDireto.includes('?q=')) {
-          return item.linkDireto;
-        }
+      // 2. Se tem linkSistemaOficial pré-configurado
+      if (item.linkSistemaOficial && typeof item.linkSistemaOficial === 'string' && item.linkSistemaOficial.startsWith('http') && !item.linkSistemaOficial.includes('pncp.gov.br')) {
+        return item.linkSistemaOficial;
       }
 
-      // 3. Se houver link e não for Google nem rota quebrada do PNCP
-      if (item.link && typeof item.link === 'string' && !item.link.includes('google.com')) {
-        if (!item.link.includes('pncp.gov.br/app/editais/') || item.link.includes('?q=')) {
-          return item.link;
-        }
-      }
+      const plat = (item.plataforma || '').toLowerCase();
+      const org = (item.orgao || '').toLowerCase();
+      const cid = (item.cidade || item.local || '').toLowerCase();
 
-      // 4. Se houver link de processo eletrônico do município
-      if (item.linkProcessoEletronico && typeof item.linkProcessoEletronico === 'string' && item.linkProcessoEletronico.startsWith('http')) {
-        return item.linkProcessoEletronico;
-      }
-
-      // 5. Portais conhecidos
-      const portalInfo = typeof identificarPortalOportunidade === 'function' ? identificarPortalOportunidade(item) : { id: '' };
-      if (portalInfo.id === 'comprasrs' || (item.plataforma && item.plataforma.toLowerCase().includes('compras rs'))) {
+      // 3. Compras RS / Governo do Estado do RS (PROCERGS)
+      if (plat.includes('compras rs') || plat.includes('procergs') || org.includes('compras rs') || org.includes('instituto rio grandense') || org.includes('margs') || org.includes('tve') || org.includes('brigada militar')) {
         return "https://www.compras.rs.gov.br";
       }
 
-      // 6. PNCP Seguro: NUNCA usar /app/editais/{cnpj}/{ano}/{seq} (erro 503 na API interna do PNCP)
-      // SEMPRE usar rota de busca (?q=) que consulta a API /api/consulta/v1 e abre a contratação perfeitamente
-      if (item.numeroControle) {
-        return `https://pncp.gov.br/app/editais?q=${encodeURIComponent(item.numeroControle)}`;
+      // 4. Portal de Compras Públicas (Igrejinha, etc.)
+      if (plat.includes('portal de compras públicas') || plat.includes('ecustomize') || cid.includes('igrejinha')) {
+        return "https://www.portaldecompraspublicas.com.br";
       }
 
-      if (portalInfo.id === 'contratamais' || item.ehComprasGov) {
-        return "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/login";
+      // 5. Pregão Online Banrisul / DBseller (Sapiranga)
+      if (plat.includes('dbseller') || cid.includes('sapiranga') || plat.includes('banrisul')) {
+        return "https://www.pregaobanrisul.com.br";
       }
 
-      return "https://pncp.gov.br/app/editais";
+      // 6. Taquara / Atende.net
+      if (cid.includes('taquara') || org.includes('taquara')) {
+        return "https://taquara.atende.net";
+      }
+
+      // 7. Araricá / Tecnosweb
+      if (cid.includes('ararica') || org.includes('ararica') || plat.includes('tecnosweb')) {
+        return "https://ararica.rs.gov.br";
+      }
+
+      // 8. Compras.gov.br / Contrata+ Brasil
+      if (plat.includes('contrata+') || plat.includes('compras.gov') || item.ehComprasGov || org.includes('nova hartz') || org.includes('batalhão') || org.includes('ufrgs')) {
+        return "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/pesquisa-compra";
+      }
+
+      // 9. Se houver linkDireto válido e não for a rota quebrada do SPA
+      if (item.linkDireto && typeof item.linkDireto === 'string' && item.linkDireto.trim() && !item.linkDireto.includes('pncp.gov.br/app/editais/')) {
+        return item.linkDireto;
+      }
+
+      return "https://www.compras.rs.gov.br";
     }
 
     function obterLinkPncpSeguro(item) {
@@ -4285,7 +4296,7 @@
 
               <span class="text-xs font-semibold text-slate-400 block">${item.orgao}</span>
               <h3 class="text-base sm:text-lg font-black text-slate-900 mt-1 leading-snug">
-                ${item.objeto}
+                📦 ${item.tituloResumo || item.titulo || item.objeto}
               </h3>
               <p class="text-xs text-slate-500 mt-0.5">📍 ${item.cidade} / RS</p>
 
@@ -4312,7 +4323,7 @@
               ${gerarBotaoFornecedoresCard(strId)}
               <div class="flex items-center gap-2">
                 <a href="${formatarLinkDireto(item)}" target="_blank" class="flex-1 py-2 px-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs text-center transition-all flex items-center justify-center gap-1">
-                  <span>Acessar Edital Oficial</span>
+                  <span>${item.textoBotao || 'Acessar Edital Oficial'}</span>
                   <span class="text-[10px]">↗</span>
                 </a>
                 <button onclick="copiarDadosItem('${strId}')" class="py-2 px-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs">
@@ -4483,7 +4494,7 @@
 
               <span class="text-xs font-semibold text-slate-400 block">${item.orgao}</span>
               <h3 class="text-base sm:text-lg font-black text-slate-900 mt-1 leading-snug">
-                ${item.objeto}
+                📦 ${item.tituloResumo || item.titulo || item.objeto}
               </h3>
               <p class="text-xs text-slate-500 mt-0.5">📍 ${item.cidade} / RS</p>
 
@@ -4510,7 +4521,7 @@
               ${gerarBotaoFornecedoresCard(strId)}
               <div class="flex items-center gap-2">
                 <a href="${formatarLinkDireto(item)}" target="_blank" class="flex-1 py-2 px-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs text-center transition-all flex items-center justify-center gap-1">
-                  <span>Acessar Edital Oficial</span>
+                  <span>${item.textoBotao || 'Acessar Edital Oficial'}</span>
                   <span class="text-[10px]">↗</span>
                 </a>
                 <button onclick="copiarDadosItem('${strId}')" class="py-2 px-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs">
@@ -5751,7 +5762,7 @@ Link: ${item.link}`;
 
               <span class="text-xs font-semibold text-slate-400 block">${item.orgao}</span>
               <h3 class="text-base sm:text-lg font-black text-slate-900 mt-1 leading-snug">
-                ${item.objeto}
+                📦 ${item.tituloResumo || item.titulo || item.objeto}
               </h3>
               <p class="text-xs text-slate-500 mt-0.5">📍 ${item.cidade} / RS</p>
 
