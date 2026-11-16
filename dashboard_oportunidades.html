@@ -3993,6 +3993,9 @@
         'https://portaldecompraspublicas.com.br',
         'https://www.pregaobanrisul.com.br',
         'https://pregaobanrisul.com.br',
+        'https://taquara.atende.net',
+        'https://ararica.rs.gov.br',
+        'https://www.ararica.rs.gov.br',
         'https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/pesquisa-compra',
         'https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/login',
         'https://compras.gov.br',
@@ -4065,11 +4068,12 @@
         return "https://ararica.rs.gov.br";
       }
 
-      if (plat.includes('contrata+') || plat.includes('compras.gov') || item.ehComprasGov || org.includes('nova hartz') || org.includes('batalhão') || org.includes('ufrgs')) {
-        return "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/pesquisa-compra";
+      if (plat.includes('contrata+') || plat.includes('compras.gov') || item.ehComprasGov || item.ehContrataMais || org.includes('nova hartz') || org.includes('batalhão') || org.includes('ufrgs') || org.includes('exército') || org.includes('exercito') || org.includes('prf') || org.includes('conab')) {
+        const buscaTermo = (item.titulo || item.orgao || '').split('(')[0].trim().split(' ').slice(0, 3).join(' ');
+        return `https://contratamaisbrasil.sistema.gov.br/oportunidades/?type=all&busca=${encodeURIComponent(buscaTermo)}`;
       }
 
-      return "https://www.compras.rs.gov.br";
+      return `https://pncp.gov.br/app/editais?q=${encodeURIComponent((item.titulo || item.orgao || 'RS').split(' ').slice(0, 4).join(' '))}`;
     }
 
     function obterLinkPncpSeguro(item) {
