@@ -3985,36 +3985,59 @@
     function formatarLinkDireto(item) {
       if (!item) return "https://www.compras.rs.gov.br";
 
-      // 1. Prioridade absoluta: link DIRETO para o edital específico
-      // Ex: https://www.compras.rs.gov.br/editais/1123_2026/359206
-      // Ex: https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/acompanhamento-compra?compra=...
-      // Ex: https://www.portaldecompraspublicas.com.br/processos/...
+      const homesGenericas = new Set([
+        'https://www.compras.rs.gov.br',
+        'https://compras.rs.gov.br',
+        'http://www.compras.rs.gov.br',
+        'https://www.portaldecompraspublicas.com.br',
+        'https://portaldecompraspublicas.com.br',
+        'https://www.pregaobanrisul.com.br',
+        'https://pregaobanrisul.com.br',
+        'https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/pesquisa-compra',
+        'https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/login',
+        'https://compras.gov.br',
+        'https://www.compras.gov.br',
+        'https://contratamaisbrasil.sistema.gov.br'
+      ]);
+
+      // 1. Prioridade absoluta: link DIRETO específico para a oportunidade no sistema oficial
       const linksParaTestar = [
         item.linkSistemaOrigem,
         item.linkDireto,
         item.linkSistemaOficial,
-        item.link,
-        item.linkProcessoEletronico
+        item.linkProcessoEletronico,
+        item.link
       ];
 
       for (const u of linksParaTestar) {
-        if (u && typeof u === 'string' && u.startsWith('http') && !u.includes('pncp.gov.br/app/editais/')) {
+        if (u && typeof u === 'string' && u.startsWith('http')) {
           const uTrim = u.trim();
-          if (uTrim.includes('/editais/') || uTrim.includes('/processos/') || uTrim.includes('compra=') || uTrim.includes('download') || uTrim.length > 32) {
+          const uSemBarra = uTrim.replace(/\/+$/, '');
+          if (homesGenericas.has(uSemBarra)) continue;
+          if (uTrim.includes('pncp.gov.br/app/editais/')) continue;
+          if (uTrim.includes('/editais/') || uTrim.includes('/processos/') || uTrim.includes('compra=') || uTrim.includes('download') || uTrim.includes('oportunidades/') || uTrim.includes('?q=')) {
             return uTrim;
           }
         }
       }
 
-      // 2. Se houver linkDireto válido que não seja a home genérica
+      // 2. Link direto da oportunidade no PNCP (?q=numeroControle) quando o portal de origem só tiver home genérica
+      if (item.linkPncp && typeof item.linkPncp === 'string' && item.linkPncp.includes('?q=')) {
+        return item.linkPncp.trim();
+      }
+      if (item.numeroControle && typeof item.numeroControle === 'string' && item.numeroControle.trim()) {
+        return `https://pncp.gov.br/app/editais?q=${encodeURIComponent(item.numeroControle.trim())}`;
+      }
+
+      // 3. Se houver linkDireto não-genérico restante
       if (item.linkDireto && typeof item.linkDireto === 'string' && item.linkDireto.trim()) {
         const ld = item.linkDireto.trim();
-        if (!ld.includes('pncp.gov.br/app/editais/') && ld !== 'https://www.compras.rs.gov.br' && ld !== 'https://compras.rs.gov.br') {
+        if (!homesGenericas.has(ld.replace(/\/+$/, '')) && !ld.includes('pncp.gov.br/app/editais/')) {
           return ld;
         }
       }
 
-      // 3. Fallbacks inteligentes por plataforma
+      // 4. Fallbacks para itens internos sem número de controle
       const plat = (item.plataforma || '').toLowerCase();
       const org = (item.orgao || '').toLowerCase();
       const cid = (item.cidade || item.local || '').toLowerCase();
