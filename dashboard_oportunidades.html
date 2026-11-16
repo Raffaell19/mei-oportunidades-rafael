@@ -1369,9 +1369,10 @@
       {
         id: "mkt_salvador_do_sul_0009_2026",
         titulo: "Marketing Digital, Comunicação Institucional e Redes Sociais (6 Meses)",
-        linkDireto: "https://pncp.gov.br/app/editais/87860763000190/2026/131",
+        linkDireto: "https://www.salvadordosul.rs.gov.br/site/licitacoes",
         numeroControle: "87860763000190-1-000131/2026",
-        plataforma: "Pregão Online Banrisul / PNCP Oficial",
+        cidade: "Salvador do Sul",
+        plataforma: "Pregão Online Banrisul / Prefeitura Salvador do Sul",
         categoria: "marketing recomendados comprasrs",
         badgeText: "🔥 PREGÃO ONLINE BANRISUL • Edital 0009/2026 • Salvador do Sul/RS",
         badgeClass: "bg-emerald-600 text-white font-black animate-pulse",
@@ -2284,21 +2285,22 @@
       if (item.cidade && typeof item.cidade === 'string' && item.cidade.trim() && item.cidade.trim() !== 'RS') {
         return item.cidade.trim();
       }
-      const loc = (item.local || '').toLowerCase();
+      const loc = (item.local || '').toLowerCase().replace(/de\s+nova\s+hartz/gi, '');
       const org = (item.orgao || '').toLowerCase();
       const obj = (item.objeto || '').toLowerCase();
-      const combined = `${loc} ${org} ${obj}`;
+      const combined = `${org} ${loc} ${obj}`;
 
+      if (combined.includes('salvador do sul')) return 'Salvador do Sul';
       if (combined.includes('nova hartz')) return 'Nova Hartz';
       if (combined.includes('sapiranga')) return 'Sapiranga';
       if (combined.includes('taquara')) return 'Taquara';
       if (combined.includes('parobé') || combined.includes('parobe')) return 'Parobé';
       if (combined.includes('igrejinha')) return 'Igrejinha';
       if (combined.includes('araricá') || combined.includes('ararica')) return 'Araricá';
+      if (combined.includes('são leopoldo') || combined.includes('sao leopoldo')) return 'São Leopoldo';
       if (combined.includes('porto alegre')) return 'Porto Alegre';
       if (combined.includes('caxias')) return 'Caxias do Sul';
       if (combined.includes('bento gonçalves') || combined.includes('bento goncalves')) return 'Bento Gonçalves';
-      if (combined.includes('salvador do sul')) return 'Salvador do Sul';
       if (combined.includes('sapucaia')) return 'Sapucaia do Sul';
       if (combined.includes('osório') || combined.includes('osorio')) return 'Osório';
       if (combined.includes('canoas')) return 'Canoas';
@@ -4018,7 +4020,7 @@
           const uSemBarra = uTrim.replace(/\/+$/, '');
           if (homesGenericas.has(uSemBarra)) continue;
           if (uTrim.includes('pncp.gov.br/app/editais/')) continue;
-          if (uTrim.includes('/editais/') || uTrim.includes('/processos/') || uTrim.includes('compra=') || uTrim.includes('download') || uTrim.includes('oportunidades/') || uTrim.includes('?q=')) {
+          if (uTrim.includes('/editais/') || uTrim.includes('/processos/') || uTrim.includes('/licitacoes') || uTrim.includes('compra=') || uTrim.includes('download') || uTrim.includes('oportunidades/') || uTrim.includes('?q=')) {
             return uTrim;
           }
         }
