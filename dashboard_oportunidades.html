@@ -49,6 +49,7 @@
     ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
   </style>
   <script src="radar_pncp_data.js"></script>
+  <script src="crm_module.js"></script>
 </head>
 <body class="bg-slate-100 text-slate-800 antialiased min-h-screen flex flex-col">
 
@@ -66,9 +67,27 @@
         </h1>
       </div>
 
+      <!-- Navegação Principal (Radar | CRM | Fornecedores) -->
+      <nav class="flex items-center gap-1.5 flex-wrap">
+        <button onclick="alternarAbaPrincipal('radar')" data-tab="radar" class="nav-main-tab px-3 py-1.5 rounded-xl text-xs font-black bg-emerald-500 text-slate-950 shadow-sm transition-all flex items-center gap-1.5 cursor-pointer">
+          <span>📡</span>
+          <span>Radar</span>
+        </button>
+        <button onclick="alternarAbaPrincipal('crm')" data-tab="crm" class="nav-main-tab px-3 py-1.5 rounded-xl text-xs font-bold bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition-all flex items-center gap-1.5 cursor-pointer">
+          <span>🎯</span>
+          <span>Meu CRM</span>
+          <span id="navBadgeCRM" class="px-1.5 py-0.5 rounded-full text-[10px] font-black bg-sky-500 text-slate-950">0</span>
+        </button>
+        <button onclick="alternarAbaPrincipal('fornecedores')" data-tab="fornecedores" class="nav-main-tab px-3 py-1.5 rounded-xl text-xs font-bold bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition-all flex items-center gap-1.5 cursor-pointer">
+          <span>🏭</span>
+          <span>Fornecedores</span>
+          <span id="navBadgeForn" class="px-1.5 py-0.5 rounded-full text-[10px] font-black bg-amber-400 text-slate-950">0</span>
+        </button>
+      </nav>
+
       <!-- Informação discreta de apoio e botão restaurar se houver itens excluídos -->
       <div class="flex items-center gap-3">
-        <span class="hidden md:inline text-xs text-slate-400 font-medium">Rafael Plácido • Nova Hartz/RS</span>
+        <span class="hidden lg:inline text-xs text-slate-400 font-medium">Rafael Plácido • Nova Hartz/RS</span>
         <span id="headerVolumeTotal" class="hidden">R$ 0,00</span>
         <button id="btnRestaurar" onclick="restaurarExcluidos()" class="hidden text-xs bg-amber-400 hover:bg-amber-300 text-slate-950 font-black px-2.5 py-1 rounded-lg transition-all shadow-xs flex items-center gap-1">
           <span>🔄</span>
@@ -78,8 +97,8 @@
     </div>
   </header>
 
-  <!-- CONTEÚDO PRINCIPAL -->
-  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow space-y-8">
+  <!-- CONTEÚDO PRINCIPAL (ABA 1: RADAR) -->
+  <main id="viewRadar" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow space-y-8">
 
     <!-- CENTRAL DE ALERTAS DE PREGÕES & DISPUTAS AGENDADAS (AO VIVO) -->
     <div id="centralAlertasPregoes" class="bg-slate-900 text-white rounded-2xl p-3 sm:p-4 shadow-sm border border-slate-800 space-y-2.5">
@@ -265,6 +284,229 @@
     </div>
 
   </main>
+
+  <!-- ABA 2: MEU CRM / FUNIL DE LICITAÇÕES -->
+  <section id="viewCRM" class="hidden max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow space-y-6">
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-5 rounded-3xl border border-slate-200 shadow-xs">
+      <div>
+        <span class="text-[11px] font-black uppercase tracking-wider text-sky-700">Pipeline de Vendas Públicas</span>
+        <h2 class="text-xl sm:text-2xl font-black text-slate-900">Meu CRM de Oportunidades</h2>
+        <p class="text-xs text-slate-500">Evolua suas licitações da análise até o recebimento e vincule seus fornecedores.</p>
+      </div>
+      <div class="flex flex-wrap items-center gap-2">
+        <button onclick="abrirModalCRM()" class="px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-black text-xs shadow-sm cursor-pointer">
+          + Nova Oportunidade Manual
+        </button>
+        <button onclick="exportarBackupCRM()" class="px-3 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs cursor-pointer" title="Baixar backup em JSON">
+          💾 Exportar
+        </button>
+        <label class="px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-xs border border-slate-300 cursor-pointer" title="Restaurar backup JSON">
+          📂 Importar
+          <input type="file" accept=".json" onchange="importarBackupCRM(event)" class="hidden">
+        </label>
+      </div>
+    </div>
+
+    <!-- KPIs do CRM -->
+    <div id="crmKpis" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"></div>
+
+    <!-- Barra de Filtro e Modo de Visualização -->
+    <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+      <input id="crmFiltroBusca" oninput="renderizarCRM()" type="text" placeholder="Buscar no CRM por título, órgão, cidade ou edital..." class="w-full sm:max-w-md px-4 py-2 rounded-xl bg-white border border-slate-300 text-xs font-medium focus:outline-none focus:ring-2 focus:ring-sky-500">
+      <div class="flex items-center gap-1.5">
+        <button id="btnCrmKanban" onclick="alternarModoCRM('kanban')" class="px-3 py-1.5 rounded-lg text-xs font-black bg-slate-900 text-white cursor-pointer">🗂️ Kanban</button>
+        <button id="btnCrmLista" onclick="alternarModoCRM('lista')" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-white text-slate-600 border border-slate-200 cursor-pointer">📋 Lista</button>
+      </div>
+    </div>
+
+    <!-- Quadro Kanban / Tabela -->
+    <div id="crmBoardContainer"></div>
+  </section>
+
+  <!-- ABA 3: MEUS FORNECEDORES -->
+  <section id="viewFornecedores" class="hidden max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow space-y-6">
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-5 rounded-3xl border border-slate-200 shadow-xs">
+      <div>
+        <span class="text-[11px] font-black uppercase tracking-wider text-amber-600">Base de Atacadistas & Fábricas</span>
+        <h2 class="text-xl sm:text-2xl font-black text-slate-900">Meus Fornecedores</h2>
+        <p class="text-xs text-slate-500">Contatos diretos, WhatsApp, prazos de entrega e vínculos com seus editais no CRM.</p>
+      </div>
+      <div class="flex flex-wrap items-center gap-2">
+        <button onclick="abrirModalFornecedorCRM()" class="px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-black text-xs shadow-sm cursor-pointer">
+          + Cadastrar Fornecedor
+        </button>
+        <button onclick="exportarBackupCRM()" class="px-3 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs cursor-pointer">
+          💾 Exportar
+        </button>
+      </div>
+    </div>
+
+    <div class="flex flex-col sm:flex-row gap-3">
+      <input id="fornFiltroBusca" oninput="renderizarFornecedoresView()" type="text" placeholder="Buscar fornecedor por nome, cidade, produto..." class="w-full sm:max-w-md px-4 py-2 rounded-xl bg-white border border-slate-300 text-xs font-medium focus:outline-none focus:ring-2 focus:ring-sky-500">
+      <select id="fornFiltroCategoria" onchange="renderizarFornecedoresView()" class="px-4 py-2 rounded-xl bg-white border border-slate-300 text-xs font-bold text-slate-700 focus:outline-none">
+        <option value="todos">Todas as Categorias</option>
+        <option value="Troféus / CNC / Acrílico">Troféus / CNC / Acrílico</option>
+        <option value="Esportivo / Redes / Serralheria">Esportivo / Redes / Serralheria</option>
+        <option value="Alimentos / Eventos">Alimentos / Eventos</option>
+        <option value="Limpeza / Descartáveis">Limpeza / Descartáveis</option>
+        <option value="Informática / TI">Informática / TI</option>
+        <option value="Serviços / Obra">Serviços / Obra</option>
+        <option value="Outros">Outros</option>
+      </select>
+    </div>
+
+    <div id="fornecedoresGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+  </section>
+
+  <!-- MODAL CRM: CRIAR / EDITAR OPORTUNIDADE -->
+  <div id="modalCRM" class="hidden fixed inset-0 z-50 modal-backdrop flex items-center justify-center p-4 overflow-y-auto">
+    <div class="bg-white rounded-3xl max-w-2xl w-full p-6 shadow-2xl border border-slate-200 space-y-4 my-8">
+      <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+        <h3 id="crmModalTituloHeader" class="text-lg font-black text-slate-900">Oportunidade no CRM</h3>
+        <button onclick="fecharModalCRM()" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 font-bold cursor-pointer">✕</button>
+      </div>
+      <form onsubmit="salvarFormCRM(event)" class="space-y-3 text-xs">
+        <input type="hidden" id="crmFormId">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div class="sm:col-span-2">
+            <label class="font-bold text-slate-700 block mb-1">Título da Oportunidade *</label>
+            <input id="crmFormTitulo" required type="text" class="w-full px-3 py-2 rounded-xl border border-slate-300 font-semibold">
+          </div>
+          <div>
+            <label class="font-bold text-slate-700 block mb-1">Órgão / Prefeitura</label>
+            <input id="crmFormOrgao" type="text" class="w-full px-3 py-2 rounded-xl border border-slate-300">
+          </div>
+          <div>
+            <label class="font-bold text-slate-700 block mb-1">Cidade / Distância</label>
+            <input id="crmFormCidade" type="text" class="w-full px-3 py-2 rounded-xl border border-slate-300">
+          </div>
+          <div>
+            <label class="font-bold text-slate-700 block mb-1">Nº Edital / Processo</label>
+            <input id="crmFormEdital" type="text" class="w-full px-3 py-2 rounded-xl border border-slate-300">
+          </div>
+          <div>
+            <label class="font-bold text-slate-700 block mb-1">Data e Hora da Disputa</label>
+            <input id="crmFormDataDisputa" type="datetime-local" class="w-full px-3 py-2 rounded-xl border border-slate-300">
+          </div>
+          <div>
+            <label class="font-bold text-slate-700 block mb-1">Etapa do Funil</label>
+            <select id="crmFormEtapa" class="w-full px-3 py-2 rounded-xl border border-slate-300 font-bold">
+              <option value="analisando">🔍 Analisando</option>
+              <option value="cotando">🏭 Cotando Fornecedor</option>
+              <option value="proposta">📝 Proposta Enviada</option>
+              <option value="disputa">⚡ Em Disputa / Amostra</option>
+              <option value="ganho">🏆 Ganho / Empenhado</option>
+              <option value="entregue">✅ Entregue / Pago</option>
+              <option value="perdida">❌ Perdida / Descartada</option>
+            </select>
+          </div>
+          <div>
+            <label class="font-bold text-slate-700 block mb-1">Link do Portal / Edital</label>
+            <input id="crmFormPortalUrl" type="url" placeholder="https://..." class="w-full px-3 py-2 rounded-xl border border-slate-300">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-3 gap-3 bg-slate-50 p-3 rounded-2xl border border-slate-200">
+          <div>
+            <label class="font-bold text-slate-600 block mb-1">Teto Edital (R$)</label>
+            <input id="crmFormTeto" type="number" step="0.01" class="w-full px-3 py-2 rounded-xl border border-slate-300 bg-white font-bold">
+          </div>
+          <div>
+            <label class="font-bold text-slate-600 block mb-1">Custo Est. (R$)</label>
+            <input id="crmFormCusto" type="number" step="0.01" class="w-full px-3 py-2 rounded-xl border border-slate-300 bg-white font-bold">
+          </div>
+          <div>
+            <label class="font-bold text-emerald-700 block mb-1">Minha Proposta (R$)</label>
+            <input id="crmFormProposta" type="number" step="0.01" class="w-full px-3 py-2 rounded-xl border border-emerald-300 bg-white font-black text-emerald-800">
+          </div>
+        </div>
+
+        <div>
+          <div class="flex items-center justify-between mb-1">
+            <label class="font-bold text-slate-700">Vincular Fornecedores desta Oportunidade</label>
+            <button type="button" onclick="fecharModalCRM(); alternarAbaPrincipal('fornecedores'); abrirModalFornecedorCRM();" class="text-[11px] font-black text-sky-700 hover:underline cursor-pointer">+ Novo Fornecedor</button>
+          </div>
+          <div id="crmFormFornecedoresLista" class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 max-h-36 overflow-y-auto p-1"></div>
+        </div>
+
+        <div>
+          <label class="font-bold text-slate-700 block mb-1">Anotações / Pendências (CNAE, Atestado, Amostra, Itens)</label>
+          <textarea id="crmFormNotas" rows="3" class="w-full px-3 py-2 rounded-xl border border-slate-300"></textarea>
+        </div>
+
+        <div class="flex items-center justify-between pt-2 border-t border-slate-100">
+          <button id="btnExcluirCRMModal" type="button" onclick="excluirOportunidadeCRM()" class="px-3 py-2 rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-700 font-bold cursor-pointer">🗑️ Excluir</button>
+          <div class="flex items-center gap-2 ml-auto">
+            <button type="button" onclick="fecharModalCRM()" class="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold cursor-pointer">Cancelar</button>
+            <button type="submit" class="px-5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-black cursor-pointer">Salvar no CRM</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL FORNECEDOR: CRIAR / EDITAR -->
+  <div id="modalFornecedorCRM" class="hidden fixed inset-0 z-50 modal-backdrop flex items-center justify-center p-4 overflow-y-auto">
+    <div class="bg-white rounded-3xl max-w-xl w-full p-6 shadow-2xl border border-slate-200 space-y-4 my-8">
+      <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+        <h3 id="fornModalTituloHeader" class="text-lg font-black text-slate-900">Cadastrar Fornecedor</h3>
+        <button onclick="fecharModalFornecedorCRM()" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 font-bold cursor-pointer">✕</button>
+      </div>
+      <form onsubmit="salvarFormFornecedorCRM(event)" class="space-y-3 text-xs">
+        <input type="hidden" id="fornFormId">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div class="sm:col-span-2">
+            <label class="font-bold text-slate-700 block mb-1">Nome / Empresa *</label>
+            <input id="fornFormNome" required type="text" class="w-full px-3 py-2 rounded-xl border border-slate-300 font-semibold">
+          </div>
+          <div>
+            <label class="font-bold text-slate-700 block mb-1">Categoria</label>
+            <select id="fornFormCategoria" class="w-full px-3 py-2 rounded-xl border border-slate-300 font-bold">
+              <option value="Troféus / CNC / Acrílico">Troféus / CNC / Acrílico</option>
+              <option value="Esportivo / Redes / Serralheria">Esportivo / Redes / Serralheria</option>
+              <option value="Alimentos / Eventos">Alimentos / Eventos</option>
+              <option value="Limpeza / Descartáveis">Limpeza / Descartáveis</option>
+              <option value="Informática / TI">Informática / TI</option>
+              <option value="Serviços / Obra">Serviços / Obra</option>
+              <option value="Outros">Outros</option>
+            </select>
+          </div>
+          <div>
+            <label class="font-bold text-slate-700 block mb-1">Cidade / UF</label>
+            <input id="fornFormCidade" type="text" placeholder="Ex: Novo Hamburgo / RS" class="w-full px-3 py-2 rounded-xl border border-slate-300">
+          </div>
+          <div>
+            <label class="font-bold text-slate-700 block mb-1">Pessoa de Contato / E-mail</label>
+            <input id="fornFormContato" type="text" class="w-full px-3 py-2 rounded-xl border border-slate-300">
+          </div>
+          <div>
+            <label class="font-bold text-slate-700 block mb-1">WhatsApp (com DDD)</label>
+            <input id="fornFormWhatsapp" type="text" placeholder="51999999999" class="w-full px-3 py-2 rounded-xl border border-slate-300">
+          </div>
+          <div class="sm:col-span-2">
+            <label class="font-bold text-slate-700 block mb-1">Site / Catálogo URL</label>
+            <input id="fornFormSite" type="text" placeholder="https://..." class="w-full px-3 py-2 rounded-xl border border-slate-300">
+          </div>
+          <div>
+            <label class="font-bold text-slate-700 block mb-1">Prazo de Entrega / Amostra</label>
+            <input id="fornFormPrazo" type="text" placeholder="Ex: 3 a 5 dias úteis" class="w-full px-3 py-2 rounded-xl border border-slate-300">
+          </div>
+          <div>
+            <label class="font-bold text-slate-700 block mb-1">Condição de Pagamento</label>
+            <input id="fornFormPagamento" type="text" placeholder="Ex: PIX / 30 dias boleto" class="w-full px-3 py-2 rounded-xl border border-slate-300">
+          </div>
+          <div class="sm:col-span-2">
+            <label class="font-bold text-slate-700 block mb-1">Preços de Referência / Observações</label>
+            <textarea id="fornFormObs" rows="2" class="w-full px-3 py-2 rounded-xl border border-slate-300"></textarea>
+          </div>
+        </div>
+        <div class="flex items-center justify-end gap-2 pt-2 border-t border-slate-100">
+          <button type="button" onclick="fecharModalFornecedorCRM()" class="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold cursor-pointer">Cancelar</button>
+          <button type="submit" class="px-5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-black cursor-pointer">Salvar Fornecedor</button>
+        </div>
+      </form>
+    </div>
+  </div>
 
   
   <!-- MODAL DE REGISTRO MANUAL DE PROPOSTA ENVIADA -->
@@ -2720,6 +2962,12 @@
 
         <!-- 9. BOTÕES DE AÇÃO INFERIORES -->
         <div class="mt-4 pt-3 border-t border-slate-100 space-y-2">
+          ${(() => {
+            const noCrm = typeof obterStatusCRMDoRadar === 'function' ? obterStatusCRMDoRadar(strId) : null;
+            return noCrm
+              ? `<button id="btn-crm-${strId}" onclick="event.stopPropagation(); enviarParaCRM('${strId}')" class="w-full py-2 px-3 rounded-xl bg-sky-100 hover:bg-sky-200 text-sky-900 border border-sky-300 font-black text-xs text-center transition-all flex items-center justify-center gap-1.5 cursor-pointer"><span>🎯</span><span>No CRM • Abrir</span></button>`
+              : `<button id="btn-crm-${strId}" onclick="event.stopPropagation(); enviarParaCRM('${strId}')" class="w-full py-2 px-3 rounded-xl bg-sky-600 hover:bg-sky-500 text-white font-black text-xs text-center transition-all shadow-sm flex items-center justify-center gap-1.5 cursor-pointer"><span>🎯</span><span>Enviar para o CRM</span></button>`;
+          })()}
           <button onclick="event.stopPropagation(); abrirModalRegistroPropostaItem('${strId}', '${s.tipoOrigem || 'interno'}')" class="w-full py-2.5 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-black text-xs text-center transition-all shadow-sm flex items-center justify-center gap-1.5 cursor-pointer">
             <span>📝</span>
             <span>Cadastrar Proposta Enviada</span>
