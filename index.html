@@ -4026,10 +4026,13 @@
       if (texto.includes('compras.gov') || texto.includes('comprasnet') || texto.includes('uasg') || texto.includes('marinha') || texto.includes('fuzileiros') || (item.plataforma && item.plataforma.includes('Compras.gov'))) {
         return { id: 'comprasgov', nome: 'Compras.gov.br (Federal)', badgeClass: 'bg-sky-100 text-sky-900 border-sky-300', icone: '🌐' };
       }
-      if (texto.includes('edital_marketing') || texto.includes('dispensa') || texto.includes('pncp') || (item.plataforma && item.plataforma.includes('PNCP'))) {
-        return { id: 'pncp', nome: 'Dispensa Eletrônica (Lei 14.133)', badgeClass: 'bg-teal-100 text-teal-900 border-teal-300', icone: '📜' };
+      if (item.ehContrataMais || texto.includes('contrata+') || texto.includes('contratamais')) {
+        return { id: 'contratamais', nome: 'Contrata+ Brasil', badgeClass: 'bg-emerald-100 text-emerald-900 border-emerald-300', icone: '🏛️' };
       }
-      return { id: 'contratamais', nome: 'Contrata+ Brasil', badgeClass: 'bg-emerald-100 text-emerald-900 border-emerald-300', icone: '🏛️' };
+      if (texto.includes('edital_marketing') || texto.includes('dispensa') || texto.includes('pncp') || texto.includes('atende.net') || texto.includes('portaldecompras') || texto.includes('municipio') || texto.includes('prefeitura') || (item.plataforma && item.plataforma.includes('PNCP'))) {
+        return { id: 'pncp', nome: item.plataforma || 'Portal Municipal / PNCP', badgeClass: 'bg-teal-100 text-teal-900 border-teal-300', icone: '📜' };
+      }
+      return { id: 'pncp', nome: item.plataforma || 'PNCP / Portal Oficial', badgeClass: 'bg-slate-100 text-slate-900 border-slate-300', icone: '🌐' };
     }
 
     function getIdsPropostasEnviadas() {
