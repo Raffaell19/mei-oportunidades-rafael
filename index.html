@@ -2615,37 +2615,42 @@
       const unificadas = [];
       const idsVistos = new Set();
 
-      // 1. Oportunidades do Banco Interno Curadas
+      // 1. Oportunidades do Banco Interno Curadas (auto-remove vencidas)
       if (typeof servicosDB !== 'undefined' && Array.isArray(servicosDB)) {
         servicosDB.forEach(s => {
           const strId = String(s.id);
           if (!excluidos.some(e => String(e) === strId)) {
-            idsVistos.add(strId);
             const ehServ = ehDemandaServico(s);
             const portalInfo = identificarPortalOportunidade(s);
             const ehContrata = s.ehContrataMais || s.ehComprasGov || portalInfo.id === 'contratamais';
             const ehMkt = s.categoria && s.categoria.includes('marketing');
-
-            unificadas.push({
+            const obj = {
               ...s,
               id: strId,
               tipoOrigem: 'interno',
               ehDemandaServico: ehServ,
               ehContrataMais: ehContrata,
               ehMarketing: ehMkt
-            });
+            };
+            if (typeof oportunidadeEstaAberta !== 'function' || oportunidadeEstaAberta(obj)) {
+              idsVistos.add(strId);
+              unificadas.push(obj);
+            }
           }
         });
       }
 
-      // 2. Oportunidades do Radar Geral PNCP / Compras.gov / Compras RS
+      // 2. Oportunidades do Radar Geral PNCP / Compras.gov / Compras RS (auto-remove vencidas)
       const radar = (typeof window !== 'undefined' && window.RADAR_PNCP_DATA) ? window.RADAR_PNCP_DATA : [];
       if (Array.isArray(radar)) {
         radar.forEach(r => {
           const strId = String(r.id);
           if (!excluidos.some(e => String(e) === strId) && !idsVistos.has(strId)) {
-            idsVistos.add(strId);
-            unificadas.push(normalizarOportunidadeRadar(r));
+            const norm = normalizarOportunidadeRadar(r);
+            if (typeof oportunidadeEstaAberta !== 'function' || oportunidadeEstaAberta(norm)) {
+              idsVistos.add(strId);
+              unificadas.push(norm);
+            }
           }
         });
       }
@@ -2903,8 +2908,11 @@
       radar.forEach(r => {
         const strId = String(r.id);
         if (!excluidos.includes(strId) && !vistos.has(strId)) {
-          vistos.add(strId);
-          lista.push(normalizarOportunidadeRadar(r));
+          const norm = normalizarOportunidadeRadar(r);
+          if (typeof oportunidadeEstaAberta !== 'function' || oportunidadeEstaAberta(norm)) {
+            vistos.add(strId);
+            lista.push(norm);
+          }
         }
       });
 
@@ -3028,12 +3036,18 @@
       if (!labelLink.includes('↗')) labelLink += ' ↗';
 
       // Card Container
+      const jaInviavel = typeof ehInviavel === 'function' ? ehInviavel(strId) : false;
       const card = document.createElement('div');
       card.id = 'card-item-' + strId;
       card.setAttribute('data-id', strId);
-      
+      card.setAttribute('data-vence-hoje', dt.ehVenceHoje ? '1' : '0');
+
       let borderClass = 'border-slate-200 card-shadow hover:border-cyan-400';
-      if (jaFavoritado) {
+      if (dt.ehVenceHoje) {
+        borderClass = 'border-rose-600 bg-rose-50/70 ring-4 ring-rose-500/40 shadow-xl';
+      } else if (jaInviavel) {
+        borderClass = 'border-orange-500 bg-orange-50/40 ring-2 ring-orange-400/50 shadow-md';
+      } else if (jaFavoritado) {
         borderClass = 'border-amber-400 bg-amber-50/20 ring-2 ring-amber-400/40 shadow-md';
       } else if (jaClicado) {
         borderClass = 'border-emerald-500 bg-emerald-50/20 shadow-md';
@@ -3045,6 +3059,11 @@
 
       card.innerHTML = `
         <div>
+          ${dt.ehVenceHoje ? `
+            <div class="mb-2.5 px-3 py-1.5 rounded-xl bg-rose-600 text-white font-black text-xs text-center tracking-wide shadow-sm animate-pulse">
+              🚨 VENCE HOJE — ÚLTIMO DIA PARA PROPOSTA!
+            </div>
+          ` : ''}
           <!-- 1. LOCALIZAÇÃO EM DESTAQUE NO TOPO (SOLICITAÇÃO PRINCIPAL) -->
           <div class="flex items-center justify-between pb-2.5 mb-2.5 border-b border-slate-100">
             <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-900 text-white font-extrabold text-xs shadow-xs tracking-wide">
@@ -3065,12 +3084,16 @@
             </span>
           </div>
 
-          <!-- 3. LINHA 2 DE BADGES: PLATAFORMA + FAVORITA + EXCLUIR -->
-          <div class="flex items-center justify-between gap-2 mb-2.5">
+          <!-- 3. LINHA 2 DE BADGES: PLATAFORMA + INVIÁVEL + FAVORITA + EXCLUIR -->
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-2.5">
             <span class="px-3 py-1 rounded-full text-xs font-bold bg-sky-100 text-sky-800 border border-sky-300 flex items-center gap-1">
               ${nomePlataforma}
             </span>
-            <div class="flex items-center gap-1.5">
+            <div class="flex items-center gap-1.5 flex-wrap">
+              <button id="btn-inviavel-${strId}" onclick="alternarInviavel('${strId}', event)" class="${jaInviavel ? 'px-3 py-1 rounded-full text-[11px] font-black transition-all flex items-center gap-1 bg-gradient-to-r from-orange-500 to-rose-600 text-white shadow-md ring-2 ring-amber-300 cursor-pointer' : 'px-2.5 py-1 rounded-full text-[11px] font-bold transition-all flex items-center gap-1 bg-slate-100 hover:bg-orange-100 text-slate-600 hover:text-orange-900 border border-slate-200 cursor-pointer'}" title="Marcar oportunidade como inviável">
+                <span>${jaInviavel ? '⛔' : '🚫'}</span>
+                <span>${jaInviavel ? 'INVIÁVEL' : 'Inviável'}</span>
+              </button>
               <button onclick="alternarFavorito('${strId}', event)" class="px-3 py-1 rounded-lg text-xs font-black transition-all flex items-center gap-1 ${jaFavoritado ? 'bg-amber-400 text-slate-950 shadow-sm ring-1 ring-amber-500' : 'bg-slate-100 hover:bg-amber-50 text-slate-600 hover:text-amber-800 border border-slate-200'}" title="${jaFavoritado ? 'Remover dos Favoritos' : 'Salvar nas Melhores Oportunidades'}">
                 <span class="${jaFavoritado ? 'text-slate-950 font-black' : 'text-amber-500'}">★</span>
                 <span class="text-[11px] font-extrabold">${jaFavoritado ? 'Favorita' : 'Favoritar'}</span>
@@ -3734,6 +3757,10 @@
       const agora = new Date();
       let diffMs = dataFim ? (dataFim - agora) : 99999999;
       let ehVencida = diffMs <= 0;
+      const ehVenceHoje = !ehVencida && !!dataFim &&
+        dataFim.getFullYear() === agora.getFullYear() &&
+        dataFim.getMonth() === agora.getMonth() &&
+        dataFim.getDate() === agora.getDate();
 
       let classe = "bg-amber-50 text-amber-900 border-amber-300";
       let badgeUrgencia = "";
@@ -3741,12 +3768,13 @@
       if (ehVencida) {
         classe = "bg-rose-100 text-rose-800 border-rose-300 font-extrabold";
         badgeUrgencia = "⚠️ Prazo Encerrado";
+      } else if (ehVenceHoje) {
+        classe = "bg-rose-600 text-white border-rose-700 font-black animate-pulse";
+        const horasRestantes = Math.max(0, Math.floor(diffMs / (1000 * 60 * 60)));
+        badgeUrgencia = horasRestantes <= 1 ? "🚨 VENCE HOJE (<1h)!" : `🚨 VENCE HOJE (${horasRestantes}h)!`;
       } else {
         const horas = Math.floor(diffMs / (1000 * 60 * 60));
-        if (horas <= 4) {
-          classe = "bg-rose-100 text-rose-900 border-rose-400 font-black animate-pulse";
-          badgeUrgencia = `🚨 Reta Final: ${horas}h para encerrar!`;
-        } else if (horas <= 24) {
+        if (horas <= 24) {
           classe = "bg-rose-50 text-rose-700 border-rose-300 font-black animate-pulse";
           badgeUrgencia = `🔥 Falta(m) ${horas}h para encerrar!`;
         } else if (horas <= 48) {
@@ -3761,6 +3789,7 @@
         iso: iso,
         badgeUrgencia: badgeUrgencia,
         ehVencida: ehVencida,
+        ehVenceHoje: ehVenceHoje,
         diffMs: diffMs
       };
     }
@@ -4923,6 +4952,8 @@ Link: ${item.link}`;
       if (!manterBanner) {
         grid.innerHTML = '';
       }
+
+      lista = (lista || []).filter(item => typeof oportunidadeEstaAberta !== 'function' || oportunidadeEstaAberta(item));
 
       if (!lista || lista.length === 0) {
         const msgVazio = `

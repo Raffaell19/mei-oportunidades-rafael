@@ -774,11 +774,12 @@ function excluirFornecedorCRM(fornId) {
 // ============================================================================
 function exportarBackupCRM() {
   const payload = {
-    versao: 2,
+    versao: 3,
     exportadoEm: new Date().toISOString(),
     oportunidades: lerCRMOportunidades(),
     fornecedores: lerCRMFornecedores(),
-    calculosMargem: lerHistoricoCalculadora()
+    calculosMargem: lerHistoricoCalculadora(),
+    inviaveis: getInviaveis()
   };
   const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
   const url = URL.createObjectURL(blob);
@@ -799,6 +800,7 @@ function importarBackupCRM(event) {
       if (Array.isArray(data.oportunidades)) salvarCRMOportunidades(data.oportunidades);
       if (Array.isArray(data.fornecedores)) salvarCRMFornecedores(data.fornecedores);
       if (Array.isArray(data.calculosMargem)) salvarHistoricoCalculadora(data.calculosMargem);
+      if (Array.isArray(data.inviaveis)) localStorage.setItem(INVIAVEIS_STORAGE_KEY, JSON.stringify(data.inviaveis));
       alert('Backup restaurado com sucesso!');
       if (crmAbaAtual === 'crm') renderizarCRM();
       if (crmAbaAtual === 'fornecedores') renderizarFornecedoresView();
@@ -809,6 +811,72 @@ function importarBackupCRM(event) {
   };
   reader.readAsText(file);
   event.target.value = '';
+}
+
+// ============================================================================
+// MARCAÇÃO "INVIÁVEL" NOS CARDS + AUTO-OCULTAR ALERTAS VENCIDOS
+// ============================================================================
+const INVIAVEIS_STORAGE_KEY = 'rp_oportunidades_inviaveis_v1';
+
+function getInviaveis() {
+  try {
+    const raw = localStorage.getItem(INVIAVEIS_STORAGE_KEY);
+    return raw ? JSON.parse(raw).map(String) : [];
+  } catch (e) {
+    return [];
+  }
+}
+
+function ehInviavel(id) {
+  return getInviaveis().includes(String(id));
+}
+
+function alternarInviavel(id, event) {
+  if (event) event.stopPropagation();
+  const strId = String(id);
+  let lista = getInviaveis();
+  const estava = lista.includes(strId);
+  if (estava) {
+    lista = lista.filter(x => x !== strId);
+  } else {
+    lista.push(strId);
+  }
+  localStorage.setItem(INVIAVEIS_STORAGE_KEY, JSON.stringify(lista));
+
+  const agoraMarcada = !estava;
+  const btn = document.getElementById('btn-inviavel-' + strId);
+  if (btn) {
+    btn.className = agoraMarcada
+      ? 'px-3 py-1 rounded-full text-[11px] font-black transition-all flex items-center gap-1 bg-gradient-to-r from-orange-500 to-rose-600 text-white shadow-md ring-2 ring-amber-300 cursor-pointer'
+      : 'px-2.5 py-1 rounded-full text-[11px] font-bold transition-all flex items-center gap-1 bg-slate-100 hover:bg-orange-100 text-slate-600 hover:text-orange-900 border border-slate-200 cursor-pointer';
+    btn.innerHTML = agoraMarcada
+      ? '<span>⛔</span><span>INVIÁVEL</span>'
+      : '<span>🚫</span><span>Inviável</span>';
+  }
+
+  const card = document.getElementById('card-item-' + strId);
+  if (card) {
+    const venceHoje = card.getAttribute('data-vence-hoje') === '1';
+    if (!venceHoje) {
+      card.classList.remove('border-slate-200', 'border-orange-500', 'bg-orange-50/40', 'ring-2', 'ring-orange-400/50');
+      if (agoraMarcada) {
+        card.classList.add('border-orange-500', 'bg-orange-50/40', 'ring-2', 'ring-orange-400/50');
+      } else {
+        card.classList.add('border-slate-200');
+      }
+    }
+  }
+}
+
+function limparAlertasPregoesVencidos() {
+  const central = document.getElementById('centralAlertasPregoes');
+  if (!central) return;
+  const agora = new Date();
+  const c1 = new Date(2026, 10, 13, 10, 1, 0);
+  const c2 = new Date(2026, 10, 16, 8, 0, 0);
+  if (agora > c1 && agora > c2) {
+    central.classList.add('hidden');
+  }
 }
 
 // ============================================================================
@@ -1080,5 +1148,6 @@ function renderizarHistoricoCalculadora() {
 
 window.addEventListener('DOMContentLoaded', () => {
   atualizarBadgesNavegacao();
+  limparAlertasPregoesVencidos();
 });
 
