@@ -83,6 +83,11 @@
           <span>Fornecedores</span>
           <span id="navBadgeForn" class="px-1.5 py-0.5 rounded-full text-[10px] font-black bg-amber-400 text-slate-950">0</span>
         </button>
+        <button onclick="alternarAbaPrincipal('calculadora')" data-tab="calculadora" class="nav-main-tab px-3 py-1.5 rounded-xl text-xs font-bold bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition-all flex items-center gap-1.5 cursor-pointer">
+          <span>🧮</span>
+          <span>Margem</span>
+          <span id="navBadgeCalc" class="px-1.5 py-0.5 rounded-full text-[10px] font-black bg-cyan-400 text-slate-950">0</span>
+        </button>
       </nav>
 
       <!-- Informação discreta de apoio e botão restaurar se houver itens excluídos -->
@@ -507,6 +512,167 @@
       </form>
     </div>
   </div>
+
+  <!-- ABA 4: CALCULADORA DE MARGEM DE PRODUTO + HISTÓRICO -->
+  <section id="viewCalculadora" class="hidden max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow space-y-6">
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-5 rounded-3xl border border-slate-200 shadow-xs">
+      <div>
+        <span class="text-[11px] font-black uppercase tracking-wider text-cyan-700">Precificação Estratégica MEI</span>
+        <h2 class="text-xl sm:text-2xl font-black text-slate-900">Calculadora de Margem de Produto</h2>
+        <p class="text-xs text-slate-500">Simule pelo valor pretendido ou pela margem desejada (%), atribua ao link da oportunidade e salve no histórico.</p>
+      </div>
+      <div class="flex items-center gap-2">
+        <button type="button" onclick="limparFormCalculadora()" class="px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs cursor-pointer">Limpar Campos</button>
+        <button type="button" onclick="exportarBackupCRM()" class="px-3.5 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs cursor-pointer">💾 Exportar Backup</button>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <!-- Formulário da Calculadora -->
+      <form id="formCalculadoraMargem" onsubmit="salvarCalculoHistorico(event)" class="lg:col-span-2 bg-white rounded-3xl p-6 border border-slate-200 shadow-xs space-y-4 text-xs">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <div class="sm:col-span-2">
+            <label class="font-bold text-slate-700 block mb-1">Nome do Produto / Item *</label>
+            <input id="calcProdutoNome" required type="text" placeholder="Ex: Troféu Madeira 30cm (Item 4)" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 font-semibold focus:outline-none focus:ring-2 focus:ring-sky-500">
+          </div>
+          <div>
+            <label class="font-bold text-slate-700 block mb-1">Quantidade (Lote)</label>
+            <input id="calcQuantidade" type="number" min="1" value="1" oninput="recalcularMargemProduto('venda')" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 font-bold">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 bg-slate-50 p-4 rounded-2xl border border-slate-200">
+          <div>
+            <label class="font-bold text-slate-700 block mb-1">Preço de Custo Unit. (R$) *</label>
+            <input id="calcPrecoCusto" required type="number" step="0.01" min="0" placeholder="0,00" oninput="recalcularMargemProduto('venda')" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 bg-white font-black text-slate-900">
+          </div>
+          <div>
+            <label class="font-bold text-slate-700 block mb-1">Extras / Frete / Emb. (R$)</label>
+            <input id="calcCustosExtras" type="number" step="0.01" min="0" value="0" oninput="recalcularMargemProduto('venda')" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 bg-white font-bold">
+          </div>
+          <div>
+            <label class="font-bold text-slate-700 block mb-1">Imposto / Taxa (%)</label>
+            <input id="calcImpostoPct" type="number" step="0.1" min="0" max="90" value="0" oninput="recalcularMargemProduto('venda')" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 bg-white font-bold">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 bg-emerald-50/70 p-4 rounded-2xl border border-emerald-200">
+          <div>
+            <label class="font-black text-emerald-900 block mb-1">Valor Pretendido / Lance (R$)</label>
+            <input id="calcValorPretendido" type="number" step="0.01" min="0" placeholder="0,00" oninput="recalcularMargemProduto('venda')" class="w-full px-3 py-2.5 rounded-xl border-2 border-emerald-400 bg-white font-black text-emerald-900 text-sm">
+            <span class="text-[10px] text-emerald-700 block mt-1">Digite o preço para ver a margem %</span>
+          </div>
+          <div>
+            <label class="font-black text-sky-900 block mb-1">Margem de Lucro (%)</label>
+            <input id="calcMargemDesejada" type="number" step="0.1" placeholder="Ex: 30" oninput="recalcularMargemProduto('margem')" class="w-full px-3 py-2.5 rounded-xl border-2 border-sky-400 bg-white font-black text-sky-900 text-sm">
+            <span class="text-[10px] text-sky-700 block mt-1">Ou digite a % para calcular o preço</span>
+          </div>
+          <div>
+            <label class="font-bold text-slate-700 block mb-1">Teto do Edital (Opcional R$)</label>
+            <input id="calcValorTeto" type="number" step="0.01" min="0" placeholder="0,00" oninput="recalcularMargemProduto('venda')" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 bg-white font-bold">
+            <span class="text-[10px] text-slate-500 block mt-1">Compara desconto vs. teto</span>
+          </div>
+        </div>
+
+        <div class="space-y-3 bg-sky-50/60 p-4 rounded-2xl border border-sky-200">
+          <div class="flex items-center justify-between">
+            <strong class="text-xs font-black text-sky-900">🔗 Atribuir à Oportunidade</strong>
+            <span class="text-[10px] text-sky-700 font-semibold">Salvo junto no histórico</span>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label class="font-bold text-slate-700 block mb-1">Puxar do Meu CRM (opcional)</label>
+              <select id="calcOportunidadeCRM" onchange="aoSelecionarOportunidadeCalc()" class="w-full px-3 py-2 rounded-xl border border-slate-300 bg-white font-semibold">
+                <option value="">— Selecionar oportunidade do CRM —</option>
+              </select>
+            </div>
+            <div>
+              <label class="font-bold text-slate-700 block mb-1">Nome / Referência da Oportunidade</label>
+              <input id="calcNomeOportunidade" type="text" placeholder="Ex: PE 193/2026 - Taquara" class="w-full px-3 py-2 rounded-xl border border-slate-300 bg-white">
+            </div>
+            <div class="sm:col-span-2">
+              <label class="font-bold text-slate-700 block mb-1">Link da Oportunidade (URL PNCP / Portal)</label>
+              <input id="calcLinkOportunidade" type="url" placeholder="https://www.portaldecompraspublicas.com.br/..." class="w-full px-3 py-2 rounded-xl border border-slate-300 bg-white font-medium text-sky-800">
+            </div>
+          </div>
+        </div>
+
+        <div class="flex justify-end pt-1">
+          <button type="submit" class="px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-black text-xs shadow-sm cursor-pointer flex items-center gap-2">
+            <span>💾</span>
+            <span>Salvar Cálculo no Histórico</span>
+          </button>
+        </div>
+      </form>
+
+      <!-- Painel de Resultado Ao Vivo -->
+      <div class="bg-slate-900 text-white rounded-3xl p-6 border border-slate-800 shadow-sm flex flex-col justify-between space-y-5">
+        <div class="space-y-4">
+          <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+            <span class="text-xs font-black uppercase text-slate-400">Resultado em Tempo Real</span>
+            <span id="calcStatusMargemBadge" class="px-2.5 py-1 rounded-lg text-[11px] font-black bg-slate-200 text-slate-700">Aguardando valores</span>
+          </div>
+
+          <div class="bg-slate-800/80 rounded-2xl p-4 border border-slate-700 text-center">
+            <span class="text-[11px] font-bold uppercase text-slate-400 block">Margem Líquida de Lucro</span>
+            <strong id="calcResMargemPct" class="text-4xl font-black text-emerald-400 block mt-1">0.0%</strong>
+            <span class="text-xs text-slate-300 block mt-1">Markup sobre custo: <strong id="calcResMarkupPct" class="text-sky-300">0.0%</strong></span>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3 text-xs">
+            <div class="bg-slate-800/60 p-3 rounded-xl border border-slate-700">
+              <span class="text-slate-400 block text-[10px]">Lucro por Unidade</span>
+              <strong id="calcResLucroUnit" class="text-base font-black text-emerald-400">R$ 0,00</strong>
+            </div>
+            <div class="bg-slate-800/60 p-3 rounded-xl border border-slate-700">
+              <span class="text-slate-400 block text-[10px]">Lucro Total do Lote</span>
+              <strong id="calcResLucroTotal" class="text-base font-black text-emerald-300">R$ 0,00</strong>
+            </div>
+            <div class="bg-slate-800/60 p-3 rounded-xl border border-slate-700">
+              <span class="text-slate-400 block text-[10px]">Faturamento Lote</span>
+              <strong id="calcResFaturamentoTotal" class="text-sm font-black text-white">R$ 0,00</strong>
+            </div>
+            <div class="bg-slate-800/60 p-3 rounded-xl border border-slate-700">
+              <span class="text-slate-400 block text-[10px]">Custo Total Lote</span>
+              <strong id="calcResCustoTotal" class="text-sm font-black text-rose-300">R$ 0,00</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-slate-800/50 p-3 rounded-xl border border-slate-700 flex items-center justify-between text-xs">
+          <span class="text-slate-400 font-semibold">Desconto vs. Teto:</span>
+          <span id="calcResDescontoTeto" class="font-bold text-slate-400">—</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Histórico de Cálculos -->
+    <div class="bg-white rounded-3xl border border-slate-200 shadow-xs overflow-hidden">
+      <div class="p-4 sm:p-5 border-b border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div>
+          <h3 class="text-base font-black text-slate-900">📜 Histórico de Cálculos de Margem</h3>
+          <p class="text-xs text-slate-500">Clique em "Abrir Oportunidade" para ir direto ao edital ou em "📥 Usar" para recalcular.</p>
+        </div>
+        <input id="calcFiltroBusca" oninput="renderizarHistoricoCalculadora()" type="text" placeholder="Filtrar histórico por produto ou oportunidade..." class="w-full sm:max-w-xs px-3 py-2 rounded-xl border border-slate-300 text-xs font-medium">
+      </div>
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-xs">
+          <thead class="bg-slate-50 border-b border-slate-200 text-slate-500 uppercase text-[10px] font-black">
+            <tr>
+              <th class="p-3">Produto / Data</th>
+              <th class="p-3">Custo Unit.</th>
+              <th class="p-3">Valor Pretendido</th>
+              <th class="p-3">Lucro (Unit / Lote)</th>
+              <th class="p-3">Margem / Markup</th>
+              <th class="p-3">Oportunidade Atribuída</th>
+              <th class="p-3 text-right">Ações</th>
+            </tr>
+          </thead>
+          <tbody id="calcHistoricoTbody" class="divide-y divide-slate-100"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
 
   
   <!-- MODAL DE REGISTRO MANUAL DE PROPOSTA ENVIADA -->

@@ -231,10 +231,12 @@ function alternarAbaPrincipal(aba) {
   const vRadar = document.getElementById('viewRadar');
   const vCRM = document.getElementById('viewCRM');
   const vForn = document.getElementById('viewFornecedores');
+  const vCalc = document.getElementById('viewCalculadora');
 
   if (vRadar) vRadar.classList.toggle('hidden', aba !== 'radar');
   if (vCRM) vCRM.classList.toggle('hidden', aba !== 'crm');
   if (vForn) vForn.classList.toggle('hidden', aba !== 'fornecedores');
+  if (vCalc) vCalc.classList.toggle('hidden', aba !== 'calculadora');
 
   document.querySelectorAll('.nav-main-tab').forEach(btn => {
     const target = btn.getAttribute('data-tab');
@@ -246,11 +248,13 @@ function alternarAbaPrincipal(aba) {
 
   if (aba === 'crm') renderizarCRM();
   if (aba === 'fornecedores') renderizarFornecedoresView();
+  if (aba === 'calculadora') inicializarCalculadoraMargem();
 }
 
 function atualizarBadgesNavegacao() {
   const ops = lerCRMOportunidades();
   const forns = lerCRMFornecedores();
+  const calcs = lerHistoricoCalculadora();
   const ativas = ops.filter(o => o.etapa !== 'perdida' && o.etapa !== 'entregue').length;
 
   const bCRM = document.getElementById('navBadgeCRM');
@@ -258,6 +262,9 @@ function atualizarBadgesNavegacao() {
 
   const bForn = document.getElementById('navBadgeForn');
   if (bForn) bForn.innerText = forns.length;
+
+  const bCalc = document.getElementById('navBadgeCalc');
+  if (bCalc) bCalc.innerText = calcs.length;
 }
 
 // ============================================================================
@@ -767,10 +774,11 @@ function excluirFornecedorCRM(fornId) {
 // ============================================================================
 function exportarBackupCRM() {
   const payload = {
-    versao: 1,
+    versao: 2,
     exportadoEm: new Date().toISOString(),
     oportunidades: lerCRMOportunidades(),
-    fornecedores: lerCRMFornecedores()
+    fornecedores: lerCRMFornecedores(),
+    calculosMargem: lerHistoricoCalculadora()
   };
   const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
   const url = URL.createObjectURL(blob);
@@ -790,15 +798,284 @@ function importarBackupCRM(event) {
       const data = JSON.parse(ev.target.result);
       if (Array.isArray(data.oportunidades)) salvarCRMOportunidades(data.oportunidades);
       if (Array.isArray(data.fornecedores)) salvarCRMFornecedores(data.fornecedores);
+      if (Array.isArray(data.calculosMargem)) salvarHistoricoCalculadora(data.calculosMargem);
       alert('Backup restaurado com sucesso!');
       if (crmAbaAtual === 'crm') renderizarCRM();
       if (crmAbaAtual === 'fornecedores') renderizarFornecedoresView();
+      if (crmAbaAtual === 'calculadora') inicializarCalculadoraMargem();
     } catch (err) {
       alert('Arquivo de backup inválido.');
     }
   };
   reader.readAsText(file);
   event.target.value = '';
+}
+
+// ============================================================================
+// CALCULADORA DE MARGEM DE PRODUTO + HISTÓRICO COM LINK DA OPORTUNIDADE
+// ============================================================================
+const CALC_STORAGE_KEY = 'rp_calc_margem_historico_v1';
+
+function lerHistoricoCalculadora() {
+  try {
+    const raw = localStorage.getItem(CALC_STORAGE_KEY);
+    return raw ? JSON.parse(raw) : [];
+  } catch (e) {
+    return [];
+  }
+}
+
+function salvarHistoricoCalculadora(lista) {
+  localStorage.setItem(CALC_STORAGE_KEY, JSON.stringify(lista));
+  atualizarBadgesNavegacao();
+}
+
+function inicializarCalculadoraMargem() {
+  popularSelectOportunidadesCalculadora();
+  recalcularMargemProduto('venda');
+  renderizarHistoricoCalculadora();
+}
+
+function popularSelectOportunidadesCalculadora() {
+  const sel = document.getElementById('calcOportunidadeCRM');
+  if (!sel) return;
+  const ops = lerCRMOportunidades();
+  const atual = sel.value;
+  sel.innerHTML = '<option value="">— Selecionar oportunidade do CRM (opcional) —</option>' +
+    ops.map(o => `<option value="${escCRM(o.id)}">${escCRM(o.titulo)} (${escCRM(o.orgao || o.cidade)})</option>`).join('');
+  if (atual) sel.value = atual;
+}
+
+function aoSelecionarOportunidadeCalc() {
+  const sel = document.getElementById('calcOportunidadeCRM');
+  if (!sel || !sel.value) return;
+  const op = lerCRMOportunidades().find(o => o.id === sel.value);
+  if (!op) return;
+  const inputNome = document.getElementById('calcNomeOportunidade');
+  const inputLink = document.getElementById('calcLinkOportunidade');
+  if (inputNome && !inputNome.value.trim()) inputNome.value = op.titulo;
+  if (inputLink && op.portalUrl) inputLink.value = op.portalUrl;
+}
+
+function recalcularMargemProduto(origem = 'venda') {
+  const custo = Math.max(0, Number(document.getElementById('calcPrecoCusto')?.value) || 0);
+  const extras = Math.max(0, Number(document.getElementById('calcCustosExtras')?.value) || 0);
+  const impostoPct = Math.max(0, Math.min(90, Number(document.getElementById('calcImpostoPct')?.value) || 0));
+  const qtd = Math.max(1, Number(document.getElementById('calcQuantidade')?.value) || 1);
+  const teto = Math.max(0, Number(document.getElementById('calcValorTeto')?.value) || 0);
+
+  const elVenda = document.getElementById('calcValorPretendido');
+  const elMargem = document.getElementById('calcMargemDesejada');
+  if (!elVenda || !elMargem) return;
+
+  const custoBase = custo + extras;
+  let venda = Math.max(0, Number(elVenda.value) || 0);
+  let margemPct = Number(elMargem.value) || 0;
+
+  if (origem === 'margem') {
+    const m = margemPct / 100;
+    const imp = impostoPct / 100;
+    const denom = 1 - m - imp;
+    venda = denom > 0.01 ? custoBase / denom : 0;
+    elVenda.value = venda > 0 ? venda.toFixed(2) : '';
+  } else {
+    const impValor = venda * (impostoPct / 100);
+    const lucroUnit = venda - custoBase - impValor;
+    margemPct = venda > 0 ? (lucroUnit / venda) * 100 : 0;
+    elMargem.value = venda > 0 ? margemPct.toFixed(2) : '';
+  }
+
+  const impUnit = venda * (impostoPct / 100);
+  const custoTotalUnit = custoBase + impUnit;
+  const lucroUnit = venda - custoTotalUnit;
+  const markupPct = custoTotalUnit > 0 ? (lucroUnit / custoTotalUnit) * 100 : 0;
+
+  const totalVenda = venda * qtd;
+  const totalCusto = custoTotalUnit * qtd;
+  const totalLucro = lucroUnit * qtd;
+
+  const setTxt = (id, txt) => {
+    const el = document.getElementById(id);
+    if (el) el.innerText = txt;
+  };
+
+  setTxt('calcResLucroUnit', formatarMoedaCRM(lucroUnit));
+  setTxt('calcResMargemPct', `${margemPct.toFixed(1)}%`);
+  setTxt('calcResMarkupPct', `${markupPct.toFixed(1)}%`);
+  setTxt('calcResLucroTotal', formatarMoedaCRM(totalLucro));
+  setTxt('calcResFaturamentoTotal', formatarMoedaCRM(totalVenda));
+  setTxt('calcResCustoTotal', formatarMoedaCRM(totalCusto));
+
+  const badge = document.getElementById('calcStatusMargemBadge');
+  if (badge) {
+    if (venda <= 0) {
+      badge.className = 'px-2.5 py-1 rounded-lg text-[11px] font-black bg-slate-200 text-slate-700';
+      badge.innerText = 'Aguardando valores';
+    } else if (lucroUnit <= 0) {
+      badge.className = 'px-2.5 py-1 rounded-lg text-[11px] font-black bg-rose-100 text-rose-800 border border-rose-300';
+      badge.innerText = '⚠️ Prejuízo / Abaixo do custo';
+    } else if (margemPct < 15) {
+      badge.className = 'px-2.5 py-1 rounded-lg text-[11px] font-black bg-amber-100 text-amber-900 border border-amber-300';
+      badge.innerText = '🟡 Margem Baixa (<15%)';
+    } else {
+      badge.className = 'px-2.5 py-1 rounded-lg text-[11px] font-black bg-emerald-100 text-emerald-900 border border-emerald-300';
+      badge.innerText = '🟢 Margem Saudável';
+    }
+  }
+
+  const elDesc = document.getElementById('calcResDescontoTeto');
+  if (elDesc) {
+    if (teto > 0 && venda > 0) {
+      const diffPct = ((teto - venda) / teto) * 100;
+      elDesc.innerText = diffPct >= 0
+        ? `${diffPct.toFixed(1)}% abaixo do teto`
+        : `⚠️ ${Math.abs(diffPct).toFixed(1)}% ACIMA do teto`;
+      elDesc.className = diffPct >= 0 ? 'text-xs font-black text-sky-700' : 'text-xs font-black text-rose-600';
+    } else {
+      elDesc.innerText = '—';
+      elDesc.className = 'text-xs font-bold text-slate-400';
+    }
+  }
+}
+
+function salvarCalculoHistorico(e) {
+  e.preventDefault();
+  const produto = document.getElementById('calcProdutoNome').value.trim();
+  const qtd = Math.max(1, Number(document.getElementById('calcQuantidade').value) || 1);
+  const custo = Math.max(0, Number(document.getElementById('calcPrecoCusto').value) || 0);
+  const extras = Math.max(0, Number(document.getElementById('calcCustosExtras').value) || 0);
+  const impostoPct = Math.max(0, Number(document.getElementById('calcImpostoPct').value) || 0);
+  const venda = Math.max(0, Number(document.getElementById('calcValorPretendido').value) || 0);
+  const teto = Math.max(0, Number(document.getElementById('calcValorTeto').value) || 0);
+
+  if (!produto || venda <= 0) {
+    alert('Preencha o nome do produto e um valor pretendido maior que zero.');
+    return;
+  }
+
+  const impUnit = venda * (impostoPct / 100);
+  const custoTotalUnit = custo + extras + impUnit;
+  const lucroUnit = venda - custoTotalUnit;
+  const margemPct = venda > 0 ? (lucroUnit / venda) * 100 : 0;
+  const markupPct = custoTotalUnit > 0 ? (lucroUnit / custoTotalUnit) * 100 : 0;
+
+  const selCRM = document.getElementById('calcOportunidadeCRM');
+  const crmId = selCRM ? selCRM.value : '';
+  const nomeOp = document.getElementById('calcNomeOportunidade').value.trim();
+  const linkOp = document.getElementById('calcLinkOportunidade').value.trim();
+
+  const registro = {
+    id: 'calc_' + Date.now(),
+    produto,
+    qtd,
+    custo,
+    extras,
+    impostoPct,
+    venda,
+    teto,
+    custoTotalUnit,
+    lucroUnit,
+    lucroTotal: lucroUnit * qtd,
+    faturamentoTotal: venda * qtd,
+    margemPct,
+    markupPct,
+    crmId,
+    nomeOp,
+    linkOp,
+    criadoEm: new Date().toISOString()
+  };
+
+  const hist = lerHistoricoCalculadora();
+  hist.unshift(registro);
+  salvarHistoricoCalculadora(hist);
+  renderizarHistoricoCalculadora();
+}
+
+function carregarCalculoDoHistorico(calcId) {
+  const item = lerHistoricoCalculadora().find(x => x.id === calcId);
+  if (!item) return;
+
+  document.getElementById('calcProdutoNome').value = item.produto || '';
+  document.getElementById('calcQuantidade').value = item.qtd || 1;
+  document.getElementById('calcPrecoCusto').value = item.custo || 0;
+  document.getElementById('calcCustosExtras').value = item.extras || 0;
+  document.getElementById('calcImpostoPct').value = item.impostoPct || 0;
+  document.getElementById('calcValorPretendido').value = item.venda || 0;
+  document.getElementById('calcValorTeto').value = item.teto || '';
+  document.getElementById('calcOportunidadeCRM').value = item.crmId || '';
+  document.getElementById('calcNomeOportunidade').value = item.nomeOp || '';
+  document.getElementById('calcLinkOportunidade').value = item.linkOp || '';
+
+  recalcularMargemProduto('venda');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function excluirCalculoHistorico(calcId) {
+  if (!confirm('Remover este cálculo do histórico?')) return;
+  const hist = lerHistoricoCalculadora().filter(x => x.id !== calcId);
+  salvarHistoricoCalculadora(hist);
+  renderizarHistoricoCalculadora();
+}
+
+function limparFormCalculadora() {
+  document.getElementById('formCalculadoraMargem')?.reset();
+  document.getElementById('calcQuantidade').value = 1;
+  document.getElementById('calcCustosExtras').value = 0;
+  document.getElementById('calcImpostoPct').value = 0;
+  recalcularMargemProduto('venda');
+}
+
+function renderizarHistoricoCalculadora() {
+  const hist = lerHistoricoCalculadora();
+  const busca = (document.getElementById('calcFiltroBusca')?.value || '').toLowerCase().trim();
+  const filtrados = hist.filter(h => {
+    if (!busca) return true;
+    return `${h.produto} ${h.nomeOp} ${h.linkOp}`.toLowerCase().includes(busca);
+  });
+
+  const tbody = document.getElementById('calcHistoricoTbody');
+  if (!tbody) return;
+
+  if (filtrados.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="8" class="p-8 text-center text-slate-400">Nenhum cálculo salvo no histórico ainda. Preencha os valores acima e clique em "Salvar no Histórico".</td></tr>';
+    return;
+  }
+
+  tbody.innerHTML = filtrados.map(h => {
+    const badgeCor = h.margemPct >= 20
+      ? 'bg-emerald-100 text-emerald-900'
+      : h.margemPct >= 10
+        ? 'bg-amber-100 text-amber-900'
+        : 'bg-rose-100 text-rose-900';
+
+    const linkHref = h.linkOp ? formatarUrlExterna(h.linkOp) : '';
+    return `
+      <tr class="hover:bg-slate-50">
+        <td class="p-3">
+          <strong class="text-slate-900 block">${escCRM(h.produto)}</strong>
+          <span class="text-[10px] text-slate-400">${formatarDataHoraBR(h.criadoEm)} • ${h.qtd} un.</span>
+        </td>
+        <td class="p-3 whitespace-nowrap text-slate-700">${formatarMoedaCRM(h.custoTotalUnit)}</td>
+        <td class="p-3 whitespace-nowrap font-black text-slate-900">${formatarMoedaCRM(h.venda)}</td>
+        <td class="p-3 whitespace-nowrap font-black ${h.lucroUnit >= 0 ? 'text-emerald-700' : 'text-rose-600'}">
+          ${formatarMoedaCRM(h.lucroUnit)}
+          <span class="block text-[10px] font-semibold text-slate-500">Lote: ${formatarMoedaCRM(h.lucroTotal)}</span>
+        </td>
+        <td class="p-3 whitespace-nowrap">
+          <span class="px-2 py-0.5 rounded-lg text-[11px] font-black ${badgeCor}">${Number(h.margemPct).toFixed(1)}%</span>
+          <span class="block text-[10px] text-slate-400 mt-0.5">Markup: ${Number(h.markupPct).toFixed(1)}%</span>
+        </td>
+        <td class="p-3">
+          ${h.nomeOp ? `<span class="text-xs font-bold text-slate-800 block">${escCRM(h.nomeOp)}</span>` : ''}
+          ${linkHref ? `<a href="${escCRM(linkHref)}" target="_blank" class="inline-flex items-center gap-1 text-[11px] font-black text-sky-700 hover:underline">🔗 Abrir Oportunidade ↗</a>` : '<span class="text-[11px] text-slate-400">Sem link atribuído</span>'}
+        </td>
+        <td class="p-3 text-right whitespace-nowrap space-x-1">
+          <button onclick="carregarCalculoDoHistorico('${h.id}')" class="px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 text-white font-bold text-[10px] cursor-pointer" title="Carregar na calculadora">📥 Usar</button>
+          <button onclick="excluirCalculoHistorico('${h.id}')" class="px-2 py-1 rounded-lg bg-rose-50 hover:bg-rose-100 text-rose-700 font-bold text-[10px] cursor-pointer" title="Excluir">🗑️</button>
+        </td>
+      </tr>
+    `;
+  }).join('');
 }
 
 window.addEventListener('DOMContentLoaded', () => {
