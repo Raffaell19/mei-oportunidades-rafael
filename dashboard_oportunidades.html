@@ -50,6 +50,7 @@
   </style>
   <script src="radar_pncp_data.js"></script>
   <script src="crm_module.js"></script>
+  <script src="live_radar.js"></script>
 </head>
 <body class="bg-slate-100 text-slate-800 antialiased min-h-screen flex flex-col">
 
@@ -91,7 +92,10 @@
       </nav>
 
       <!-- Informação discreta de apoio e botão restaurar se houver itens excluídos -->
-      <div class="flex items-center gap-3">
+      <div class="flex items-center gap-2.5">
+        <button onclick="sincronizarPNCPAoVivo(true)" class="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 text-[11px] font-bold text-emerald-300 transition-all cursor-pointer flex items-center gap-1" title="Buscar novas oportunidades no PNCP agora">
+          <span id="liveRadarStatusTxt">🔄 Ao vivo</span>
+        </button>
         <span class="hidden lg:inline text-xs text-slate-400 font-medium">Rafael Plácido • Nova Hartz/RS</span>
         <span id="headerVolumeTotal" class="hidden">R$ 0,00</span>
         <button id="btnRestaurar" onclick="restaurarExcluidos()" class="hidden text-xs bg-amber-400 hover:bg-amber-300 text-slate-950 font-black px-2.5 py-1 rounded-lg transition-all shadow-xs flex items-center gap-1">
@@ -263,7 +267,7 @@
           </button>
 
           <button onclick="filterCards('vale_paranhana')" class="filter-btn px-2.5 py-1 rounded-lg text-xs font-black transition-all bg-emerald-50 hover:bg-emerald-100 text-emerald-900 border border-emerald-300 flex items-center gap-1 shadow-xs ring-1 ring-emerald-500/30" data-filter="vale_paranhana">
-            <span>📍</span> Vale do Paranhana (<span id="badgeValeParanhana">35</span>)
+            <span>📍</span> Vale Paranhana & Sinos (<span id="badgeValeParanhana">35</span>)
           </button>
 
           <button onclick="filterCards('radar_pncp')" class="filter-btn px-2.5 py-1 rounded-lg text-xs font-bold transition-all bg-sky-50 hover:bg-sky-100 text-sky-900 border border-sky-300 flex items-center gap-1 shadow-xs" data-filter="radar_pncp">
@@ -2690,7 +2694,14 @@
     // FUNÇÕES DE EXTRAÇÃO, IDENTIFICAÇÃO E CLASSIFICAÇÃO SEGREGADA
     // ==============================================================
     const VALE_PARANHANA_CIDADES = [
-      'igrejinha', 'sapiranga', 'nova hartz', 'taquara', 'parobe', 'parobé', 'ararica', 'araricá', 'rolante', 'riozinho', 'três coroas', 'tres coroas'
+      'igrejinha', 'sapiranga', 'nova hartz', 'taquara', 'parobe', 'parobé', 'ararica', 'araricá', 'rolante', 'riozinho', 'três coroas', 'tres coroas',
+      'campo bom', 'novo hamburgo', 'são leopoldo', 'sao leopoldo', 'estância velha', 'estancia velha', 'dois irmãos', 'dois irmaos', 'ivoti', 'portão', 'portao', 'sapucaia do sul', 'esteio'
+    ];
+
+    const POA_RM_CIDADES = [
+      ...VALE_PARANHANA_CIDADES,
+      'porto alegre', 'canoas', 'gravataí', 'gravatai', 'cachoeirinha', 'alvorada', 'viamão', 'viamao',
+      'guaíba', 'guaiba', 'eldorado do sul', 'montenegro', 'triunfo', 'charqueadas', 'nova santa rita', 'glorinha', 'santo antônio da patrulha', 'santo antonio da patrulha'
     ];
 
     function extrairCidadeItem(item) {
@@ -2745,7 +2756,10 @@
       const plat = (item.plataforma || '').toLowerCase();
       const link = (item.linkDireto || item.linkSistemaOficial || item.link || '').toLowerCase();
       const cat = (item.categoria || '').toLowerCase();
-      return plat.includes('contrata+') || link.includes('contratamais') || cat.includes('contratamais');
+      const ehContrata = item.ehContrataMais || item.ehComprasGov || plat.includes('contrata+') || plat.includes('compras.gov') || link.includes('contratamais') || link.includes('cnetmobile') || cat.includes('contratamais');
+      if (!ehContrata) return false;
+      const cid = extrairCidadeItem(item).toLowerCase();
+      return POA_RM_CIDADES.some(c => cid.includes(c)) || item.ehRegiaoProxima === true;
     }
 
     function ehOportunidadeServico(item) {
@@ -2758,7 +2772,8 @@
         'alvenaria', 'limpeza', 'dedetização', 'dedetizacao', 'hidrojateamento', 
         'castração', 'microchipagem', 'organização e execução', 'organizacao e execucao',
         'substituição de persianas', 'substituicao de persianas', 'confeccao de cortinas',
-        'telhado', 'drywall', 'epoxi'
+        'telhado', 'drywall', 'epoxi', 'locação', 'locacao', 'montagem', 'transporte', 'coleta',
+        'consultoria', 'treinamento', 'capacitação', 'capacitacao', 'auditoria', 'assessoria'
       ];
       return termos.some(t => txt.includes(t));
     }
@@ -2806,7 +2821,7 @@
       todas.forEach(it => {
         const strId = String(it.id);
         if (!excluidos.includes(strId) && !enviados.includes(strId) && !vistos.has(strId)) {
-          if (ehOportunidadeMarketing(it) && !ehOportunidadeValeParanhana(it)) {
+          if (ehOportunidadeMarketing(it)) {
             vistos.add(strId);
             lista.push(it);
           }
@@ -2826,7 +2841,7 @@
       todas.forEach(it => {
         const strId = String(it.id);
         if (!excluidos.includes(strId) && !enviados.includes(strId) && !vistos.has(strId)) {
-          if (ehOportunidadeContrataMais(it) && !ehOportunidadeValeParanhana(it) && !ehOportunidadeMarketing(it)) {
+          if (ehOportunidadeContrataMais(it)) {
             vistos.add(strId);
             lista.push(it);
           }
@@ -2846,7 +2861,7 @@
       todas.forEach(it => {
         const strId = String(it.id);
         if (!excluidos.includes(strId) && !enviados.includes(strId) && !vistos.has(strId)) {
-          if (ehOportunidadeServico(it) && !ehOportunidadeValeParanhana(it) && !ehOportunidadeMarketing(it) && !ehOportunidadeContrataMais(it)) {
+          if (ehOportunidadeServico(it) && !ehOportunidadeMarketing(it)) {
             vistos.add(strId);
             lista.push(it);
           }
@@ -2866,7 +2881,7 @@
       todas.forEach(it => {
         const strId = String(it.id);
         if (!excluidos.includes(strId) && !enviados.includes(strId) && !vistos.has(strId)) {
-          if (ehOportunidadeProduto(it) && !ehOportunidadeValeParanhana(it) && !ehOportunidadeMarketing(it) && !ehOportunidadeContrataMais(it)) {
+          if (ehOportunidadeProduto(it) && !ehOportunidadeMarketing(it)) {
             vistos.add(strId);
             lista.push(it);
           }

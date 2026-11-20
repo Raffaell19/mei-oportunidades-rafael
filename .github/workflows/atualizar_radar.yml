@@ -1,0 +1,36 @@
+name: Atualizar Radar PNCP MEI
+
+on:
+  schedule:
+    - cron: '0 */2 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  atualizar-radar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repositório
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Executar rastreador PNCP
+        run: python AUTOMACAO/rastreador_pncp_mei.py
+
+      - name: Commit e Push se houver novas oportunidades
+        run: |
+          git config user.name "Radar PNCP Bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add radar_pncp_mei.json radar_pncp_data.js
+          if ! git diff --staged --quiet; then
+            git commit -m "chore(radar): atualizacao automatica PNCP $(date +'%Y-%m-%d %H:%M')"
+            git push
+          else
+            echo "Nenhuma alteração no radar."
+          fi
