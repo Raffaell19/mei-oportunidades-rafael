@@ -26,17 +26,72 @@ const LIVE_BLOQUEIO_MEI = [
   'pavimentação asfáltica', 'dap rural', 'caf rural', 'pronaf'
 ];
 
-function liveGerarTituloFiel(objeto) {
-  let txt = String(objeto || '').replace(/\s+/g, ' ').trim();
-  if (!txt) return 'Oportunidade Pública MEI';
-  txt = txt
-    .replace(/^(?:a presente licita[çc][ãa]o tem por finalidade o )?(?:registro de pre[çc]os? para )?(?:futura e eventual )?/i, '')
-    .replace(/^(?:contrata[çc][ãa]o de empresa especializada (?:para|na) )?/i, '')
-    .replace(/^(?:aquisi[çc][ãa]o|fornecimento|presta[çc][ãa]o de servi[çc]os) (?:de |para )?/i, '')
-    .trim();
-  if (txt.length < 12) txt = String(objeto || '').replace(/\s+/g, ' ').trim();
-  if (txt.length > 85) txt = txt.slice(0, 82).replace(/\s+\S*$/, '') + '...';
-  return txt.charAt(0).toUpperCase() + txt.slice(1);
+function liveSmartTitleCase(texto) {
+  const siglas = new Set(['LED', 'USB', '8TB', '15KV', 'ETP', 'TR', 'RS', 'POA', 'CMS', 'PRF', 'TI', 'CFTV', 'HDMI', 'PVC', 'ACM', 'MDF', 'EPI', 'CONAB', 'SME', 'PNCP', 'MEI', 'UPS']);
+  const minusculas = new Set(['de', 'da', 'do', 'das', 'dos', 'e', 'em', 'para', 'com', 'sem', 'por', 'a', 'o', 'as', 'os', 'no', 'na', 'nos', 'nas', 'ao', 'à']);
+  return texto.split(/\s+/).map((w, i) => {
+    const cw = w.replace(/[^\wÀ-ÿ]/g, '').toUpperCase();
+    if (siglas.has(cw) || /^\d+[A-Z]+$/.test(cw)) return w.toUpperCase();
+    if (i > 0 && minusculas.has(w.toLowerCase())) return w.toLowerCase();
+    return w.charAt(0).toUpperCase() + w.slice(1).toLowerCase();
+  }).join(' ');
+}
+
+function liveEscolherEmoji(txtLow) {
+  const regras = [
+    ['🚗', ['veicular', 'seguro veicular', 'viatura', 'elevador automotivo', 'pedágio', 'pedagio', 'pneu', 'automotivo']],
+    ['🩺', ['diagnóstica', 'diagnostica', 'medicinal', 'ar comprimido medicinal', 'hospitalar', 'saúde', 'saude', 'odonto', 'médico', 'medico']],
+    ['💻', ['informatica', 'informática', 'computador', 'notebook', 'nobreak', 'hd ', 'ssd', 'monitor', 'impressora', 'outsourcing', 'licença', 'licenca', 'creative cloud', 'fibra', 'transceptor', 'switch', 'mesa de som']],
+    ['⚡', ['elétrica', 'eletrica', 'elétrico', 'eletrico', 'lâmpada', 'lampada', 'disjuntor', 'fusivel', 'fusível', 'aterramento', 'cabo cobre', 'plugue', 'alicate', 'iluminação', 'iluminacao']],
+    ['❄️', ['ar-condicionado', 'ar condicionado', 'climatização', 'climatizacao', 'refrigeração', 'refrigeracao']],
+    ['🪑', ['móveis', 'moveis', 'mesa', 'cadeira', 'armário', 'armario', 'estofado', 'persiana', 'cortina', 'mobiliário', 'mobiliario', 'mudança', 'mudanca']],
+    ['🛠️', ['pintura', 'pedreiro', 'alvenaria', 'drywall', 'gesso', 'forro', 'porcelanato', 'piso', 'telhado', 'portão', 'portao', 'grade', 'serralheria', 'hidrojateamento', 'caixas pluviais', 'vidro', 'esquadria']],
+    ['🔩', ['ferragem', 'ferragens', 'abrasivo', 'construção', 'construcao', 'ferramenta', 'parafuso']],
+    ['🧹', ['limpeza', 'higiene', 'papel toalha', 'sabão', 'detergente', 'descartável', 'descartavel']],
+    ['🖨️', ['gráfico', 'grafico', 'gráficos', 'graficos', 'adesivo', 'placa', 'bandeira', 'carimbo', 'impressão', 'impressao', 'informativo']],
+    ['👕', ['vestuário', 'vestuario', 'uniforme', 'camiseta', 'boné', 'bone']],
+    ['⚽', ['esportivo', 'esportivos', 'troféu', 'trofeu', 'medalha', 'futebol']],
+    ['🍽️', ['alimento', 'alimentação', 'alimentacao', 'coffee', 'feijão', 'feijao', 'lanche', 'refeição', 'refeicao', 'aquecedor de xícaras']],
+    ['📣', ['marketing', 'redes sociais', 'social media', 'vídeo', 'video', 'audiovisual', 'design']]
+  ];
+  for (const [emoji, kws] of regras) {
+    if (kws.some(k => txtLow.includes(k))) return emoji;
+  }
+  return '📦';
+}
+
+function liveGerarTituloFiel(objeto, orgao = '') {
+  const txt = String(objeto || '').replace(/\s+/g, ' ').trim();
+  if (!txt) return '📦 Oportunidade Pública MEI';
+  let limpo = txt;
+  const mFam = txt.match(/BENS DA\(S\) FAM[ÍI]LIA\(S\):\s*\d+\s*[-–]\s*(.+)/i);
+  if (mFam) {
+    const fam = mFam[1].replace(/;\s*\d+\s*[-–]\s*/g, ' e ').replace(/\bP\/\s*/gi, 'para ').replace(/\//g, ' / ').replace(/^[;\s.,-]+|[;\s.,-]+$/g, '');
+    limpo = liveSmartTitleCase(fam);
+  } else {
+    const prefixos = [
+      /^\[[^\]]+\]\s*[-–—:]?\s*/i,
+      /^(?:a presente licita[çc][ãa]o tem por finalidade (?:o|a) )?/i,
+      /^(?:abertura de licita[çc][ãa]o para (?:o |a )?)?(?:registro de pre[çc]os? para )?(?:futura e eventual )?/i,
+      /^(?:bens comuns,?\s*por itens,?\s*atrav[ée]s de\s*)?dispensa (?:de licita[çc][ãa]o )?(?:eletr[ôo]nica )?(?:para (?:a |o )?)?/i,
+      /^(?:contrata[çc][ãa]o de (?:empresa(?: especializada)? )?(?:para|na|no|em|de) (?:a |o |os |as )?)/i,
+      /^(?:aquisi[çc][ãa]o|compra|fornecimento|presta[çc][ãa]o de servi[çc]os?|execu[çc][ãa]o de servi[çc]os?) (?:cont[íi]nuos? )?(?:de |para |e )?/i,
+      /^(?:o |a |e )(?=[a-zà-ÿ]+ )/i
+    ];
+    for (let r = 0; r < 2; r++) {
+      for (const p of prefixos) limpo = limpo.replace(p, '').trim();
+    }
+    limpo = limpo.replace(/,?\s*(?:conforme condi[çc][õo]es|nos termos|de acordo com|para atender [àa]s necessidades|em favor do).*$/i, '').replace(/[\s,.;-]+$/g, '');
+    if (limpo.length < 8) limpo = txt;
+    limpo = limpo === limpo.toUpperCase() ? liveSmartTitleCase(limpo) : limpo.charAt(0).toUpperCase() + limpo.slice(1);
+  }
+  if (/^conforme\s+etp\s+e\s+tr\.?$/i.test(limpo)) {
+    const orgCurto = String(orgao || '').replace(/\s*\(.*?\)/g, '').trim().slice(0, 38);
+    limpo = orgCurto ? `Demanda Conforme ETP/TR (${orgCurto})` : 'Demanda Conforme ETP/TR (Abrir Edital)';
+  }
+  if (limpo.length > 74) limpo = limpo.slice(0, 71).replace(/\s+\S*$/, '').replace(/[,.;-]+$/, '') + '...';
+  const emoji = liveEscolherEmoji(`${limpo} ${txt}`.toLowerCase());
+  return `${emoji} ${limpo}`;
 }
 
 function liveNormalizarItemPNCP(item, mod) {
@@ -73,7 +128,7 @@ function liveNormalizarItemPNCP(item, mod) {
   const dataFmt = `${pad(dtEnc.getDate())}/${pad(dtEnc.getMonth() + 1)}/${dtEnc.getFullYear()} às ${pad(dtEnc.getHours())}:${pad(dtEnc.getMinutes())}`;
   const modNome = item.modalidadeNome || (mod === 8 ? 'Dispensa' : 'Pregão Eletrônico');
   const numEd = item.numeroCompra ? ` (${modNome} nº ${item.numeroCompra})` : '';
-  const tit = liveGerarTituloFiel(objeto);
+  const tit = liveGerarTituloFiel(objeto, unidade);
 
   return {
     id: numCtrl.replace(/[\/-]/g, '_'),

@@ -3043,7 +3043,14 @@
 
       // Título e Órgão
       const orgao = (s.orgao || 'ÓRGÃO PÚBLICO RS').toUpperCase();
-      const titulo = s.tituloResumo || s.titulo || (s.objeto ? (s.objeto.length > 90 ? s.objeto.substring(0, 87) + '...' : s.objeto) : 'Oportunidade Pública MEI');
+      let titulo = s.tituloResumo || s.titulo || (s.objeto ? (s.objeto.length > 90 ? s.objeto.substring(0, 87) + '...' : s.objeto) : 'Oportunidade Pública MEI');
+      if (typeof liveGerarTituloFiel === 'function' && (s.objeto || s.titulo)) {
+        const baseParaLimpar = s.objeto || s.titulo;
+        const jaTemEmoji = /^[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}]/u.test(titulo);
+        if (!jaTemEmoji || /BENS DA\(S\) FAM|Dispensa de licita|Contrata[çc][ãa]o de empresa|Abertura de licita|^[OAE]\s+/i.test(titulo)) {
+          titulo = liveGerarTituloFiel(baseParaLimpar, s.orgao || '');
+        }
+      }
 
       // Link Direto Oficial
       const linkOficial = formatarLinkDireto(s);

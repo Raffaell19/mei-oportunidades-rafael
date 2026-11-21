@@ -34,9 +34,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "MESA DE SOM E NOBREAK",
-    "tituloResumo": "MESA DE SOM E NOBREAK",
-    "tituloCurto": "MESA DE SOM E NOBREAK",
+    "titulo": "💻 Mesa de Som e Nobreak",
+    "tituloResumo": "💻 Mesa de Som e Nobreak",
+    "tituloCurto": "💻 Mesa de Som e Nobreak",
     "numeroEdital": "225",
     "processo": "63199.002208/2026-51"
   },
@@ -75,9 +75,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "Licença do Creative Cloud Pro for teams.",
-    "tituloResumo": "Licença do Creative Cloud Pro for teams.",
-    "tituloCurto": "Licença do Creative Cloud Pro for teams.",
+    "titulo": "💻 Licença do Creative Cloud Pro for teams",
+    "tituloResumo": "💻 Licença do Creative Cloud Pro for teams",
+    "tituloCurto": "💻 Licença do Creative Cloud Pro for teams",
     "numeroEdital": "331",
     "processo": "42 86.0 1 5900 / 20 26-22"
   },
@@ -116,9 +116,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "AQUECEDOR DE XÍCARAS E COPOS INOX",
-    "tituloResumo": "AQUECEDOR DE XÍCARAS E COPOS INOX",
-    "tituloCurto": "AQUECEDOR DE XÍCARAS E COPOS INOX",
+    "titulo": "🍽️ Aquecedor de Xícaras e Copos Inox",
+    "tituloResumo": "🍽️ Aquecedor de Xícaras e Copos Inox",
+    "tituloCurto": "🍽️ Aquecedor de Xícaras e Copos Inox",
     "numeroEdital": "332",
     "processo": "AQUECEDOR DE XÍCARAS E COPOS I"
   },
@@ -157,9 +157,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "Conforme ETP e TR",
-    "tituloResumo": "Conforme ETP e TR",
-    "tituloCurto": "Conforme ETP e TR",
+    "titulo": "📦 Demanda Conforme ETP/TR (8 ESQUADRAO DE CAVALARIA MECANIZADO/RS)",
+    "tituloResumo": "📦 Demanda Conforme ETP/TR (8 ESQUADRAO DE CAVALARIA MECANIZADO/RS)",
+    "tituloCurto": "📦 Demanda Conforme ETP/TR (8 ESQUADRAO DE CAVALARIA MECANIZADO/RS)",
     "numeroEdital": "103",
     "processo": "64522.003170/2026-87"
   },
@@ -198,9 +198,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "Contratação de seguro veicular, por 12 (doze) meses, para 2 (duas) viaturas...",
-    "tituloResumo": "Contratação de seguro veicular, por 12 (doze) meses, para 2 (duas) viaturas...",
-    "tituloCurto": "Contratação de seguro veicular, por 12 (doze) meses, para 2 (duas) viaturas...",
+    "titulo": "🚗 Contratação de seguro veicular, por 12 (doze) meses, para 2 (duas)...",
+    "tituloResumo": "🚗 Contratação de seguro veicular, por 12 (doze) meses, para 2 (duas)...",
+    "tituloCurto": "🚗 Contratação de seguro veicular, por 12 (doze) meses, para 2 (duas)...",
     "numeroEdital": "99",
     "processo": "63198.000463/2026- 79"
   },
@@ -239,9 +239,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "Mesas e cadeiras em madeira maciça, com padrão único de acabamento, para os...",
-    "tituloResumo": "Mesas e cadeiras em madeira maciça, com padrão único de acabamento, para os...",
-    "tituloCurto": "Mesas e cadeiras em madeira maciça, com padrão único de acabamento, para os...",
+    "titulo": "🪑 Mesas e cadeiras em madeira maciça, com padrão único de acabamento...",
+    "tituloResumo": "🪑 Mesas e cadeiras em madeira maciça, com padrão único de acabamento...",
+    "tituloCurto": "🪑 Mesas e cadeiras em madeira maciça, com padrão único de acabamento...",
     "numeroEdital": "101",
     "processo": "63198.000465/2026-68"
   },
@@ -280,9 +280,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "Material institucional do ComGptPatNavS, para uso em cerimônias e eventos e nos...",
-    "tituloResumo": "Material institucional do ComGptPatNavS, para uso em cerimônias e eventos e nos...",
-    "tituloCurto": "Material institucional do ComGptPatNavS, para uso em cerimônias e eventos e nos...",
+    "titulo": "👕 Material institucional do ComGptPatNavS, para uso em cerimônias e...",
+    "tituloResumo": "👕 Material institucional do ComGptPatNavS, para uso em cerimônias e...",
+    "tituloCurto": "👕 Material institucional do ComGptPatNavS, para uso em cerimônias e...",
     "numeroEdital": "100",
     "processo": "63198.000464/2026-13"
   },
@@ -321,9 +321,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "BENS DA(S) FAMÍLIA(S): 0160-EQUIPAMENTOS/ PEÇAS/ SUPRIMENTOS P/ MATERIAIS ESPORTIVOS;",
-    "tituloResumo": "BENS DA(S) FAMÍLIA(S): 0160-EQUIPAMENTOS/ PEÇAS/ SUPRIMENTOS P/ MATERIAIS ESPORTIVOS;",
-    "tituloCurto": "BENS DA(S) FAMÍLIA(S): 0160-EQUIPAMENTOS/ PEÇAS/ SUPRIMENTOS P/ MATERIAIS ESPORTIVOS;",
+    "titulo": "⚽ Equipamentos / Peças / Suprimentos para Materiais Esportivos",
+    "tituloResumo": "⚽ Equipamentos / Peças / Suprimentos para Materiais Esportivos",
+    "tituloCurto": "⚽ Equipamentos / Peças / Suprimentos para Materiais Esportivos",
     "numeroEdital": "1148",
     "processo": "26/2148-9001296-7"
   },
@@ -362,9 +362,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "BENS DA(S) FAMÍLIA(S): 0855-DIAGNOSTICA;",
-    "tituloResumo": "BENS DA(S) FAMÍLIA(S): 0855-DIAGNOSTICA;",
-    "tituloCurto": "BENS DA(S) FAMÍLIA(S): 0855-DIAGNOSTICA;",
+    "titulo": "🩺 Diagnostica",
+    "tituloResumo": "🩺 Diagnostica",
+    "tituloCurto": "🩺 Diagnostica",
     "numeroEdital": "1149",
     "processo": "26/1538-0003243-7"
   },
@@ -402,9 +402,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "Bens comuns, por itens, através de Dispensa Eletrônica para compra de Nobreaks...",
-    "tituloResumo": "Bens comuns, por itens, através de Dispensa Eletrônica para compra de Nobreaks...",
-    "tituloCurto": "Bens comuns, por itens, através de Dispensa Eletrônica para compra de Nobreaks...",
+    "titulo": "🩺 Nobreaks destinados à Unidade de Pronto Atendimento - UPA, sob...",
+    "tituloResumo": "🩺 Nobreaks destinados à Unidade de Pronto Atendimento - UPA, sob...",
+    "tituloCurto": "🩺 Nobreaks destinados à Unidade de Pronto Atendimento - UPA, sob...",
     "numeroEdital": "PDE 54",
     "processo": "505/2026"
   },
@@ -442,9 +442,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "[Portal de Compras Públicas] - Aquisição de bens comuns, por itens, através de...",
-    "tituloResumo": "[Portal de Compras Públicas] - Aquisição de bens comuns, por itens, através de...",
-    "tituloCurto": "[Portal de Compras Públicas] - Aquisição de bens comuns, por itens, através de...",
+    "titulo": "🩺 Nobreaks destinados à Unidade de Pronto Atendimento - UPA, sob...",
+    "tituloResumo": "🩺 Nobreaks destinados à Unidade de Pronto Atendimento - UPA, sob...",
+    "tituloCurto": "🩺 Nobreaks destinados à Unidade de Pronto Atendimento - UPA, sob...",
     "numeroEdital": "54",
     "processo": "54/2026"
   },
@@ -483,9 +483,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "Contratação de empresa para a execução da ampliação da rede existente de ar...",
-    "tituloResumo": "Contratação de empresa para a execução da ampliação da rede existente de ar...",
-    "tituloCurto": "Contratação de empresa para a execução da ampliação da rede existente de ar...",
+    "titulo": "🩺 Execução da ampliação da rede existente de ar comprimido medicinal...",
+    "tituloResumo": "🩺 Execução da ampliação da rede existente de ar comprimido medicinal...",
+    "tituloCurto": "🩺 Execução da ampliação da rede existente de ar comprimido medicinal...",
     "numeroEdital": "9039",
     "processo": "26120390310509"
   },
@@ -524,9 +524,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "Dispensa de licitação para aquisição de bandeiras, conforme condições,...",
-    "tituloResumo": "Dispensa de licitação para aquisição de bandeiras, conforme condições,...",
-    "tituloCurto": "Dispensa de licitação para aquisição de bandeiras, conforme condições,...",
+    "titulo": "🖨️ Bandeiras",
+    "tituloResumo": "🖨️ Bandeiras",
+    "tituloCurto": "🖨️ Bandeiras",
     "numeroEdital": "152",
     "processo": "63143.001735/2026-93"
   },
@@ -565,9 +565,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "Prestação de serviço de mudança, compreendendo embalagem, desmontagem,...",
-    "tituloResumo": "Prestação de serviço de mudança, compreendendo embalagem, desmontagem,...",
-    "tituloCurto": "Prestação de serviço de mudança, compreendendo embalagem, desmontagem,...",
+    "titulo": "🩺 Mudança, compreendendo embalagem, desmontagem, carregamento...",
+    "tituloResumo": "🩺 Mudança, compreendendo embalagem, desmontagem, carregamento...",
+    "tituloCurto": "🩺 Mudança, compreendendo embalagem, desmontagem, carregamento...",
     "numeroEdital": "9183",
     "processo": "26/2000-9029141-1"
   },
@@ -606,9 +606,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "BENS DA(S) FAMÍLIA(S): 0450-FERRAGENS/ABRASIVOS;",
-    "tituloResumo": "BENS DA(S) FAMÍLIA(S): 0450-FERRAGENS/ABRASIVOS;",
-    "tituloCurto": "BENS DA(S) FAMÍLIA(S): 0450-FERRAGENS/ABRASIVOS;",
+    "titulo": "🔩 Ferragens / Abrasivos",
+    "tituloResumo": "🔩 Ferragens / Abrasivos",
+    "tituloCurto": "🔩 Ferragens / Abrasivos",
     "numeroEdital": "1150",
     "processo": "26/0801-9000499-1"
   },
@@ -646,9 +646,9 @@ window.RADAR_PNCP_DATA = [
       "Portal RS Exclusivo: Exige CFE Estadual"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "Contratação de empresa para a prestação de serviços contínuos de manutenção da...",
-    "tituloResumo": "Contratação de empresa para a prestação de serviços contínuos de manutenção da...",
-    "tituloCurto": "Contratação de empresa para a prestação de serviços contínuos de manutenção da...",
+    "titulo": "🛠️ Manutenção da estrada de chão que dá acesso aos estabelecimentos...",
+    "tituloResumo": "🛠️ Manutenção da estrada de chão que dá acesso aos estabelecimentos...",
+    "tituloCurto": "🛠️ Manutenção da estrada de chão que dá acesso aos estabelecimentos...",
     "numeroEdital": "9289",
     "processo": "24/0602-0005322-6"
   },
@@ -687,9 +687,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "BENS DA(S) FAMÍLIA(S): 0320-MOVEIS/ESTOFADOS/COMPONENTES EM GERAL;",
-    "tituloResumo": "BENS DA(S) FAMÍLIA(S): 0320-MOVEIS/ESTOFADOS/COMPONENTES EM GERAL;",
-    "tituloCurto": "BENS DA(S) FAMÍLIA(S): 0320-MOVEIS/ESTOFADOS/COMPONENTES EM GERAL;",
+    "titulo": "🪑 Moveis / Estofados / Componentes em Geral",
+    "tituloResumo": "🪑 Moveis / Estofados / Componentes em Geral",
+    "tituloCurto": "🪑 Moveis / Estofados / Componentes em Geral",
     "numeroEdital": "1145",
     "processo": "26/0801-0003976-6"
   },
@@ -728,9 +728,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "Contratação de empresa para o fornecimento de Serviço de Outsourcing de Impressão...",
-    "tituloResumo": "Contratação de empresa para o fornecimento de Serviço de Outsourcing de Impressão...",
-    "tituloCurto": "Contratação de empresa para o fornecimento de Serviço de Outsourcing de Impressão...",
+    "titulo": "💻 Serviço de Outsourcing de Impressão",
+    "tituloResumo": "💻 Serviço de Outsourcing de Impressão",
+    "tituloCurto": "💻 Serviço de Outsourcing de Impressão",
     "numeroEdital": "52",
     "processo": "64027.007424/2026-27"
   },
@@ -769,9 +769,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "A PRESTAÇÃO DE SERVIÇO DE OUTSOURCING COM FORNECIMENTO DE EQUIPAMENTOS...",
-    "tituloResumo": "A PRESTAÇÃO DE SERVIÇO DE OUTSOURCING COM FORNECIMENTO DE EQUIPAMENTOS...",
-    "tituloCurto": "A PRESTAÇÃO DE SERVIÇO DE OUTSOURCING COM FORNECIMENTO DE EQUIPAMENTOS...",
+    "titulo": "💻 OUTSOURCING COM FORNECIMENTO DE EQUIPAMENTOS MULTIFUNCIONAIS...",
+    "tituloResumo": "💻 OUTSOURCING COM FORNECIMENTO DE EQUIPAMENTOS MULTIFUNCIONAIS...",
+    "tituloCurto": "💻 OUTSOURCING COM FORNECIMENTO DE EQUIPAMENTOS MULTIFUNCIONAIS...",
     "numeroEdital": "89",
     "processo": "89/2026"
   },
@@ -810,9 +810,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "BENS DA(S) FAMÍLIA(S): 0035-EQUIPAMENTOS P/INFORMATICA;",
-    "tituloResumo": "BENS DA(S) FAMÍLIA(S): 0035-EQUIPAMENTOS P/INFORMATICA;",
-    "tituloCurto": "BENS DA(S) FAMÍLIA(S): 0035-EQUIPAMENTOS P/INFORMATICA;",
+    "titulo": "💻 Equipamentos para Informatica",
+    "tituloResumo": "💻 Equipamentos para Informatica",
+    "tituloCurto": "💻 Equipamentos para Informatica",
     "numeroEdital": "1155",
     "processo": "26/1203-9025148-0"
   },
@@ -851,9 +851,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "O fornecimento e instalação de persianas.",
-    "tituloResumo": "O fornecimento e instalação de persianas.",
-    "tituloCurto": "O fornecimento e instalação de persianas.",
+    "titulo": "🪑 Instalação de persianas",
+    "tituloResumo": "🪑 Instalação de persianas",
+    "tituloCurto": "🪑 Instalação de persianas",
     "numeroEdital": "0378",
     "processo": "26.0.000061654-0"
   },
@@ -891,9 +891,9 @@ window.RADAR_PNCP_DATA = [
       "Demanda Regional Vale Paranhana/Sinos (Estância Velha)"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "Abertura de licitação para o registro de preços de serviços de limpeza de caixas...",
-    "tituloResumo": "Abertura de licitação para o registro de preços de serviços de limpeza de caixas...",
-    "tituloCurto": "Abertura de licitação para o registro de preços de serviços de limpeza de caixas...",
+    "titulo": "🛠️ Registro de preços de serviços de limpeza de caixas pluviais e...",
+    "tituloResumo": "🛠️ Registro de preços de serviços de limpeza de caixas pluviais e...",
+    "tituloCurto": "🛠️ Registro de preços de serviços de limpeza de caixas pluviais e...",
     "numeroEdital": "PCE 60",
     "processo": "239/2026"
   },
@@ -932,9 +932,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "Serviço de manutenção corretiva e recuperação de 01 (um) elevador automotivo tipo...",
-    "tituloResumo": "Serviço de manutenção corretiva e recuperação de 01 (um) elevador automotivo tipo...",
-    "tituloCurto": "Serviço de manutenção corretiva e recuperação de 01 (um) elevador automotivo tipo...",
+    "titulo": "🚗 Serviço de manutenção corretiva e recuperação de 01 (um) elevador...",
+    "tituloResumo": "🚗 Serviço de manutenção corretiva e recuperação de 01 (um) elevador...",
+    "tituloCurto": "🚗 Serviço de manutenção corretiva e recuperação de 01 (um) elevador...",
     "numeroEdital": "0007",
     "processo": "26/1203-9028251-3"
   },
@@ -973,9 +973,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "BENS DA(S) FAMÍLIA(S): 0380-EQUIPAMENTOS/MATERIAIS P/LIMPEZA/HIGIENE (USO GERAL);",
-    "tituloResumo": "BENS DA(S) FAMÍLIA(S): 0380-EQUIPAMENTOS/MATERIAIS P/LIMPEZA/HIGIENE (USO GERAL);",
-    "tituloCurto": "BENS DA(S) FAMÍLIA(S): 0380-EQUIPAMENTOS/MATERIAIS P/LIMPEZA/HIGIENE (USO GERAL);",
+    "titulo": "🧹 Equipamentos / Materiais para Limpeza / Higiene (uso Geral)",
+    "tituloResumo": "🧹 Equipamentos / Materiais para Limpeza / Higiene (uso Geral)",
+    "tituloCurto": "🧹 Equipamentos / Materiais para Limpeza / Higiene (uso Geral)",
     "numeroEdital": "1157",
     "processo": "26/1203-9032725-8"
   },
@@ -1014,9 +1014,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "O serviço de confecção de 30 (trinta) placas personalizadas em aço inox com...",
-    "tituloResumo": "O serviço de confecção de 30 (trinta) placas personalizadas em aço inox com...",
-    "tituloCurto": "O serviço de confecção de 30 (trinta) placas personalizadas em aço inox com...",
+    "titulo": "🖨️ Serviço de confecção de 30 (trinta) placas personalizadas em aço inox...",
+    "tituloResumo": "🖨️ Serviço de confecção de 30 (trinta) placas personalizadas em aço inox...",
+    "tituloCurto": "🖨️ Serviço de confecção de 30 (trinta) placas personalizadas em aço inox...",
     "numeroEdital": "0027",
     "processo": "26120390327657"
   },
@@ -1055,9 +1055,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "BENS DA(S) FAMÍLIA(S): 0245-VESTUARIOS/UNIFORMES (EXCETO VESTUARIO DE SEGURANCA);",
-    "tituloResumo": "BENS DA(S) FAMÍLIA(S): 0245-VESTUARIOS/UNIFORMES (EXCETO VESTUARIO DE SEGURANCA);",
-    "tituloCurto": "BENS DA(S) FAMÍLIA(S): 0245-VESTUARIOS/UNIFORMES (EXCETO VESTUARIO DE SEGURANCA);",
+    "titulo": "👕 Vestuarios / Uniformes (exceto Vestuario de Seguranca)",
+    "tituloResumo": "👕 Vestuarios / Uniformes (exceto Vestuario de Seguranca)",
+    "tituloCurto": "👕 Vestuarios / Uniformes (exceto Vestuario de Seguranca)",
     "numeroEdital": "1159",
     "processo": "26/1204-9012186-4"
   },
@@ -1096,9 +1096,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "BENS DA(S) FAMÍLIA(S): 0475-EQUIPAMENTOS/MATERIAIS P/INSTALACOES ELETRICAS;",
-    "tituloResumo": "BENS DA(S) FAMÍLIA(S): 0475-EQUIPAMENTOS/MATERIAIS P/INSTALACOES ELETRICAS;",
-    "tituloCurto": "BENS DA(S) FAMÍLIA(S): 0475-EQUIPAMENTOS/MATERIAIS P/INSTALACOES ELETRICAS;",
+    "titulo": "⚡ Equipamentos / Materiais para Instalacoes Eletricas",
+    "tituloResumo": "⚡ Equipamentos / Materiais para Instalacoes Eletricas",
+    "tituloCurto": "⚡ Equipamentos / Materiais para Instalacoes Eletricas",
     "numeroEdital": "1160",
     "processo": "26/1203-9032878-5"
   },
@@ -1137,9 +1137,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "BENS DA(S) FAMÍLIA(S): 0380-EQUIPAMENTOS/MATERIAIS P/LIMPEZA/HIGIENE (USO...",
-    "tituloResumo": "BENS DA(S) FAMÍLIA(S): 0380-EQUIPAMENTOS/MATERIAIS P/LIMPEZA/HIGIENE (USO...",
-    "tituloCurto": "BENS DA(S) FAMÍLIA(S): 0380-EQUIPAMENTOS/MATERIAIS P/LIMPEZA/HIGIENE (USO...",
+    "titulo": "🔩 Equipamentos / Materiais para Limpeza / Higiene (uso Geral) e...",
+    "tituloResumo": "🔩 Equipamentos / Materiais para Limpeza / Higiene (uso Geral) e...",
+    "tituloCurto": "🔩 Equipamentos / Materiais para Limpeza / Higiene (uso Geral) e...",
     "numeroEdital": "1151",
     "processo": "26/1157-9000706-8"
   },
@@ -1178,9 +1178,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "BENS DA(S) FAMÍLIA(S): 0045-MATERIAIS GRÁFICOS / SIMILARES;",
-    "tituloResumo": "BENS DA(S) FAMÍLIA(S): 0045-MATERIAIS GRÁFICOS / SIMILARES;",
-    "tituloCurto": "BENS DA(S) FAMÍLIA(S): 0045-MATERIAIS GRÁFICOS / SIMILARES;",
+    "titulo": "🖨️ Materiais Gráficos / Similares",
+    "tituloResumo": "🖨️ Materiais Gráficos / Similares",
+    "tituloCurto": "🖨️ Materiais Gráficos / Similares",
     "numeroEdital": "1163",
     "processo": "26/1203-9032948-0"
   },
@@ -1219,9 +1219,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "A prestação de serviços de chaveiros, por demanda, tais como cópias de chaves e...",
-    "tituloResumo": "A prestação de serviços de chaveiros, por demanda, tais como cópias de chaves e...",
-    "tituloCurto": "A prestação de serviços de chaveiros, por demanda, tais como cópias de chaves e...",
+    "titulo": "📦 Chaveiros, por demanda, tais como cópias de chaves e troca de...",
+    "tituloResumo": "📦 Chaveiros, por demanda, tais como cópias de chaves e troca de...",
+    "tituloCurto": "📦 Chaveiros, por demanda, tais como cópias de chaves e troca de...",
     "numeroEdital": "9066",
     "processo": "26/1204-9007437-8"
   },
@@ -1260,9 +1260,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "E instalação de 09 (nove) portões para canil, medindo 1,80 m x 0,70 m cada,...",
-    "tituloResumo": "E instalação de 09 (nove) portões para canil, medindo 1,80 m x 0,70 m cada,...",
-    "tituloCurto": "E instalação de 09 (nove) portões para canil, medindo 1,80 m x 0,70 m cada,...",
+    "titulo": "🔩 Instalação de 09 (nove) portões para canil, medindo 1,80 m x 0,70 m...",
+    "tituloResumo": "🔩 Instalação de 09 (nove) portões para canil, medindo 1,80 m x 0,70 m...",
+    "tituloCurto": "🔩 Instalação de 09 (nove) portões para canil, medindo 1,80 m x 0,70 m...",
     "numeroEdital": "0009",
     "processo": "26120390296085"
   },
@@ -1301,9 +1301,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "Instalação completa de 2 (dois) aparelhos de ar-condicionado tipo piso teto,...",
-    "tituloResumo": "Instalação completa de 2 (dois) aparelhos de ar-condicionado tipo piso teto,...",
-    "tituloCurto": "Instalação completa de 2 (dois) aparelhos de ar-condicionado tipo piso teto,...",
+    "titulo": "❄️ Instalação completa de 2 (dois) aparelhos de ar-condicionado tipo piso...",
+    "tituloResumo": "❄️ Instalação completa de 2 (dois) aparelhos de ar-condicionado tipo piso...",
+    "tituloCurto": "❄️ Instalação completa de 2 (dois) aparelhos de ar-condicionado tipo piso...",
     "numeroEdital": "9013",
     "processo": "26120390329617"
   },
@@ -1342,9 +1342,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "PAPEL TOALHA - SME - sendo a entrega parcelada em dois lotes de 300 pacotes. SEI....",
-    "tituloResumo": "PAPEL TOALHA - SME - sendo a entrega parcelada em dois lotes de 300 pacotes. SEI....",
-    "tituloCurto": "PAPEL TOALHA - SME - sendo a entrega parcelada em dois lotes de 300 pacotes. SEI....",
+    "titulo": "🧹 PAPEL TOALHA - SME - sendo a entrega parcelada em dois lotes de 300...",
+    "tituloResumo": "🧹 PAPEL TOALHA - SME - sendo a entrega parcelada em dois lotes de 300...",
+    "tituloCurto": "🧹 PAPEL TOALHA - SME - sendo a entrega parcelada em dois lotes de 300...",
     "numeroEdital": "90048",
     "processo": "90048/2026"
   },
@@ -1383,9 +1383,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "CARTUCHO PORTA FUSIVEL 15KV - BASE C CONE DE ATERRAMENTO MEDIO HASTE COBREADA 1/2...",
-    "tituloResumo": "CARTUCHO PORTA FUSIVEL 15KV - BASE C CONE DE ATERRAMENTO MEDIO HASTE COBREADA 1/2...",
-    "tituloCurto": "CARTUCHO PORTA FUSIVEL 15KV - BASE C CONE DE ATERRAMENTO MEDIO HASTE COBREADA 1/2...",
+    "titulo": "⚡ CARTUCHO PORTA FUSIVEL 15KV - BASE C CONE DE ATERRAMENTO MEDIO HASTE...",
+    "tituloResumo": "⚡ CARTUCHO PORTA FUSIVEL 15KV - BASE C CONE DE ATERRAMENTO MEDIO HASTE...",
+    "tituloCurto": "⚡ CARTUCHO PORTA FUSIVEL 15KV - BASE C CONE DE ATERRAMENTO MEDIO HASTE...",
     "numeroEdital": "201",
     "processo": "63199.002376/2026-46"
   },
@@ -1425,9 +1425,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "Dispensa de Licitação para a aquisição de ar condicionado e serviço de instalação",
-    "tituloResumo": "Dispensa de Licitação para a aquisição de ar condicionado e serviço de instalação",
-    "tituloCurto": "Dispensa de Licitação para a aquisição de ar condicionado e serviço de instalação",
+    "titulo": "❄️ Ar condicionado e serviço de instalação",
+    "tituloResumo": "❄️ Ar condicionado e serviço de instalação",
+    "tituloCurto": "❄️ Ar condicionado e serviço de instalação",
     "numeroEdital": "97",
     "processo": "64094"
   },
@@ -1466,9 +1466,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "ALICATE LINHA MASTER UNIVERSAL ISOLADO 1000V 8'' PLUGUE MACHO 2P NBR 10A PRETO...",
-    "tituloResumo": "ALICATE LINHA MASTER UNIVERSAL ISOLADO 1000V 8'' PLUGUE MACHO 2P NBR 10A PRETO...",
-    "tituloCurto": "ALICATE LINHA MASTER UNIVERSAL ISOLADO 1000V 8'' PLUGUE MACHO 2P NBR 10A PRETO...",
+    "titulo": "⚡ ALICATE LINHA MASTER UNIVERSAL ISOLADO 1000V 8'' PLUGUE MACHO 2P NBR...",
+    "tituloResumo": "⚡ ALICATE LINHA MASTER UNIVERSAL ISOLADO 1000V 8'' PLUGUE MACHO 2P NBR...",
+    "tituloCurto": "⚡ ALICATE LINHA MASTER UNIVERSAL ISOLADO 1000V 8'' PLUGUE MACHO 2P NBR...",
     "numeroEdital": "146",
     "processo": "63199.002569/2026-05"
   },
@@ -1507,9 +1507,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "Contratação de operadora de prestação de serviços para a liberação da passagem...",
-    "tituloResumo": "Contratação de operadora de prestação de serviços para a liberação da passagem...",
-    "tituloCurto": "Contratação de operadora de prestação de serviços para a liberação da passagem...",
+    "titulo": "🚗 Contratação de operadora de prestação de serviços para a liberação da...",
+    "tituloResumo": "🚗 Contratação de operadora de prestação de serviços para a liberação da...",
+    "tituloCurto": "🚗 Contratação de operadora de prestação de serviços para a liberação da...",
     "numeroEdital": "176",
     "processo": "048/2026-1"
   },
@@ -1548,9 +1548,9 @@ window.RADAR_PNCP_DATA = [
       "Demanda Regional Vale Paranhana/Sinos (Sapucaia do Sul)"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "Dispensa de Licitação para a Aquisição de Material de Construção em favor do 18°...",
-    "tituloResumo": "Dispensa de Licitação para a Aquisição de Material de Construção em favor do 18°...",
-    "tituloCurto": "Dispensa de Licitação para a Aquisição de Material de Construção em favor do 18°...",
+    "titulo": "🔩 Material de Construção",
+    "tituloResumo": "🔩 Material de Construção",
+    "tituloCurto": "🔩 Material de Construção",
     "numeroEdital": "98",
     "processo": "64094.006599/2026-13"
   },
@@ -1590,9 +1590,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "Transceptor Conversor Cabo Fibra Ótica",
-    "tituloResumo": "Transceptor Conversor Cabo Fibra Ótica",
-    "tituloCurto": "Transceptor Conversor Cabo Fibra Ótica",
+    "titulo": "💻 Transceptor Conversor Cabo Fibra Ótica",
+    "tituloResumo": "💻 Transceptor Conversor Cabo Fibra Ótica",
+    "tituloCurto": "💻 Transceptor Conversor Cabo Fibra Ótica",
     "numeroEdital": "110",
     "processo": "64095.012611/2026-19"
   },
@@ -1631,9 +1631,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "Materiais de higiene, limpeza",
-    "tituloResumo": "Materiais de higiene, limpeza",
-    "tituloCurto": "Materiais de higiene, limpeza",
+    "titulo": "🧹 Materiais de higiene, limpeza",
+    "tituloResumo": "🧹 Materiais de higiene, limpeza",
+    "tituloCurto": "🧹 Materiais de higiene, limpeza",
     "numeroEdital": "334",
     "processo": "64286.014475/2026-54"
   },
@@ -1671,9 +1671,9 @@ window.RADAR_PNCP_DATA = [
       "Região Metropolitana / POA (Porto Alegre)"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "O objeto do presente procedimento é a escolha da proposta mais vantajosa para a...",
-    "tituloResumo": "O objeto do presente procedimento é a escolha da proposta mais vantajosa para a...",
-    "tituloCurto": "O objeto do presente procedimento é a escolha da proposta mais vantajosa para a...",
+    "titulo": "💻 Objeto do presente procedimento é a escolha da proposta mais vantajosa...",
+    "tituloResumo": "💻 Objeto do presente procedimento é a escolha da proposta mais vantajosa...",
+    "tituloCurto": "💻 Objeto do presente procedimento é a escolha da proposta mais vantajosa...",
     "numeroEdital": "19",
     "processo": "63047.001454/2026-29"
   },
@@ -1713,9 +1713,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "Objetos permanentes de cmb incendio",
-    "tituloResumo": "Objetos permanentes de cmb incendio",
-    "tituloCurto": "Objetos permanentes de cmb incendio",
+    "titulo": "📦 Objetos permanentes de cmb incendio",
+    "tituloResumo": "📦 Objetos permanentes de cmb incendio",
+    "tituloCurto": "📦 Objetos permanentes de cmb incendio",
     "numeroEdital": "111",
     "processo": "64095.013360/2026-90"
   },
@@ -1754,9 +1754,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "Prestação de serviço de confecção e fornecimento de brindes personalizados,...",
-    "tituloResumo": "Prestação de serviço de confecção e fornecimento de brindes personalizados,...",
-    "tituloCurto": "Prestação de serviço de confecção e fornecimento de brindes personalizados,...",
+    "titulo": "📦 Confecção e fornecimento de brindes personalizados, contemplando 200...",
+    "tituloResumo": "📦 Confecção e fornecimento de brindes personalizados, contemplando 200...",
+    "tituloCurto": "📦 Confecção e fornecimento de brindes personalizados, contemplando 200...",
     "numeroEdital": "9023",
     "processo": "26/1440-0003691-9"
   },
@@ -1795,9 +1795,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "BENS DA(S) FAMÍLIA(S): 0295-EQUIPAMENTOS/MATERIAIS/ACESSORIOS...",
-    "tituloResumo": "BENS DA(S) FAMÍLIA(S): 0295-EQUIPAMENTOS/MATERIAIS/ACESSORIOS...",
-    "tituloCurto": "BENS DA(S) FAMÍLIA(S): 0295-EQUIPAMENTOS/MATERIAIS/ACESSORIOS...",
+    "titulo": "📣 Equipamentos / Materiais / Acessorios para Projecao / Video / Foto / Som",
+    "tituloResumo": "📣 Equipamentos / Materiais / Acessorios para Projecao / Video / Foto / Som",
+    "tituloCurto": "📣 Equipamentos / Materiais / Acessorios para Projecao / Video / Foto / Som",
     "numeroEdital": "1107",
     "processo": "26/1538-0003392-1"
   },
@@ -1836,9 +1836,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "BENS DA(S) FAMÍLIA(S): 0515-EQUIPAMENTOS/MATERIAIS DE SEGURANCA E PROTECAO;",
-    "tituloResumo": "BENS DA(S) FAMÍLIA(S): 0515-EQUIPAMENTOS/MATERIAIS DE SEGURANCA E PROTECAO;",
-    "tituloCurto": "BENS DA(S) FAMÍLIA(S): 0515-EQUIPAMENTOS/MATERIAIS DE SEGURANCA E PROTECAO;",
+    "titulo": "📦 Equipamentos / Materiais de Seguranca e Protecao",
+    "tituloResumo": "📦 Equipamentos / Materiais de Seguranca e Protecao",
+    "tituloCurto": "📦 Equipamentos / Materiais de Seguranca e Protecao",
     "numeroEdital": "1153",
     "processo": "26/1538-0003387-5"
   },
@@ -1877,9 +1877,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "BENS DA(S) FAMÍLIA(S): 0480-EQUIP./MATERIAIS P/INSTALACOES HIDROSANITARIAS E GAS...",
-    "tituloResumo": "BENS DA(S) FAMÍLIA(S): 0480-EQUIP./MATERIAIS P/INSTALACOES HIDROSANITARIAS E GAS...",
-    "tituloCurto": "BENS DA(S) FAMÍLIA(S): 0480-EQUIP./MATERIAIS P/INSTALACOES HIDROSANITARIAS E GAS...",
+    "titulo": "📦 Equip. / Materiais para Instalacoes Hidrosanitarias e Gas Natural",
+    "tituloResumo": "📦 Equip. / Materiais para Instalacoes Hidrosanitarias e Gas Natural",
+    "tituloCurto": "📦 Equip. / Materiais para Instalacoes Hidrosanitarias e Gas Natural",
     "numeroEdital": "1141",
     "processo": "26/1440-9003247-0"
   },
@@ -1918,9 +1918,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "Realização dos Exames Médico Periódicos dos empregados públicos desta Fundação.",
-    "tituloResumo": "Realização dos Exames Médico Periódicos dos empregados públicos desta Fundação.",
-    "tituloCurto": "Realização dos Exames Médico Periódicos dos empregados públicos desta Fundação.",
+    "titulo": "🩺 Realização dos Exames Médico Periódicos dos empregados públicos desta...",
+    "tituloResumo": "🩺 Realização dos Exames Médico Periódicos dos empregados públicos desta...",
+    "tituloCurto": "🩺 Realização dos Exames Médico Periódicos dos empregados públicos desta...",
     "numeroEdital": "9005",
     "processo": "26285590001756"
   },
@@ -1959,9 +1959,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "Serviço de impressão de 200 unidades do livro intitulado “Comunidades Quilombolas...",
-    "tituloResumo": "Serviço de impressão de 200 unidades do livro intitulado “Comunidades Quilombolas...",
-    "tituloCurto": "Serviço de impressão de 200 unidades do livro intitulado “Comunidades Quilombolas...",
+    "titulo": "🖨️ Serviço de impressão de 200 unidades do livro intitulado “Comunidades...",
+    "tituloResumo": "🖨️ Serviço de impressão de 200 unidades do livro intitulado “Comunidades...",
+    "tituloCurto": "🖨️ Serviço de impressão de 200 unidades do livro intitulado “Comunidades...",
     "numeroEdital": "9099",
     "processo": "26/1100-0000835-0"
   },
@@ -2000,9 +2000,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "BENS DA(S) FAMÍLIA(S): 0002-EQUIPAMENTOS/MATERIAIS P/ESCRITORIO/ESCOLA/ARTES...",
-    "tituloResumo": "BENS DA(S) FAMÍLIA(S): 0002-EQUIPAMENTOS/MATERIAIS P/ESCRITORIO/ESCOLA/ARTES...",
-    "tituloCurto": "BENS DA(S) FAMÍLIA(S): 0002-EQUIPAMENTOS/MATERIAIS P/ESCRITORIO/ESCOLA/ARTES...",
+    "titulo": "📦 Equipamentos / Materiais para Escritorio / Escola / Artes Plasticas",
+    "tituloResumo": "📦 Equipamentos / Materiais para Escritorio / Escola / Artes Plasticas",
+    "tituloCurto": "📦 Equipamentos / Materiais para Escritorio / Escola / Artes Plasticas",
     "numeroEdital": "1152",
     "processo": "26/0801-9000471-1"
   },
@@ -2040,9 +2040,9 @@ window.RADAR_PNCP_DATA = [
       "Demanda Regional Vale Paranhana/Sinos (Novo Hamburgo)"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "Contratação emergencial de empresa especializada na prestação de serviços de...",
-    "tituloResumo": "Contratação emergencial de empresa especializada na prestação de serviços de...",
-    "tituloCurto": "Contratação emergencial de empresa especializada na prestação de serviços de...",
+    "titulo": "⚡ Contratação emergencial de empresa especializada na prestação de...",
+    "tituloResumo": "⚡ Contratação emergencial de empresa especializada na prestação de...",
+    "tituloCurto": "⚡ Contratação emergencial de empresa especializada na prestação de...",
     "numeroEdital": "PDE 29",
     "processo": "684/2026"
   },
@@ -2081,9 +2081,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "02 (duas) cadeiras ergonômicas para atender às necessidades da Secretaria...",
-    "tituloResumo": "02 (duas) cadeiras ergonômicas para atender às necessidades da Secretaria...",
-    "tituloCurto": "02 (duas) cadeiras ergonômicas para atender às necessidades da Secretaria...",
+    "titulo": "🪑 02 (duas) cadeiras ergonômicas",
+    "tituloResumo": "🪑 02 (duas) cadeiras ergonômicas",
+    "tituloCurto": "🪑 02 (duas) cadeiras ergonômicas",
     "numeroEdital": "PDE 30",
     "processo": "685/2026"
   },
@@ -2122,9 +2122,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "TELEVISORES LED - SMSP - SEI. 43.206012.0001152026-08 (PORTAL DE COMPRAS PÚBLICAS)",
-    "tituloResumo": "TELEVISORES LED - SMSP - SEI. 43.206012.0001152026-08 (PORTAL DE COMPRAS PÚBLICAS)",
-    "tituloCurto": "TELEVISORES LED - SMSP - SEI. 43.206012.0001152026-08 (PORTAL DE COMPRAS PÚBLICAS)",
+    "titulo": "📦 Televisores LED - Smsp - Sei. 43.206012.0001152026-08 (portal de...",
+    "tituloResumo": "📦 Televisores LED - Smsp - Sei. 43.206012.0001152026-08 (portal de...",
+    "tituloCurto": "📦 Televisores LED - Smsp - Sei. 43.206012.0001152026-08 (portal de...",
     "numeroEdital": "90049",
     "processo": "90049/2026"
   },
@@ -2163,9 +2163,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "BENS DA(S) FAMÍLIA(S): 0480-EQUIP./MATERIAIS P/INSTALACOES HIDROSANITARIAS E GAS...",
-    "tituloResumo": "BENS DA(S) FAMÍLIA(S): 0480-EQUIP./MATERIAIS P/INSTALACOES HIDROSANITARIAS E GAS...",
-    "tituloCurto": "BENS DA(S) FAMÍLIA(S): 0480-EQUIP./MATERIAIS P/INSTALACOES HIDROSANITARIAS E GAS...",
+    "titulo": "📦 Equip. / Materiais para Instalacoes Hidrosanitarias e Gas Natural",
+    "tituloResumo": "📦 Equip. / Materiais para Instalacoes Hidrosanitarias e Gas Natural",
+    "tituloCurto": "📦 Equip. / Materiais para Instalacoes Hidrosanitarias e Gas Natural",
     "numeroEdital": "1146",
     "processo": "26/0801-0004194-9"
   },
@@ -2204,9 +2204,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "Contratar empresa especializada em soluções expográficas, tecnologia...",
-    "tituloResumo": "Contratar empresa especializada em soluções expográficas, tecnologia...",
-    "tituloCurto": "Contratar empresa especializada em soluções expográficas, tecnologia...",
+    "titulo": "📦 Contratar empresa especializada em soluções expográficas, tecnologia...",
+    "tituloResumo": "📦 Contratar empresa especializada em soluções expográficas, tecnologia...",
+    "tituloCurto": "📦 Contratar empresa especializada em soluções expográficas, tecnologia...",
     "numeroEdital": "9037",
     "processo": "26/0801-0004371-2"
   },
@@ -2245,9 +2245,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "Transporte e movimentação de contêineres entre as unidades do IBAMA no RS,...",
-    "tituloResumo": "Transporte e movimentação de contêineres entre as unidades do IBAMA no RS,...",
-    "tituloCurto": "Transporte e movimentação de contêineres entre as unidades do IBAMA no RS,...",
+    "titulo": "📦 Transporte e movimentação de contêineres entre as unidades do IBAMA no...",
+    "tituloResumo": "📦 Transporte e movimentação de contêineres entre as unidades do IBAMA no...",
+    "tituloCurto": "📦 Transporte e movimentação de contêineres entre as unidades do IBAMA no...",
     "numeroEdital": "59",
     "processo": "02023.004358/2026-16"
   },
@@ -2286,9 +2286,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "COLETA DE RESÍDUOS",
-    "tituloResumo": "COLETA DE RESÍDUOS",
-    "tituloCurto": "COLETA DE RESÍDUOS",
+    "titulo": "📦 Coleta de Resíduos",
+    "tituloResumo": "📦 Coleta de Resíduos",
+    "tituloCurto": "📦 Coleta de Resíduos",
     "numeroEdital": "152",
     "processo": "152/2026"
   },
@@ -2327,9 +2327,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "BENS DA(S) FAMÍLIA(S): 0215-SERVICOS:...",
-    "tituloResumo": "BENS DA(S) FAMÍLIA(S): 0215-SERVICOS:...",
-    "tituloCurto": "BENS DA(S) FAMÍLIA(S): 0215-SERVICOS:...",
+    "titulo": "⚽ Servicos: Insignias / Brasoes / Escudos / Medalhas / Trofeus / Brindes",
+    "tituloResumo": "⚽ Servicos: Insignias / Brasoes / Escudos / Medalhas / Trofeus / Brindes",
+    "tituloCurto": "⚽ Servicos: Insignias / Brasoes / Escudos / Medalhas / Trofeus / Brindes",
     "numeroEdital": "1164",
     "processo": "26/1203-9032954-4"
   },
@@ -2368,9 +2368,9 @@ window.RADAR_PNCP_DATA = [
       "Portal RS Exclusivo: Exige CFE Estadual"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "MATERIAIS PADRONIZADOS PARA A CENTRAL DE ABASTECIMENTO FARMACÊUTICO DO HOSPITAL...",
-    "tituloResumo": "MATERIAIS PADRONIZADOS PARA A CENTRAL DE ABASTECIMENTO FARMACÊUTICO DO HOSPITAL...",
-    "tituloCurto": "MATERIAIS PADRONIZADOS PARA A CENTRAL DE ABASTECIMENTO FARMACÊUTICO DO HOSPITAL...",
+    "titulo": "📦 Materiais Padronizados para a Central de Abastecimento Farmacêutico do...",
+    "tituloResumo": "📦 Materiais Padronizados para a Central de Abastecimento Farmacêutico do...",
+    "tituloCurto": "📦 Materiais Padronizados para a Central de Abastecimento Farmacêutico do...",
     "numeroEdital": "0101",
     "processo": "331051"
   },
@@ -2409,9 +2409,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "Contratação de serviço com fornecimento de Bens para instalação de bancada e pia...",
-    "tituloResumo": "Contratação de serviço com fornecimento de Bens para instalação de bancada e pia...",
-    "tituloCurto": "Contratação de serviço com fornecimento de Bens para instalação de bancada e pia...",
+    "titulo": "📦 Contratação de serviço com fornecimento de Bens para instalação de...",
+    "tituloResumo": "📦 Contratação de serviço com fornecimento de Bens para instalação de...",
+    "tituloCurto": "📦 Contratação de serviço com fornecimento de Bens para instalação de...",
     "numeroEdital": "9015",
     "processo": "26/0435-0020737-8"
   },
@@ -2450,9 +2450,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "Serviços de produção gráfica destinados à elaboração e à impressão de 2.000 (dois...",
-    "tituloResumo": "Serviços de produção gráfica destinados à elaboração e à impressão de 2.000 (dois...",
-    "tituloCurto": "Serviços de produção gráfica destinados à elaboração e à impressão de 2.000 (dois...",
+    "titulo": "🖨️ Serviços de produção gráfica destinados à elaboração e à impressão de...",
+    "tituloResumo": "🖨️ Serviços de produção gráfica destinados à elaboração e à impressão de...",
+    "tituloCurto": "🖨️ Serviços de produção gráfica destinados à elaboração e à impressão de...",
     "numeroEdital": "9100",
     "processo": "26/3100-0003528-7"
   },
@@ -2491,9 +2491,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "Coffee break institucional para até 200 (duzentos) pessoas, sendo 100 de manhã e...",
-    "tituloResumo": "Coffee break institucional para até 200 (duzentos) pessoas, sendo 100 de manhã e...",
-    "tituloCurto": "Coffee break institucional para até 200 (duzentos) pessoas, sendo 100 de manhã e...",
+    "titulo": "🍽️ Coffee break institucional para até 200 (duzentos) pessoas, sendo 100...",
+    "tituloResumo": "🍽️ Coffee break institucional para até 200 (duzentos) pessoas, sendo 100...",
+    "tituloCurto": "🍽️ Coffee break institucional para até 200 (duzentos) pessoas, sendo 100...",
     "numeroEdital": "9027",
     "processo": "26/0600-9001067-7"
   },
@@ -2532,9 +2532,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "Desinstalação de 01 (um) aparelho de ar condicionado de 30.000 BTUs e instalação...",
-    "tituloResumo": "Desinstalação de 01 (um) aparelho de ar condicionado de 30.000 BTUs e instalação...",
-    "tituloCurto": "Desinstalação de 01 (um) aparelho de ar condicionado de 30.000 BTUs e instalação...",
+    "titulo": "❄️ Desinstalação de 01 (um) aparelho de ar condicionado de 30.000 BTUs e...",
+    "tituloResumo": "❄️ Desinstalação de 01 (um) aparelho de ar condicionado de 30.000 BTUs e...",
+    "tituloCurto": "❄️ Desinstalação de 01 (um) aparelho de ar condicionado de 30.000 BTUs e...",
     "numeroEdital": "0003",
     "processo": "26/1203-9033171-9"
   },
@@ -2573,9 +2573,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "01 (uma) aeronave remotamente pilotada (drone) de categoria profissional,...",
-    "tituloResumo": "01 (uma) aeronave remotamente pilotada (drone) de categoria profissional,...",
-    "tituloCurto": "01 (uma) aeronave remotamente pilotada (drone) de categoria profissional,...",
+    "titulo": "📣 01 (uma) aeronave remotamente pilotada (drone) de categoria...",
+    "tituloResumo": "📣 01 (uma) aeronave remotamente pilotada (drone) de categoria...",
+    "tituloCurto": "📣 01 (uma) aeronave remotamente pilotada (drone) de categoria...",
     "numeroEdital": "PDE 12",
     "processo": "6833/2026"
   },
@@ -2612,9 +2612,9 @@ window.RADAR_PNCP_DATA = [
       "Região Metropolitana / POA (Porto Alegre)"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "Balizamento de preços para CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA PRESTAÇÃO DE...",
-    "tituloResumo": "Balizamento de preços para CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA PRESTAÇÃO DE...",
-    "tituloCurto": "Balizamento de preços para CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA PRESTAÇÃO DE...",
+    "titulo": "📦 Balizamento de preços para CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA...",
+    "tituloResumo": "📦 Balizamento de preços para CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA...",
+    "tituloCurto": "📦 Balizamento de preços para CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA...",
     "numeroEdital": "245/2026",
     "processo": "0747/2023-53"
   },
@@ -2653,9 +2653,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "Lixeira em aço inoxidável cinco litros com pedal, balde interno e tampa.",
-    "tituloResumo": "Lixeira em aço inoxidável cinco litros com pedal, balde interno e tampa.",
-    "tituloCurto": "Lixeira em aço inoxidável cinco litros com pedal, balde interno e tampa.",
+    "titulo": "📦 Lixeira em aço inoxidável cinco litros com pedal, balde interno e tampa",
+    "tituloResumo": "📦 Lixeira em aço inoxidável cinco litros com pedal, balde interno e tampa",
+    "tituloCurto": "📦 Lixeira em aço inoxidável cinco litros com pedal, balde interno e tampa",
     "numeroEdital": "30",
     "processo": "1.04.000.000108/2026-45"
   },
@@ -2695,9 +2695,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "Dispensa de Licitação permanente cmb incendio",
-    "tituloResumo": "Dispensa de Licitação permanente cmb incendio",
-    "tituloCurto": "Dispensa de Licitação permanente cmb incendio",
+    "titulo": "📦 Permanente cmb incendio",
+    "tituloResumo": "📦 Permanente cmb incendio",
+    "tituloCurto": "📦 Permanente cmb incendio",
     "numeroEdital": "112",
     "processo": "64095.013367/2026-10"
   },
@@ -2736,9 +2736,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "Material de comunicação social que tem por finalidade atender às necessidades da...",
-    "tituloResumo": "Material de comunicação social que tem por finalidade atender às necessidades da...",
-    "tituloCurto": "Material de comunicação social que tem por finalidade atender às necessidades da...",
+    "titulo": "📦 Material de comunicação social que tem por finalidade atender às...",
+    "tituloResumo": "📦 Material de comunicação social que tem por finalidade atender às...",
+    "tituloCurto": "📦 Material de comunicação social que tem por finalidade atender às...",
     "numeroEdital": "154",
     "processo": "63143001744202684"
   },
@@ -2777,9 +2777,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "Material de Hidráulica",
-    "tituloResumo": "Material de Hidráulica",
-    "tituloCurto": "Material de Hidráulica",
+    "titulo": "📦 Material de Hidráulica",
+    "tituloResumo": "📦 Material de Hidráulica",
+    "tituloCurto": "📦 Material de Hidráulica",
     "numeroEdital": "182",
     "processo": "63199.002547/2026-37"
   },
@@ -2818,9 +2818,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "Serviços de recarga e manutenção, como substituição de peças e componentes quando...",
-    "tituloResumo": "Serviços de recarga e manutenção, como substituição de peças e componentes quando...",
-    "tituloCurto": "Serviços de recarga e manutenção, como substituição de peças e componentes quando...",
+    "titulo": "📦 Serviços de recarga e manutenção, como substituição de peças e...",
+    "tituloResumo": "📦 Serviços de recarga e manutenção, como substituição de peças e...",
+    "tituloCurto": "📦 Serviços de recarga e manutenção, como substituição de peças e...",
     "numeroEdital": "153",
     "processo": "63143.001528/2026-39"
   },
@@ -2859,9 +2859,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "BENS DA(S) FAMÍLIA(S): 0870-EQUIPAMENTOS/MATERIAIS...",
-    "tituloResumo": "BENS DA(S) FAMÍLIA(S): 0870-EQUIPAMENTOS/MATERIAIS...",
-    "tituloCurto": "BENS DA(S) FAMÍLIA(S): 0870-EQUIPAMENTOS/MATERIAIS...",
+    "titulo": "🩺 Equipamentos / Materiais Medico-hospitalares / Enfermagem e...",
+    "tituloResumo": "🩺 Equipamentos / Materiais Medico-hospitalares / Enfermagem e...",
+    "tituloCurto": "🩺 Equipamentos / Materiais Medico-hospitalares / Enfermagem e...",
     "numeroEdital": "1167",
     "processo": "26/0567-9000015-3"
   },
@@ -2899,9 +2899,9 @@ window.RADAR_PNCP_DATA = [
       "Portal RS Exclusivo: Exige CFE Estadual"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "BENS DA(S) FAMÍLIA(S): 0035-EQUIPAMENTOS P/INFORMATICA;",
-    "tituloResumo": "BENS DA(S) FAMÍLIA(S): 0035-EQUIPAMENTOS P/INFORMATICA;",
-    "tituloCurto": "BENS DA(S) FAMÍLIA(S): 0035-EQUIPAMENTOS P/INFORMATICA;",
+    "titulo": "💻 Equipamentos para Informatica",
+    "tituloResumo": "💻 Equipamentos para Informatica",
+    "tituloCurto": "💻 Equipamentos para Informatica",
     "numeroEdital": "1105",
     "processo": "26/1538-0003046-9"
   },
@@ -2939,9 +2939,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "Central de comando eletrônica e controle remoto para o Centro de Referência de...",
-    "tituloResumo": "Central de comando eletrônica e controle remoto para o Centro de Referência de...",
-    "tituloCurto": "Central de comando eletrônica e controle remoto para o Centro de Referência de...",
+    "titulo": "🩺 Central de comando eletrônica e controle remoto para o Centro de...",
+    "tituloResumo": "🩺 Central de comando eletrônica e controle remoto para o Centro de...",
+    "tituloCurto": "🩺 Central de comando eletrônica e controle remoto para o Centro de...",
     "numeroEdital": "PDE 55",
     "processo": "510/2026"
   },
@@ -2979,9 +2979,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "[Portal de Compras Públicas] - Aquisição de central de comando eletrônica e...",
-    "tituloResumo": "[Portal de Compras Públicas] - Aquisição de central de comando eletrônica e...",
-    "tituloCurto": "[Portal de Compras Públicas] - Aquisição de central de comando eletrônica e...",
+    "titulo": "🩺 Central de comando eletrônica e controle remoto para o Centro de...",
+    "tituloResumo": "🩺 Central de comando eletrônica e controle remoto para o Centro de...",
+    "tituloCurto": "🩺 Central de comando eletrônica e controle remoto para o Centro de...",
     "numeroEdital": "55",
     "processo": "55/2026"
   },
@@ -3020,9 +3020,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "BENS DA(S) FAMÍLIA(S): 0002-EQUIPAMENTOS/MATERIAIS P/ESCRITORIO/ESCOLA/ARTES...",
-    "tituloResumo": "BENS DA(S) FAMÍLIA(S): 0002-EQUIPAMENTOS/MATERIAIS P/ESCRITORIO/ESCOLA/ARTES...",
-    "tituloCurto": "BENS DA(S) FAMÍLIA(S): 0002-EQUIPAMENTOS/MATERIAIS P/ESCRITORIO/ESCOLA/ARTES...",
+    "titulo": "📦 Equipamentos / Materiais para Escritorio / Escola / Artes Plasticas",
+    "tituloResumo": "📦 Equipamentos / Materiais para Escritorio / Escola / Artes Plasticas",
+    "tituloCurto": "📦 Equipamentos / Materiais para Escritorio / Escola / Artes Plasticas",
     "numeroEdital": "1161",
     "processo": "26/2000-9026556-9"
   },
@@ -3061,9 +3061,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "Contratação de Coffe-Break para a Jornada Estadual de Qualificação da Linha de...",
-    "tituloResumo": "Contratação de Coffe-Break para a Jornada Estadual de Qualificação da Linha de...",
-    "tituloCurto": "Contratação de Coffe-Break para a Jornada Estadual de Qualificação da Linha de...",
+    "titulo": "📦 Contratação de Coffe-Break para a Jornada Estadual de Qualificação da...",
+    "tituloResumo": "📦 Contratação de Coffe-Break para a Jornada Estadual de Qualificação da...",
+    "tituloCurto": "📦 Contratação de Coffe-Break para a Jornada Estadual de Qualificação da...",
     "numeroEdital": "9186",
     "processo": "26/2000-9028808-9"
   },
@@ -3102,9 +3102,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "Materiais de construção, hidráulicos e elétricos para atendimento da Comunidade...",
-    "tituloResumo": "Materiais de construção, hidráulicos e elétricos para atendimento da Comunidade...",
-    "tituloCurto": "Materiais de construção, hidráulicos e elétricos para atendimento da Comunidade...",
+    "titulo": "⚡ Materiais de construção, hidráulicos e elétricos para atendimento da...",
+    "tituloResumo": "⚡ Materiais de construção, hidráulicos e elétricos para atendimento da...",
+    "tituloCurto": "⚡ Materiais de construção, hidráulicos e elétricos para atendimento da...",
     "numeroEdital": "0039",
     "processo": "74237"
   },
@@ -3143,9 +3143,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "BENS DA(S) FAMÍLIA(S): 0445-EQUIPAMENTOS ELETRICOS P/OFICINAS (USO GERAL);",
-    "tituloResumo": "BENS DA(S) FAMÍLIA(S): 0445-EQUIPAMENTOS ELETRICOS P/OFICINAS (USO GERAL);",
-    "tituloCurto": "BENS DA(S) FAMÍLIA(S): 0445-EQUIPAMENTOS ELETRICOS P/OFICINAS (USO GERAL);",
+    "titulo": "⚡ Equipamentos Eletricos para Oficinas (uso Geral)",
+    "tituloResumo": "⚡ Equipamentos Eletricos para Oficinas (uso Geral)",
+    "tituloCurto": "⚡ Equipamentos Eletricos para Oficinas (uso Geral)",
     "numeroEdital": "1154",
     "processo": "26/0801-0004326-7"
   },
@@ -3184,9 +3184,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "O objeto do presente procedimento é a escolha da proposta mais vantajosa para a...",
-    "tituloResumo": "O objeto do presente procedimento é a escolha da proposta mais vantajosa para a...",
-    "tituloCurto": "O objeto do presente procedimento é a escolha da proposta mais vantajosa para a...",
+    "titulo": "🪑 Objeto do presente procedimento é a escolha da proposta mais vantajosa...",
+    "tituloResumo": "🪑 Objeto do presente procedimento é a escolha da proposta mais vantajosa...",
+    "tituloCurto": "🪑 Objeto do presente procedimento é a escolha da proposta mais vantajosa...",
     "numeroEdital": "102",
     "processo": "64327.001892/2026-11"
   },
@@ -3225,9 +3225,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "BENS DA(S) FAMÍLIA(S): 0465-EQUIPAMENTOS/MATERIAIS P/CONSTRUCAO CIVIL;",
-    "tituloResumo": "BENS DA(S) FAMÍLIA(S): 0465-EQUIPAMENTOS/MATERIAIS P/CONSTRUCAO CIVIL;",
-    "tituloCurto": "BENS DA(S) FAMÍLIA(S): 0465-EQUIPAMENTOS/MATERIAIS P/CONSTRUCAO CIVIL;",
+    "titulo": "🔩 Equipamentos / Materiais para Construcao Civil",
+    "tituloResumo": "🔩 Equipamentos / Materiais para Construcao Civil",
+    "tituloCurto": "🔩 Equipamentos / Materiais para Construcao Civil",
     "numeroEdital": "1119",
     "processo": "26/0602-9002756-5"
   },
@@ -3266,9 +3266,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "Contratação de empresa especializada em serviços de impressão gráfica em placas...",
-    "tituloResumo": "Contratação de empresa especializada em serviços de impressão gráfica em placas...",
-    "tituloCurto": "Contratação de empresa especializada em serviços de impressão gráfica em placas...",
+    "titulo": "🪑 Serviços de impressão gráfica em placas de acrílico para confecção e...",
+    "tituloResumo": "🪑 Serviços de impressão gráfica em placas de acrílico para confecção e...",
+    "tituloCurto": "🪑 Serviços de impressão gráfica em placas de acrílico para confecção e...",
     "numeroEdital": "9058",
     "processo": "26/0801-0004377-1"
   },
@@ -3307,9 +3307,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "Contratação de serviços de controle de pragas em geral (desratização,...",
-    "tituloResumo": "Contratação de serviços de controle de pragas em geral (desratização,...",
-    "tituloCurto": "Contratação de serviços de controle de pragas em geral (desratização,...",
+    "titulo": "📦 Contratação de serviços de controle de pragas em geral (desratização...",
+    "tituloResumo": "📦 Contratação de serviços de controle de pragas em geral (desratização...",
+    "tituloCurto": "📦 Contratação de serviços de controle de pragas em geral (desratização...",
     "numeroEdital": "11",
     "processo": "02613.000015/2026-32"
   },
@@ -3347,9 +3347,9 @@ window.RADAR_PNCP_DATA = [
       "Portal RS Exclusivo: Exige CFE Estadual"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "Contratar empresa especializada em serviços gráficos para impressão, acabamento e...",
-    "tituloResumo": "Contratar empresa especializada em serviços gráficos para impressão, acabamento e...",
-    "tituloCurto": "Contratar empresa especializada em serviços gráficos para impressão, acabamento e...",
+    "titulo": "🖨️ Contratar empresa especializada em serviços gráficos para impressão...",
+    "tituloResumo": "🖨️ Contratar empresa especializada em serviços gráficos para impressão...",
+    "tituloCurto": "🖨️ Contratar empresa especializada em serviços gráficos para impressão...",
     "numeroEdital": "9038",
     "processo": "26/0801-0004362-3"
   },
@@ -3388,9 +3388,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "O fornecimento e instalação de divisórias de vidro temperado, porta de vidro com...",
-    "tituloResumo": "O fornecimento e instalação de divisórias de vidro temperado, porta de vidro com...",
-    "tituloCurto": "O fornecimento e instalação de divisórias de vidro temperado, porta de vidro com...",
+    "titulo": "🛠️ Instalação de divisórias de vidro temperado, porta de vidro com...",
+    "tituloResumo": "🛠️ Instalação de divisórias de vidro temperado, porta de vidro com...",
+    "tituloCurto": "🛠️ Instalação de divisórias de vidro temperado, porta de vidro com...",
     "numeroEdital": "0010",
     "processo": "26/1203-9028710-8"
   },
@@ -3429,9 +3429,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "BENS DA(S) FAMÍLIA(S): 0034-MATERIAIS/ SUPRIMENTOS P/INFORMATICA;",
-    "tituloResumo": "BENS DA(S) FAMÍLIA(S): 0034-MATERIAIS/ SUPRIMENTOS P/INFORMATICA;",
-    "tituloCurto": "BENS DA(S) FAMÍLIA(S): 0034-MATERIAIS/ SUPRIMENTOS P/INFORMATICA;",
+    "titulo": "💻 Materiais / Suprimentos para Informatica",
+    "tituloResumo": "💻 Materiais / Suprimentos para Informatica",
+    "tituloCurto": "💻 Materiais / Suprimentos para Informatica",
     "numeroEdital": "1158",
     "processo": "26/0602-9009675-3"
   },
@@ -3470,9 +3470,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "Contratação de escola homologada pela ANAC, para ministrar Curso de Segurança da...",
-    "tituloResumo": "Contratação de escola homologada pela ANAC, para ministrar Curso de Segurança da...",
-    "tituloCurto": "Contratação de escola homologada pela ANAC, para ministrar Curso de Segurança da...",
+    "titulo": "📦 Contratação de escola homologada pela ANAC, para ministrar Curso de...",
+    "tituloResumo": "📦 Contratação de escola homologada pela ANAC, para ministrar Curso de...",
+    "tituloCurto": "📦 Contratação de escola homologada pela ANAC, para ministrar Curso de...",
     "numeroEdital": "0007",
     "processo": "26/1203-9024756-4"
   },
@@ -3511,9 +3511,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "Contratação de serviço com fornecimento de Bens para instalação de Painel em aço...",
-    "tituloResumo": "Contratação de serviço com fornecimento de Bens para instalação de Painel em aço...",
-    "tituloCurto": "Contratação de serviço com fornecimento de Bens para instalação de Painel em aço...",
+    "titulo": "📦 Contratação de serviço com fornecimento de Bens para instalação de...",
+    "tituloResumo": "📦 Contratação de serviço com fornecimento de Bens para instalação de...",
+    "tituloCurto": "📦 Contratação de serviço com fornecimento de Bens para instalação de...",
     "numeroEdital": "9016",
     "processo": "26/0435-0020834-0"
   },
@@ -3551,9 +3551,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "CONTRATAÇÃO DE EMPRESA ESPECIALIZADA NO FORNECIMENTO DE ALIMENTOS E BEBIDAS PARA...",
-    "tituloResumo": "CONTRATAÇÃO DE EMPRESA ESPECIALIZADA NO FORNECIMENTO DE ALIMENTOS E BEBIDAS PARA...",
-    "tituloCurto": "CONTRATAÇÃO DE EMPRESA ESPECIALIZADA NO FORNECIMENTO DE ALIMENTOS E BEBIDAS PARA...",
+    "titulo": "🍽️ Alimentos e Bebidas para o Coffe Break de Inauguração da Sede da...",
+    "tituloResumo": "🍽️ Alimentos e Bebidas para o Coffe Break de Inauguração da Sede da...",
+    "tituloCurto": "🍽️ Alimentos e Bebidas para o Coffe Break de Inauguração da Sede da...",
     "numeroEdital": "17",
     "processo": "74"
   },
@@ -3592,9 +3592,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "Contratação de Duas Lousas de vidro móveis para a Escola de Administração.",
-    "tituloResumo": "Contratação de Duas Lousas de vidro móveis para a Escola de Administração.",
-    "tituloCurto": "Contratação de Duas Lousas de vidro móveis para a Escola de Administração.",
+    "titulo": "🪑 Contratação de Duas Lousas de vidro móveis para a Escola de Administração",
+    "tituloResumo": "🪑 Contratação de Duas Lousas de vidro móveis para a Escola de Administração",
+    "tituloCurto": "🪑 Contratação de Duas Lousas de vidro móveis para a Escola de Administração",
     "numeroEdital": "546",
     "processo": "23078.568428/2026-02"
   },
@@ -3633,9 +3633,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "Materiais de consumo médico-hospitalar para laboratório de ensino.",
-    "tituloResumo": "Materiais de consumo médico-hospitalar para laboratório de ensino.",
-    "tituloCurto": "Materiais de consumo médico-hospitalar para laboratório de ensino.",
+    "titulo": "🩺 Materiais de consumo médico-hospitalar para laboratório de ensino",
+    "tituloResumo": "🩺 Materiais de consumo médico-hospitalar para laboratório de ensino",
+    "tituloCurto": "🩺 Materiais de consumo médico-hospitalar para laboratório de ensino",
     "numeroEdital": "513",
     "processo": "23078.534335/2026-76"
   },
@@ -3674,9 +3674,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "Contratação de empresa especializada em consultoria de implantação e empresa para...",
-    "tituloResumo": "Contratação de empresa especializada em consultoria de implantação e empresa para...",
-    "tituloCurto": "Contratação de empresa especializada em consultoria de implantação e empresa para...",
+    "titulo": "📦 Consultoria de implantação e empresa para certificação da Norma ISO...",
+    "tituloResumo": "📦 Consultoria de implantação e empresa para certificação da Norma ISO...",
+    "tituloCurto": "📦 Consultoria de implantação e empresa para certificação da Norma ISO...",
     "numeroEdital": "82",
     "processo": "64153.010695/2026-14"
   },
@@ -3715,9 +3715,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "58 Bebedouros elétricos 220 V do tipo coluna para galão com 2 torneiras",
-    "tituloResumo": "58 Bebedouros elétricos 220 V do tipo coluna para galão com 2 torneiras",
-    "tituloCurto": "58 Bebedouros elétricos 220 V do tipo coluna para galão com 2 torneiras",
+    "titulo": "⚡ 58 Bebedouros elétricos 220 V do tipo coluna para galão com 2 torneiras",
+    "tituloResumo": "⚡ 58 Bebedouros elétricos 220 V do tipo coluna para galão com 2 torneiras",
+    "tituloCurto": "⚡ 58 Bebedouros elétricos 220 V do tipo coluna para galão com 2 torneiras",
     "numeroEdital": "86",
     "processo": "03643.000763/2026-21"
   },
@@ -3756,9 +3756,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "Serviço de reparo de conteiner frigorífico",
-    "tituloResumo": "Serviço de reparo de conteiner frigorífico",
-    "tituloCurto": "Serviço de reparo de conteiner frigorífico",
+    "titulo": "📦 Serviço de reparo de conteiner frigorífico",
+    "tituloResumo": "📦 Serviço de reparo de conteiner frigorífico",
+    "tituloCurto": "📦 Serviço de reparo de conteiner frigorífico",
     "numeroEdital": "121",
     "processo": "62045002818202645"
   },
@@ -3797,9 +3797,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "CINTO E TALABARTE",
-    "tituloResumo": "CINTO E TALABARTE",
-    "tituloCurto": "CINTO E TALABARTE",
+    "titulo": "📦 Cinto e Talabarte",
+    "tituloResumo": "📦 Cinto e Talabarte",
+    "tituloCurto": "📦 Cinto e Talabarte",
     "numeroEdital": "232",
     "processo": "63199.002614/2026-13"
   },
@@ -3837,9 +3837,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "[Portal de Compras Públicas] - Contratação direta de empresa especializada na...",
-    "tituloResumo": "[Portal de Compras Públicas] - Contratação direta de empresa especializada na...",
-    "tituloCurto": "[Portal de Compras Públicas] - Contratação direta de empresa especializada na...",
+    "titulo": "⚡ Contratação direta de empresa especializada na adequação elétrica para...",
+    "tituloResumo": "⚡ Contratação direta de empresa especializada na adequação elétrica para...",
+    "tituloCurto": "⚡ Contratação direta de empresa especializada na adequação elétrica para...",
     "numeroEdital": "99",
     "processo": "24.0.000128151-4"
   },
@@ -3876,9 +3876,9 @@ window.RADAR_PNCP_DATA = [
       "Região Metropolitana / POA (Porto Alegre)"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "[Portal de Compras Públicas] - Aquisição 01 (uma) de Licença do Software do Adobe...",
-    "tituloResumo": "[Portal de Compras Públicas] - Aquisição 01 (uma) de Licença do Software do Adobe...",
-    "tituloCurto": "[Portal de Compras Públicas] - Aquisição 01 (uma) de Licença do Software do Adobe...",
+    "titulo": "💻 01 (uma) de Licença do Software do Adobe Acrobat Pro",
+    "tituloResumo": "💻 01 (uma) de Licença do Software do Adobe Acrobat Pro",
+    "tituloCurto": "💻 01 (uma) de Licença do Software do Adobe Acrobat Pro",
     "numeroEdital": "19",
     "processo": "26100000166659"
   },
@@ -3917,9 +3917,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "2 (dois) projetores multimídia, incluindo frete e entrega, nos termos da tabela...",
-    "tituloResumo": "2 (dois) projetores multimídia, incluindo frete e entrega, nos termos da tabela...",
-    "tituloCurto": "2 (dois) projetores multimídia, incluindo frete e entrega, nos termos da tabela...",
+    "titulo": "📦 2 (dois) projetores multimídia, incluindo frete e entrega",
+    "tituloResumo": "📦 2 (dois) projetores multimídia, incluindo frete e entrega",
+    "tituloCurto": "📦 2 (dois) projetores multimídia, incluindo frete e entrega",
     "numeroEdital": "85",
     "processo": "03643.000676/2026-73"
   },
@@ -3958,9 +3958,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "Contratação de serviço de Coffee Break para a Capacitação em Rede de Frio:...",
-    "tituloResumo": "Contratação de serviço de Coffee Break para a Capacitação em Rede de Frio:...",
-    "tituloCurto": "Contratação de serviço de Coffee Break para a Capacitação em Rede de Frio:...",
+    "titulo": "🍽️ Contratação de serviço de Coffee Break para a Capacitação em Rede de...",
+    "tituloResumo": "🍽️ Contratação de serviço de Coffee Break para a Capacitação em Rede de...",
+    "tituloCurto": "🍽️ Contratação de serviço de Coffee Break para a Capacitação em Rede de...",
     "numeroEdital": "9188",
     "processo": "26/2000-9026990-4"
   },
@@ -3999,9 +3999,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "BENS DA(S) FAMÍLIA(S): 0450-FERRAGENS/ABRASIVOS;",
-    "tituloResumo": "BENS DA(S) FAMÍLIA(S): 0450-FERRAGENS/ABRASIVOS;",
-    "tituloCurto": "BENS DA(S) FAMÍLIA(S): 0450-FERRAGENS/ABRASIVOS;",
+    "titulo": "🔩 Ferragens / Abrasivos",
+    "tituloResumo": "🔩 Ferragens / Abrasivos",
+    "tituloCurto": "🔩 Ferragens / Abrasivos",
     "numeroEdital": "1162",
     "processo": "26/0801-9000484-3"
   },
@@ -4039,9 +4039,9 @@ window.RADAR_PNCP_DATA = [
       "Demanda Regional Vale Paranhana/Sinos (Esteio)"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "[Portal de Compras Públicas] - CONTRATAÇÃO DE EMPRESA ESPECIALIZADA NA PRESTAÇÃO...",
-    "tituloResumo": "[Portal de Compras Públicas] - CONTRATAÇÃO DE EMPRESA ESPECIALIZADA NA PRESTAÇÃO...",
-    "tituloCurto": "[Portal de Compras Públicas] - CONTRATAÇÃO DE EMPRESA ESPECIALIZADA NA PRESTAÇÃO...",
+    "titulo": "📦 Técnicos Periciais Contábeis em Processos Judiciais e Administrativos",
+    "tituloResumo": "📦 Técnicos Periciais Contábeis em Processos Judiciais e Administrativos",
+    "tituloCurto": "📦 Técnicos Periciais Contábeis em Processos Judiciais e Administrativos",
     "numeroEdital": "76",
     "processo": "521/2026"
   },
@@ -4080,9 +4080,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "BENS DA(S) FAMÍLIA(S): 0880-MEDICAMENTOS DE USO HUMANO;",
-    "tituloResumo": "BENS DA(S) FAMÍLIA(S): 0880-MEDICAMENTOS DE USO HUMANO;",
-    "tituloCurto": "BENS DA(S) FAMÍLIA(S): 0880-MEDICAMENTOS DE USO HUMANO;",
+    "titulo": "📦 Medicamentos de Uso Humano",
+    "tituloResumo": "📦 Medicamentos de Uso Humano",
+    "tituloCurto": "📦 Medicamentos de Uso Humano",
     "numeroEdital": "1108",
     "processo": "26/0602-9008376-7"
   },
@@ -4121,9 +4121,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "BENS DA(S) FAMÍLIA(S): 0045-MATERIAIS GRÁFICOS / SIMILARES;",
-    "tituloResumo": "BENS DA(S) FAMÍLIA(S): 0045-MATERIAIS GRÁFICOS / SIMILARES;",
-    "tituloCurto": "BENS DA(S) FAMÍLIA(S): 0045-MATERIAIS GRÁFICOS / SIMILARES;",
+    "titulo": "🖨️ Materiais Gráficos / Similares",
+    "tituloResumo": "🖨️ Materiais Gráficos / Similares",
+    "tituloCurto": "🖨️ Materiais Gráficos / Similares",
     "numeroEdital": "1140",
     "processo": "24/0602-0008029-0"
   },
@@ -4161,9 +4161,9 @@ window.RADAR_PNCP_DATA = [
       "Região Metropolitana / POA (Porto Alegre)"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "Compra de câmeras corporais (bodycams) destinadas ao uso dos Agentes de Polícia...",
-    "tituloResumo": "Compra de câmeras corporais (bodycams) destinadas ao uso dos Agentes de Polícia...",
-    "tituloCurto": "Compra de câmeras corporais (bodycams) destinadas ao uso dos Agentes de Polícia...",
+    "titulo": "💻 Câmeras corporais (bodycams) destinadas ao uso dos Agentes de Polícia...",
+    "tituloResumo": "💻 Câmeras corporais (bodycams) destinadas ao uso dos Agentes de Polícia...",
+    "tituloCurto": "💻 Câmeras corporais (bodycams) destinadas ao uso dos Agentes de Polícia...",
     "numeroEdital": "400",
     "processo": "4977/2026"
   },
@@ -4202,9 +4202,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "Contratar empresa especializada em serviços gráficos para impressão, acabamento e...",
-    "tituloResumo": "Contratar empresa especializada em serviços gráficos para impressão, acabamento e...",
-    "tituloCurto": "Contratar empresa especializada em serviços gráficos para impressão, acabamento e...",
+    "titulo": "🖨️ Contratar empresa especializada em serviços gráficos para impressão...",
+    "tituloResumo": "🖨️ Contratar empresa especializada em serviços gráficos para impressão...",
+    "tituloCurto": "🖨️ Contratar empresa especializada em serviços gráficos para impressão...",
     "numeroEdital": "9039",
     "processo": "26/0801-0004368-2"
   },
@@ -4242,9 +4242,9 @@ window.RADAR_PNCP_DATA = [
       "Portal RS Exclusivo: Exige CFE Estadual"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "BENS DA(S) FAMÍLIA(S): 0960-FORRAGENS E OUTROS ALIMENTOS P/ANIMAIS;",
-    "tituloResumo": "BENS DA(S) FAMÍLIA(S): 0960-FORRAGENS E OUTROS ALIMENTOS P/ANIMAIS;",
-    "tituloCurto": "BENS DA(S) FAMÍLIA(S): 0960-FORRAGENS E OUTROS ALIMENTOS P/ANIMAIS;",
+    "titulo": "🍽️ Forragens e Outros Alimentos para Animais",
+    "tituloResumo": "🍽️ Forragens e Outros Alimentos para Animais",
+    "tituloCurto": "🍽️ Forragens e Outros Alimentos para Animais",
     "numeroEdital": "1156",
     "processo": "26/1203-9031607-8"
   },
@@ -4283,9 +4283,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "Obras, necessárias para a atualização do acervo bibliográficoda EMATER/RS-ASCAR.",
-    "tituloResumo": "Obras, necessárias para a atualização do acervo bibliográficoda EMATER/RS-ASCAR.",
-    "tituloCurto": "Obras, necessárias para a atualização do acervo bibliográficoda EMATER/RS-ASCAR.",
+    "titulo": "🖨️ Obras, necessárias para a atualização do acervo bibliográficoda...",
+    "tituloResumo": "🖨️ Obras, necessárias para a atualização do acervo bibliográficoda...",
+    "tituloCurto": "🖨️ Obras, necessárias para a atualização do acervo bibliográficoda...",
     "numeroEdital": "0085",
     "processo": "26/1511-9000267-3"
   },
@@ -4324,9 +4324,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "Prestação de serviço de Fornecimento e personalização de bolsas térmicas para o...",
-    "tituloResumo": "Prestação de serviço de Fornecimento e personalização de bolsas térmicas para o...",
-    "tituloCurto": "Prestação de serviço de Fornecimento e personalização de bolsas térmicas para o...",
+    "titulo": "📦 Personalização de bolsas térmicas para o Comando de Polícia Rodoviária...",
+    "tituloResumo": "📦 Personalização de bolsas térmicas para o Comando de Polícia Rodoviária...",
+    "tituloCurto": "📦 Personalização de bolsas térmicas para o Comando de Polícia Rodoviária...",
     "numeroEdital": "9017",
     "processo": "26/0435-0020931-1"
   },
@@ -4365,9 +4365,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "PARCELADA DE ÁGUA SANITÁRIA - SMDEMA - SEI.43.206010.000044/2026-55 (Portal de...",
-    "tituloResumo": "PARCELADA DE ÁGUA SANITÁRIA - SMDEMA - SEI.43.206010.000044/2026-55 (Portal de...",
-    "tituloCurto": "PARCELADA DE ÁGUA SANITÁRIA - SMDEMA - SEI.43.206010.000044/2026-55 (Portal de...",
+    "titulo": "📦 PARCELADA DE ÁGUA SANITÁRIA - SMDEMA - SEI.43.206010.000044/2026-55...",
+    "tituloResumo": "📦 PARCELADA DE ÁGUA SANITÁRIA - SMDEMA - SEI.43.206010.000044/2026-55...",
+    "tituloCurto": "📦 PARCELADA DE ÁGUA SANITÁRIA - SMDEMA - SEI.43.206010.000044/2026-55...",
     "numeroEdital": "90050",
     "processo": "90050/2026"
   },
@@ -4406,9 +4406,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "Serviço de manutenção elétrica em um compressor do tipo parafuso, Marca Carlyle,...",
-    "tituloResumo": "Serviço de manutenção elétrica em um compressor do tipo parafuso, Marca Carlyle,...",
-    "tituloCurto": "Serviço de manutenção elétrica em um compressor do tipo parafuso, Marca Carlyle,...",
+    "titulo": "⚡ Serviço de manutenção elétrica em um compressor do tipo parafuso...",
+    "tituloResumo": "⚡ Serviço de manutenção elétrica em um compressor do tipo parafuso...",
+    "tituloCurto": "⚡ Serviço de manutenção elétrica em um compressor do tipo parafuso...",
     "numeroEdital": "264",
     "processo": "0011142-97.2026.4.04.8000"
   },
@@ -4446,9 +4446,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "CONTRATAÇÃO , FORNECIMENTO DE MATERIAIS, MÃO DE OBRA E TODOS OS SERVIÇOS...",
-    "tituloResumo": "CONTRATAÇÃO , FORNECIMENTO DE MATERIAIS, MÃO DE OBRA E TODOS OS SERVIÇOS...",
-    "tituloCurto": "CONTRATAÇÃO , FORNECIMENTO DE MATERIAIS, MÃO DE OBRA E TODOS OS SERVIÇOS...",
+    "titulo": "🧹 Contratação , Fornecimento de Materiais, Mão de Obra e Todos os...",
+    "tituloResumo": "🧹 Contratação , Fornecimento de Materiais, Mão de Obra e Todos os...",
+    "tituloCurto": "🧹 Contratação , Fornecimento de Materiais, Mão de Obra e Todos os...",
     "numeroEdital": "18",
     "processo": "75"
   },
@@ -4487,9 +4487,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "BENS DA(S) FAMÍLIA(S): 0830-EQUIPAMENTOS/MATERIAIS P/LABORATORIO;",
-    "tituloResumo": "BENS DA(S) FAMÍLIA(S): 0830-EQUIPAMENTOS/MATERIAIS P/LABORATORIO;",
-    "tituloCurto": "BENS DA(S) FAMÍLIA(S): 0830-EQUIPAMENTOS/MATERIAIS P/LABORATORIO;",
+    "titulo": "📦 Equipamentos / Materiais para Laboratorio",
+    "tituloResumo": "📦 Equipamentos / Materiais para Laboratorio",
+    "tituloCurto": "📦 Equipamentos / Materiais para Laboratorio",
     "numeroEdital": "1168",
     "processo": "26/0567-9000944-4"
   },
@@ -4528,9 +4528,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "BENS DA(S) FAMÍLIA(S): 0045-MATERIAIS GRÁFICOS / SIMILARES;",
-    "tituloResumo": "BENS DA(S) FAMÍLIA(S): 0045-MATERIAIS GRÁFICOS / SIMILARES;",
-    "tituloCurto": "BENS DA(S) FAMÍLIA(S): 0045-MATERIAIS GRÁFICOS / SIMILARES;",
+    "titulo": "🖨️ Materiais Gráficos / Similares",
+    "tituloResumo": "🖨️ Materiais Gráficos / Similares",
+    "tituloCurto": "🖨️ Materiais Gráficos / Similares",
     "numeroEdital": "1170",
     "processo": "26/0435-0020953-2"
   },
@@ -4568,9 +4568,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "CONTRATAÇÃO DE SERVIÇO DE INSTALAÇÃO DAS CÂMERAS DE SEGURANÇA (CFTV) NA NOVA SEDE...",
-    "tituloResumo": "CONTRATAÇÃO DE SERVIÇO DE INSTALAÇÃO DAS CÂMERAS DE SEGURANÇA (CFTV) NA NOVA SEDE...",
-    "tituloCurto": "CONTRATAÇÃO DE SERVIÇO DE INSTALAÇÃO DAS CÂMERAS DE SEGURANÇA (CFTV) NA NOVA SEDE...",
+    "titulo": "📦 Contratação de Serviço de Instalação das Câmeras de Segurança (CFTV)...",
+    "tituloResumo": "📦 Contratação de Serviço de Instalação das Câmeras de Segurança (CFTV)...",
+    "tituloCurto": "📦 Contratação de Serviço de Instalação das Câmeras de Segurança (CFTV)...",
     "numeroEdital": "19",
     "processo": "69"
   },
@@ -4608,9 +4608,9 @@ window.RADAR_PNCP_DATA = [
       "Região Metropolitana / POA (Porto Alegre)"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "Contratação de serviços contínuos de jardinagem e paisagismo para as áreas...",
-    "tituloResumo": "Contratação de serviços contínuos de jardinagem e paisagismo para as áreas...",
-    "tituloCurto": "Contratação de serviços contínuos de jardinagem e paisagismo para as áreas...",
+    "titulo": "🪑 Contratação de serviços contínuos de jardinagem e paisagismo para as...",
+    "tituloResumo": "🪑 Contratação de serviços contínuos de jardinagem e paisagismo para as...",
+    "tituloCurto": "🪑 Contratação de serviços contínuos de jardinagem e paisagismo para as...",
     "numeroEdital": "91",
     "processo": "0052602.005889/2025-01"
   },
@@ -4649,9 +4649,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "Chapas de compensado e MDF",
-    "tituloResumo": "Chapas de compensado e MDF",
-    "tituloCurto": "Chapas de compensado e MDF",
+    "titulo": "📦 Chapas de compensado e MDF",
+    "tituloResumo": "📦 Chapas de compensado e MDF",
+    "tituloCurto": "📦 Chapas de compensado e MDF",
     "numeroEdital": "537",
     "processo": "23078.568043/2026-37"
   },
@@ -4690,9 +4690,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "BENS DA(S) FAMÍLIA(S): 0035-EQUIPAMENTOS P/INFORMATICA;",
-    "tituloResumo": "BENS DA(S) FAMÍLIA(S): 0035-EQUIPAMENTOS P/INFORMATICA;",
-    "tituloCurto": "BENS DA(S) FAMÍLIA(S): 0035-EQUIPAMENTOS P/INFORMATICA;",
+    "titulo": "💻 Equipamentos para Informatica",
+    "tituloResumo": "💻 Equipamentos para Informatica",
+    "tituloCurto": "💻 Equipamentos para Informatica",
     "numeroEdital": "1169",
     "processo": "26/0567-9000773-5"
   },
@@ -4731,9 +4731,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "[Portal de Compras Públicas] - Aquisição, por dispensa de licitação, de EPIs -...",
-    "tituloResumo": "[Portal de Compras Públicas] - Aquisição, por dispensa de licitação, de EPIs -...",
-    "tituloCurto": "[Portal de Compras Públicas] - Aquisição, por dispensa de licitação, de EPIs -...",
+    "titulo": "🩺 Aquisição, por dispensa de licitação, de EPIs - Calçados ocupacionais...",
+    "tituloResumo": "🩺 Aquisição, por dispensa de licitação, de EPIs - Calçados ocupacionais...",
+    "tituloCurto": "🩺 Aquisição, por dispensa de licitação, de EPIs - Calçados ocupacionais...",
     "numeroEdital": "10006",
     "processo": "6793/2026"
   },
@@ -4772,9 +4772,9 @@ window.RADAR_PNCP_DATA = [
       "Portal RS Exclusivo: Exige CFE Estadual"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "REALIZAÇÃO DE EXAMES DE DIAGNÓSTICOS POR IMAGEM PARA O HOSPITAL MUNICIPAL GETÚLIO...",
-    "tituloResumo": "REALIZAÇÃO DE EXAMES DE DIAGNÓSTICOS POR IMAGEM PARA O HOSPITAL MUNICIPAL GETÚLIO...",
-    "tituloCurto": "REALIZAÇÃO DE EXAMES DE DIAGNÓSTICOS POR IMAGEM PARA O HOSPITAL MUNICIPAL GETÚLIO...",
+    "titulo": "📦 Realização de Exames de Diagnósticos por Imagem para o Hospital...",
+    "tituloResumo": "📦 Realização de Exames de Diagnósticos por Imagem para o Hospital...",
+    "tituloCurto": "📦 Realização de Exames de Diagnósticos por Imagem para o Hospital...",
     "numeroEdital": "0154",
     "processo": "327584"
   },
@@ -4812,9 +4812,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "Fornecimento, por demanda, de óleo diesel B S500 comum para abastecimento do...",
-    "tituloResumo": "Fornecimento, por demanda, de óleo diesel B S500 comum para abastecimento do...",
-    "tituloCurto": "Fornecimento, por demanda, de óleo diesel B S500 comum para abastecimento do...",
+    "titulo": "📦 Fornecimento, por demanda, de óleo diesel B S500 comum para...",
+    "tituloResumo": "📦 Fornecimento, por demanda, de óleo diesel B S500 comum para...",
+    "tituloCurto": "📦 Fornecimento, por demanda, de óleo diesel B S500 comum para...",
     "numeroEdital": "[21975] 35",
     "processo": "[21975] 35/2026"
   },
@@ -4853,9 +4853,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "[Portal de Compras Públicas] - Encaminho a presente solicitação para que seja...",
-    "tituloResumo": "[Portal de Compras Públicas] - Encaminho a presente solicitação para que seja...",
-    "tituloCurto": "[Portal de Compras Públicas] - Encaminho a presente solicitação para que seja...",
+    "titulo": "❄️ Encaminho a presente solicitação para que seja realizada, por meio de...",
+    "tituloResumo": "❄️ Encaminho a presente solicitação para que seja realizada, por meio de...",
+    "tituloCurto": "❄️ Encaminho a presente solicitação para que seja realizada, por meio de...",
     "numeroEdital": "12",
     "processo": "307 / 2026 - 2468"
   },
@@ -4894,9 +4894,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "O fornecimento e a instalação de um conjunto de 06 (seis) catracas Topdata, sendo...",
-    "tituloResumo": "O fornecimento e a instalação de um conjunto de 06 (seis) catracas Topdata, sendo...",
-    "tituloCurto": "O fornecimento e a instalação de um conjunto de 06 (seis) catracas Topdata, sendo...",
+    "titulo": "📦 Instalação de um conjunto de 06 (seis) catracas Topdata, sendo 04...",
+    "tituloResumo": "📦 Instalação de um conjunto de 06 (seis) catracas Topdata, sendo 04...",
+    "tituloCurto": "📦 Instalação de um conjunto de 06 (seis) catracas Topdata, sendo 04...",
     "numeroEdital": "9024",
     "processo": "26/1440-0000200-3"
   },
@@ -4935,9 +4935,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "BENS DA(S) FAMÍLIA(S): 0360-UTENSILIOS E MATERIAIS DESCARTAVEIS P/COPA/COZINHA;",
-    "tituloResumo": "BENS DA(S) FAMÍLIA(S): 0360-UTENSILIOS E MATERIAIS DESCARTAVEIS P/COPA/COZINHA;",
-    "tituloCurto": "BENS DA(S) FAMÍLIA(S): 0360-UTENSILIOS E MATERIAIS DESCARTAVEIS P/COPA/COZINHA;",
+    "titulo": "📦 Utensilios e Materiais Descartaveis para Copa / Cozinha",
+    "tituloResumo": "📦 Utensilios e Materiais Descartaveis para Copa / Cozinha",
+    "tituloCurto": "📦 Utensilios e Materiais Descartaveis para Copa / Cozinha",
     "numeroEdital": "1166",
     "processo": "26/0602-9009389-4"
   },
@@ -4977,9 +4977,9 @@ window.RADAR_PNCP_DATA = [
       "Valor Compatível MEI"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "Contratação de empresa(s) especializada(s) para o fornecimento, personalização e...",
-    "tituloResumo": "Contratação de empresa(s) especializada(s) para o fornecimento, personalização e...",
-    "tituloCurto": "Contratação de empresa(s) especializada(s) para o fornecimento, personalização e...",
+    "titulo": "🖨️ Contratação de empresa(s) especializada(s) para o fornecimento...",
+    "tituloResumo": "🖨️ Contratação de empresa(s) especializada(s) para o fornecimento...",
+    "tituloCurto": "🖨️ Contratação de empresa(s) especializada(s) para o fornecimento...",
     "numeroEdital": "0006",
     "processo": "021"
   },
@@ -5017,9 +5017,9 @@ window.RADAR_PNCP_DATA = [
       "Demanda Regional Vale Paranhana/Sinos (Sapiranga)"
     ],
     "ehDesertaOuProrrogada": false,
-    "titulo": "Gêneros alimentícios da Agricultura Familiar e do Empreendedor Familiar Rural,...",
-    "tituloResumo": "Gêneros alimentícios da Agricultura Familiar e do Empreendedor Familiar Rural,...",
-    "tituloCurto": "Gêneros alimentícios da Agricultura Familiar e do Empreendedor Familiar Rural,...",
+    "titulo": "🍽️ Gêneros alimentícios da Agricultura Familiar e do Empreendedor...",
+    "tituloResumo": "🍽️ Gêneros alimentícios da Agricultura Familiar e do Empreendedor...",
+    "tituloCurto": "🍽️ Gêneros alimentícios da Agricultura Familiar e do Empreendedor...",
     "numeroEdital": "3",
     "processo": "PRO28327/2026"
   }

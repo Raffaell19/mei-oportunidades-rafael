@@ -105,24 +105,91 @@ def resolver_link_dispensa(item):
     return "https://pncp.gov.br/app/editais", "Portal PNCP"
 
 
-def gerar_titulo_fiel(objeto):
+def _smart_title_case(texto):
+    siglas = {"LED", "USB", "8TB", "15KV", "ETP", "TR", "RS", "POA", "CMS", "PRF", "TI", "CFTV", "HDMI", "PVC", "ACM", "MDF", "EPI", "CONAB", "SME", "BIMTZ", "PNCP", "MEI", "PME", "B2B", "UPS"}
+    minusculas = {"de", "da", "do", "das", "dos", "e", "em", "para", "com", "sem", "por", "a", "o", "as", "os", "no", "na", "nos", "nas", "ao", "à"}
+    palavras = texto.split()
+    out = []
+    for i, w in enumerate(palavras):
+        clean_w = re.sub(r"[^\wÀ-ÿ]", "", w).upper()
+        if clean_w in siglas or re.match(r"^\d+[A-Z]+$", clean_w):
+            out.append(w.upper())
+        elif i > 0 and w.lower() in minusculas:
+            out.append(w.lower())
+        else:
+            out.append(w.capitalize() if w.isupper() or w.islower() else w)
+    return " ".join(out)
+
+
+def _escolher_emoji_oportunidade(txt_low):
+    regras = [
+        ("🚗", ["veicular", "seguro veicular", "viatura", "elevador automotivo", "pedágio", "pedagio", "pneu", "automotivo"]),
+        ("🩺", ["diagnóstica", "diagnostica", "medicinal", "ar comprimido medicinal", "hospitalar", "saúde", "saude", "odonto", "médico", "medico"]),
+        ("💻", ["informatica", "informática", "computador", "notebook", "nobreak", "hd ", "ssd", "monitor", "impressora", "outsourcing", "licença", "licenca", "creative cloud", "fibra ótica", "fibra otica", "transceptor", "switch", "mesa de som"]),
+        ("⚡", ["elétrica", "eletrica", "elétrico", "eletrico", "lâmpada", "lampada", "disjuntor", "fusivel", "fusível", "aterramento", "cabo cobre", "plugue", "alicate", "iluminação", "iluminacao", "energia"]),
+        ("❄️", ["ar-condicionado", "ar condicionado", "climatização", "climatizacao", "refrigeração", "refrigeracao"]),
+        ("🪑", ["móveis", "moveis", "mesa", "cadeira", "armário", "armario", "estofado", "persiana", "cortina", "mobiliário", "mobiliario", "mudança", "mudanca"]),
+        ("🛠️", ["pintura", "pedreiro", "alvenaria", "drywall", "gesso", "forro", "porcelanato", "piso", "telhado", "portão", "portao", "grade", "serralheria", "hidrojateamento", "caixas pluviais", "estrada de chão", "estrada de chao", "vidro", "esquadria"]),
+        ("🔩", ["ferragem", "ferragens", "abrasivo", "construção", "construcao", "ferramenta", "parafuso"]),
+        ("🧹", ["limpeza", "higiene", "papel toalha", "sabão", "detergente", "descartável", "descartavel"]),
+        ("🖨️", ["gráfico", "grafico", "gráficos", "graficos", "adesivo", "placa", "bandeira", "carimbo", "impressão", "impressao", "informativo"]),
+        ("👕", ["vestuário", "vestuario", "uniforme", "camiseta", "boné", "bone"]),
+        ("⚽", ["esportivo", "esportivos", "troféu", "trofeu", "medalha", "futebol"]),
+        ("🍽️", ["alimento", "alimentação", "alimentacao", "coffee", "feijão", "feijao", "lanche", "refeição", "refeicao", "aquecedor de xícaras"]),
+        ("📣", ["marketing", "redes sociais", "social media", "vídeo", "video", "audiovisual", "design"]),
+    ]
+    for emoji, kws in regras:
+        if any(k in txt_low for k in kws):
+            return emoji
+    return "📦"
+
+
+def gerar_titulo_fiel(objeto, orgao=""):
     txt = re.sub(r"\s+", " ", objeto or "").strip()
     if not txt:
-        return "Oportunidade Pública MEI"
-    # Remove prefixos burocráticos comuns para deixar o título direto ao ponto
-    prefixos = [
-        r"^(?:a presente licita[çc][ãa]o tem por finalidade o )?(?:registro de pre[çc]os? para )?(?:futura e eventual )?",
-        r"^(?:contrata[çc][ãa]o de empresa especializada (?:para|na) )?",
-        r"^(?:aquisi[çc][ãa]o|fornecimento|presta[çc][ãa]o de servi[çc]os) (?:de |para )?"
-    ]
-    limpo = txt
-    for p in prefixos:
-        limpo = re.sub(p, "", limpo, flags=re.I).strip()
-    if len(limpo) < 12:
+        return "📦 Oportunidade Pública MEI"
+
+    # Trata formato Compras RS: "AQUISIÇÃO DE BENS DA(S) FAMÍLIA(S): 0160-EQUIPAMENTOS/..."
+    m_fam = re.search(r"BENS DA\(S\) FAM[ÍI]LIA\(S\):\s*\d+\s*[-–]\s*(.+)", txt, flags=re.I)
+    if m_fam:
+        fam = re.sub(r";\s*\d+\s*[-–]\s*", " e ", m_fam.group(1))
+        fam = re.sub(r"\bP/\s*", "para ", fam, flags=re.I)
+        fam = fam.replace("/", " / ").strip(" ;.,-")
+        fam = re.sub(r"\s+", " ", fam)
+        limpo = _smart_title_case(fam)
+    else:
         limpo = txt
-    if len(limpo) > 85:
-        limpo = limpo[:82].rsplit(" ", 1)[0] + "..."
-    return limpo[0].upper() + limpo[1:]
+        prefixos = [
+            r"^\[[^\]]+\]\s*[-–—:]?\s*",
+            r"^(?:a presente licita[çc][ãa]o tem por finalidade (?:o|a) )?",
+            r"^(?:abertura de licita[çc][ãa]o para (?:o |a )?)?(?:registro de pre[çc]os? para )?(?:futura e eventual )?",
+            r"^(?:bens comuns,?\s*por itens,?\s*atrav[ée]s de\s*)?dispensa (?:de licita[çc][ãa]o )?(?:eletr[ôo]nica )?(?:para (?:a |o )?)?",
+            r"^(?:contrata[çc][ãa]o de (?:empresa(?: especializada)? )?(?:para|na|no|em|de) (?:a |o |os |as )?)",
+            r"^(?:aquisi[çc][ãa]o|compra|fornecimento|presta[çc][ãa]o de servi[çc]os?|execu[çc][ãa]o de servi[çc]os?) (?:cont[íi]nuos? )?(?:de |para |e )?",
+            r"^(?:o |a |e )(?=[a-zà-ÿ]+ )",
+        ]
+        for _ in range(2):
+            for p in prefixos:
+                limpo = re.sub(p, "", limpo, flags=re.I).strip()
+
+        # Remove caudas burocráticas que não ajudam a identificar o item
+        limpo = re.sub(r",?\s*(?:conforme condi[çc][õo]es|nos termos|de acordo com|para atender [àa]s necessidades|em favor do).*$", "", limpo, flags=re.I).strip(" ,.;-")
+        if len(limpo) < 8:
+            limpo = txt
+        if limpo.isupper():
+            limpo = _smart_title_case(limpo)
+        else:
+            limpo = limpo[0].upper() + limpo[1:]
+
+    if re.fullmatch(r"conforme\s+etp\s+e\s+tr\.?", limpo, flags=re.I):
+        org_curto = re.sub(r"\s*\(.*?\)", "", orgao or "").strip()[:38]
+        limpo = f"Demanda Conforme ETP/TR ({org_curto})" if org_curto else "Demanda Conforme ETP/TR (Abrir Edital)"
+
+    if len(limpo) > 74:
+        limpo = limpo[:71].rsplit(" ", 1)[0].rstrip(",.;-") + "..."
+
+    emoji = _escolher_emoji_oportunidade(f"{limpo} {objeto}".lower())
+    return f"{emoji} {limpo}"
 
 
 def classificar_oportunidade(item, modalidade):
@@ -214,7 +281,7 @@ def classificar_oportunidade(item, modalidade):
     score_oceano = min(score_oceano, 98)
     nivel_concorrencia = "Baixíssima" if score_oceano >= 80 else "Baixa"
 
-    titulo_fiel = gerar_titulo_fiel(objeto)
+    titulo_fiel = gerar_titulo_fiel(objeto, unidade)
     tags = [cidade, modalidade_nome]
     if eh_vale_paranhana_sinos:
         tags.insert(0, "Vale Paranhana & Sinos")
